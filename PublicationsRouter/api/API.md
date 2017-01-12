@@ -10,10 +10,12 @@ All URL paths provided in this document will extend from this base url.
 
 In many cases you will need an API key to access the API.  This can be obtained from your PubRouter account page.
 
-This page has two main sections:
- |
- [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)|
- [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)|
+    This page has two main sections:
+    
+    [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)
+    
+    [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)
+
 
 ## For Publishers
 
