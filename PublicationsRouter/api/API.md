@@ -10,6 +10,11 @@ All URL paths provided in this document will extend from this base url.
 
 In many cases you will need an API key to access the API.  This can be obtained from your PubRouter account page.
 
+This page has two main sections:
+ |
+ [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)|
+ [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)|
+
 ## For Publishers
 
 If you are a publisher (also referred to here as a "provider") providing content to the router, you have access to 2 endpoints:
@@ -21,7 +26,7 @@ If you are a publisher (also referred to here as a "provider") providing content
 You can create content in 2 ways in PubRouter:
 
 1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/IncomingNotification.md).
-2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/IncomingNotification.md) plus a zipped binary package containing content in a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/PACKAGING.md).
+2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/IncomingNotification.md) plus a zipped binary package containing content in a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/Packaging.md).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -101,9 +106,11 @@ If you are sending binary content as well as the metadata, the request must take
     
     --FulltextBoundary--
 
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/PACKAGING.md) documentation.
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md) documentation.
 
-It is also possible to send a request which has limited/no JSON metadata, and relies entirely on any metadata embedded in the Package.
+#### Minimum Metadata + Package request
+
+It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in the binary Package (e.g. in a JATS XML structure).
 
 To do this, send the bare-minimum JSON notification, with only the format identifier of the package included.  For example:
 
@@ -130,11 +137,11 @@ To do this, send the bare-minimum JSON notification, with only the format identi
     
     --FulltextBoundary--
 
-#### Possible Responses
+#### Possible HTTP Responses
 
-On authentication failure (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
+On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
 
-On validation failure the system will respond with the following:
+On **validation failure** the system will respond with the following:
 
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
@@ -143,90 +150,37 @@ On validation failure the system will respond with the following:
         "error" : "<human readable error message>"
     }
 
-On validation success, the system will respond with 204 (No Content) and no response body.
+On **validation success** the system will respond with 204 (No Content) and no response body.
 
 ### Notification Endpoint
 
-The Notification API takes an identical request to the Validation API, so that you can develop
-against the Validation API and then switch seamlessly over to live notifications.  The only difference will
-be in the response body.
+The Notification API takes an identical request to the Validation API, so that you can develop against the Validation API and then switch seamlessly over to live notifications.  The only difference will be in the response body.
 
-You must have the user role "provider" to access this endpoint - if you do not have this role, please contact the Router administrator.
+Again, you must have "Publisher account" to access this endpoint.
 
-The system will not attempt to aggressively validate the request, but the
-request must still be well-formed in order to succeed, so you may still receive a validation error.
+The system will not attempt to aggressively validate the request, but the request must still be well-formed in order to succeed, so you may still receive a validation error.
 
-On a successful call to this endpoint, your notification will be accepted into the router, but note that acceptance of a 
-notification is not the same as the notification having been entered into the system for routing - at this point it has 
-only been accepted for processing.  Routing to the relevant repositories will happen later, asynchronously to the request.
+On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
 #### Metadata-only request
 
-If you are sending only the notification JSON, the request must take the form:
-
-    POST /notification?api_key=<api_key>
-    Content-Type: application/json
-    
-    [Incoming Notification JSON]
+See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#metadata-only-request) above.
 
 #### Metadata + Package request
 
-If you are sending binary content, the request must take the form:
+See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#metadata--package-request) above.
 
-    POST /notification?api_key=<api_key>
-    Content-Type: multipart/form-data; boundary=FulltextBoundary
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="metadata"
-    Content-Type: application/json
-    
-    [Incoming Notification JSON]
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="content"
-    Content-Type: application/zip
-    
-    [Package]
-    
-    --FulltextBoundary--
+#### Minimum Metadata + Package request
 
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata, 
-and include the identifier to the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/PACKAGING.md) documentation.
-
-It is also possible to send a request which has limited/no JSON metadata, and relies entirely on any metadata embedded in the Package.
-
-To do this, send the bare-minimum JSON notification, with only the format identifier of the package included.  For example:
-
-    POST /validate?api_key=<api_key>
-    Content-Type: multipart/form-data; boundary=FulltextBoundary
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="metadata"
-    Content-Type: application/json
-    
-    {
-        "content" : {
-            "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-        },
-    }
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="content"
-    Content-Type: application/zip
-    
-    [Package]
-    
-    --FulltextBoundary--
+See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#minimum-metadata--package-request) above.
 
 #### Possible Responses
 
-On authentication failure (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
+Note the last of these is different from the Validation endpoint.
 
-In the event of a malformed HTTP request, the system will respond with a 400 (Bad Request) and the response body:
+On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
+
+In the event of a **malformed HTTP request**, the system will respond with a 400 (Bad Request) and the response body:
 
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
@@ -235,7 +189,7 @@ In the event of a malformed HTTP request, the system will respond with a 400 (Ba
         "error" : "<human readable error message>"
     }
 
-On successful completion of the request, the system will respond with 202 (Accepted) and the following response body
+On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
 
     HTTP 1.1  202 Accepted
     Content-Type: application/json
@@ -263,7 +217,7 @@ Notifications are represented in our native JSON format as an [Outgoing Notifica
 (or a [Provider's Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/ProviderOutgoingNotification.md) if you happend to also be the publisher
 who created it).
 
-Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/PACKAGING.md).
+Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -424,7 +378,7 @@ In this case there are 2 packages available (both representing the same content)
 that the publisher originally provided to the router, and the other is in the "SimpleZip" format to which the router has
 converted the incoming package.
 
-See the documentation on [Packaging Formats](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/PACKAGING.md) to understand
+See the documentation on [Packaging Formats](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md) to understand
 what each of the formats looks like.
 
 You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional
