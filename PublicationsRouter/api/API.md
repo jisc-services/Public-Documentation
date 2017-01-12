@@ -20,8 +20,8 @@ If you are a publisher (also referred to here as a "provider") providing content
 
 You can create content in 2 ways in PubRouter:
 
-1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/development/jper/docs/api/IncomingNotification.md).
-2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/development/jper/docs/api/IncomingNotification.md) plus a zipped binary package containing content in a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/development/jper/docs/api/PACKAGING.md).
+1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/IncomingNotification.md).
+2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/IncomingNotification.md) plus a zipped binary package containing content in a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/PACKAGING.md).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -35,7 +35,7 @@ For effective routing, this includes:
 * Institution identifiers (e.g. post-codes, domain names)
 * Institution name(s)
 
-These fields are highlighted in the [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/development/jper/docs/api/IncomingNotification.md) table of fields.
+These fields are highlighted in the [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/IncomingNotification.md) table of fields.
 
 #### Embargo
 
