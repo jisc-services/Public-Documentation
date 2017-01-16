@@ -1,28 +1,20 @@
 # Packaging
 
-Packages, in the context of the Router, are zip files which contain one or more other files/folders which conform to 
-and known/documented specification.
-
-We use these known package formats to allow us to reliably extract match data, and to allow repositories to correctly
-interpret the content they are being given.
+Packages, in the context of the Router, are zip files which contain one or more other files/folders which conform to a known/documented specification.  For example packages may contain meta-data in, say JATS format, together with related files such as article PDF and or images.
 
 ## Identification of packages
 
-Each format has a URI which unambiguously identifies it, and we use this identifier to allow us to interpret the content
-that appears in the zip.  (Note that the URI does not need to resolve to a resource on the web, so any links presented
-here may not actuall go to a web page).
-
-Router works with the following package formats
+Each package format has a URI which unambiguously identifies it, and we use this to unpack and interpret the content that appears in the zip.  (Note that the URI does not have to resolve to a resource on the web, so any links shown below may not actually go to a web page).  PubRouter works with the following package formats:
 
 | Format | Description |
 |--------|-------------|
-| https://pubrouter.jisc.ac.uk/FilesAndJATS | A flat file structure with JATS XML embedded |
-| http://purl.org/net/sword/package/SimpleZip | A flat file structure of unspecified files |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
+| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
 
-When sending or retrieving packages from the router, the format needs to be specified.
+When sending or retrieving packages from PubRouter, the format needs to be specified.
 
-If you are a publisher sending a package via the native API, you MUST specify the URI of the package format in the
-notification JSON, thus:
+If you are a publisher sending a package via the PubRouter API, you MUST specify the URI of the package format in the
+JSON `content.packaging_format` field, thus:
 
     {
         "content" : {
@@ -30,7 +22,7 @@ notification JSON, thus:
         },
     }
 
-If you are retrieving packaged content via the native API, you will obtain the URL for the package from the notification
+If you are retrieving packaged content via the PubRouter API, you will obtain the URL for the package from the notification
 JSON in the **links** section, for example:
 
     "links" : [
@@ -48,29 +40,28 @@ JSON in the **links** section, for example:
         }
     ]
 
-In each of the two links there is a **packaging** element which tells you the format of the zip file you will receive
-if you GET the **url**.
+The `links.packaging` element which tells you the format of the zip file you will receive if you GET the **url**.
 
 ## What package formats are supported?
 
-The router accepts and disseminates packages in the following formats:
+PubRouter accepts and disseminates packages in the following formats:
 
 | Format | Accepts | Disseminates |
 |--------|---------|--------------|
 | https://pubsrouter.jisc.ac.uk/FilesAndJATS | yes | yes |
 | http://purl.org/net/sword/package/SimpleZip | no | yes |
 
-If a package can be accepted, publishers may use it to deposit binary content associated with a notification into Router
+If a package can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
 
 If a package can be disseminated, it will be available to you for download once the notification has been routed to your
-repository (you must ensure your repository account in the Router specifies the package format you are interested in).
+repository (you must ensure your repository account in PubRouter specifies the package format you are interested in).
 
 
 ## A guide to the formats
 
-### https://pubsrouter.jisc.ac.uk/FilesAndJATS
+### https://pubsrouter.jisc.ac.uk/FilesAndJATS (note this is a URI, not a URL) 
 
-This is Router's native package format.  It conforms to the following specification:
+This is PubRouter's native package format.  It conforms to the following specification:
 
 1. Only contains files in a flat structure, does not contain folders
 2. Contains at least one JATS XML file (no naming convention, but must end with ".xml")
