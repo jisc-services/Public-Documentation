@@ -22,11 +22,6 @@ The JSON structure of the model is as follows:
 			"url": "<provider's splash, fulltext or machine readable page>"
 		}
 	],
-	"embargo": {
-		"end": "<date embargo expires>",
-		"start": "<date embargo starts>",
-		"duration": "<number of months for embargo to run>"
-	},
 	"metadata": {
 		"journal": {
 			"title": "<Journal / publication title>",
@@ -160,12 +155,7 @@ Each of the fields is defined as laid out in the table below in the order that t
 | *links[]* | *Array of link objects* | | | |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
-| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months |  | | |
-| embargo.end | End date for the embargo.  If this field is populated, this is the definitive information on the end-date of the embargo, and embargo.duration and embargo.start can be ignored. | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
-| embargo.start | Start date for the embargo | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
-from notification; URLs provided by the Router will be accessible to authenticated users for the same period. | unicode | URL |  |
-| embargo.duration | Duration (in months) of the embargo | int |  |  |
-| metadata.journal.title | Title of the journal or publication | unicode |  |  |
+| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | | metadata.journal.title | Title of the journal or publication | unicode |  |  |
 | metadata.journal.abbrevTitle | Abbreviated form of journal/publication title | unicode |  |  |
 | metadata.journal.volume | Number of a journal (or other document) within a series | unicode |  |  |
 | metadata.journal.issue | Issue number of a journal, or in rare instances, a book | unicode |  |  |
@@ -222,7 +212,7 @@ from notification; URLs provided by the Router will be accessible to authenticat
 | metadata.project.grant_number | Grant number for funding source behind this article | unicode |  |  |
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |  |
-| metadata.embargo.duration | Embargo duration | unicode |  |  |
+| metadata.embargo.duration | Embargo duration in DAYS | unicode |  |  |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |  |
 | metadata.license_ref.type | Type of licence (most likely the same as the title); free-text | unicode |  |  |
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |  |
