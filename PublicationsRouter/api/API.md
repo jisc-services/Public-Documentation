@@ -10,19 +10,19 @@ All URL paths provided in this document will extend from this base url.
 
 In many cases you will need an API key to access the API.  This can be obtained from your PubRouter account page.
 
-    This page has two main sections:
-    
-    [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)
-    
-    [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)
+This page has two main sections:
+
+*[For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)
+
+*[For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)
 
 
 ## For Publishers
 
-If you are a publisher (also referred to here as a "provider") providing content to the router, you have access to 2 endpoints:
+If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
 
 1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to PubRouter
-2. ** Notification endpoint** - for "live" use, sending real notifications to PubRouter
+2. **Notification endpoint** - for "live" use, sending real notifications to PubRouter
 
 
 You can create content in 2 ways in PubRouter:
@@ -50,7 +50,7 @@ If you are applying an embargo to the content this can be indicated via the **em
 
 #### Links to your publicly hosted content
 
-If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with the router, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
+If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with PubRouter, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
 
     "links" : [
         {
@@ -206,18 +206,12 @@ On **successful completion** of the request, the system will respond with 202 (A
 
 ## For Repositories
 
-If you are a repository, consuming notifications from the router, you have access to 2 endpoints:
+If you are a repository, consuming notifications from PubRouter, you have access to 2 endpoints:
 
-1. The notification list feed
-2. The notification endpoint
+1. The **notification list feed** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
+2. The **notification** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
 
-The first allows you to list all routed notifications to your repository, and to page through the list in date order.
-
-The second allows you to retrieve individual notifications and the binary/packaged content asscoiated with it.
-
-Notifications are represented in our native JSON format as an [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md)
-(or a [Provider's Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/ProviderOutgoingNotification.md) if you happend to also be the publisher
-who created it).
+Notifications are represented in our native JSON format as an [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) (or a [Provider's Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/ProviderOutgoingNotification.md) if you are the publisher who created it).
 
 Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md).
 
@@ -225,38 +219,37 @@ The following sections describe the HTTP methods, headers, body content and expe
 
 ### Notification List Feed
 
-This endpoint lists routed notifications in "analysed_date" order (the date we analysed the content to determine its routing to your repository), oldest first.
+This endpoint lists routed notifications in "analysed_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
 
-You may list the notifications routed to your repository, or all notifications that were routed to any repository.
+You may list the notifications routed to just your repository or, alternatively, all notifications that were routed to any repository.
 
-Note that as notifications are never updated (only created), this sorted list is guaranteed to be complete and include the same notifications 
-each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysed_dat"e rather than "created_date", as the rate
-at which items pass through the analysis may vary.
+Note that as notifications are never updated (only created), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysed_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
 
 Allowed parameters for each request are:
 
-* **api_key** - Optional.  May be used for tracking API usage, but no authentication is required for this endpoint.
-* **since** - Required.  Timestamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC timezone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z
-* **page** - Optional; defaults to 1.  Page number of results to return.
-* **pageSize** - Optional; defaults to 25, maximum 100.  Number of results per page to return.
+* **api_key** - [optional] - May be used for tracking API usage, but no authentication is required for this endpoint.
+* **since** - [required] - Timestamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC timezone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z
+* **page** - [optional] - Page number of results to return, defaults to 1.
+* **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
 
 #### Repository routed notifications
 
-This endpoint lists all notifications routed to your repository.
+This endpoint lists all notifications routed to your repository.  
+
+    GET /routed/<repo_id>[?<parameter list>]
+
+Here, **repo_id** is your PubRouter *Account ID*, which may be obtained from the *Account details* panel at the top of your PubRouter account page.
 
 You will not be able to tell from this endpoint which other repositories have been identified as targets for this notification.
 
-    GET /routed/<repo_id>[?<params>]
-
-Here, **repo_id** is your Router account id, which can be obtained from your account page.
-
 #### All routed notifications
 
-This endpoint lists all routed notifications (i.e. not notifications which were not matched to any repository), without restricting them to the repositories they have been routed to.
+This endpoint lists all routed notifications irrespective of the repositories they were routed to (it excludes notifications which were not matched to any repository).
+
+    GET /routed[?<parameter list>]
 
 You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
 
-    GET /routed[?<params>]
 
 #### Possible Responses
 
@@ -289,7 +282,7 @@ On successful request, the response will be a 200 OK, with the following body
 
 Note that the "total" may increase between requests, as new notifications are added to the end of the list.
 
-See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) data model for more info.
+See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) data model for more information.
 
 ### Notification Endpoint
 
@@ -301,13 +294,11 @@ The JSON metadata associated with a notification is publicly accessible, so anyo
 
     GET /notification/<notification_id>
 
-Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from,
-for example, the **Notification List Feed**.
+Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#notification-list-feed)**.
 
 If the notification does not exist, you will receive a 404 (Not Found), and no response body.
 
-If the you are not authenticated as the original publisher of the notification, and the notification has not yet been routed, 
-you will also receive a 404 (Not Found) and no response body.
+If the you are not authenticated as the original publisher of the notification, and the notification has not yet been routed, you will also receive a 404 (Not Found) and no response body.
 
 If the notification is found and has been routed, you will receive a 200 (OK) and the following response body:
 
@@ -321,7 +312,7 @@ See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documen
 Some notifications may contain one or more **links** elements.  In this event, this means that there is binary content
 associated with the notification available for download.  Each of the links could be one of two kinds:
 
-1. Packaged binary content held by the router on behalf of the publisher (see the next section)
+1. Packaged binary content held by PubRouter on behalf of the publisher (see the next section)
 2. A proxy-URL (proxying through the Router) for public content hosted on the web by the publisher
 
 In either case you can issue a GET request on the URL, and receie the content.
@@ -346,7 +337,7 @@ The first link has type "package" and also has an element **packaging** which te
 
 The second link does not contain a **packaging** element at all, and does not have "package" as its type.
 
-This means the first link is a link to package held by the router, and the second is a proxy for a URL hosted by the publisher.
+This means the first link is a link to package held by PubRouter, and the second is a proxy for a URL hosted by the publisher.
 
 #### Packaged Content
 
@@ -377,7 +368,7 @@ The notification JSON may contain a section like:
     ]
 
 In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format
-that the publisher originally provided to the router, and the other is in the "SimpleZip" format to which the router has
+that the publisher originally provided to PubRouter, and the other is in the "SimpleZip" format to which PubRouter has
 converted the incoming package.
 
 See the documentation on [Packaging Formats](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md) to understand
@@ -405,4 +396,4 @@ If the notification content is found and authentication succeeds you will receiv
     [Package]
 
 Note that a successful access by a user with the role "repository" will log a successful delivery of content notification
-into the router (used for reporting on the router's ability to support REF compliance).
+into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
