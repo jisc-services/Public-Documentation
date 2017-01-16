@@ -59,7 +59,9 @@ repository (you must ensure your repository account in PubRouter specifies the p
 
 ## A guide to the formats
 
-### https://pubsrouter.jisc.ac.uk/FilesAndJATS (note this is a URI, not a URL) 
+### https://pubsrouter.jisc.ac.uk/FilesAndJATS 
+
+(Note: this URI does not link anywhere).
 
 This is PubRouter's native package format.  It conforms to the following specification:
 
