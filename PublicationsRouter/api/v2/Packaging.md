@@ -48,8 +48,8 @@ PubRouter accepts and disseminates packages in the following formats:
 
 | Format | Accepts | Disseminates |
 |--------|---------|--------------|
-| https://pubsrouter.jisc.ac.uk/FilesAndJATS | yes | yes |
-| http://purl.org/net/sword/package/SimpleZip | no | yes |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httpspubsrouterjiscacukfilesandjats) | yes | yes |
+| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httppurlorgnetswordpackagesimplezip) | no | yes |
 
 If a package can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
 
