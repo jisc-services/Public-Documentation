@@ -155,7 +155,7 @@ Each of the fields is defined as laid out in the table below in the order that t
 | *links[]* | *Array of link objects* | | | |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
-| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | | | | 
+| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL | | 
 | metadata.journal.title | Title of the journal or publication | unicode |  |  |
 | metadata.journal.abbrevTitle | Abbreviated form of journal/publication title | unicode |  |  |
 | metadata.journal.volume | Number of a journal (or other document) within a series | unicode |  |  |
