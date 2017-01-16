@@ -171,7 +171,7 @@ Each of the fields is defined as laid out in the table below in the order that t
 | metadata.article.endPage | Article end page| unicode |  |  |
 | metadata.article.numPages | Number of pages | unicode |  |  |
 | metadata.article.language[] | Array of languages that article is published in | unicode |  |  |
-| metadata.article.abstract | Article abstrace | unicode |  |  |
+| metadata.article.abstract | Article abstract | unicode |  |  |
 | *metadata.article.identifier[]* | *Array of article identifiers* |  |  |  |
 | metadata.article.identifier.type | Type of identifier (e.g. DOI) | unicode |  |  |
 | metadata.article.identifier.id | Article identfier value (e.g. DOI number) | unicode |  |  |
