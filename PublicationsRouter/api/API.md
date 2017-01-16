@@ -12,9 +12,9 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 This page has two main sections:
 
-*[For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)
+* [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-publishers)
 
-*[For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)
+* [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#for-repositories)
 
 
 ## For Publishers
@@ -208,8 +208,8 @@ On **successful completion** of the request, the system will respond with 202 (A
 
 If you are a repository, consuming notifications from PubRouter, you have access to 2 endpoints:
 
-1. The **notification list feed** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
-2. The **notification** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
+1. The **[notification list feed](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#notification-list-feed)** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
+2. The **[notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/API.md#notification-endpoint-1)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
 
 Notifications are represented in our native JSON format as an [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) (or a [Provider's Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/ProviderOutgoingNotification.md) if you are the publisher who created it).
 
@@ -309,13 +309,12 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) data model for more info.
 
-Some notifications may contain one or more **links** elements.  In this event, this means that there is binary content
-associated with the notification available for download.  Each of the links could be one of two kinds:
+Some notifications may contain one or more **links** elements.  In this event, this means that there is binary content associated with the notification available for download.  Each of the links could be one of two kinds:
 
 1. Packaged binary content held by PubRouter on behalf of the publisher (see the next section)
 2. A proxy-URL (proxying through the Router) for public content hosted on the web by the publisher
 
-In either case you can issue a GET request on the URL, and receie the content.
+In either case you can issue a GET request on the URL to receive the content.
 
 In order to tell the difference between (1) and (2), compare the following two links:
 
@@ -342,15 +341,13 @@ This means the first link is a link to package held by PubRouter, and the second
 #### Packaged Content
 
 Some notifications may have binary content associated with them.  If this is the case, you will see one or more **links** elements
-appearing in the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) JSON that
-you retrieve via either the **Notification List Feed** or the **Individual Notification**.
+appearing in the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/OutgoingNotification.md) JSON that you retrieve via either the **Notification List Feed** or the **Individual Notification**.
 
-Router stores full-text content for a temporary period (currently 90 days, subject to review) from the date of receipt from publisher and so it must be retrieved by a
-repository within this timescale.
+Router stores full-text content for a temporary period (currently 90 days, subject to review) from the date of receipt from publisher and so it must be retrieved by a repository within this timescale.
 
-You need to have the user role "provider" or "repository" to access this endpoint - if you do not have the required role, please contact the Router administrator.
+You need to have a PubRouter account (either Repository or Publisher) to access this endpoint.
 
-The notification JSON may contain a section like:
+Notifications with binary content will contain contain a links section like:
 
     "links" : [
         {
@@ -367,26 +364,20 @@ The notification JSON may contain a section like:
         }
     ]
 
-In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format
-that the publisher originally provided to PubRouter, and the other is in the "SimpleZip" format to which PubRouter has
-converted the incoming package.
+In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format that the publisher originally provided to PubRouter, and the other is in the "SimpleZip" format to which PubRouter has converted the incoming package.
 
-See the documentation on [Packaging Formats](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md) to understand
-what each of the formats looks like.
+See the documentation on [Packaging Formats](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/Packaging.md) to understand what each of the formats looks like.
 
-You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional
-image files) as a single zip file.  To request it, you will also need to provide your API key:
+You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional image files) as a single zip file.  To request it, you will also need to provide your API key (shown on your PubRouter account page):
 
     GET <package url>?api_key=<api_key>
 
-Authentication failure will result in a 401 (Unauthorised), and no response body.  Authentication failure can happen for
-the following reasons:
+Authentication failure will result in a 401 (Unauthorised), and no response body.  Authentication failure can happen for the following reasons:
 * api_key is invalid
-* You do not have the user role "provider" or "repository"
-* You have the role "provider" and you were not the original creator of this notification
-* You have the role "repository" and this notification has not yet been routed
+* You are a Publisher and you were not the original creator of this notification
+* You are a Repository and this notification has not yet been routed.
 
-If the notification content is not found, you will receive a 404 (Not Found) and no response body.
+If the notification content is not found, you will receive a 404 (Not Found) and no response body.  This will happen if you try to access content for a notification that was received more than 90 days ago.
 
 If the notification content is found and authentication succeeds you will receive a 200 (OK) and the binary content:
 
@@ -395,5 +386,4 @@ If the notification content is found and authentication succeeds you will receiv
     
     [Package]
 
-Note that a successful access by a user with the role "repository" will log a successful delivery of content notification
-into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
+Note that a successful access by a Repository account user will log a successful delivery of content notification into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
