@@ -2,7 +2,7 @@
 
 The PubRouter Incoming Notification is the structure used by a Publisher to send publication meta-data to PubRouter for routing to Repositories.
 
-## Data Structure
+## JSON Data Structure
 
 The JSON structure of the model is as follows:
 
@@ -144,44 +144,46 @@ The JSON structure of the model is as follows:
 }
 ```
 
-Each of the fields is defined as laid out in the table below in the order that they appear in the JSON structure above.  All fields are optional unless otherwise specified.:
+## Field Definitions
 
-| Field | Description | Datatype | Format | Allowed Values |
+Each of the fields in the JSON structure above is defined in the table below in the order that they appear (dot notation is used to qualify them).  NOTE that REQUIRED fields are indicated with an asterisk (*) in the Field column, all other fields are optional.
+
+| Field (* = Required field) | Description | Datatype | Format | Allowed Values |
 | ----- | ----------- | -------- | ------ | -------------- |
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode | free text |  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
-| content.packaging_format | Package format identifier for the associated binary content.  (Example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
+| content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL | | 
-| metadata.journal.title | Title of the journal or publication | unicode |  |  |
+| metadata.journal.title * | Title of the journal or publication | unicode |  |  |
 | metadata.journal.abbrevTitle | Abbreviated form of journal/publication title | unicode |  |  |
 | metadata.journal.volume | Number of a journal (or other document) within a series | unicode |  |  |
 | metadata.journal.issue | Issue number of a journal, or in rare instances, a book | unicode |  |  |
-| metadata.journal.publisher | Publisher(s) of the article (Array field) | unicode |  |  |
-| metadata.journal.identifier.type |  Identifier type (e.g. "issn", "eissn", "pissn", "doi") - no vocabulary for this field in this version of the system | unicode |  |  |
-| metadata.journal.identifier.id | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |  |
-| metadata.article.title | Title of the Article| unicode |  |  |
+| metadata.journal.publisher * | Publisher(s) of the article (Array field) | unicode |  |  |
+| metadata.journal.identifier.type * |  Identifier type (e.g. "issn", "eissn", "pissn", "doi") - no vocabulary for this field in this version of the system | unicode |  |  |
+| metadata.journal.identifier.id * | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |  |
+| metadata.article.title * | Title of the Article| unicode |  |  |
 | metadata.article.subTitle | Sub-title (if any) of the Article | unicode |  |  |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode |  |  |
-| metadata.article.version | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode |  |  |
+| metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode |  |  |
 | metadata.article.startPage | Article start page  | unicode |  |  |
 | metadata.article.endPage | Article end page| unicode |  |  |
 | metadata.article.numPages | Number of pages | unicode |  |  |
 | metadata.article.language | Language(s) that article is published in (Array field) | unicode |  |  |
 | metadata.article.abstract | Article abstract | unicode |  |  |
-| metadata.article.identifier.type | Type of identifier (e.g. DOI) | unicode |  |  |
-| metadata.article.identifier.id | Article identfier value (e.g. DOI number) | unicode |  |  |
+| metadata.article.identifier.type * | Type of identifier (e.g. DOI) | unicode |  |  |
+| metadata.article.identifier.id * | Article identfier value (e.g. DOI number) | unicode |  |  |
 | metadata.article.subject | Subject classification(s) / keyword(s) (Array field) | unicode |  |  |
 | metadata.author.type | Type of author (e.g. corresponding) | unicode |  |  |
-| metadata.author.name.firstname | Author's firstname(s) - space separated if more than one | unicode |  |  |
-| metadata.author.name.surname | Author's surname (lastname) | unicode |  |  |
+| metadata.author.name.firstname * | Author's firstname(s) - space separated if more than one | unicode |  |  |
+| metadata.author.name.surname * | Author's surname (lastname) | unicode |  |  |
 | metadata.author.name.fullname | Full name - preferably expressed as "Surname, Firstname(s)" | unicode |  |  |
 | metadata.author.name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) | unicode |  |  |
 | metadata.author.organisationName |Name of organisation if author is an organisation  | unicode |  |  |
-| metadata.author.identifier.type | Type of identifier (e.g. ORCID, email) | unicode |  |  |
-| metadata.author.identifier.id | Author identfier value (e.g. ORCID number, email address) | unicode |  |  |
+| metadata.author.identifier.type * | Type of identifier (e.g. ORCID, email) | unicode |  |  |
+| metadata.author.identifier.id * | Author identfier value (e.g. ORCID number, email address) | unicode |  |  |
 | metadata.author.affiliation | Author organisational affiliation | unicode | free text  |  |
 | metadata.contributor.type | Type of contributor (e.g. editor) | unicode |  |  |
 | metadata.contributor.name.firstname | Contributor's firstname(s) - space separated if more than one | unicode |  |  |
@@ -198,7 +200,7 @@ Each of the fields is defined as laid out in the table below in the order that t
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |  |
 | metadata.history_date.dateType | Type of date: received, accepted | unicode |  |  |
 | metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
-| metadata.publication_status | Status of publication that this metadata refers to: published, accepted | unicode |  |  |
+| metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |  |
 | metadata.project.name | Funder name | unicode |  |  |
 | metadata.project.identifier.type | Funder identifier type (e.g "ringold") - no vocabulary for this field in this version of the system | unicode |  |  |
 | metadata.project.identifier.id | Funder identifier (e.g. Ringold ID) | unicode |  |  |
