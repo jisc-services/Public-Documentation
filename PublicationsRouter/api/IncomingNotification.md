@@ -154,31 +154,25 @@ Each of the fields is defined as laid out in the table below in the order that t
 | Field | Description | Datatype | Format | Allowed Values |
 | ----- | ----------- | -------- | ------ | -------------- |
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode | free text |  |
-| | | | | |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
-| | | | | |
 | content.packaging_format | Package format identifier for the associated binary content.  (Example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
-| links[] | array of link objects | | | |
+| *links[]* | *Array of link objects* | | | |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
-| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months 
-|  |  |
-| | | | | |
+| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months |  | | |
 | embargo.end | End date for the embargo.  If this field is populated, this is the definitive information on the end-date of the embargo, and embargo.duration and embargo.start can be ignored. | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | embargo.start | Start date for the embargo | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 from notification; URLs provided by the Router will be accessible to authenticated users for the same period. | unicode | URL |  |
 | embargo.duration | Duration (in months) of the embargo | int |  |  |
-| | | | | |
 | metadata.journal.title | Title of the journal or publication | unicode |  |  |
 | metadata.journal.abbrevTitle | Abbreviated form of journal/publication title | unicode |  |  |
 | metadata.journal.volume | Number of a journal (or other document) within a series | unicode |  |  |
 | metadata.journal.issue | Issue number of a journal, or in rare instances, a book | unicode |  |  |
 | metadata.journal.publisher[] | Array of Publisher(s) of the article | unicode |  |  |
-| metadata.journal.identifier[] | Array of Journal identifiers |  |  |  |
+| *metadata.journal.identifier[]* | *Array of Journal identifiers* |  |  |  |
 | metadata.journal.identifier.type |  Identifier type (e.g. "issn", "eissn", "pissn", "doi") - no vocabulary for this field in this version of the system | unicode |  |  |
 | metadata.journal.identifier.id | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |  |
-| | | | | |
 | metadata.article.title | Title of the Article| unicode |  |  |
 | metadata.article.subTitle | Sub-title (if any) of the Article | unicode |  |  |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode |  |  |
@@ -188,23 +182,22 @@ from notification; URLs provided by the Router will be accessible to authenticat
 | metadata.article.numPages | Number of pages | unicode |  |  |
 | metadata.article.language[] | Array of languages that article is published in | unicode |  |  |
 | metadata.article.abstract | Article abstrace | unicode |  |  |
-| metadata.article.identifier[] | Array of article identifiers |  |  |  |
+| *metadata.article.identifier[]* | *Array of article identifiers* |  |  |  |
 | metadata.article.identifier.type | Type of identifier (e.g. DOI) | unicode |  |  |
 | metadata.article.identifier.id | Article identfier value (e.g. DOI number) | unicode |  |  |
 | metadata.article.subject[] | Array of subject classifications / keywords  | unicode |  |  |
-| metadata.author[] | Array of authors | | | |
+| *metadata.author[]* | *Array of authors* | | | |
 | metadata.author.type | Type of author (e.g. corresponding) | unicode |  |  |
 | metadata.author.name.firstname | Author's firstname(s) - space separated if more than one | unicode |  |  |
 | metadata.author.name.surname | Author's surname (lastname) | unicode |  |  |
 | metadata.author.name.fullname | Full name - preferably expressed as "Surname, Firstname(s)" | unicode |  |  |
 | metadata.author.name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) | unicode |  |  |
 | metadata.author.organisationName |Name of organisation if author is an organisation  | unicode |  |  |
-| metadata.author.identifier[] | Array of author identifiers |  |  |  |
+| *metadata.author.identifier[]* | *Array of author identifiers* |  |  |  |
 | metadata.author.identifier.type | Type of identifier (e.g. ORCID, email) | unicode |  |  |
 | metadata.author.identifier.id | Author identfier value (e.g. ORCID number, email address) | unicode |  |  |
 | metadata.author.affiliation | Author organisational affiliation | unicode | free text  |  |
-| | | | | |
-| metadata.contributor[] | Array of contributors (other than authors) | | | |
+| *metadata.contributor[]* | *Array of contributors (other than authors)* | | | |
 | metadata.contributor.type | Type of contributor (e.g. editor) | unicode |  |  |
 | metadata.contributor.name.firstname | Contributor's firstname(s) - space separated if more than one | unicode |  |  |
 | metadata.contributor.name.surname | Contributor's surname (lastname) | unicode |  |  |
@@ -215,12 +208,11 @@ from notification; URLs provided by the Router will be accessible to authenticat
 | metadata.contributor.identifier.type | Type of identifier (e.g. ORCID, email) | unicode |  |  |
 | metadata.contributor.identifier.id | Contributor identfier value (e.g. ORCID number, email address) | unicode |  |  |
 | metadata.contributor.affiliation | Contributor organisational affiliation | unicode | free text  |  |
-| | | | | |
 | metadata.accepted_date.date | Date publication accepted for publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.publicationFormat | Format of publication (print, electronic) | unicode | print or electronic |  |
 | metadata.publication_date.date | Date of publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |  |
-| metadata.history_date[] | Array of dates | |  |  |
+| *metadata.history_date[]* | *Array of dates* | |  |  |
 | metadata.history_date.dateType | Type of date: received, accepted | unicode |  |  |
 | metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_status | Status of publication that this metadata refers to: published, accepted | unicode |  |  |
