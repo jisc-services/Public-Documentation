@@ -1,6 +1,6 @@
 # Packaging
 
-Packages, in the context of the Router, are zip files which contain one or more other files/folders which conform to a known/documented specification.  For example packages may contain meta-data in, say JATS format, together with related files such as article PDF and or images.
+Packages, in the context of PubRouter, are zip files which contain one or more other files/folders which conform to a known/documented specification.  For example packages may contain meta-data in, say JATS format, together with related files such as article PDF and or images.
 
 ## Identification of packages
 
