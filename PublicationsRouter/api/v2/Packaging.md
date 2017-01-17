@@ -1,6 +1,6 @@
 # Packaging
 
-Packages, in the context of PubRouter, are zip files which contain one or more other files/folders which conform to a known/documented specification.  For example packages may contain meta-data in, say JATS format, together with related files such as article PDF and or images.
+Packages, in the context of PubRouter, are zip files which contain one or more other files/folders which conform to a known/documented specification.  For example packages may contain meta-data in JATS format together with related files such as article PDF and or images.
 
 ## Identification of packages
 
@@ -66,9 +66,8 @@ repository (you must ensure your repository account in PubRouter specifies the p
 This is PubRouter's native package format.  It conforms to the following specification:
 
 1. Only contains files in a flat structure, does not contain folders
-2. Contains at least one JATS XML file (no naming convention, but must end with ".xml")
-3. May contain one EPMC-style XML metadata file (no naming convention, but must end with ".xml")
-4. May contain an arbitrary number of other binary files (e.g. pdfs, images, etc)
+2. Contains a JATS XML file (no naming convention, but must end with ".xml")
+3. May contain an arbitrary number of other binary files (e.g. pdfs, images, etc)
 
 The JATS XML file may be any version of JATS or the preceeding NLM Article DTD which contains/supports some or all of the following
 xpath expressions:
