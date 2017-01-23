@@ -1,6 +1,6 @@
 # Provider Outgoing Notification
 
-The PubRouter Provider Outgoing Notification is the structure available to publishers of meta-data output by PubRouter for notifications that have been routed to at least one Repository.
+The PubRouter Provider Outgoing Notification is the structure available to publishers of meta-data output by PubRouter for notifications that have been routed to at least one Repository.  It differs from the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/OutgoingNotification.md) only by the addition of the *id* and *route* elements in the *provider* object (i.e. provider.id and provider.route). 
 
 ## JSON Data Structure
 
@@ -12,10 +12,10 @@ The JSON structure of the model is as follows:
     "created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
     "analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
     "event": "string",
-	"provider": {
+    "provider": {
         "id" : "<user account id of the provider>",
 		"agent": "<string defining the software/process which put the content here, provided by provider - is this useful?>",
-		"ref": "<provider's globally unique reference for this research object>"
+		"ref": "<provider's globally unique reference for this research object>",
         "route" : "<method by which notification was received: native api, sword, ftp>"
 	},
     "content": {
