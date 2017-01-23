@@ -85,21 +85,21 @@ The JSON structure of the model is as follows:
 		"contributor": [{
 				"type": "<Type of contribution like editor..>",
 				"name": {
-					"firstName": "<editor first name>",
-					"surname": "<editor surname>",
-					"fullname": "<editor name>",
+					"firstName": "<contributor first name>",
+					"surname": "<contributor surname>",
+					"fullname": "<contributor name>",
 					"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
-				"organisationName": "<Name of organisation if editor is an organisation >",
+				"organisationName": "<Name of organisation if contributor is an organisation >",
 				"identifier": [{
 						"type": "orcid",
-						"id": "<editor's orcid>"
+						"id": "<contributor's orcid>"
 					}, {
 						"type": "email",
-						"id": "<editor's email address>"
+						"id": "<contributor's email address>"
 					}
 				],
-				"affiliation": "<editor affiliation>"
+				"affiliation": "<contributor affiliation>"
 			}
 		],
 		"accepted_date": {
@@ -170,6 +170,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode |  |  |
 | metadata.article.startPage | Article start page  | unicode |  |  |
 | metadata.article.endPage | Article end page| unicode |  |  |
+| metadata.article.pageRange | Text describing discontinuous pagination | unicode |  |  |
 | metadata.article.numPages | Number of pages | unicode |  |  |
 | metadata.article.language | Language(s) that article is published in (Array field) | unicode |  |  |
 | metadata.article.abstract | Article abstract | unicode |  |  |
