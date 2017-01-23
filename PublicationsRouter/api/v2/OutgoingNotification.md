@@ -1,4 +1,8 @@
-# OutgoingNotification
+# Outgoing Notification
+
+The PubRouter Outgoing Notification is the meta-data structure output by PubRouter for notifications that have been routed to at least one Repository.
+
+## JSON Data Structure
 
 The JSON structure of the model is as follows:
 
