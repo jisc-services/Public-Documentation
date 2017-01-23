@@ -37,7 +37,7 @@ The following sections describe the HTTP methods, headers, body content and expe
 If you are providing metadata, you should include as much institution and author identifying metadata as possible to give us the best chance of routing the content to a suitable repository; and as much bibliographic data as possible to provide institutions with a rich set of information.
 
 For effective routing, this includes:
-* Author identifiers (e.g. ORCID or email address)
+* Author identifiers (e.g. ORCID or email address or other)
 * Grant numbers
 * Institution identifiers (e.g. post-codes, domain names)
 * Institution name(s)
