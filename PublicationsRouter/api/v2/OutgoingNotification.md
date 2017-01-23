@@ -19,8 +19,8 @@ The JSON structure of the model is as follows:
         {
 			"type": "<link type: splash|fulltext>",
 			"format": "<text/html|application/pdf|application/xml|application/zip|...>",
-			"url": "<provider's splash, fulltext or machine readable page>"
-            "packaging": "<package format identifier string>",
+			"url": "<provider's splash, fulltext or machine readable page>",
+            "packaging": "<package format identifier string>"
         }
     ], 
 	"metadata": {
@@ -48,7 +48,7 @@ The JSON structure of the model is as follows:
 		},
 		"article": {
 			"title": "<Article title or book chapter title>",
-			"sub_title": [ "<Article title or book chapter SUBtitle>" ],
+			"sub_title": [ "<Article title or book chapter Subtitle>" ],
 			"type": "<Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar')>",
 			"version": "<version of the record, e.g. AAM>",
 			"start_page": "<Page number on which a document starts>",
@@ -75,7 +75,7 @@ The JSON structure of the model is as follows:
 					"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
 				"organisation_name": "<Name of organisation if author is an organisation >",
-				"identifier": [ <array of identifiers e.g. orcid, email, scopus etc. >
+				"identifier": [
 				    {
 						"type": "orcid",
 						"id": "<author's orcid>"
@@ -97,7 +97,7 @@ The JSON structure of the model is as follows:
 					"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
 				"organisation_name": "<Name of organisation if contributor is an organisation >",
-				"identifier": [ <array of identifiers e.g. orcid, email, scopus etc. >
+				"identifier": [
 				    {
 						"type": "orcid",
 						"id": "<contributor's orcid>"
