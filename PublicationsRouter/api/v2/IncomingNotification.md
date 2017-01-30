@@ -10,7 +10,7 @@ The JSON structure of the model is as follows:
 {
 	"event": "<keyword for the kind of notification: acceptance, publication, etc.>",
 	"provider": {
-		"agent": "<string defining the software/process which put the content here, provided by provider - is this useful?>",
+		"agent": "<string defining the software/process which put the content here, provided by provider>",
 		"ref": "<provider's globally unique reference for this research object>"
 	},
 	"content": {
