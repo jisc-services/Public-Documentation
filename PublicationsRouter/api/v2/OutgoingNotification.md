@@ -13,7 +13,7 @@ The JSON structure of the model is as follows:
     "analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
     "event": "string",
 	"provider": {
-		"agent": "<string defining the software/process which put the content here, provided by provider - is this useful?>",
+		"agent": "<string defining the software/process which put the content here, provided by provider>",
 		"ref": "<provider's globally unique reference for this research object>"
 	},
     "content": {
