@@ -119,7 +119,7 @@ The JSON structure of the model is as follows:
 		},
 		"history_date": [
 		    {
-				"dateType": "<Type of date: received, accepted...>",
+				"date_type": "<Type of date: received, accepted...>",
 				"date": "<date>"
 			}
 		],
