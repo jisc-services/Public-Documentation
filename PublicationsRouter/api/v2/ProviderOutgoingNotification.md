@@ -127,7 +127,7 @@ The JSON structure of the model is as follows:
 		},
 		"history_date": [
 		    {
-				"dateType": "<Type of date: received, accepted...>",
+				"date_type": "<Type of date: received, accepted...>",
 				"date": "<date>"
 			}
 		],
@@ -223,7 +223,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.publication_date.publication_format | Format of publication (print, electronic) | unicode | print or electronic |  |
 | metadata.publication_date.date | Date of publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |  |
-| metadata.history_date.dateType | Type of date: received, accepted | unicode |  |  |
+| metadata.history_date.date_type | Type of date: received, accepted | unicode |  |  |
 | metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |  |
 | metadata.funding.name | Funder name | unicode |  |  |
