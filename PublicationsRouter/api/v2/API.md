@@ -16,6 +16,10 @@ This page has two main sections:
 
 * [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/API.md#for-repositories)
 
+### Alternatives to REST API ###
+
+These pages describe PubRouter's REST API, however there are other means by which Publishers may send information to PubRouter (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  PubRouter website https://pubrouter.jisc.ac.uk/about/.
+
 
 ## For Publishers
 
