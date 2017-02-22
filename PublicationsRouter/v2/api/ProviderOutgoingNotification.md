@@ -2,7 +2,7 @@
 
 The PubRouter ProviderOutgoingNotification is the structure available to publishers of meta-data output by PubRouter for notifications that have been matched (designated for transmission) to at least one Repository.
 
-It differs from the [OutgoingNotification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/OutgoingNotification.md) only by the addition of the *id* and *route* elements in the *provider* object (i.e. provider.id and provider.route). 
+It differs from the [OutgoingNotification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) only by the addition of the *id* and *route* elements in the *provider* object (i.e. provider.id and provider.route).
 
 ## JSON Data Structure
 

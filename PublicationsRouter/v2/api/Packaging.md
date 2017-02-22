@@ -8,8 +8,8 @@ Each package format has a URI which unambiguously identifies it, and we use this
 
 | Format | Description |
 |--------|-------------|
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
-| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
+| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
 
 When sending or retrieving packages from PubRouter, the format needs to be specified.
 
@@ -48,8 +48,8 @@ PubRouter accepts and disseminates packages in the following formats:
 
 | Format | Accepts | Disseminates |
 |--------|---------|--------------|
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httpspubsrouterjiscacukfilesandjats) | yes | yes |
-| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/api/v2/Packaging.md#httppurlorgnetswordpackagesimplezip) | no | yes |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httpspubsrouterjiscacukfilesandjats) | yes | yes |
+| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | no | yes |
 
 If a package can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
 
