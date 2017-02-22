@@ -1,0 +1,13 @@
+completed_status: What is the status of the "complete" request against the repository.  If no binary content, this request will not be issued, and the value will be "none".
+content_status: What is the status of the binary content request against the repository.  If no binary content, this request will not be issued, and the value will be "none"
+created_date: Date record was created
+deposit_date: Date of this deposit
+id: opaque record identifier
+last_deposit_date: Last time a successful deposit was made against this repository
+last_tried: Last time a deposit was attempted against this repository, which subsequently failed
+last_updated: Date record was last modified
+metadata_status: What is the status of the metadata deposit request against the repository.
+notification: Notification id to which this record pertains
+repository: Repository account id to which this record pertains
+retries: Number of retried deposit attempts against this repository, following a failure.  Each failure increases the retry counter until it rolls over from status "problem" to status "failing"
+status: Current known status of the repository.  "problem" repositories will be retried, "failing" repositories need to be re-activated manually.
