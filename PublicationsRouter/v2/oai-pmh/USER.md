@@ -1,6 +1,6 @@
-# JPER OAI-PMH endpoint
+# PubRouter OAI-PMH endpoint
 
-This document describes how to interact with the JPER OAI-PMH endpoint to retrieve the metadata records of successfully
+This document describes how to interact with the PubRouter OAI-PMH endpoint to retrieve the metadata records of successfully
 routed notifications.
 
 You may also wish to read the [OAI-PMH documentation](http://www.openarchives.org/OAI/openarchivesprotocol.html).
