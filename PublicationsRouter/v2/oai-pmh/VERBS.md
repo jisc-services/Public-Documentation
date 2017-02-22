@@ -1,7 +1,7 @@
-# OAI-PMH Verb to JPER API mapping
+# OAI-PMH Verb to PubRouter API mapping
 
 This document describes the mapping that this application provides from the [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their associated parameters
-to the JPER API.
+to the PubRouter API.
 
 There are 2 possible forms for the OAI endpoint:
 
@@ -10,8 +10,8 @@ There are 2 possible forms for the OAI endpoint:
 
 These are mounted at separate web routes, of the following forms:
 
-1. Entire set: /all
-2. Repo-specific: /repo/repo_id where repo_id is the account identifier for the repository
+1. Entire set: `/all`
+2. Repo-specific: `/repo/repo_id` where repo_id is the account identifier for the repository
 
 Note that these are not made available as OAI-PMH sets because the account ids should not be published explicitly.
 
@@ -29,7 +29,7 @@ Returned information:
 * Email address: from configuration
 * Earliest datestamp: 3 months before current date
 
-JPER API request: None
+PubRouter API request: None
 
 ## ListSets
 
@@ -43,7 +43,7 @@ Returned information
 
 * An empty list - sets are not supported by this endpoint
 
-JPER API request: None
+PubRouter API request: None
 
 ## ListMetadataFormats
 
@@ -58,7 +58,7 @@ Returned information:
 
 * Metadata Format: oai_dc (schema: http://www.openarchives.org/OAI/2.0/oai_dc.xsd, namespace: http://www.openarchives.org/OAI/2.0/oai_dc/)
 
-JPER API request: 
+PubRouter API request: 
 
 If an identifier is specified in the request:
 
@@ -82,7 +82,7 @@ Returned information:
 * Identifiers: notification id
 * Resumption Token: base64 encoded request parameters for next page
 
-JPER API request:
+PubRouter API request:
 
 Params:
 
@@ -94,7 +94,7 @@ The request is of the form:
 
     GET /routed/<repo id>?<params>
 
-Note that this endpoint disregards any "until" or "set" parameters, as JPER has no equivalent concepts.
+Note that this endpoint disregards any "until" or "set" parameters, as PubRouter has no equivalent concepts.
 
 
 ## ListRecords
@@ -113,7 +113,7 @@ Returned information:
 * Records: notification metadata, only oai_dc metadata prefix is supported
 * Resumption Token: base64 encoded request parameters for next page
 
-JPER API request:
+PubRouter API request:
 
 Params:
 
@@ -125,7 +125,7 @@ The request is of the form:
 
     GET /routed/<repo id>?<params>
 
-Note that this endpoint disregards any "until" or "set" parameters, as JPER has no equivalent concepts.
+Note that this endpoint disregards any "until" or "set" parameters, as PubRouter has no equivalent concepts.
 
 
 ## GetRecord
@@ -140,7 +140,7 @@ Returned information:
 
 * Record: notification metadata, only oai_dc metadata prefix is supported
 
-JPER API request:
+PubRouter API request:
 
     GET /notification/<notification id>
 
