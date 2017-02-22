@@ -4,7 +4,7 @@ This table defines the mapping from the core PubRouter notification fields to th
 
 Note that given the simplicity of the OAI_DC format, only a limited subset of the PubRouter notification fields are available.
 
-| JPER Field | OAI_DC field |
+| PubRouter Field | OAI_DC field |
 |------------|--------------|
 | metadata.article.title | oai_dc:title |
 | metadata.journal.publisher | oai_dc:publisher |
