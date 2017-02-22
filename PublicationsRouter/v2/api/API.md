@@ -4,7 +4,7 @@ Jisc Publications Router exposes an REST API that may be used to submit and/or r
 
 The current version of the API is v2, and it can be accessed at
 
-    https://pubrouter.jisc.ac.uk/api/v2
+    https://pubrouter.jisc.ac.uk/api
 
 All URL paths provided in this document will extend from this base url.
 
