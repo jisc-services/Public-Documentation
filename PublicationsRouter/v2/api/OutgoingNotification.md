@@ -13,8 +13,7 @@ The JSON structure of the model is as follows:
     "analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
     "event": "string",
 	"provider": {
-		"agent": "<string defining the software/process which put the content here, provided by provider>",
-		"ref": "<provider's globally unique reference for this research object>"
+		"agent": "<string defining the software/process which put the content here, provided by provider>"
 	},
     "content": {
         "packaging_format": "<identifier for packaging format used>"
@@ -168,7 +167,6 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | analysis_date | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode |  |  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
-| provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
 | content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
