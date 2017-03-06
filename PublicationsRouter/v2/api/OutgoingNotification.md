@@ -166,7 +166,6 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | id | opaque, persistent system identifier for this record | unicode |  |  |
 | created_date | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | analysis_date | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
-| content.packaging_format | Package format identifier for the associated binary content | unicode |  |  |
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode |  |  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
