@@ -58,9 +58,9 @@ The JSON structure of the model is as follows:
 			"language": [ "<languages >" ],
 			"abstract": "<Abstract of the work >",
 			"identifier": [
-			    {
-					"type": "doi",
-					"id": "<doi for the record>"
+				{
+				"type": "doi",
+				"id": "<doi for the record>"
 				}
 			],
 			"subject": [ "<subject keywords/classifications>" ]
