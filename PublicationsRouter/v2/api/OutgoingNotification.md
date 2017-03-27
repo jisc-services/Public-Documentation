@@ -12,8 +12,8 @@ The JSON structure of the model is as follows:
 	"created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
 	"analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
 	"event": "string",
-		"provider": {
-			"agent": "<string defining the software/process which put the content here, provided by provider>"
+	"provider": {
+		"agent": "<string defining the software/process which put the content here, provided by provider>"
 	},
 	"content": {
    		"packaging_format": "<identifier for packaging format used>"
