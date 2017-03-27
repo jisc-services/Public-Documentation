@@ -10,27 +10,27 @@ The JSON structure of the model is as follows:
 
 ```json
 {
-    "id": "string",
-    "created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
-    "analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
-    "event": "string",
-    "provider": {
-        "id" : "<user account id of the provider>",
-        "agent": "<string defining the software/process which put the content here, provided by provider>",
-        "ref": "<provider's globally unique reference for this research object>",
-        "route" : "<method by which notification was received: native api, sword, ftp>"
+	"id": "string",
+	"created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
+	"analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
+	"event": "string",
+	"provider": {
+		"id" : "<user account id of the provider>",
+		"agent": "<string defining the software/process which put the content here, provided by provider>",
+		"ref": "<provider's globally unique reference for this research object>",
+		"route" : "<method by which notification was received: native api, sword, ftp>"
 	},
-    "content": {
-        "packaging_format": "<identifier for packaging format used>"
-    },
-    "links": [
-        {
-			"type": "<link type: splash|fulltext>",
-			"format": "<text/html|application/pdf|application/xml|application/zip|...>",
-			"url": "<provider's splash, fulltext or machine readable page>",
-            "packaging": "<package format identifier string>"
-        }
-    ],
+	"content": {
+   		"packaging_format": "<identifier for packaging format used>"
+	}, 
+	"links": [
+	    	{
+		"type": "<link type: splash|fulltext>",
+		"format": "<text/html|application/pdf|application/xml|application/zip|...>",
+		"url": "<provider's splash, fulltext or machine readable page>",
+	        "packaging": "<package format identifier string>"
+        	}
+	], 
 	"metadata": {
 		"journal": {
 			"title": "<Journal / publication title>",
@@ -40,17 +40,17 @@ The JSON structure of the model is as follows:
 			"publisher": ["<Name of the publisher(s) of the content>"],
 			"identifier": [
 			    {
-					"type": "issn",
-					"id": "<issn of the journal (could be print or electronic)>"
-				}, {
-					"type": "eissn",
-					"id": "<electronic issn of the journal>"
-				}, {
-					"type": "pissn",
-					"id": "<print issn of the journal>"
-				}, {
-					"type": "doi",
-					"id": "<doi for the journal or series>"
+				"type": "issn",
+				"id": "<issn of the journal (could be print or electronic)>"
+			    }, {
+				"type": "eissn",
+				"id": "<electronic issn of the journal>"
+			    }, {
+				"type": "pissn",
+				"id": "<print issn of the journal>"
+			    }, {
+				"type": "doi",
+				"id": "<doi for the journal or series>"
 				}
 			]
 		},
@@ -66,55 +66,55 @@ The JSON structure of the model is as follows:
 			"language": [ "<languages >" ],
 			"abstract": "<Abstract of the work >",
 			"identifier": [
-			    {
-					"type": "doi",
-					"id": "<doi for the record>"
+				{
+				"type": "doi",
+				"id": "<doi for the record>"
 				}
 			],
 			"subject": [ "<subject keywords/classifications>" ]
 		},
 		"author": [
-		    {
-				"type": "<Type of contribution author>",
-				"name": {
-					"firstname": "<author first name>",
-					"surname": "<author surname>",
-					"fullname": "<author name>",
-					"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
+			{
+			"type": "<Type of contribution author>",
+			"name": {
+				"firstname": "<author first name>",
+				"surname": "<author surname>",
+				"fullname": "<author name>",
+				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
-				"organisation_name": "<Name of organisation if author is an organisation >",
-				"identifier": [
-				    {
-						"type": "orcid",
-						"id": "<author's orcid>"
-					}, {
-						"type": "email",
-						"id": "<author's email address>"
-					}
-				],
-				"affiliation": "<author affiliation>"
+			"organisation_name": "<Name of organisation if author is an organisation >",
+			"identifier": [
+			    {
+				"type": "orcid",
+				"id": "<author's orcid>"
+			    }, {
+				"type": "email",
+				"id": "<author's email address>"
+			    }
+			],
+			"affiliation": "<author affiliation>"
 			}
 		],
 		"contributor": [
-		    {
-				"type": "<Type of contribution like editor..>",
-				"name": {
-					"firstname": "<contributor first name>",
-					"surname": "<contributor surname>",
-					"fullname": "<contributor name>",
-					"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
+			{
+			"type": "<Type of contribution author>",
+			"name": {
+				"firstname": "<author first name>",
+				"surname": "<author surname>",
+				"fullname": "<author name>",
+				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
-				"organisation_name": "<Name of organisation if contributor is an organisation >",
-				"identifier": [
-				    {
-						"type": "orcid",
-						"id": "<contributor's orcid>"
-					}, {
-						"type": "email",
-						"id": "<contributor's email address>"
-					}
-				],
-				"affiliation": "<contributor affiliation>"
+			"organisation_name": "<Name of organisation if author is an organisation >",
+			"identifier": [
+			    {
+				"type": "orcid",
+				"id": "<author's orcid>"
+			    }, {
+				"type": "email",
+				"id": "<author's email address>"
+			    }
+			],
+			"affiliation": "<author affiliation>"
 			}
 		],
 		"accepted_date": {
@@ -126,22 +126,22 @@ The JSON structure of the model is as follows:
 			"season": "<Season of publication (for example, Spring, Third Quarter).>"
 		},
 		"history_date": [
-		    {
-				"date_type": "<Type of date: received, accepted...>",
-				"date": "<date>"
+			{
+			"date_type": "<Type of date: received, accepted...>",
+			"date": "<date>"
 			}
 		],
 		"publication_status": "<Published, accepted or blank>",
 		"funding": [
-		    {
-				"name": "<name of funder>",
-				"identifier": [
-				    {
-						"type": "<identifier type>",
-						"id": "<funder identifier>"
-					}
-				],
-				"grant_number": "<funder's grant number>"
+		 	{
+			"name": "<name of funder>",
+			"identifier": [
+		    	 	{
+				"type": "<identifier type>",
+				"id": "<funder identifier>"
+				}
+			],
+			"grant_number": "<funder's grant number>"
 			}
 		],
 		"embargo": {
@@ -150,13 +150,13 @@ The JSON structure of the model is as follows:
 			"duration": "<embargo duration in days>"
 		},
 		"license_ref": [
-		    {
-				"title": "<name of licence>",
-				"type": "<type>",
-				"url": "<url>",
-				"version": "<version>",
-				"start": "<Date licence starts (YYYY-MM-DD format)>",
-				"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
+			{
+			"title": "<name of licence>",
+			"type": "<type>",
+			"url": "<url>",
+			"version": "<version>",
+			"start": "<Date licence starts (YYYY-MM-DD format)>",
+			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
 			}
 		]
 	}
