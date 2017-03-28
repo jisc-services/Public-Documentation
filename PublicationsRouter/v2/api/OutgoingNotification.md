@@ -118,7 +118,7 @@ The JSON structure of the model is as follows:
 			"date": "<date YYYY-MM-DD format>",
 			"year": "<year YYYY format>",
 			"month": "<month MM format>",
-			"day": <day DD format>",
+			"day": "<day DD format>",
 			"season": "<Season of publication (for example, Spring, Third Quarter).>"
 		},
 		"history_date": [
