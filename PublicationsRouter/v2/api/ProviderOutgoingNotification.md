@@ -117,9 +117,7 @@ The JSON structure of the model is as follows:
 			"affiliation": "<author affiliation>"
 			}
 		],
-		"accepted_date": {
-			"date": "<date YYYY-MM-DD format>"
-		},
+		"accepted_date": "<date YYYY-MM-DD format>",
 		"publication_date": {
 			"publication_format": "<Format of publication (print, electronic)>",
 			"date": "<date YYYY-MM-DD format>",
@@ -218,7 +216,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.contributor.identifier.type | Type of identifier (e.g. ORCID, email) | unicode |  |  |
 | metadata.contributor.identifier.id | Contributor identfier value (e.g. ORCID number, email address) | unicode |  |  |
 | metadata.contributor.affiliation | Contributor organisational affiliation | unicode | free text  |  |
-| metadata.accepted_date.date | Date publication accepted for publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
+| metadata.accepted_date | Date publication accepted for publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.publication_format | Format of publication (print, electronic) | unicode | print or electronic |  |
 | metadata.publication_date.date | Date of publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |  |
