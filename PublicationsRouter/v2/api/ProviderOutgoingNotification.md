@@ -121,6 +121,9 @@ The JSON structure of the model is as follows:
 		"publication_date": {
 			"publication_format": "<Format of publication (print, electronic)>",
 			"date": "<date YYYY-MM-DD format>",
+			"year": "<year YYYY format>",
+			"month": "<month MM format>",
+			"day": <day DD format>",
 			"season": "<Season of publication (for example, Spring, Third Quarter).>"
 		},
 		"history_date": [
@@ -219,6 +222,9 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.accepted_date | Date publication accepted for publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.publication_format | Format of publication (print, electronic) | unicode | print or electronic |  |
 | metadata.publication_date.date | Date of publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
+| metadata.publication_date.year | Year of publication | unicode | YYYY |  |
+| metadata.publication_date.month | Month of publication (where known) | unicode | MM |  |
+| metadata.publication_date.day | Day of publication (where known) | unicode | DD |  |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |  |
 | metadata.history_date.date_type | Type of date: received, accepted | unicode |  |  |
 | metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
