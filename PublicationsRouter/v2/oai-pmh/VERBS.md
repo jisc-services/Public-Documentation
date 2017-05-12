@@ -71,10 +71,10 @@ This is to confirm that the identifier exists before responding positively regar
 This request asks the OAI-PMH server to list the identifiers of all records which match the parameters of the request:
 
 * verb: ListIdentifiers
-* from: lower bound for request (optional)
-* until: upper bound for request (unsupported)
+* from: from-date lower bound for request (optional) this may be in one of two formats: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ (e.g. 2016-09-23T11:30:45Z)
+* until: upper bound for request (UNSUPPORTED)
 * metadataPrefix: metadata format supported by identifier
-* set: set to retrieve from (unsupported)
+* set: set to retrieve from (UNSUPPORTED)
 * resumptionToken: paging control from the previous request (exclusive)
 
 Returned information:
@@ -102,10 +102,10 @@ Note that this endpoint disregards any "until" or "set" parameters, as PubRouter
 This request asks the OAI-PMH server to list the full metadata records of all records which match the parameters of the request:
 
 * verb: ListRecords
-* from: lower bound for request (optional)
-* until: upper bound for request (unsupported)
+* from: from-date lower bound for request (optional) this may be in one of two formats: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ (e.g. 2016-09-23T11:30:45Z)
+* until: upper bound for request (UNSUPPORTED)
 * metadataPrefix: metadata format supported by record
-* set: set to retrieve from (unsupported)
+* set: set to retrieve from (UNSUPPORTED)
 * resumptionToken: paging control from the previous request (exclusive)
 
 Returned information:
