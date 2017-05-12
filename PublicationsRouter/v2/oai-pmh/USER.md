@@ -19,4 +19,4 @@ For example:
 
     GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&from=2016-01-01&metadataPrefix=oai_dc
 
-Read about OAI-PMH **verbs** supported by PubRouter [here](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/oai-pmh/VERBS.md).
+Read about OAI-PMH **verbs** supported by PubRouter [here](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/oai-pmh/VERBS.md#oai-pmh-verb-to-pubrouter-api-mapping).
