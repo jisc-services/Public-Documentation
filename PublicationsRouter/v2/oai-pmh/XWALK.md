@@ -18,3 +18,5 @@ Note that given the simplicity of the OAI_DC format, only a limited subset of th
 | metadata.publication_date | oai_dc:date |
 | metadata.license_ref.title | oai_dc:rights |
 | metadata.article.subject | oai_dc:subject |
+
+(May 2015: Note that this output will be reviewed shortly with a view to expanding the information available via OAI-PMH so it is comparable to that which is available via the [API](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md).)
