@@ -7,16 +7,6 @@ You may also wish to read the [OAI-PMH documentation](http://www.openarchives.or
 
 This endpoint only supports oai_dc formatted metadata, and can only access notifications going back 3 months.
 
-## All routed notifications
-
-You can retrieve metadata records for all routed notifications by sending requests to
-
-    https://pubrouter.jisc.ac.uk/oaipmh/all
-
-For example:
-
-    GET https://pubrouter.jisc.ac.uk/oaipmh/all?verb=ListRecords&from=2016-01-01&metadataPrefix=oai_dc
-    
 ## Routed notifications for a specific repository
 
 You can retrieve metadata records for all routed notifications for a specific repository by sending requests to
