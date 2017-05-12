@@ -3,17 +3,15 @@
 This document describes the mapping that this application provides from the [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their associated parameters
 to the PubRouter API.
 
-There are 2 possible forms for the OAI endpoint:
+There is one form for the OAI endpoint:
 
-1. For the entire set of routed notifications
-2. For a specific repository's set of routed notifications
+* For a specific repository's set of routed notifications
 
-These are mounted at separate web routes, of the following forms:
+This is mounted at a repository specific web route, of the following form:
 
-1. Entire set: `/all`
-2. Repo-specific: `/repo/repo_id` where repo_id is the account identifier for the repository
+* `/repo/<repo_id>` where <repo_id> is the account identifier for the repository
 
-Note that these are not made available as OAI-PMH sets because the account ids should not be published explicitly.
+Note that OAI-PMH sets are not available because the account ids should not be published explicitly.
 
 ## Identify
 
