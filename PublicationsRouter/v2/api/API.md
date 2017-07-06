@@ -76,7 +76,12 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
 
 ### Validation Endpoint
 
-The Validation API allows you to test that your data feed to the system will be successful.
+The Validation API allows you to test that your data feed to the system will be successful. The request must take the form:
+
+    POST /validate?api_key=<api_key>
+    Content-Type: application/json
+    
+    [Incoming Notification JSON]
 
 You must have "Publisher account" (as opposed to an "Institution repository account") to access this endpoint.
 
@@ -84,16 +89,28 @@ You must have "Publisher account" (as opposed to an "Institution repository acco
 
 If you are sending only the notification JSON, the request must take the form:
 
-    POST /validate?api_key=<api_key>
+    POST /notification?api_key=<api_key>
     Content-Type: application/json
     
     [Incoming Notification JSON]
+    
+#### List of notifications with Metadata-only request
+
+If you are sending a list of notifications, the request must take the form:
+
+    POST /notification/list?api_key=<api_key>
+    Content-Type: application/json
+    
+    # List of Incoming Notification JSON
+    [{"notification": Incoming "id": 1}, {"notification": Incoming "id": 2}, {"notification": Incoming "id": 3}...]    
+
+Make sure that an ID is sent for each Incoming notification as this ID will be returned into a success or error list 
 
 #### Metadata + Package request
 
 If you are sending binary content as well as the metadata, the request must take the form:
 
-    POST /validate?api_key=<api_key>
+    POST /notification?api_key=<api_key>
     Content-Type: multipart/form-data; boundary=FulltextBoundary
     
     --FulltextBoundary
