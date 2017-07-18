@@ -21,7 +21,7 @@ This page has two main sections:
 These pages describe PubRouter's REST API, however there are other means by which Publishers may send information to PubRouter (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  PubRouter website [introduction](https://pubrouter.jisc.ac.uk/about/) and [technical overview](https://pubrouter.jisc.ac.uk/about/resources/).
 
 
-## For Publishers
+# API for Publishers
 
 If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
 
@@ -36,7 +36,7 @@ You can create content in 2 ways in PubRouter:
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
-### Important information about notification metadata
+##### Important information about notification metadata
 
 If you are providing metadata, you should include as much institution and author identifying metadata as possible to give us the best chance of routing the content to a suitable repository; and as much bibliographic data as possible to provide institutions with a rich set of information.
 
@@ -48,11 +48,11 @@ For effective routing, this includes:
 
 These fields are highlighted in the [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) table of fields.
 
-#### Embargo
+##### Embargo
 
 If you are applying an embargo to the content this can be indicated via the **embargo.end** field, or alternatively the **embargo.start** and **embargo.duration**.
 
-#### Links to your publicly hosted content
+##### Links to your publicly hosted content
 
 If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with PubRouter, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
 
@@ -74,93 +74,94 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
         }
     ]
 
-### Validation Endpoint
-
-The Validation API allows you to test that your data feed to the system will be successful. The request must take the form:
-
-    POST /validate?api_key=<api_key>
-    Content-Type: application/json
-    
-    [Incoming Notification JSON]
+## Validation Endpoint
 
 You must have "Publisher account" (as opposed to an "Institution repository account") to access this endpoint.
+The Validation API allows you to test that your data feed to the system will be successful. 
 
-#### Metadata-only request
+
+### Validate Metadata-only request
 
 If you are sending only the notification JSON, the request must take the form:
 
-    POST /notification?api_key=<api_key>
-    Content-Type: application/json
+    POST /validate?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body: 
+        {Incoming Notification JSON}
     
-    [Incoming Notification JSON]
-    
-#### List of notifications with Metadata-only request
+### Validate List of notifications with Metadata-only request
 
 If you are sending a list of notifications, the request must take the form:
 
-    POST /notification/list?api_key=<api_key>
-    Content-Type: application/json
-    
-    # List of Incoming Notification JSON
-    [{"notification": Incoming "id": 1}, {"notification": Incoming "id": 2}, {"notification": Incoming "id": 3}...]    
+    POST /validate/list?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        # List of Incoming Notification JSON
+        [{"notification": Incoming, "id": 1}, {"notification": Incoming, "id": 2}, {"notification": Incoming, "id": 3}...]    
 
 Make sure that an ID is sent for each Incoming notification as this ID will be returned into a success or error list 
 
-#### Metadata + Package request
+### Validate Metadata + Package request
 
 If you are sending binary content as well as the metadata, the request must take the form:
 
-    POST /notification?api_key=<api_key>
-    Content-Type: multipart/form-data; boundary=FulltextBoundary
+    POST /validate?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
     
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="metadata"
-    Content-Type: application/json
-    
-    [Incoming Notification JSON]
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="content"
-    Content-Type: application/zip
-    
-    [Package]
-    
-    --FulltextBoundary--
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        [Incoming Notification JSON]
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        [Package]
+
+        --FulltextBoundary--
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/v2/Packaging.md) documentation.
 
-#### Minimum Metadata + Package request
+### Validate Minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in the binary Package (e.g. in a JATS XML structure).
 
 To do this, send the bare-minimum JSON notification, with only the format identifier of the package included.  For example:
 
     POST /validate?api_key=<api_key>
-    Content-Type: multipart/form-data; boundary=FulltextBoundary
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
     
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="metadata"
-    Content-Type: application/json
-    
-    {
-        "content" : {
-            "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-        },
-    }
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="content"
-    Content-Type: application/zip
-    
-    [Package]
-    
-    --FulltextBoundary--
+    Body:
+        --FulltextBoundary
 
-#### Possible HTTP Responses
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        {
+            "content" : {
+                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            },
+        }
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        [Package]
+
+        --FulltextBoundary--
+
+### Possible HTTP Responses
 
 On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
 
@@ -175,7 +176,7 @@ On **validation failure** the system will respond with the following:
 
 On **validation success** the system will respond with 204 (No Content) and no response body.
 
-### Notification Endpoint
+## Notification Endpoint
 
 The Notification API takes an identical request to the Validation API, so that you can develop against the Validation API and then switch seamlessly over to live notifications.  The only difference will be in the response body.
 
@@ -185,17 +186,87 @@ The system will not attempt to aggressively validate the request, but the reques
 
 On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
-#### Metadata-only request
+#### Notification Metadata-only request
 
-See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#metadata-only-request) above.
+If you are sending only the notification JSON, the request must take the form:
 
-#### Metadata + Package request
+    POST /notification?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body: 
+        {Incoming Notification JSON}
+    
+### Notification List with Metadata-only request
 
-See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#metadata--package-request) above.
+If you are sending a list of notifications, the request must take the form:
 
-#### Minimum Metadata + Package request
+    POST /notification/list?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        # List of Incoming Notification JSON
+        [{"notification": Incoming, "id": 1}, {"notification": Incoming, "id": 2}, {"notification": Incoming, "id": 3}...]    
 
-See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#minimum-metadata--package-request) above.
+Make sure that an ID is sent for each Incoming notification as this ID will be returned into a success or error list 
+
+### Notification Metadata + Package request
+
+If you are sending binary content as well as the metadata, the request must take the form:
+
+    POST /notification?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
+    
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        [Incoming Notification JSON]
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        [Package]
+
+        --FulltextBoundary--
+
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/v2/Packaging.md) documentation.
+
+### Notification Minimum Metadata + Package request
+
+It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in the binary Package (e.g. in a JATS XML structure).
+
+To do this, send the bare-minimum JSON notification, with only the format identifier of the package included.  For example:
+
+    POST /notification?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
+    
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        {
+            "content" : {
+                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            },
+        }
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        [Package]
+
+        --FulltextBoundary--
+
 
 #### Possible Responses
 
