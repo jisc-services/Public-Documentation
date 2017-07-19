@@ -80,7 +80,7 @@ You must have **Publisher account** to access this endpoint. The Validation API 
 
 NOTE: [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) structure.
 
-### Validate Metadata-only request
+### 1. Validate Metadata-only request
 
 If you are sending only the notification JSON, the request must take the form:
 
@@ -90,7 +90,7 @@ If you are sending only the notification JSON, the request must take the form:
     Body: 
         {Incoming Notification JSON}
     
-### Validate List of notifications with Metadata-only request
+### 2. Validate List of notifications with Metadata-only request
 
 If you are sending a list of notifications, the request must take the form:
 
@@ -103,7 +103,7 @@ If you are sending a list of notifications, the request must take the form:
 
 NOTE: Make sure that an ID is sent for each Incoming notification as those IDs will be returned into a success or error list 
 
-### Validate Metadata + Package request
+### 3. Validate Metadata + Package request
 
 If you are sending binary content as well as the metadata, the request must take the form:
 
@@ -130,7 +130,7 @@ If you are sending binary content as well as the metadata, the request must take
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) documentation.
 
-### Validate Minimum Metadata + Package request
+### 4. Validate Minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in the binary Package (e.g. in a JATS XML structure).
 
@@ -161,7 +161,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
 
         --FulltextBoundary--
 
-### Possible HTTP Responses
+### 5. Possible HTTP Responses
 
 On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
 
@@ -186,7 +186,7 @@ The system will not attempt to aggressively validate the request, but the reques
 
 On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
-### Notification Metadata-only request
+### 1. Notification Metadata-only request
 
 If you are sending only the notification JSON, the request must take the form:
 
@@ -196,7 +196,7 @@ If you are sending only the notification JSON, the request must take the form:
     Body: 
         {Incoming Notification JSON}
     
-### Notification List with Metadata-only request
+### 2. Notification List with Metadata-only request
 
 If you are sending a list of notifications, the request must take the form:
 
@@ -209,7 +209,7 @@ If you are sending a list of notifications, the request must take the form:
 
 NOTE: Make sure that an ID is sent for each Incoming notification as this ID will be returned into a success or error list 
 
-### Notification Metadata + Package request
+### 3. Notification Metadata + Package request
 
 If you are sending binary content as well as the metadata, the request must take the form:
 
@@ -236,7 +236,7 @@ If you are sending binary content as well as the metadata, the request must take
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) documentation.
 
-### Notification Minimum Metadata + Package request
+### 4. Notification Minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in the binary Package (e.g. in a JATS XML structure).
 
@@ -268,7 +268,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         --FulltextBoundary--
 
 
-### Possible Responses
+### 5. Possible Responses
 
 Note the last of these is different from the Validation endpoint.
 
@@ -325,7 +325,7 @@ Allowed parameters for each request are:
 * **page** - [optional] - Page number of results to return, defaults to 1.
 * **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
 
-1. ### Repository routed notifications
+### 1. Repository routed notifications
 
 This endpoint lists all notifications routed to your repository.  
 
@@ -335,7 +335,7 @@ Here, **repo_id** is your PubRouter *Account ID*, which may be obtained from the
 
 You will not be able to tell from this endpoint which other repositories have been identified as targets for this notification.
 
-2. ### All routed notifications
+### 2. All routed notifications
 
 This endpoint lists all routed notifications irrespective of the repositories they were routed to (it excludes notifications which were not matched to any repository).
 
@@ -344,7 +344,7 @@ This endpoint lists all routed notifications irrespective of the repositories th
 You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
 
 
-3. ### Possible Responses
+### 3. Possible Responses
 
 If any of the required parameters are missing, or fall outside the allowed range, you will receive a 400 (Bad Request) and an error
 message in the body:
@@ -382,7 +382,7 @@ See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documen
 
 This endpoint will return to you the JSON record for an individual notification, or the packaged content associated with it.
 
-1. ### Individual Notification
+### 1. Individual Notification
 
 The JSON metadata associated with a notification is publicly accessible, so anyone can access this endpoint.
 
