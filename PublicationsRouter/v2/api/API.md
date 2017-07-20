@@ -12,16 +12,16 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 This page has two main sections:
 
-* [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-publishers)
+* [API for sending notifications (Publishers)](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-publishers)
 
-* [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-repositories)
+* [API for retrieving notifications](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-repositories)
 
 ### Alternatives to REST API ###
 
 These pages describe PubRouter's REST API, however there are other means by which Publishers may send information to PubRouter (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  PubRouter website [introduction](https://pubrouter.jisc.ac.uk/about/) and [technical overview](https://pubrouter.jisc.ac.uk/about/resources/).
 
 
-# API for Publishers
+# API for sending notifications (Publishers)
 
 If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
 
@@ -36,7 +36,7 @@ You can create content in 2 ways in PubRouter:
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
-##### Important information about notification metadata
+#### Important information about notification metadata
 
 If you are providing metadata, you should include as much institution and author identifying metadata as possible to give us the best chance of routing the content to a suitable repository; and as much bibliographic data as possible to provide institutions with a rich set of information.
 
@@ -48,11 +48,11 @@ For effective routing, this includes:
 
 These fields are highlighted in the [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) table of fields.
 
-##### Embargo
+#### Embargo
 
 If you are applying an embargo to the content this can be indicated via the **embargo.end** field, or alternatively the **embargo.start** and **embargo.duration**.
 
-##### Links to your publicly hosted content
+#### Links to your publicly hosted content
 
 If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with PubRouter, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
 
@@ -92,7 +92,7 @@ Any of the validation endpoints listed below will return one of these responses.
     Content-Type: application/json
     
     {
-        "error" : "<human readable error message>"
+        "error" : "human readable error message"
     }
 
 - On **validation success** the system will respond with 204 (No Content) and no response body.
@@ -141,7 +141,7 @@ If you are sending binary content as well as the metadata, the request must take
         Content-Disposition: form-data; name="content"
         Content-Type: application/zip
 
-        Package.zip
+        Binary Package
 
         --FulltextBoundary--
 
@@ -174,7 +174,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         Content-Disposition: form-data; name="content"
         Content-Type: application/zip
 
-        Package.zip
+        Binary Package
 
         --FulltextBoundary--
 
@@ -190,8 +190,7 @@ The system will not attempt to aggressively validate the request, but the reques
 On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
 
-### 
-Responses
+### Responses
 
 Any of the notification endpoints listed below will return one of these responses. 
 
@@ -205,7 +204,7 @@ Note the last of these is different from the Validation endpoint.
     Content-Type: application/json
     
     {
-        "error" : "<human readable error message>"
+        "error" : "human readable error message"
     }
 
 - On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
@@ -264,7 +263,7 @@ If you are sending binary content as well as the metadata, the request must take
         Content-Disposition: form-data; name="content"
         Content-Type: application/zip
 
-        Package.zip
+        Binary Package
 
         --FulltextBoundary--
 
@@ -297,12 +296,12 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         Content-Disposition: form-data; name="content"
         Content-Type: application/zip
 
-        Package.zip
+        Binary Package
 
         --FulltextBoundary--
 
 
-## For Repositories and Publishers
+# API for retrieving notifications
 
 If you are a repository, consuming notifications from PubRouter, you have access to 2 endpoints:
 
@@ -324,7 +323,7 @@ message in the body:
     Content-Type: application/json
     
     {
-        "error" : "<human readable error message>"
+        "error" : "human readable error message"
     }
 
 
@@ -334,13 +333,13 @@ message in the body:
     Content-Type: application/json
     
     {
-        "since" : "<date from which results start in the form YYYY-MM-DDThh:mm:ssZ>",
-        "page" : "<page number of results>,
-        "pageSize" : "<number of results per page>,
-        "timestamp" : "<timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ>",
-        "total" : "<total number of results at this time>",
+        "since" : "date from which results start in the form YYYY-MM-DDThh:mm:ssZ",
+        "page" : "page number of results",
+        "pageSize" : "number of results per page",
+        "timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
+        "total" : "total number of results at this time",
         "notifications" : [
-            "<ordered list of 'Outgoing Notification' JSON objects>"
+            "ordered list of 'Outgoing Notification' JSON objects"
         ]
     }
 
@@ -406,7 +405,7 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
     HTTP 1.1  200 OK
     Content-Type: application/json
     
-    [Outgoing Notification JSON]
+    {Outgoing Notification JSON}
 
 See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more info.
 
@@ -485,6 +484,6 @@ If the notification content is found and authentication succeeds you will receiv
     HTTP 1.1  200 OK
     Content-Type: application/zip
     
-    [Package]
+    Binary Package
 
 Note that a successful access by a Repository account user will log a successful delivery of content notification into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
