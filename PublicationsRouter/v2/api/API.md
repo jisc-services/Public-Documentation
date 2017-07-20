@@ -190,7 +190,8 @@ The system will not attempt to aggressively validate the request, but the reques
 On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
 
-### Possible Responses
+### 
+Responses
 
 Any of the notification endpoints listed below will return one of these responses. 
 
@@ -316,7 +317,7 @@ The following sections describe the HTTP methods, headers, body content and expe
 
 ### Possible Responses
 
-If any of the required parameters are missing, or fall outside the allowed range, you will receive a 400 (Bad Request) and an error
+- In the event of a **malformed HTTP request**, you will receive a 400 (Bad Request) and an error
 message in the body:
 
     HTTP 1.1  400 Bad Request
@@ -327,7 +328,7 @@ message in the body:
     }
 
 
-On successful request, the response will be a 200 OK, with the following body
+- On **successful** request, the response will be a 200 OK, with the following body
 
     HTTP 1.1  200 OK
     Content-Type: application/json
