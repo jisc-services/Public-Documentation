@@ -87,14 +87,14 @@ Any of the validation endpoints listed below will return one of these responses.
 - On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
 
 - On **validation failure** the system will respond with the following:
-
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     
     {
         "error" : "human readable error message"
     }
-
+```
 - On **validation success** the system will respond with 204 (No Content) and no response body.
 
 ### 1. Validate Metadata-only request
@@ -116,7 +116,9 @@ If you are sending a list of notifications, the request must take the form:
         Content-Type: application/json
     Body:
         # List of Incoming Notification JSON
-        [{"notification": Incoming, "id": 1}, {"notification": Incoming, "id": 2}, {"notification": Incoming, "id": 3}...]    
+        [{"notification": Incoming, "id": 1}, 
+         {"notification": Incoming, "id": 2}, 
+         {"notification": Incoming, "id": 3}...]    
 
 NOTE: Make sure that an ID is sent for each Incoming notification as those IDs will be returned into a success or error list 
 
@@ -199,16 +201,16 @@ Note the last of these is different from the Validation endpoint.
 - On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
 
 - In the event of a **malformed HTTP request**, the system will respond with a 400 (Bad Request) and the response body:
-
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     
     {
         "error" : "human readable error message"
     }
-
+```
 - On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
-
+```
     HTTP 1.1  202 Accepted
     Content-Type: application/json
     Location: <url for api endpoint for accepted notification>
@@ -218,7 +220,7 @@ Note the last of these is different from the Validation endpoint.
         "id" : "<unique identifier for the notification>",
         "location" : "<url path for api endpoint for newly created notification>"
     }
-
+```
 ### 1. Notification Metadata-only request
 
 If you are sending only the notification JSON, the request must take the form:
@@ -238,7 +240,9 @@ If you are sending a list of notifications, the request must take the form:
         Content-Type: application/json
     Body:
         # List of Incoming Notification JSON
-        [{"notification": Incoming, "id": 1}, {"notification": Incoming, "id": 2}, {"notification": Incoming, "id": 3}...]    
+        [{"notification": Incoming, "id": 1}, 
+         {"notification": Incoming, "id": 2}, 
+         {"notification": Incoming, "id": 3}...]    
 
 NOTE: Make sure that an ID is sent for each Incoming notification as this ID will be returned into a success or error list 
 
@@ -328,7 +332,7 @@ message in the body:
 
 
 - On **successful** request, the response will be a 200 OK, with the following body
-
+```
     HTTP 1.1  200 OK
     Content-Type: application/json
     
@@ -342,7 +346,7 @@ message in the body:
             "ordered list of 'Outgoing Notification' JSON objects"
         ]
     }
-
+```
 Note that the "total" may increase between requests, as new notifications are added to the end of the list.
 
 See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more information.
