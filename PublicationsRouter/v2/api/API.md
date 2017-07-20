@@ -322,14 +322,14 @@ The following sections describe the HTTP methods, headers, body content and expe
 
 - In the event of a **malformed HTTP request**, you will receive a 400 (Bad Request) and an error
 message in the body:
-
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     
     {
         "error" : "human readable error message"
     }
-
+```
 
 - On **successful** request, the response will be a 200 OK, with the following body
 ```
