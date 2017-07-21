@@ -12,16 +12,16 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 This page has two main sections:
 
-* [For Publishers](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-publishers)
+* [API for sending notifications (Publishers)](./API.md#for-publishers)
 
-* [For Repositories](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-repositories)
+* [API for retrieving notifications](./API.md#for-repositories)
 
 ### Alternatives to REST API ###
 
 These pages describe PubRouter's REST API, however there are other means by which Publishers may send information to PubRouter (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  PubRouter website [introduction](https://pubrouter.jisc.ac.uk/about/) and [technical overview](https://pubrouter.jisc.ac.uk/about/resources/).
 
 
-## For Publishers
+# API for sending notifications (Publishers)
 
 If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
 
@@ -36,7 +36,7 @@ You can create content in 2 ways in PubRouter:
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
-### Important information about notification metadata
+#### Important information about notification metadata
 
 If you are providing metadata, you should include as much institution and author identifying metadata as possible to give us the best chance of routing the content to a suitable repository; and as much bibliographic data as possible to provide institutions with a rich set of information.
 
@@ -74,93 +74,116 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
         }
     ]
 
-### Validation Endpoint
+## Validation Endpoints
 
-The Validation API allows you to test that your data feed to the system will be successful.
+You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful. 
 
-You must have "Publisher account" (as opposed to an "Institution repository account") to access this endpoint.
+NOTE: [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) structure.
 
-#### Metadata-only request
+### Possible HTTP Responses
 
-If you are sending only the notification JSON, the request must take the form:
+Any of the validation endpoints listed below will return one of these responses.
 
-    POST /validate?api_key=<api_key>
-    Content-Type: application/json
-    
-    [Incoming Notification JSON]
+- On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
 
-#### Metadata + Package request
-
-If you are sending binary content as well as the metadata, the request must take the form:
-
-    POST /validate?api_key=<api_key>
-    Content-Type: multipart/form-data; boundary=FulltextBoundary
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="metadata"
-    Content-Type: application/json
-    
-    [Incoming Notification JSON]
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="content"
-    Content-Type: application/zip
-    
-    [Package]
-    
-    --FulltextBoundary--
-
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/PublicationsRouter/api/v2/Packaging.md) documentation.
-
-#### Minimum Metadata + Package request
-
-It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in the binary Package (e.g. in a JATS XML structure).
-
-To do this, send the bare-minimum JSON notification, with only the format identifier of the package included.  For example:
-
-    POST /validate?api_key=<api_key>
-    Content-Type: multipart/form-data; boundary=FulltextBoundary
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="metadata"
-    Content-Type: application/json
-    
-    {
-        "content" : {
-            "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-        },
-    }
-    
-    --FulltextBoundary
-    
-    Content-Disposition: form-data; name="content"
-    Content-Type: application/zip
-    
-    [Package]
-    
-    --FulltextBoundary--
-
-#### Possible HTTP Responses
-
-On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
-
-On **validation failure** the system will respond with the following:
-
+- On **validation failure** the system will respond with the following:
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     
     {
-        "error" : "<human readable error message>"
+        "error" : "human readable error message"
     }
+```
+- On **validation success** the system will respond with 204 (No Content) and no response body.
 
-On **validation success** the system will respond with 204 (No Content) and no response body.
+### 1. Validate Metadata-only request
 
-### Notification Endpoint
+If you are sending only the notification JSON, the request must take the form:
 
-The Notification API takes an identical request to the Validation API, so that you can develop against the Validation API and then switch seamlessly over to live notifications.  The only difference will be in the response body.
+    POST /validate?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body: 
+        {Incoming Notification JSON}
+    
+### 2. Validate List of notifications with Metadata-only request
+
+If you are sending a list of notifications, the request must take the form:
+
+    POST /validate/list?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        # List of Incoming Notification JSON
+        [{"notification": Incoming, "id": 1}, 
+         {"notification": Incoming, "id": 2}, 
+         {"notification": Incoming, "id": 3}...]    
+
+NOTE: Make sure that an ID is sent for each Incoming notification as those IDs will be returned into a success or error list 
+
+### 3. Validate Metadata + Package request
+
+If you are sending binary content as well as the metadata, the request must take the form:
+
+    POST /validate?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
+    
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        {Incoming Notification JSON}
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        Binary Package
+
+        --FulltextBoundary--
+
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) documentation.
+
+### 4. Validate Minimum Metadata + Package request
+
+It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
+
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) included.  For example:
+
+    POST /validate?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
+    
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        {
+            "content" : {
+                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            },
+        }
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        Binary Package
+
+        --FulltextBoundary--
+
+
+## Notification Endpoints (for sending notifications to PubRouter)
+
+The Notification API endpoints takes an identical request (header and body) to the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
 
 Again, you must have "Publisher account" to access this endpoint.
 
@@ -168,35 +191,26 @@ The system will not attempt to aggressively validate the request, but the reques
 
 On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
-#### Metadata-only request
 
-See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#metadata-only-request) above.
+### Responses
 
-#### Metadata + Package request
-
-See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#metadata--package-request) above.
-
-#### Minimum Metadata + Package request
-
-See corresponding Validation Endpoint [section](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#minimum-metadata--package-request) above.
-
-#### Possible Responses
+Any of the notification endpoints listed below will return one of these responses. 
 
 Note the last of these is different from the Validation endpoint.
 
-On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
+- On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
 
-In the event of a **malformed HTTP request**, the system will respond with a 400 (Bad Request) and the response body:
-
+- In the event of a **malformed HTTP request**, the system will respond with a 400 (Bad Request) and the response body:
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     
     {
-        "error" : "<human readable error message>"
+        "error" : "human readable error message"
     }
-
-On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
-
+```
+- On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
+```
     HTTP 1.1  202 Accepted
     Content-Type: application/json
     Location: <url for api endpoint for accepted notification>
@@ -206,9 +220,94 @@ On **successful completion** of the request, the system will respond with 202 (A
         "id" : "<unique identifier for the notification>",
         "location" : "<url path for api endpoint for newly created notification>"
     }
+```
+### 1. Notification Metadata-only request
+
+If you are sending only the notification JSON, the request must take the form:
+
+    POST /notification?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body: 
+        {Incoming Notification JSON}
+    
+### 2. Notification List with Metadata-only request
+
+If you are sending a list of notifications, the request must take the form:
+
+    POST /notification/list?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        # List of Incoming Notification JSON
+        [{"notification": Incoming, "id": 1}, 
+         {"notification": Incoming, "id": 2}, 
+         {"notification": Incoming, "id": 3}...]    
+
+NOTE: Make sure that an ID is sent for each Incoming notification as this ID will be returned into a success or error list 
+
+### 3. Notification Metadata + Package request
+
+If you are sending binary content as well as the metadata, the request must take the form:
+
+    POST /notification?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
+    
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        {Incoming Notification JSON}
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        Binary Package
+
+        --FulltextBoundary--
+
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) documentation.
+
+### 4. Notification Minimum Metadata + Package request
+
+It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
+
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) included.  
+
+For example:
+
+    POST /notification?api_key=<api_key>
+    Header:
+        Content-Type: multipart/form-data; boundary=FulltextBoundary
+    
+    Body:
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="metadata"
+        Content-Type: application/json
+
+        {
+            "content" : {
+                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            },
+        }
+
+        --FulltextBoundary
+
+        Content-Disposition: form-data; name="content"
+        Content-Type: application/zip
+
+        Binary Package
+
+        --FulltextBoundary--
 
 
-## For Repositories
+# API for retrieving notifications
 
 If you are a repository, consuming notifications from PubRouter, you have access to 2 endpoints:
 
@@ -221,6 +320,40 @@ Packaged content is available as a zipped file whose contents conform to a suppo
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
+### Possible Responses
+
+- In the event of a **malformed HTTP request**, you will receive a 400 (Bad Request) and an error
+message in the body:
+```
+    HTTP 1.1  400 Bad Request
+    Content-Type: application/json
+    
+    {
+        "error" : "human readable error message"
+    }
+```
+
+- On **successful** request, the response will be a 200 OK, with the following body
+```
+    HTTP 1.1  200 OK
+    Content-Type: application/json
+    
+    {
+        "since" : "date from which results start in the form YYYY-MM-DDThh:mm:ssZ",
+        "page" : "page number of results",
+        "pageSize" : "number of results per page",
+        "timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
+        "total" : "total number of results at this time",
+        "notifications" : [
+            "ordered list of 'Outgoing Notification' JSON objects"
+        ]
+    }
+```
+Note that the "total" may increase between requests, as new notifications are added to the end of the list.
+
+See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more information.
+
+---
 ### Notification List Feed
 
 This endpoint lists routed notifications in "analysed_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
@@ -236,7 +369,7 @@ Allowed parameters for each request are:
 * **page** - [optional] - Page number of results to return, defaults to 1.
 * **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
 
-#### Repository routed notifications
+### 1. Repository routed notifications
 
 This endpoint lists all notifications routed to your repository.  
 
@@ -246,7 +379,7 @@ Here, **repo_id** is your PubRouter *Account ID*, which may be obtained from the
 
 You will not be able to tell from this endpoint which other repositories have been identified as targets for this notification.
 
-#### All routed notifications
+### 2. All routed notifications
 
 This endpoint lists all routed notifications irrespective of the repositories they were routed to (it excludes notifications which were not matched to any repository).
 
@@ -254,45 +387,12 @@ This endpoint lists all routed notifications irrespective of the repositories th
 
 You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
 
-
-#### Possible Responses
-
-If any of the required parameters are missing, or fall outside the allowed range, you will receive a 400 (Bad Request) and an error
-message in the body:
-
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
-    
-    {
-        "error" : "<human readable error message>"
-    }
-
-
-On successful request, the response will be a 200 OK, with the following body
-
-    HTTP 1.1  200 OK
-    Content-Type: application/json
-    
-    {
-        "since" : "<date from which results start in the form YYYY-MM-DDThh:mm:ssZ>",
-        "page" : "<page number of results>,
-        "pageSize" : "<number of results per page>,
-        "timestamp" : "<timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ>",
-        "total" : "<total number of results at this time>",
-        "notifications" : [
-            "<ordered list of 'Outgoing Notification' JSON objects>"
-        ]
-    }
-
-Note that the "total" may increase between requests, as new notifications are added to the end of the list.
-
-See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more information.
-
+---
 ### Notification Endpoint
 
 This endpoint will return to you the JSON record for an individual notification, or the packaged content associated with it.
 
-#### Individual Notification
+### 1. Individual Notification
 
 The JSON metadata associated with a notification is publicly accessible, so anyone can access this endpoint.
 
@@ -302,14 +402,14 @@ Here **notification_id** is the system's identifier for an individual notificati
 
 If the notification does not exist, you will receive a 404 (Not Found), and no response body.
 
-If the you are not authenticated as the original publisher of the notification, and the notification has not yet been routed, you will also receive a 404 (Not Found) and no response body.
+If the you are not authenticated as the original publisher of the notification, and the notification has not yet been routed, you will also receive a 404 (Not Found) and html error page in the body.
 
 If the notification is found and has been routed, you will receive a 200 (OK) and the following response body:
 
     HTTP 1.1  200 OK
     Content-Type: application/json
     
-    [Outgoing Notification JSON]
+    {Outgoing Notification JSON}
 
 See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more info.
 
@@ -332,7 +432,7 @@ In order to tell the difference between (1) and (2), compare the following two l
         {
             "type" : "fulltext",
             "format" : "application/pdf",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v2/notification/123456789/content/publisherpdf",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v2/notification/123456789/content/publisher.pdf",
         }
     ]
 
@@ -388,6 +488,6 @@ If the notification content is found and authentication succeeds you will receiv
     HTTP 1.1  200 OK
     Content-Type: application/zip
     
-    [Package]
+    Binary Package
 
 Note that a successful access by a Repository account user will log a successful delivery of content notification into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
