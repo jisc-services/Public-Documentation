@@ -399,7 +399,7 @@ The JSON metadata associated with a notification is publicly accessible, so anyo
 
     GET /notification/<notification_id>
 
-Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](./API.md#notification-list-feed)**.
+Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](./API.md#notification-list-feed-endpoint)**.
 
 If the notification does not exist, you will receive a 404 (Not Found), and no response body.
 
