@@ -12,9 +12,9 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 This page has two main sections:
 
-* [API for sending notifications (Publishers)](./API.md#for-publishers)
+* [API for sending notifications (Publishers)](./API.md#api-for-retrieving-notifications)
 
-* [API for retrieving notifications](./API.md#for-repositories)
+* [API for retrieving notifications](./API.md#api-for-sending-notifications-publishers)
 
 ### Alternatives to REST API ###
 
