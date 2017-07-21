@@ -12,7 +12,7 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 This page has two main sections:
 
-* [API for sending notifications (Publishers)](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-publishers)
+* [API for sending notifications (Publishers)](./API.md#for-publishers)
 
 * [API for retrieving notifications](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-repositories)
 
