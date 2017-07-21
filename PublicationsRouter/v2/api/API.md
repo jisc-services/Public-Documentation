@@ -74,7 +74,7 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
         }
     ]
 
-## Validation Endpoint
+## Validation Endpoints
 
 You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful. 
 
@@ -181,7 +181,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         --FulltextBoundary--
 
 
-## Notification Endpoint
+## Notification Endpoints (for sending notifications to PubRouter)
 
 The Notification API endpoints takes an identical request (header and body) to the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
 
@@ -277,7 +277,9 @@ If you are carrying out this request you MUST include the **content.packaging_fo
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
 
-To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) included.  For example:
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) included.  
+
+For example:
 
     POST /notification?api_key=<api_key>
     Header:
@@ -351,9 +353,8 @@ Note that the "total" may increase between requests, as new notifications are ad
 
 See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more information.
 
-
-### Notification List Feed
 ---
+### Notification List Feed
 
 This endpoint lists routed notifications in "analysed_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
 
@@ -386,9 +387,8 @@ This endpoint lists all routed notifications irrespective of the repositories th
 
 You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
 
-
-### Notification Endpoint
 ---
+### Notification Endpoint
 
 This endpoint will return to you the JSON record for an individual notification, or the packaged content associated with it.
 
