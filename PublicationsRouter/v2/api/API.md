@@ -78,8 +78,6 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
 
 You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful. 
 
-NOTE: [Incoming Notification](./IncomingNotification.md) structure.
-
 ### Possible HTTP Responses
 
 Any of the validation endpoints listed below will return one of these responses.
@@ -97,6 +95,9 @@ Any of the validation endpoints listed below will return one of these responses.
 ```
 - On **validation success** the system will respond with 204 (No Content) and no response body.
 
+
+NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
+
 ### 1. Validate Metadata-only request
 
 If you are sending only the notification JSON, the request must take the form:
@@ -105,7 +106,7 @@ If you are sending only the notification JSON, the request must take the form:
     Header:
         Content-Type: application/json
     Body: 
-        {Incoming Notification JSON}
+        {Incoming notification JSON object}
     
 ### 2. Validate List of notifications with Metadata-only request
 
@@ -116,9 +117,9 @@ If you are sending a list of notifications, the request must take the form:
         Content-Type: application/json
     Body:
         # List of Incoming Notification JSON
-        [{"notification": Incoming, "id": 1}, 
-         {"notification": Incoming, "id": 2}, 
-         {"notification": Incoming, "id": 3}...]    
+        [{"notification": {Incoming notification JSON object}, "id": 1}, 
+         {"notification": {Incoming notification JSON object}, "id": 2}, 
+         {"notification": {Incoming notification JSON object}, "id": 3}...]    
 
 NOTE: Make sure that an ID is sent for each Incoming notification as those IDs will be returned into a success or error list 
 
