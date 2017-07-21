@@ -311,12 +311,12 @@ For example:
 
 If you are a repository, consuming notifications from PubRouter, you have access to 2 endpoints:
 
-1. The **[notification list feed](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#notification-list-feed)** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
-2. The **[notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#notification-endpoint-1)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
+1. The **[notification list feed](./API.md#notification-list-feed-endpoint)** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
+2. The **[notification](./API.md#notification-endpoint)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
 
-Notifications are represented in our native JSON format as an [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) (or a [Provider's Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/ProviderOutgoingNotification.md) if you are the publisher who created it).
+Notifications are represented in our native JSON format as an [Outgoing Notification](../OutgoingNotification.md) (or a [Provider's Outgoing Notification](../ProviderOutgoingNotification.md) if you are the publisher who created it).
 
-Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md).
+Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](../Packaging.md).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -354,7 +354,7 @@ Note that the "total" may increase between requests, as new notifications are ad
 See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more information.
 
 ---
-### Notification List Feed
+### Notification List Feed Endpoint
 
 This endpoint lists routed notifications in "analysed_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
 
@@ -392,7 +392,7 @@ You will not be able to tell from this endpoint which repositories have been ide
 
 This endpoint will return to you the JSON record for an individual notification, or the packaged content associated with it.
 
-### 1. Individual Notification
+### Individual Notification
 
 The JSON metadata associated with a notification is publicly accessible, so anyone can access this endpoint.
 
