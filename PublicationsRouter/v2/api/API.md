@@ -14,7 +14,7 @@ This page has two main sections:
 
 * [API for sending notifications (Publishers)](./API.md#for-publishers)
 
-* [API for retrieving notifications](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#for-repositories)
+* [API for retrieving notifications](./API.md#for-repositories)
 
 ### Alternatives to REST API ###
 
