@@ -31,8 +31,8 @@ If you are a publisher (also referred to here as a "provider") providing content
 
 You can create content in 2 ways in PubRouter:
 
-1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md).
-2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) plus a zipped binary package containing content in a supported [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md).
+1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](./IncomingNotification.md).
+2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](./IncomingNotification.md) plus a zipped binary package containing content in a supported [Packaging Format](./Packaging.md).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -46,7 +46,7 @@ For effective routing, this includes:
 * Institution identifiers (e.g. post-codes, domain names)
 * Institution name(s)
 
-These fields are highlighted in the [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) table of fields.
+These fields are highlighted in the [Incoming Notification](./IncomingNotification.md) table of fields.
 
 #### Embargo
 
@@ -78,7 +78,7 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
 
 You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful. 
 
-NOTE: [Incoming Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/IncomingNotification.md) structure.
+NOTE: [Incoming Notification](./IncomingNotification.md) structure.
 
 ### Possible HTTP Responses
 
@@ -147,13 +147,13 @@ If you are sending binary content as well as the metadata, the request must take
 
         --FulltextBoundary--
 
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) documentation.
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md) documentation.
 
 ### 4. Validate Minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
 
-To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) included.  For example:
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md) included.  For example:
 
     POST /validate?api_key=<api_key>
     Header:
@@ -271,13 +271,13 @@ If you are sending binary content as well as the metadata, the request must take
 
         --FulltextBoundary--
 
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) documentation.
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md) documentation.
 
 ### 4. Notification Minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
 
-To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) included.  
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md) included.  
 
 For example:
 
@@ -314,9 +314,9 @@ If you are a repository, consuming notifications from PubRouter, you have access
 1. The **[notification list feed](./API.md#notification-list-feed-endpoint)** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
 2. The **[notification](./API.md#notification-endpoint)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
 
-Notifications are represented in our native JSON format as an [Outgoing Notification](../OutgoingNotification.md) (or a [Provider's Outgoing Notification](../ProviderOutgoingNotification.md) if you are the publisher who created it).
+Notifications are represented in our native JSON format as an [Outgoing Notification](./OutgoingNotification.md) (or a [Provider's Outgoing Notification](./ProviderOutgoingNotification.md) if you are the publisher who created it).
 
-Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](../Packaging.md).
+Packaged content is available as a zipped file whose contents conform to a supported [Packaging Format](./Packaging.md).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -351,7 +351,7 @@ message in the body:
 ```
 Note that the "total" may increase between requests, as new notifications are added to the end of the list.
 
-See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more information.
+See the [Outgoing Notification](./OutgoingNotification.md) data model for more information.
 
 ---
 ### Notification List Feed Endpoint
@@ -398,7 +398,7 @@ The JSON metadata associated with a notification is publicly accessible, so anyo
 
     GET /notification/<notification_id>
 
-Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/API.md#notification-list-feed)**.
+Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](./API.md#notification-list-feed)**.
 
 If the notification does not exist, you will receive a 404 (Not Found), and no response body.
 
@@ -411,7 +411,7 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
     
     {Outgoing Notification JSON}
 
-See the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) data model for more info.
+See the [Outgoing Notification](./OutgoingNotification.md) data model for more info.
 
 Some notifications may contain one or more **links** elements.  In this event, this means that there is binary content associated with the notification available for download.  Each of the links could be one of two kinds:
 
@@ -445,7 +445,7 @@ This means the first link is a link to package held by PubRouter, and the second
 #### Packaged Content
 
 Some notifications may have binary content associated with them.  If this is the case, you will see one or more **links** elements
-appearing in the [Outgoing Notification](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) JSON that you retrieve via either the **Notification List Feed** or the **Individual Notification**.
+appearing in the [Outgoing Notification](./OutgoingNotification.md) JSON that you retrieve via either the **Notification List Feed** or the **Individual Notification**.
 
 Router stores full-text content for a temporary period (currently 90 days, subject to review) from the date of receipt from publisher and so it must be retrieved by a repository within this timescale.
 
@@ -470,7 +470,7 @@ Notifications with binary content will contain contain a links section like:
 
 In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format that the publisher originally provided to PubRouter, and the other is in the "SimpleZip" format to which PubRouter has converted the incoming package.
 
-See the documentation on [Packaging Formats](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md) to understand what each of the formats looks like.
+See the documentation on [Packaging Formats](./Packaging.md) to understand what each of the formats looks like.
 
 You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional image files) as a single zip file.  To request it, you will also need to provide your API key (shown on your PubRouter account page):
 
