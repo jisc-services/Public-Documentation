@@ -82,7 +82,10 @@ You must have **Publisher account** to access this endpoint. The Validation API 
 
 Any of the validation endpoints listed below will return one of these responses.
 
-- On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a 401 (Unauthorised) and no response body.
+- On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a **401 (Unauthorised)** and no response body.
+```
+    HTTP 1.1  401 Unauthorized
+```
 
 - On **validation failure** the system will respond with the following:
 ```
@@ -202,7 +205,11 @@ Any of the notification endpoints listed below will return one of these response
 
 Note the last of these is different from the Validation endpoint.
 
-- On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
+- On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a **401 (Unauthorised)** and no response body.
+
+```
+    HTTP 1.1  401 Unauthorized
+```
 
 - In the event of a **malformed HTTP request**, the system will respond with a **400 (Bad Request)** and the response body:
 
@@ -248,10 +255,10 @@ Note the last of these is different from the Validation endpoint.
 
 **NOTE**: It means that some notifications were processed before an error happened, so then the message will include the id of the latest notification processed as it might have happened that some notification were not processed and need to be resend. 
 
-'''
+```
     "last_error":  "A notification in the list is not a JSON object, the id of the latest notification processed was '5'. 
                     Error: <human readable error message>"
-''' 
+``` 
 
 - On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
 
