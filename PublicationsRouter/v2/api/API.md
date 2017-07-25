@@ -90,11 +90,14 @@ Any of the validation endpoints listed below will return one of these responses.
     Content-Type: application/json
     
     {
+        "status": "error",
         "error" : "human readable error message"
     }
 ```
 - On **validation success** the system will respond with 204 (No Content) and no response body.
-
+```
+    HTTP 1.1  204 No Content
+```
 
 NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
 
@@ -201,16 +204,58 @@ Note the last of these is different from the Validation endpoint.
 
 - On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a 401 (Unauthorised) and no response body.
 
-- In the event of a **malformed HTTP request**, the system will respond with a 400 (Bad Request) and the response body:
+- In the event of a **malformed HTTP request**, the system will respond with a **400 (Bad Request)** and the response body:
+
 ```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
-    
+
     {
+        "status": "error",
         "error" : "human readable error message"
     }
 ```
+
+- In the event of a **Not Acceptable HTTP request** for a 'notification list', the system will respond with a **406 (Not Acceptable)** and the response body:
+
+```
+    HTTP 1.1  406 Not Acceptable
+    Content-Type: application/json
+
+    {
+        "successful": 0,
+        "success_ids": [],
+        "total": 2,
+        "fail_ids": [],
+        "last_error": "human readable error message"
+    }
+```
+
+- In the event of a **Partial Content HTTP request** for a 'notification list', the system will respond with a **206 (Partial Content)** and the response body:
+
+```
+    HTTP 1.1  206 Partial Content
+    Content-Type: application/json
+
+    {
+        "successful": 3
+        "success_ids": [1, 3, 5],
+        "total": 10,
+        "last_error": "human readable error message",
+        "fail_ids": [2, 4]
+    }
+```
+
+**NOTE**: It means that some notifications were processed before an error happened, so then the message will include the id of the latest notification processed as it might have happened that some notification were not processed and need to be resend. 
+
+'''
+    "last_error":  "A notification in the list is not a JSON object, the id of the latest notification processed was '5'. 
+                    Error: <human readable error message>"
+''' 
+
 - On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
+
+-- Single Notification
 ```
     HTTP 1.1  202 Accepted
     Content-Type: application/json
@@ -222,6 +267,21 @@ Note the last of these is different from the Validation endpoint.
         "location" : "<url path for api endpoint for newly created notification>"
     }
 ```
+
+-- Notification List
+```
+    HTTP 1.1  202 Accepted
+    Content-Type: application/json
+
+    {
+        "successful": 3
+        "success_ids": [1, 3, 5],
+        "total": 3,
+        "fail_ids": [],
+        "last_error": ""
+    }
+```
+
 ### 1. Notification Metadata-only request
 
 If you are sending only the notification JSON, the request must take the form:
