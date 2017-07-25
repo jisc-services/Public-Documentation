@@ -253,7 +253,7 @@ Note the last of these is different from the Validation endpoint.
     }
 ```
 
-**NOTE**: It means that some notifications were processed before an error happened, so then the message will include the id of the latest notification processed as it might have happened that some notification were not processed and need to be resend. 
+**NOTE**: It means that some notifications were processed before an error happened, so then the message will include the id of the latest notification processed. It might have happened that some notification were not processed and need to be resend. 
 
 ```
     "last_error":  "A notification in the list is not a JSON object, the id of the latest 
