@@ -10,18 +10,20 @@ All URL paths provided in this document will extend from this base url.
 
 In many cases you will need an API key to access the API.  This can be obtained from your PubRouter account page.
 
-###Contents###
+### Contents ###
 This page has the following contents:
 
 * [API for sending notifications (Publishers)](./API.md#api-for-sending-notifications-publishers)
 
- * Validation Endpoints - for use during development to check your API requests
+  * Validation Endpoints - for use during development to check your API requests
+ 
     * Validate single notification metadata only submission
     * Validate single notification Metadata + Document (binary package) submission
     * Validate single notification minimum Metadata + Document (binary package) submission
     * Validate list of notification metadata submissions
 
- * Notification Endpoints - for "live" submission of notifications to PubRouter
+  * Notification Endpoints - for "live" submission of notifications to PubRouter
+  
     * Submit single notification metadata only
     * Submit single notification Metadata + Document (binary package)
     * Submit single notification minimum Metadata + Document (binary package)
@@ -34,6 +36,7 @@ This page has the following contents:
 
 These pages describe PubRouter's REST API, however there are other means by which Publishers may send information to PubRouter (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  PubRouter website [introduction](https://pubrouter.jisc.ac.uk/about/) and [technical overview](https://pubrouter.jisc.ac.uk/about/resources/).
 
+---
 
 # API for sending notifications (Publishers)
 
@@ -45,8 +48,13 @@ If you are a publisher (also referred to here as a "provider") providing content
 
 You can create content in 2 ways in PubRouter:
 
-1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](./IncomingNotification.md#incoming-notification).  There are 2 endpoints for this, one submits a single notification the other a list of notifications.
-2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](./IncomingNotification.md#incoming-notification) plus a zipped binary package containing content in a supported [Packaging Format](./Packaging.md#packaging).  The single notification endpoint is the only option for this.
+1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](./IncomingNotification.md#incoming-notification).  
+
+   There are 2 endpoints for this, one submits a single notification, the other a list of notifications.
+   
+2. As a **metadata + binary package notification** - which allows you to give us a multi-part request containing the publication information which complies with our native JSON format as an [Incoming Notification](./IncomingNotification.md#incoming-notification) plus a zipped binary package containing content in a supported [Packaging Format](./Packaging.md#packaging).
+
+   These can be sent using only the single notification endpoint (not via the list of notifications endpoint).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
@@ -87,6 +95,8 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
             "url" : "http://example.com/article1/fulltext.pdf",
         }
     ]
+
+---
 
 ## Validation Endpoints
 
@@ -198,10 +208,11 @@ If you are sending a list of notifications, the request must take the form shown
         # List of Incoming Notification JSON
         [{"notification": {Incoming notification JSON object}, "id": 1}, 
          {"notification": {Incoming notification JSON object}, "id": 2}, 
-         {"notification": {Incoming notification JSON object}, "id": 3}...]    
+         {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
-NOTE: Make sure that an ID is sent for each Incoming notification as those IDs will be returned into a success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 
+---
 
 ## Notification Endpoints (for sending notifications to PubRouter)
 
@@ -238,8 +249,6 @@ Note these are different from the Validation endpoint.
         "error" : "human readable error message"
     }
 ```
-
-* On 
 
 #### Responses only for Notification List endpoint ####
 * If the list contains something that is not a JSON object and none of the submitted notifications were successfully processed then the system will respond with a **406 (Not Acceptable)** and the response body:
@@ -384,12 +393,14 @@ If you are sending a list of notifications, the request must take the form:
         Content-Type: application/json
     Body:
         # List of Incoming Notification JSON
-        [{"notification": Incoming, "id": 1}, 
-         {"notification": Incoming, "id": 2}, 
-         {"notification": Incoming, "id": 3}...]    
+        [{"notification": {Incoming notification JSON object}, "id": 1}, 
+         {"notification": {Incoming notification JSON object}, "id": 2}, 
+         {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
-NOTE: Make sure that an ID is sent for each Incoming notification as those IDs will be returned into a success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 
+
+---
 
 
 # API for retrieving notifications
@@ -473,11 +484,9 @@ This endpoint lists all routed notifications irrespective of the repositories th
 You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
 
 ---
-### Notification Endpoint
+### Individual Notification Endpoint
 
-This endpoint will return to you the JSON record for an individual notification, or the packaged content associated with it.
-
-### Individual Notification
+This endpoint will return to you the JSON record for an individual notification.
 
 The JSON metadata associated with a notification is publicly accessible, so anyone can access this endpoint.
 
