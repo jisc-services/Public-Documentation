@@ -12,7 +12,7 @@
         schemaLocation="http://rioxx.net/schema/v2.0/rioxx/ali.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/"
         schemaLocation="http://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
-
+    
     <xs:complexType name="contributor_type">
         <xs:all>
             <xs:element name="type" minOccurs="0" type="xs:string"/>
@@ -32,7 +32,7 @@
             <xs:element name="org_name" minOccurs="0" type="xs:string"/>
         </xs:all>
     </xs:complexType>
-
+    
     <xs:element name="entry">
         <xs:complexType>
             <xs:all>
@@ -63,7 +63,7 @@
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute name="type" type="xs:string"/>
+                                <xs:attribute name="type" type="xs:string" use="required"></xs:attribute>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -108,9 +108,10 @@
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute name="start_date" type="xs:date" use="required"/>
+                                <xs:attribute name="start_date" type="xs:date"/>
                                 <xs:attribute name="url" type="xs:string"/>
                                 <xs:attribute name="version" type="xs:string"/>
+                                <xs:assert test="(@start_date or @url or @version)"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
@@ -139,5 +140,5 @@
             </xs:all>
         </xs:complexType>
     </xs:element>
-
+    
 </xs:schema>
