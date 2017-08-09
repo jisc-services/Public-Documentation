@@ -15,8 +15,19 @@
     
     <xs:complexType name="contributor_type">
         <xs:all>
-            <xs:element name="type" minOccurs="0" type="xs:string"/>
+            <xs:element name="type" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Type of the contributor, such as "editor".
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="id" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Identifier for this contributor, such as ORCID.
+                    </xs:documentation>
+                </xs:annotation>
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:string">
@@ -25,20 +36,76 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="email" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
-            <xs:element name="surname" minOccurs="0" type="xs:string"/>
-            <xs:element name="firstnames" minOccurs="0" type="xs:string"/>
-            <xs:element name="suffix" minOccurs="0" type="xs:string"/>
-            <xs:element name="org_name" minOccurs="0" type="xs:string"/>
+            <xs:element name="email" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Email address for this contributor.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="surname" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Surname of this contributor.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="firstnames" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Comma separated first names for this contributor.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="suffix" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Name suffix for this contributor
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="org_name" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        Name of the organisation that authored this publication.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:all>
     </xs:complexType>
     
     <xs:element name="entry">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Schema made for JISC Publications Router
+                
+                Created 2017-08
+                
+                This schema is to provide maximum meta-data information for Publications Router to ingest.
+            </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:all>
-                <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
-                <xs:element name="comment" minOccurs="0" type="xs:string"/>
+                <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Information to be displayed in Additional Information (publicly visible meta-data)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="comment" minOccurs="0" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Miscellaneous information to be displayed in Comments and Suggestions field (private meta-data)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="relation" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Resource links for this meta-data
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -50,6 +117,11 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="source">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Name of source, such as a Journal.
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -60,6 +132,13 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="source_id" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Identifiers for the source (Journal, etc)
+                            
+                            The mandatory type attribute indiciates the type of identifier (issn, doi, etc)
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -69,18 +148,47 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element ref="dcterms:publisher" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcterms:format" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="dcterms:medium" minOccurs="0"/>
                 <xs:element ref="dcterms:title"/>
                 <xs:element ref="rioxxterms:type" minOccurs="0"/>
                 <xs:element ref="dcterms:type" minOccurs="0"/>
                 <xs:element ref="rioxxterms:version" minOccurs="0"/>
-                <xs:element name="start_page" minOccurs="0" type="xs:string"/>
-                <xs:element name="end_page" minOccurs="0" type="xs:string"/>
-                <xs:element name="page_range" minOccurs="0" type="xs:string"/>
-                <xs:element name="num_pages" minOccurs="0" type="xs:integer"/>
+                <xs:element name="start_page" minOccurs="0" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Start page of the publication
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="end_page" minOccurs="0" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            End page of the publication
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="page_range" minOccurs="0" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Range of pages the publication is using(200 or 200,207 or 200-230)
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="num_pages" minOccurs="0" type="xs:integer">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Total number of pages the publication refers to
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element ref="dcterms:language" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcterms:abstract" minOccurs="0"/>
                 <xs:element name="identifier" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Resource identifier such as a DOI URI. The type attribute specifices type of identifier (DOI, etc)
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -94,6 +202,12 @@
                 <xs:element ref="dcterms:dateAccepted" minOccurs="0"/>
                 <xs:element ref="rioxxterms:publication_date" minOccurs="0"/>
                 <xs:element name="history_date" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Dates of historical changes to the publication outside of the publication date
+                            (date of accepted manuscript, etc)
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
@@ -105,6 +219,11 @@
                 <xs:element ref="rioxxterms:project" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="ali:free_to_read" minOccurs="0"/>
                 <xs:element name="license" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            License information about this publication
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
@@ -116,15 +235,37 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="embargo" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            When an embargo starts or ends for this publication
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:attribute name="start_date" type="xs:date"/>
                         <xs:attribute name="end_date" type="xs:date"/>
                         <xs:assert test="(@start_date or @end_date)"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="contributor_type"/>
-                <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="contributor_type"/>
+                <xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="contributor_type">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Stores information about the author, like email, ORCID, type.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="contributor_type">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            Stores information about contributors other than the author, like email, ORCID, type.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>           
                 <xs:element name="download_link" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            PubRouter specific download links that come from PubRouter's own API
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
