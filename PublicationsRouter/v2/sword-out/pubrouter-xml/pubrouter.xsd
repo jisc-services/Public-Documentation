@@ -111,15 +111,15 @@
                                 <xs:attribute name="start_date" type="xs:date"/>
                                 <xs:attribute name="url" type="xs:string"/>
                                 <xs:attribute name="version" type="xs:string"/>
-                                <xs:assert test="(@start_date or @url or @version)"/>
                             </xs:extension>
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="embargo" minOccurs="0">
                     <xs:complexType>
-                        <xs:attribute name="start_date" type="xs:date" use="required"/>
-                        <xs:attribute name="end_date" type="xs:date" use="required"/>
+                        <xs:attribute name="start_date" type="xs:date"/>
+                        <xs:attribute name="end_date" type="xs:date"/>
+                        <xs:assert test="(@start_date or @end_date)"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="contributor_type"/>
