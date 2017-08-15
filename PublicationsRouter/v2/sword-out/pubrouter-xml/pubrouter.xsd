@@ -8,8 +8,8 @@
     xmlns="http://pubrouter.jisc.ac.uk/rioxxplus">
     <xs:import namespace="http://www.rioxx.net/schema/v2.0/rioxxterms/"
         schemaLocation="http://rioxx.net/schema/v2.0/rioxx/rioxxterms.xsd"/>
-    <xs:import namespace="http://ali.niso.org/2014/ali/1.0"
-        schemaLocation="http://rioxx.net/schema/v2.0/rioxx/ali.xsd"/>
+    <xs:import namespace="http://www.niso.org/schemas/ali/1.0"
+        schemaLocation="http://www.niso.org/schemas/ali/1.0/ali.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/"
         schemaLocation="http://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
 
@@ -20,6 +20,11 @@
             Created 2017-08
 
             This schema is to expose maximum meta-data in XML format for recipients, such as repositories to receive and ingest.
+
+            External documentation:
+                For rioxxterms documentation, view documentation at http://www.rioxx.net/schema/v2.0/rioxx/
+                For dcterms documentation, view documentation at http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms
+                For ali documentation, view documentation at http://www.niso.org/apps/group_public/download.php/14226/rp-22-2015_ALI.pdf
         </xs:documentation>
     </xs:annotation>
 
