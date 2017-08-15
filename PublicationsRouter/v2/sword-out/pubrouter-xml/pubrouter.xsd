@@ -105,6 +105,11 @@
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
                             Resource links for this meta-data - for example, a link to the article on the publisher's website
+
+                            Attributes:
+                                url - link to item
+                                format - mimetype of item
+                                packaging (optional) - packaging identifier)
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -121,6 +126,10 @@
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
                             Name of source, such as a Journal.
+
+                            Attributes:
+                                volume - the volume
+                                issue - Issue number
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -207,6 +216,8 @@
                         <xs:documentation xml:lang="en">
                             Dates of historical changes to the article including the publication date
                             (date of accepted manuscript, etc)
+                            Attributes:
+                                type - Indicates a type of date, such as "received", "accepted"
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -223,12 +234,17 @@
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
                             License information about this publication
+
+                            Attributes:
+                                start_date - Start date of license
+                                url (optional) - URL of license
+                                version (optional) - Version of license
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:string">
-                                <xs:attribute name="start_date" type="xs:date"/>
+                                <xs:attribute name="start_date" type="xs:date" use="required"/>
                                 <xs:attribute name="url" type="xs:string"/>
                                 <xs:attribute name="version" type="xs:string"/>
                             </xs:extension>
@@ -239,6 +255,11 @@
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
                             When an embargo starts or ends for this publication
+
+                            Attributes:
+                                start_date - Date embargo starts
+                                end_date - Date embargo ends
+                                (Note - you must have one of these two, but you do not need both.)
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -265,6 +286,15 @@
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
                             PubRouter specific download links that come from PubRouter's own API
+
+                            Attributes:
+                                url - link to the item
+                                filename - Name that should be given to the file within the repository
+                                format - Item mime type
+                                packaging (optional) - For zip files only - packaging identifier
+                                primary - With value true or false - if true the repository is expected to associate license,
+                                    embargo and similar information with the file and list it ahead of any files
+                                    with primary set to false.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
