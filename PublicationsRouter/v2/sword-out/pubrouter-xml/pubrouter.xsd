@@ -68,7 +68,7 @@
             <xs:element name="firstnames" minOccurs="0" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
-                        Comma separated first names for this contributor.
+                        Space separated first names for this contributor.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
