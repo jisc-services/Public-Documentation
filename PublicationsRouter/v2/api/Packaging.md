@@ -46,15 +46,15 @@ The `links.packaging` element which tells you the format of the zip file you wil
 
 PubRouter accepts and disseminates packages in the following formats:
 
-| Format | Accepts | Disseminates |
-|--------|---------|--------------|
+| Format | Accepts from | Disseminates    |
+|        | publishers   | to repositories |
+|--------|--------------|-----------------|
 | [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httpspubsrouterjiscacukfilesandjats) | yes | yes |
 | [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | no | yes |
 
-If a package can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
+If a package format can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
 
-If a package can be disseminated, it will be available to you for download once the notification has been routed to your
-repository (you must ensure your repository account in PubRouter specifies the package format you are interested in).
+If a package format can be disseminated, it will either be sent to your repository via SWORD or will be available to you for download (you must ensure your repository account in PubRouter specifies the package format you are interested in). Note that SimpleZip is the most widely supported format.
 
 
 ## A guide to the formats
@@ -87,7 +87,7 @@ xpath expressions:
 
 ### http://purl.org/net/sword/package/SimpleZip
 
-This is [SWORDv2](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html#iris)'s native package format.  It confirms to the following specification:
+This is [SWORDv2](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html#iris)'s native package format.  It is essentially a standard zip file format, restricted to a flat structure. It conforms to the following specification:
 
 1. Only contains files in a flat structure, does not contain folders
 2. May contain an arbitrary number of files of any format
