@@ -47,9 +47,9 @@ The `links.packaging` element which tells you the format of the zip file you wil
 PubRouter accepts and disseminates packages in the following formats:
 
 | Format | Accepts from publishers| Disseminates to repositories |
-|----|----|----|
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httpspubsrouterjiscacukfilesandjats) | yes | yes |
-| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | no | yes |
+|----| :---: | :---: |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httpspubsrouterjiscacukfilesandjats) | Yes | Yes |
+| [http://purl.org/net/sword/package/SimpleZip](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | No | Yes |
 
 If a package format can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
 
