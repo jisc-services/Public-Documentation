@@ -44,7 +44,7 @@ The behaviour during individual notification deposit you will see is as follows:
 
 3. If there are fulltext files associated, they will be attached to the eprint
 
-4. The EPrint will be left in the sword user's workarea
+4. The EPrint will be left in the sword user's workarea or review queue
 
 
 ### Metadata ingest and crosswalk
