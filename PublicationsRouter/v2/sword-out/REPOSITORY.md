@@ -4,12 +4,20 @@ This document provides information on how to get your repository set up to take 
 
 ## Account Setup
 
-First you will need a Router account, and to configure it for SWORDv2 integration.  See your account page in the 
-router for more information.  You need to provide the following:
+First you will need a Router account, and set up the SWORDv2 credentials in the 'Manage connection settings' section on your account.  You need to provide the following:
 
-1. A username and password for a user in your repository who has the rights to create content via SWORDv2
-2. A collection URL into which the system will deposit the content
-3. Your preferred packaging format for zip files being deposited.  By default (and the only option in this first version) this will be http://purl.org/net/sword/package/SimpleZip
+### The repository URL
+### Repository Congiguration (Eprints Native, Eprints RIOXX, DSpace native)
+### Eprints deposit location (Manage Deposit, Review Queue)
+### A username and password for a user in your repository who has the rights to create content via SWORDv2.
+#### For deposits in Manage Deposit on Eprints - User role
+#### For deposits in Review Queue on Eprints - Editor or Admin role
+#### For deposits on DSpace - Admin role on the collection 
+### A collection URL into which the system will deposit the content
+#### Eprints collection: http://eprints.domain.ac.uk/id/contents
+#### DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/123456789/259
+### Your preferred packaging format for zip files being deposited.  
+#### By default (and the only option in this first version) this will be http://purl.org/net/sword/package/SimpleZip
 
 ## EPrints
 
@@ -17,6 +25,14 @@ Router is only certified to work with EPrints 3.3.
 
 EPrints is configured by default to accept incoming requests via SWORDv2, so the router's deposit mechanism
 will automatically work.  
+
+### Eprints RIOXX Plugin
+A brief description of the plugin is available here: http://wiki.eprints.org/w/Jisc_Publications_Router.  
+In summary, the following would need to be done:
+1.	Install the Jisc PubRouter RIOXXplus Connector Plugin from the Eprints Bazaar (this would normally be done by an Eprints administrator)
+2.	Configure the plugin - it requires your PubRouter API key to be entered (again a job for an Eprints administrator)
+3.	Update your PubRouter account to  change the repository configuration from Eprints Native to Eprints RIOXXplus.
+
 
 ### How the deposit will look
 
