@@ -11,9 +11,11 @@ First you will need a Router account, and set up the SWORDv2 credentials in the 
 * Eprints deposit location (Manage Deposit, Review Queue)
 * A username and password for a user in your repository who has the rights to create content via SWORDv2.
    
-   For deposits in Manage Deposit on Eprints - User role
-   For deposits in Review Queue on Eprints - Editor or Admin role
-   For deposits on DSpace - Admin role on the collection 
+   * For deposits in Manage Deposit on Eprints - User role
+   
+   * For deposits in Review Queue on Eprints - Editor or Admin role
+   
+   * For deposits on DSpace - Admin role on the collection 
    
 * A collection URL into which the system will deposit the content
    Eprints collection: http://eprints.domain.ac.uk/id/contents
