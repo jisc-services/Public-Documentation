@@ -7,15 +7,15 @@ This document provides information on how to get your repository set up to take 
 First you will need a Router account, and set up the SWORDv2 credentials in the 'Manage connection settings' section on your account.  You need to provide the following:
 
 * The repository URL
-* Repository Congiguration (Eprints Native, Eprints RIOXX, DSpace native)
-* Eprints deposit location (Manage Deposit, Review Queue)
+* Select a Repository Configuration (Eprints Native, Eprints RIOXX, DSpace native)
+* Select an Eprints deposit location if required (Manage Deposit, Review Queue)
 * A username and password for a user in your repository who has the rights to create content via SWORDv2.
    * For deposits in Manage Deposit on Eprints - User role   
    * For deposits in Review Queue on Eprints - Editor or Admin role
    * For deposits on DSpace - Admin role on the collection 
 * A collection URL into which the system will deposit the content
    * Eprints collection: http://eprints.domain.ac.uk/id/contents
-   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/123456789/259
+   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/123456789/id-collection
 * Your preferred packaging format for zip files being deposited.  
    * By default (and the only option in this first version) this will be http://purl.org/net/sword/package/SimpleZip
 
