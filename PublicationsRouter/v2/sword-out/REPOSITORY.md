@@ -27,10 +27,14 @@ EPrints is configured by default to accept incoming requests via SWORDv2, so the
 will automatically work.  
 
 ### Eprints RIOXX Plugin
+
 A brief description of the plugin is available here: http://wiki.eprints.org/w/Jisc_Publications_Router.  
 In summary, the following would need to be done:
+
 1.	Install the Jisc PubRouter RIOXXplus Connector Plugin from the Eprints Bazaar (this would normally be done by an Eprints administrator)
+
 2.	Configure the plugin - it requires your PubRouter API key to be entered (again a job for an Eprints administrator)
+
 3.	Update your PubRouter account to  change the repository configuration from Eprints Native to Eprints RIOXXplus.
 
 
@@ -62,7 +66,10 @@ file see the [Crosswalk Documentation](https://github.com/sherpaservices/Public-
 
 ## DSpace/Other
 
-Router has so far had limited use on DSpace, so documentation is subject to change.
+Router is certified to work with Dspace 5.x
+
+Dspace needs to be configured and enabled following this: [SWORDv2 Server](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server)
+
 
 ### How the deposit will look
 
@@ -81,8 +88,9 @@ can be found in
 
     dspace/config/modules/swordv2-server.cfg
     
-By default it will crosswalk a broad selection of Dublin Core fields, and you can customise that here.  If you wish to also support RIOXX you may need to
-extend your EntryIngester implementation.
+By default it will crosswalk a broad selection of Dublin Core fields, and you can customise that here. [More info](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries)
+
+If you wish to also support RIOXX you may need to extend your EntryIngester implementation.
 
 
 
