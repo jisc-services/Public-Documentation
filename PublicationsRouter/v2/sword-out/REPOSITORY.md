@@ -15,7 +15,7 @@ First you will need a Router account, and set up the SWORDv2 credentials in the 
    * For deposits on DSpace - Admin role on the collection 
 * A collection URL into which the system will deposit the content
    * Eprints collection: http://eprints.domain.ac.uk/id/contents
-   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/123456789/id-collection
+   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/handle-id/collection-id
 * Your preferred packaging format for zip files being deposited.  
    * By default (and the only option in this first version) this will be http://purl.org/net/sword/package/SimpleZip
 
