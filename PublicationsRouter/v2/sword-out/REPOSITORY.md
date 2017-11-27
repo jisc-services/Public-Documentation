@@ -28,7 +28,7 @@ will automatically work.
 
 ### Eprints RIOXX Plugin
 
-A brief description of the plugin is available here: http://wiki.eprints.org/w/Jisc_Publications_Router.  
+A brief description of the plugin is available here: [RIOXX PubRouter](http://wiki.eprints.org/w/Jisc_Publications_Router)  
 In summary, the following would need to be done:
 
 1.	Install the Jisc PubRouter RIOXXplus Connector Plugin from the Eprints Bazaar (this would normally be done by an Eprints administrator)
