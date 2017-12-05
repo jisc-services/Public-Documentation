@@ -9,7 +9,6 @@
     <xs:import namespace="http://www.rioxx.net/schema/v2.0/rioxxterms/" schemaLocation="http://rioxx.net/schema/v2.0/rioxx/rioxxterms.xsd"/>
     <xs:import namespace="http://www.niso.org/schemas/ali/1.0/" schemaLocation="http://www.niso.org/schemas/ali/1.0/ali.xsd"/>
     <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
-
     <xs:annotation>
         <xs:documentation xml:lang="en">
             Schema made for JISC Publications Router.
@@ -39,7 +38,6 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-			
             <xs:element name="id" minOccurs="0" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -54,7 +52,6 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-			
             <xs:element name="email" minOccurs="0" maxOccurs="unbounded" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -62,7 +59,6 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-			
             <xs:element name="surname" minOccurs="0" type="xs:string">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">
@@ -97,7 +93,6 @@
     <xs:element name="entry">
         <xs:complexType>
             <xs:all>
-			
                 <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="xs:string">
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
