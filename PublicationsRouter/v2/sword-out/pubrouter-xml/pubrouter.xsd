@@ -25,11 +25,11 @@
     </xs:annotation>
 
     <xs:complexType name="contributor_type">
-		<xs:annotation>
-			<xs:documentation xml:lang="en">
-				Contributor_type specifies a structure used for both Authors and Contributors (i.e. others involved in production of the article).
-			</xs:documentation>
-		</xs:annotation>
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Contributor_type specifies a structure used for both Authors and Contributors (i.e. others involved in production of the article).
+            </xs:documentation>
+        </xs:annotation>
         <xs:all>
             <xs:element name="type" minOccurs="0" type="xs:string">
                 <xs:annotation>
@@ -150,7 +150,7 @@
                         <xs:documentation xml:lang="en">
                             Identifiers for the source (Journal, etc).
                             Attribute:
-								type - indicates the type of identifier (issn, doi, etc), lower-case by convention.
+                                type - indicates the type of identifier (issn, doi, etc), lower-case by convention.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -202,7 +202,7 @@
                         <xs:documentation xml:lang="en">
                             Resource (article) identifier such as a DOI URI.
                             Attribute:
-								type - indicates the type of identifier (doi, etc), lower-case by convention.
+                                type - indicates the type of identifier (doi, etc), lower-case by convention.
                         </xs:documentation>
                     </xs:annotation>
                     <xs:complexType>
@@ -239,12 +239,12 @@
                     <xs:annotation>
                         <xs:documentation xml:lang="en">
                             Project grant number.
-							Attributes:
-								rioxxterms:funder_id - string, which includes funder-type prefix followed by a colon, and also allows for multiple ids, separated by a semi-colon. The general pattern is:
-									rioxxterms:funder_id=”id-type:id-value;id-type-2:id-value-2;…”. 
-								The default value of id-type is ‘Id’.
-								rioxxterms:funder_name - name of funder
-							IMPORTANT: at least ONE attribute must be present.
+                            Attributes:
+                                rioxxterms:funder_id - string, which includes funder-type prefix followed by a colon, and also allows for multiple ids, separated by a semi-colon. The general pattern is:
+                                    rioxxterms:funder_id=”id-type:id-value;id-type-2:id-value-2;…”. 
+                                The default value of id-type is ‘Id’.
+                                rioxxterms:funder_name - name of funder
+                            IMPORTANT: at least ONE attribute must be present.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -307,7 +307,7 @@
                                 url - link to the item
                                 filename - Name that should be given to the file within the repository
                                 format - Item mime type
-								public (optional) - Boolean: true: URL is public | false: URL is private (to PubRouter) and so requires API-key to be included as parameter.  NOTE: a download_link is assumed to be private unless public="true" attribute is set
+                                public (optional) - Boolean: true: URL is public | false: URL is private (to PubRouter) and so requires API-key to be included as parameter.  NOTE: a download_link is assumed to be private unless public="true" attribute is set
                                 packaging (optional) - For zip files only - packaging identifier
                                 primary - Boolean: if true the repository is expected to associate license, embargo and similar information with the file and list it ahead of any files with primary set to false.
                         </xs:documentation>
