@@ -7,7 +7,7 @@ This document provides information on how to get your repository set up to take 
 First you will need a Router account, and set up the SWORDv2 credentials in the 'Manage connection settings' section on your account.  You need to provide the following:
 
 * The repository URL
-* Select a Repository Configuration (Eprints Native, Eprints RIOXX, DSpace native)
+* Select a Repository Configuration ([Eprints Native](#eprints), [Eprints RIOXX](#eprints-rioxx-plugin), [DSpace native](#dspaceother)
 * Select an Eprints deposit location if required (Manage Deposit, Review Queue)
 * A username and password for a user in your repository who has the rights to create content via SWORDv2.
    * For deposits in Manage Deposit on Eprints - User role   
