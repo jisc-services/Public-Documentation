@@ -7,28 +7,33 @@ This document provides information on how to get your repository set up to take 
 First you will need a Router account, and set up the SWORDv2 credentials in the 'Manage connection settings' section on your account.  You need to provide the following:
 
 * The repository URL
-* Select a Repository Configuration ([Eprints Native](#eprints), [Eprints RIOXX](#eprints-rioxx-plugin), [DSpace native](#dspaceother)
+* Select a Repository Configuration ([Eprints Native](#eprints), [Eprints RIOXX](#eprints-rioxx-plugin), [DSpace native](#dspaceother))
 * Select an Eprints deposit location if required (Manage Deposit, Review Queue)
 * A username and password for a user in your repository who has the rights to create content via SWORDv2.
-   * For deposits in Manage Deposit on Eprints - User role   
-   * For deposits in Review Queue on Eprints - Editor or Admin role
-   * For deposits on DSpace - Admin role on the collection 
+   * For Eprints deposits into *Manage Deposits* a User role is required.
+   * For Eprints deposits into *Review* queue an Editor or Admin role is required.
+   * For DSpace deposits into a collection an Admin role on the collection is required.
 * A collection URL into which the system will deposit the content
    * Eprints collection: http://eprints.domain.ac.uk/id/contents
-   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/handle-id/collection-id
-* Your preferred packaging format for zip files being deposited.  
-   * By default (and the only option in this first version) this will be http://purl.org/net/sword/package/SimpleZip
+   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/<handle-id>/<collection-id> (usually obtained from the collection URL http://dspace.domain.ac.uk/handle/<handle-id>/<collection-id> find out more: [DSpace URLs and Identifiers](https://wiki.duraspace.org/display/DSDOC5x/Functional+Overview#FunctionalOverview-PersistentURLsandIdentifiers))
+* Your preferred packaging format for zip files being deposited. [more info](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#what-package-formats-are-supported)
+   * http://purl.org/net/sword/package/SimpleZip (by default)
+   * https://pubrouter.jisc.ac.uk/FilesAndJATS
 
 ## EPrints
 
-Router is only certified to work with EPrints 3.3.
+Router is only certified to work with EPrints 3.3. There are 2 different formats to deposit notifications into Eprints: Vanilla Eprints and Eprints RIOXX. 
 
-EPrints is configured by default to accept incoming requests via SWORDv2, so the router's deposit mechanism
-will automatically work.  
+### Vanilla Eprints
+
+Vanilla EPrints is the native format and it is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work.  
 
 ### Eprints RIOXX Plugin
 
-A brief description of the plugin is available here: [RIOXX PubRouter](http://wiki.eprints.org/w/Jisc_Publications_Router)  
+Eprints RIOXX format provides consistency to the metadata and is designed to support the consistent tracking of open-access research publications across scholarly systems.
+
+The final version of the [*Jisc PubRouter RIOXXplus Connector Plugin*](http://wiki.eprints.org/w/Jisc_Publications_Router) is now available and it is necessary to install it on your Eprints repository in order to receive notifications in this format.
+
 In summary, the following would need to be done:
 
 1.	Install the Jisc PubRouter RIOXXplus Connector Plugin from the Eprints Bazaar (this would normally be done by an Eprints administrator)
@@ -48,7 +53,7 @@ The behaviour during individual notification deposit you will see is as follows:
 
 3. If there are fulltext files associated, they will be attached to the eprint
 
-4. The EPrint will be left in the sword user's workarea or review queue
+4. The EPrint will be left in the sword user's workarea or review queue, depending on the deposit location that has been selected in PubRouter Admin page.
 
 
 ### Metadata ingest and crosswalk
@@ -68,7 +73,7 @@ file see the [Crosswalk Documentation](https://github.com/sherpaservices/Public-
 
 Router is certified to work with Dspace 5.x
 
-Dspace needs to be configured and enabled following this: [SWORDv2 Server](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server)
+Dspace needs to be configured and enabled following these instructions: [SWORDv2 Server](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server)
 
 
 ### How the deposit will look
@@ -88,9 +93,9 @@ can be found in
 
     dspace/config/modules/swordv2-server.cfg
     
-By default it will crosswalk a broad selection of Dublin Core fields, and you can customise that here. [More info](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries)
+By default it will crosswalk a broad selection of Dublin Core fields, but this may be customised. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
-If you wish to also support RIOXX you may need to extend your EntryIngester implementation.
+If you wish to also support RIOXX into your DSpace repository, there are some repository pacthes (versions 3, 4 or 5) available on request by email to info@atmire.com.
 
 
 
