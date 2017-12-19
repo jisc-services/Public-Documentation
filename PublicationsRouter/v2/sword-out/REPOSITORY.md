@@ -15,7 +15,7 @@ First you will need a Router account, and set up the SWORDv2 credentials in the 
    * For DSpace deposits into a collection an Admin role on the collection is required.
 * A collection URL into which the system will deposit the content
    * Eprints collection: http://eprints.domain.ac.uk/id/contents
-   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/<handle-id>/<collection-id> (usually obtained from the collection URL http://dspace.domain.ac.uk/handle/<handle-id>/<collection-id> find out more: [DSpace URLs and Identifiers](https://wiki.duraspace.org/display/DSDOC5x/Functional+Overview#FunctionalOverview-PersistentURLsandIdentifiers))
+   * DSpace collection: http://dspace.domain.ac.uk/swordv2/collection/`<handle-id>`/`<collection-id>` (usually obtained from the collection URL http://dspace.domain.ac.uk/handle/`<handle-id>`/`<collection-id>` find out more: [DSpace URLs and Identifiers](https://wiki.duraspace.org/display/DSDOC5x/Functional+Overview#FunctionalOverview-PersistentURLsandIdentifiers))
 * Your preferred packaging format for zip files being deposited. [more info](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#what-package-formats-are-supported)
    * http://purl.org/net/sword/package/SimpleZip (by default)
    * https://pubrouter.jisc.ac.uk/FilesAndJATS
