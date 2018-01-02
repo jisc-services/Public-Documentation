@@ -25,9 +25,9 @@ Router is only certified to work with EPrints 3.3. Two modes of integration are 
 * Eprints Native – This results in deposits with a basic set of meta-data.
 * Eprints RIOXX - This will populate the additional RIOXX fields with meta-data.
 
-### Vanilla Eprints
+### Eprints Native
 
-Vanilla EPrints is the native format and it is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work.  
+EPrints Native is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work.  
 
 ### Eprints RIOXX Plugin
 
