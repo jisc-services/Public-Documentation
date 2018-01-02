@@ -49,7 +49,8 @@ any notes regarding the transformation:
 | accepted_date | dateAccepted |  |
 | publication_date | issued | Date of formal issuance (e.g., publication) of the resource. |
 | history_date.type | description | History: {type} {date}, {type} {date}, ...' |
-| history_date.date | description dateSubmitted | Dspace uses date type of "submitted" rather than "received" |
+| history_date.date | description | History: {type} {date}, {type} {date}, ...' |
+| history_date.date | dateSubmitted | Dspace uses dateSubmitted when history_date.type=="received"  |
 | publication_status | description |  |
 | project.name  | description | Funding information |
 | project.identifier | description | Funding information |
