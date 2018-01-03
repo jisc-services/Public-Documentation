@@ -80,94 +80,60 @@ any notes regarding the transformation:
 An example Atom Entry document containing the metadata listed above is shown here
 
 ```xml
-    <?xml version="1.0"?>
-    <entry xmlns="http://www.w3.org/2005/Atom"
-            xmlns:dcterms="http://purl.org/dc/terms/"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            xmlns:ali="http://www.niso.org/schemas/ali/1.0/"
-            xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/"
-            xmlns:dc="http://purl.org/dc/elements/">
-
-        <!-- some atom standard elements -->
-        <generator uri="http://bitbucket.org/beno/python-sword2" version="0.1"/>
-        <atom:updated>2015-10-13T11:10:47.060613</atom:updated>
-
-        <!-- links to content files -->
-        <dc:identifier>http://pubsrouter.jisc.ac.uk/api/v1/notification/1234567890/content</dc:identifier>
-        <dc:identifier>http://pubsrouter.jisc.ac.uk/api/v1/notification/1234567890/content/SimpleZip</dc:identifier>
-
-        <!-- embargo information -->
-        <dcterms:available>2016-01-01T00:00:00Z</dcterms:available>
-        <ali:license_ref start_date="2016-01-01T00:00:00Z">http://creativecommons.org/cc-by</ali:license_ref>
-
-        <!-- article title -->
-        <dc:title>An important article about science</dc:title>
-        <atom:title>An important article about science</atom:title>
-
-        <!-- version of the article described here -->
-        <rioxxterms:version>AAM</rioxxterms:version>
-
-        <!-- publisher of the journal in which the article appears
-        <dc:publisher>Premier Publisher</dc:publisher>
-
-        <!-- the journal (name and issns) in which the article appears -->
-        <dc:source>Journal of Science</dc:source>
-        <atom:source>Journal of Science</atom:source>
-        <dc:source>issn:1234-5678</dc:source>
-        <dc:source>eissn:1234-5678</dc:source>
-        <dc:source>pissn:9876-5432</dc:source>
-
-        <!-- identifier for the item, including version_of_record if a DOI -->
-        <dc:source>doi:10.pp/jit</dc:source>
-        <dc:identifier>doi:10.pp/jit.1</dc:identifier>
-        <rioxxterms:version_of_record>doi:10.pp/jit.1</rioxxterms:version_of_record>
-
-        <!-- type of article -->
-        <dc:type>article</dc:type>
-
-        <!-- author of the article (may be repeated), with their various properties -->
-        <dc:creator>Richard Jones</dc:creator>
-        <atom:author>
-            <atom:name>Richard Jones</atom:name>
-        </atom:author>
-        <dc:creator>orcid:aaaa-0000-1111-bbbb</dc:creator>
-        <dc:creator>email:richard@example.com</dc:creator>
-        <rioxxterms:author id="orcid:aaaa-0000-1111-bbbb email:richard@example.com">Richard Jones</rioxxterms:author>
-
-        <!-- author affiliation -->
-        <dc:contributor>Cottage Labs</dc:contributor>
-        <atom:contributor>
-            <atom:name>Cottage Labs</atom:name>
-        </atom:contributor>
-
-        <!-- language of the article -->
-        <dc:language>eng</dc:language>
-
-        <!-- publication date -->
-        <rioxxterms:publication_date>2015-01-01T00:00:00Z</rioxxterms:publication_date>
-        <dc:date>2015-01-01T00:00:00Z</dc:date>
-        <atom:published>2015-01-01T00:00:00Z</atom:published>
-
-        <!-- date accepted -->
-        <dcterms:dateAccepted>2014-09-01T00:00:00Z</dcterms:dateAccepted>
-
-        <!-- date submitted -->
-        <dcterms:dateSubmitted>2014-07-03T00:00:00Z</dcterms:dateSubmitted>
-
-        <!-- rights information (see also ali:license_ref above) -->
-        <dc:rights>http://creativecommons.org/cc-by</dc:rights>
-        <atom:rights>http://creativecommons.org/cc-by</atom:rights>
-
-        <!-- funder information -->
-        <rioxxterms:project funder_name="BBSRC" funder_id="ringold:bbsrcid">BB/34/juwef</rioxxterms:project>
-        <atom:contributor>
-            <atom:name>BBSRC</atom:name>
-        </atom:contributor>
-
-        <!-- subject/keywords -->
-        <dc:subject>science</dc:subject>
-        <dc:subject>technology</dc:subject>
-        <dc:subject>arts</dc:subject>
-        <dc:subject>medicine</dc:subject>
-    </entry>
+     <?xml version="1.0"?>
+<entry xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/">
+	<pr:note>** From FTP publisher via Jisc Publications Router.</pr:note>
+	<pr:download_link url="http://uat.pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/non-pdf-files.zip" format="application/zip" filename="non-pdf-files.zip" packaging="http://purl.org/net/sword/package/SimpleZip" primary="false"/>
+	<pr:download_link url="http://uat.pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/elife-23006.pdf" format="application/pdf" primary="true" filename="elife-23006.pdf"/>
+	<dcterms:format>application/pdf</dcterms:format>
+	<pr:source volume="6">eLife</pr:source>
+	<pr:source_id type="eissn">2050-084X</pr:source_id>
+	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
+	<dcterms:title>Using the Volta phase plate with defocus for cryo-EM single particle analysis</dcterms:title>
+	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
+	<dcterms:type>article</dcterms:type>
+	<pr:page_range>e00001</pr:page_range>
+	<dcterms:language>en</dcterms:language>
+	<dcterms:abstract>Previously, we reported an in-focus data acquisition ...</dcterms:abstract>
+	<pr:identifier type="publisher-id">00000</pr:identifier>
+	<pr:identifier type="doi">10.7554/elife.00000</pr:identifier>
+	<dcterms:subject>Research Advance</dcterms:subject>
+	<dcterms:subject>Biophysics and Structural Biology</dcterms:subject>
+	<dcterms:subject>phase plate</dcterms:subject>
+	<dcterms:subject>cryo-EM</dcterms:subject>
+	<dcterms:subject>proteasome</dcterms:subject>
+	<dcterms:subject>None</dcterms:subject>
+	<dcterms:dateAccepted>2017-01-20</dcterms:dateAccepted>
+	<rioxxterms:publication_date>2017-01-21</rioxxterms:publication_date>
+	<dcterms:medium>electronic</dcterms:medium>
+	<pr:history_date type="received">2016-11-07</pr:history_date>
+	<pr:history_date type="submitted">2016-11-07</pr:history_date>
+	<pr:history_date type="collection">2017</pr:history_date>
+	<pr:history_date type="accepted">2017-01-20</pr:history_date>
+	<pr:history_date type="pub">2017-01-21</pr:history_date>
+	<pr:license url="http://creativecommons.org/licenses/by/4.0/">This article is distributed under the terms of the Creative Commons Attribution License.</pr:license>
+	<pr:author>
+		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
+		<pr:id type="orcid">0000-0001-6406-0000</pr:id>
+		<pr:email>danev@biochem.mpg.de</pr:email>
+		<pr:surname>Danev</pr:surname>
+		<pr:firstnames>Radostin</pr:firstnames>
+	</pr:author>
+	<pr:author>
+		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
+		<pr:id type="orcid">0000-0001-7019-0000</pr:id>
+		<pr:surname>Tegunov</pr:surname>
+		<pr:firstnames>Dimitry</pr:firstnames>
+	</pr:author>
+	<pr:author>
+		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
+		<pr:surname>Baumeister</pr:surname>
+		<pr:firstnames>Wolfgang</pr:firstnames>
+	</pr:author>
+	<pr:contributor>
+		<pr:type>http://www.loc.gov/loc.terms/relators/EDT</pr:type>
+		<pr:surname>Scheres</pr:surname>
+		<pr:firstnames>Sjors HW</pr:firstnames>
+	</pr:contributor>
+</entry>
 ```
