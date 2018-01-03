@@ -19,27 +19,61 @@ For information about the schemas see:
 The following table lists the notification fields in the JSON, then the DC/RIOXX fields it will be transformed to, and
 any notes regarding the transformation:
 
-| JPER Field | DC/RIOXX Field | Notes |
-| ---------- | -------------- | ----- |
-| links.url | dc:identifier | As per the recommended use by RIOXX |
-| embargo.end | dcterms:available and ali:license_ref@start_date | "Date (often a range) that the resource became or will become available." from DCMI terms |
-| metadata.title | dc:title | |
-| metadata.version | rioxxterms:version | May not conform to required use by RIOXX because of unknown nature of the values supplied by publishers |
-| metadata.publisher | dc:publisher | |
-| metadata.source.name | dc:source | May not conform to required use by RIOXX because multiple dc:source elements may be present |
-| metadata.source.identifier | dc:source | prefixed with appropriate namespace |
-| metadata.identifier | dc:identifier AND rioxxterms:version_of_record | Always populate dc:identifier, and populate rioxxterms:version_of_record if this is a DOI (as a URL) |
-| metadata.type | dc:type | Ignoring the RIOXX recommendation here, as the DC field is present, and is not so restrictive |
-| metadata.author | dc:creator AND rioxxterms:author | for dc, use separate fields for creator name and any identifiers; for rioxx use orcid as id (as URL), and add other attributes as required.  See RIOXX guidelines during implenmentation for details. |
-| metadata.author.affiliation | dc:contributor | Since there's nowhere else obvious to put this useful bit of information |
-| metadata.language | dc:langauage | |
-| metadata.publication_date | rioxxterms:publication_date AND dc:date | covering RIOXX and the more likely existing defaults in repositories |
-| metadata.date_accepted | dcterms:dateAccepted | |
-| metadata.date_submitted | dcterms:dateSubmitted | |
-| metadata.license_ref.url | ali:license_ref AND dc:rights | Note that the @start_date should be embargo.end, but may also be any other suitable date from the metadata |
-| metadata.license_ref.title | dc:rights | if no metadata.license_ref.url is present |
-| metadata.project.* | rioxxterms:project | @funder_name=metadata.project.name, @funder_id=metadata.project.identifier, text=metadata.project.grant_number.  See RIOXX documentation for details in implementation |
-| metadata.subject | dc:subject | |
+| PubRouter Metadata | DC terms | Description |
+|:-----------------------------:|:---------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| journal.title | pr: source | <pr:source volume="..." issue="..."> title + abbrev </pr:source> |
+| journal.abbrevTitle | pr: source | ditto |
+| journal.volume | pr: source | ditto |
+| journal.issue | pr: source | ditto |
+| journal.publisher | dcterms: publisher |  |
+| journal.identifier.issn | pr: source_id | <pr:source_id type="..."> value </pr:source_id> |
+| journal.identifier.eissn | pr: source_id | <pr: source_id> eissn: value </pr: source_id> |
+| journal.identifier.pissn | pr: source_id | <pr: source_id> pissn: value </pr: source_id> |
+| journal.identifier.doi | pr: source_id | <pr: source_id> doi: value </pr: source_id> |
+| article.title | dcterms: title | A name given to the resource. |
+| article.subtitle | dcterms: title | A name given to the resource. |
+| article.type | dcterms: type rioxxterms: type | The nature or genre of the resource. |
+| article.version | rioxxterms: version |  |
+| article.start_page | pr: start_page |  |
+| article.end_page | pr: end_page |  |
+| article.page_range | pr: page_range |  |
+| article.num_pages | pr: num_pages |   |
+| article.language | dcterms :language |  |
+| article.abstract | dcterms :abstract |  |
+| article.identifier.type | pr :identifier  | <pr:identifier> type: id </pr:identifier>   <rioxxterms:version_of_record> doi </rioxxterms:version_of_record> |
+| article.identifier.id | pr :identifier  | ditto |
+| article.subject | dcterms :subject |  |
+| author.type | pr: author | <pr: author>      <pr:type> type </pr:type> </pr:author> |
+| author.name | pr: author | <pr: author>     <pr:surname> </pr:surname>     <pr:firstname> </pr:firstname>     <pr:suffix> </pr:suffix> </pr:author> |
+| author.organisation_name | pr: author | <pr: author>     <pr:org_name> organisation_name </pr:org_name> </pr:author> |
+| author.identifier.orcid | pr: author | <pr: author>      <pr:id> orcid </pr:id> </pr:author> |
+| author.identifier.email | pr: author | <pr: author>     <pr:email> email </pr:email> </pr:author> |
+| author.affiliation | ---- |   |
+| contributor.type | pr: contributor | <pr:contributor>,<pr:type> type </pr:type></pr:contributor> |
+| contributor.name | pr: contributor | <pr: contributor>     <pr:surname> </pr:surname>     <pr:firstname> </pr:firstname>     <pr:suffix> </pr:suffix> </pr:contributor> |
+| contributor.organisation_name | pr: contributor | <pr: contributor>     <pr:org_name> organisation_name </pr:org_name> </pr:contributor> |
+| contributor.identifier.orcid | pr: contributor | <pr: contributor>     <pr:id> orcid </pr:id> </pr:contributor> |
+| contributor.identifier.email | pr: contributor | <pr: contributor>     <pr:email> email </pr:email> </pr:contributor> |
+| contributor.affiliation | ---- |   |
+| accepted_date | dcterms :dateAccepted |  |
+| publication_date | rioxxterms: publication_date  dcterms: medium | Date of formal issuance (e.g., publication) of the resource.  <dcterms:medium>publication_format </dcterms:medium> |
+| history_date.type | pr: history_date | <pr:history_date  type="type"> date </pr:history_date> |
+| history_date.date * | pr: history_date | Eprints uses "submitted" when history_date.type is "received"   <pr:history_date  type="submitted"> date </pr:history_date> |
+| publication_status | --- |  |
+| project.name  | rioxxterms: project | <rioxxterms:project rioxxterms:funder_id="identifier" rioxxterms:funder_name="name"> grant_number </rioxxterms:project> |
+| project.identifier | rioxxterms: project |  |
+| project.grant_number | rioxxterms: project |  |
+| embargo.start | pr: embargo | <pr:embargo start_date="..." end_date="..." /> |
+| embargo.end | pr: embargo | ditto |
+| embargo.duration | --- |  |
+| license_ref.title | ali: free_to_read  pr:license | <ali:free_to_read ali:end_date="..." ali:start_date="..."/>  <pr:license start_date="..." url="..." version="..."> tittle + type </pr:license>  |
+| license_ref.type | ali: free_to_read pr:license | ditto |
+| license_ref.url | ali: free_to_read pr:license | ditto |
+| license_ref.version | ali: free_to_read pr:license | ditto |
+| license_ref.start | ali: free_to_read pr:license | ditto |
+| provider_agent | pr: note | From  {provider_agent} via Jisc Publications Router.' |
+| links | pr: relation  pr: download_link | <pr:relation url="..." format="..." packaging="..." />  <pr:download_link format="..." packaging="..." [ public=Bool ]"  primary=Bool filename="..." /> |
+| formats_to_download | dcterms: format | element for any downloadable format |
 
 ## Example XML Output
 
