@@ -49,7 +49,7 @@ any notes regarding the transformation:
 | author.identifier.orcid | pr: author | <pr: author>      <pr:id> orcid </pr:id> </pr:author> |
 | author.identifier.email | pr: author | <pr: author>     <pr:email> email </pr:email> </pr:author> |
 | author.affiliation | ---- |   |
-| contributor.type | pr: contributor | <pr:contributor>,<pr:type> type </pr:type></pr:contributor> |
+| contributor.type | pr: contributor | <pr:contributor>\n<pr:type> type </pr:type>\n</pr:contributor> |
 | contributor.name | pr: contributor | <pr: contributor>     <pr:surname> </pr:surname>     <pr:firstname> </pr:firstname>     <pr:suffix> </pr:suffix> </pr:contributor> |
 | contributor.organisation_name | pr: contributor | <pr: contributor>     <pr:org_name> organisation_name </pr:org_name> </pr:contributor> |
 | contributor.identifier.orcid | pr: contributor | <pr: contributor>     <pr:id> orcid </pr:id> </pr:contributor> |
@@ -80,11 +80,11 @@ any notes regarding the transformation:
 An example Atom Entry document containing the metadata listed above is shown here
 
 ```xml
-     <?xml version="1.0"?>
+      <?xml version="1.0"?>
 <entry xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/">
 	<pr:note>** From FTP publisher via Jisc Publications Router.</pr:note>
-	<pr:download_link url="http://uat.pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/non-pdf-files.zip" format="application/zip" filename="non-pdf-files.zip" packaging="http://purl.org/net/sword/package/SimpleZip" primary="false"/>
-	<pr:download_link url="http://uat.pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/elife-23006.pdf" format="application/pdf" primary="true" filename="elife-23006.pdf"/>
+	<pr:download_link url="http://pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/non-pdf-files.zip" format="application/zip" filename="non-pdf-files.zip" packaging="http://purl.org/net/sword/package/SimpleZip" primary="false"/>
+	<pr:download_link url="http://pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/elife-0000.pdf" format="application/pdf" primary="true" filename="elife-0000.pdf"/>
 	<dcterms:format>application/pdf</dcterms:format>
 	<pr:source volume="6">eLife</pr:source>
 	<pr:source_id type="eissn">2050-084X</pr:source_id>
