@@ -40,20 +40,20 @@ any notes regarding the transformation:
 | article.num_pages | pr: num_pages |   |
 | article.language | dcterms :language |  |
 | article.abstract | dcterms :abstract |  |
-| article.identifier.type | pr :identifier  | <pr:identifier> type: id </pr:identifier>   <rioxxterms:version_of_record> doi </rioxxterms:version_of_record> |
+| article.identifier.type | pr :identifier  | <pr:identifier> type: id </pr:identifier>  <rioxxterms:version_of_record> doi </rioxxterms:version_of_record> |
 | article.identifier.id | pr :identifier  | ditto |
 | article.subject | dcterms :subject |  |
-| author.type | pr: author | <pr: author>      <pr:type> type </pr:type> </pr:author> |
-| author.name | pr: author | <pr: author>     <pr:surname> </pr:surname>     <pr:firstname> </pr:firstname>     <pr:suffix> </pr:suffix> </pr:author> |
-| author.organisation_name | pr: author | <pr: author>     <pr:org_name> organisation_name </pr:org_name> </pr:author> |
-| author.identifier.orcid | pr: author | <pr: author>      <pr:id> orcid </pr:id> </pr:author> |
-| author.identifier.email | pr: author | <pr: author>     <pr:email> email </pr:email> </pr:author> |
+| author.type | pr: author | <pr: author>  <pr:type> type </pr:type>  </pr:author> |
+| author.name | pr: author | <pr: author>  <pr:surname> </pr:surname>  <pr:firstname> </pr:firstname>  <pr:suffix> </pr:suffix> </pr:author> |
+| author.organisation_name | pr: author | <pr: author>  <pr:org_name> organisation_name </pr:org_name>  </pr:author> |
+| author.identifier.orcid | pr: author | <pr: author>  <pr:id> orcid </pr:id>  </pr:author> |
+| author.identifier.email | pr: author | <pr: author>  <pr:email> email </pr:email>  </pr:author> |
 | author.affiliation | ---- |   |
-| contributor.type | pr: contributor | <pr:contributor>\n<pr:type> type </pr:type>\n</pr:contributor> |
-| contributor.name | pr: contributor | <pr: contributor>     <pr:surname> </pr:surname>     <pr:firstname> </pr:firstname>     <pr:suffix> </pr:suffix> </pr:contributor> |
-| contributor.organisation_name | pr: contributor | <pr: contributor>     <pr:org_name> organisation_name </pr:org_name> </pr:contributor> |
-| contributor.identifier.orcid | pr: contributor | <pr: contributor>     <pr:id> orcid </pr:id> </pr:contributor> |
-| contributor.identifier.email | pr: contributor | <pr: contributor>     <pr:email> email </pr:email> </pr:contributor> |
+| contributor.type | pr: contributor | <pr:contributor>  <pr:type> type </pr:type>  </pr:contributor> |
+| contributor.name | pr: contributor | <pr: contributor>  <pr:surname>  </pr:surname>  <pr:firstname>  </pr:firstname>     <pr:suffix> </pr:suffix> </pr:contributor> |
+| contributor.organisation_name | pr: contributor | <pr: contributor>  <pr:org_name> organisation_name </pr:org_name>  </pr:contributor> |
+| contributor.identifier.orcid | pr: contributor | <pr: contributor>  <pr:id> orcid </pr:id>  </pr:contributor> |
+| contributor.identifier.email | pr: contributor | <pr: contributor>  <pr:email> email </pr:email>  </pr:contributor> |
 | contributor.affiliation | ---- |   |
 | accepted_date | dcterms :dateAccepted |  |
 | publication_date | rioxxterms: publication_date  dcterms: medium | Date of formal issuance (e.g., publication) of the resource.  <dcterms:medium>publication_format </dcterms:medium> |
