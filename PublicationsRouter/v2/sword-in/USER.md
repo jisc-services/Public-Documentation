@@ -45,7 +45,7 @@ Get the URL of the collection from the Service Document (in the section above), 
     POST /collection/validate
     Content-Disposition: filename=filename.zip
     Content-Type: application/zip
-    Packaging: https://pubsrouter.jisc.ac.uk/FilesAndJATS
+    Packaging: https://pubrouter.jisc.ac.uk/FilesAndJATS
     
     [binary content]
 
