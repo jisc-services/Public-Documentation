@@ -148,7 +148,7 @@ The JSON structure of the model is as follows:
 		"license_ref": [
 			{
 			"title": "<name of licence>",
-			"type": "<type>", // Will have value "ali_free" for an ali:free-to-read element 
+			"type": "<type; Note: will have value 'ali_free' for an ali:free-to-read element >", 
 			"url": "<url>",
 			"version": "<license version; for example: 4.0>",
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
