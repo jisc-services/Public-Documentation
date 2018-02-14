@@ -146,8 +146,6 @@ The JSON structure of the model is as follows:
 			"duration": "<embargo duration in days>"
 		},
 		"license_ref": [
-			// IMPORTANT NOTE - this array may contain both license AND ali:free-to-read information (this may be changed
-			// in a future version of the API).
 			{
 			"title": "<name of licence>",
 			"type": "<type>", // Will have value "ali_free" for an ali:free-to-read element 
@@ -230,6 +228,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |  |
 | metadata.embargo.duration | Embargo duration in DAYS | unicode |  |  |
+| metadata.license_ref | This array of objects may contain both license AND ali:free-to-read information (this may be changed in a future version of the API).  The `metadata.license_ref.type` field is used to identify ali:free-to-read entries.  | | | |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |  |
 | metadata.license_ref.type | Type of licence (most likely the same as the title) or 'ali_free' if ali:free-to-read; free-text | unicode |  |  |
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |  |
