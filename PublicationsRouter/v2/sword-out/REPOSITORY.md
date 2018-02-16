@@ -42,7 +42,7 @@ By default it will crosswalk the absolute basic Atom metadata, so you may wish t
 
 In order that you do not lose any information if your XSLT does not yet do what you want, Router will also deposit
 a full copy of the Atom Entry XML as a file attached to the eprint.  For information about the metadata held in that
-file see the [Crosswalk Documentation](https://github.com/sherpaservices/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml)
+file see the [Crosswalk Documentation](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml)
 
 ## DSpace/Other
 
