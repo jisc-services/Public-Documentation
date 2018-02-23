@@ -4,12 +4,12 @@ This document describes the crosswalk from the notification metadata fields rece
  XML format supplied to repositories via SWORDv2.
 
  For more information about the schema see: 
-* [EPrints] (http://wiki.eprints.org/w/XML_Export_Format)
+* [EPrints XML](http://wiki.eprints.org/w/XML_Export_Format)
 
 The following table lists the notification fields in the JSON, then the DC/RIOXX fields it will be transformed to, and
 any notes regarding the transformation:
 
-| PubRouter Metadata | Eprint terms | Description |
+| PubRouter Metadata | Eprints.Eprint terms | Description |
 |-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | journal.title | publication 
 | journal.abbrev_title | ---- 
