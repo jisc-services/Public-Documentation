@@ -1,139 +1,127 @@
-# JPER Core Metadata to Dublin Core/RIOXX XML
+file:/C:/Users/ben.murray/Documents/PubRouter/PubRouter-App2/jper-sword-out/jper_sword_out/tests/resources/eprints_expected.xml# JPER Core Metadata to EPrints XML
 
 This document describes the crosswalk from the notification metadata fields received via the JPER API to the
  XML format supplied to repositories via SWORDv2.
- 
-The approach to the crosswalk is:
 
-* If there is a DC or DCTerms field to which the value can be written, do so
-* If there is also a RIOXX field which is different, do that one too
-
-This means that repositories which impelement one or other or both will have good changes of extracting useful
-metadata.
-
-For information about the schemas see:
-
-* [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
-* [RIOXX](http://rioxx.net/v2-0-final/)
+ For more information about the schema see: 
+* [EPrints] (http://wiki.eprints.org/w/XML_Export_Format)
 
 The following table lists the notification fields in the JSON, then the DC/RIOXX fields it will be transformed to, and
 any notes regarding the transformation:
 
-| PubRouter Metadata | DC terms | Description |
-|:-----------------------------:|:---------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| journal.title | pr: source | <pr:source volume="..." issue="..."> title + abbrev </pr:source> |
-| journal.abbrevTitle | pr: source | ditto |
-| journal.volume | pr: source | ditto |
-| journal.issue | pr: source | ditto |
-| journal.publisher | dcterms: publisher |  |
-| journal.identifier.issn | pr: source_id | <pr:source_id type="..."> value </pr:source_id> |
-| journal.identifier.eissn | pr: source_id | <pr: source_id> eissn: value </pr: source_id> |
-| journal.identifier.pissn | pr: source_id | <pr: source_id> pissn: value </pr: source_id> |
-| journal.identifier.doi | pr: source_id | <pr: source_id> doi: value </pr: source_id> |
-| article.title | dcterms: title | A name given to the resource. |
-| article.subtitle | dcterms: title | A name given to the resource. |
-| article.type | dcterms: type rioxxterms: type | The nature or genre of the resource. |
-| article.version | rioxxterms: version |  |
-| article.start_page | pr: start_page |  |
-| article.end_page | pr: end_page |  |
-| article.page_range | pr: page_range |  |
-| article.num_pages | pr: num_pages |   |
-| article.language | dcterms :language |  |
-| article.abstract | dcterms :abstract |  |
-| article.identifier.type | pr :identifier  | <pr:identifier> type: id </pr:identifier>  <rioxxterms:version_of_record> doi </rioxxterms:version_of_record> |
-| article.identifier.id | pr :identifier  | ditto |
-| article.subject | dcterms :subject |  |
-| author.type | pr: author | <pr: author>  <pr:type> type </pr:type>  </pr:author> |
-| author.name | pr: author | <pr: author>  <pr:surname> </pr:surname>  <pr:firstname> </pr:firstname>  <pr:suffix> </pr:suffix> </pr:author> |
-| author.organisation_name | pr: author | <pr: author>  <pr:org_name> organisation_name </pr:org_name>  </pr:author> |
-| author.identifier.orcid | pr: author | <pr: author>  <pr:id> orcid </pr:id>  </pr:author> |
-| author.identifier.email | pr: author | <pr: author>  <pr:email> email </pr:email>  </pr:author> |
-| author.affiliation | ---- |   |
-| contributor.type | pr: contributor | <pr:contributor>  <pr:type> type </pr:type>  </pr:contributor> |
-| contributor.name | pr: contributor | <pr: contributor>  <pr:surname>  </pr:surname>  <pr:firstname>  </pr:firstname>     <pr:suffix> </pr:suffix> </pr:contributor> |
-| contributor.organisation_name | pr: contributor | <pr: contributor>  <pr:org_name> organisation_name </pr:org_name>  </pr:contributor> |
-| contributor.identifier.orcid | pr: contributor | <pr: contributor>  <pr:id> orcid </pr:id>  </pr:contributor> |
-| contributor.identifier.email | pr: contributor | <pr: contributor>  <pr:email> email </pr:email>  </pr:contributor> |
-| contributor.affiliation | ---- |   |
-| accepted_date | dcterms :dateAccepted |  |
-| publication_date | rioxxterms: publication_date  dcterms: medium | Date of formal issuance (e.g., publication) of the resource.  <dcterms:medium>publication_format </dcterms:medium> |
-| history_date.type | pr: history_date | <pr:history_date  type="type"> date </pr:history_date> |
-| history_date.date * | pr: history_date | Eprints uses "submitted" when history_date.type is "received"   <pr:history_date  type="submitted"> date </pr:history_date> |
-| publication_status | --- |  |
-| project.name  | rioxxterms: project | <rioxxterms:project rioxxterms:funder_id="identifier" rioxxterms:funder_name="name"> grant_number </rioxxterms:project> |
-| project.identifier | rioxxterms: project |  |
-| project.grant_number | rioxxterms: project |  |
-| embargo.start | pr: embargo | <pr:embargo start_date="..." end_date="..." /> |
-| embargo.end | pr: embargo | ditto |
-| embargo.duration | --- |  |
-| license_ref.title | ali: free_to_read  pr:license | <ali:free_to_read ali:end_date="..." ali:start_date="..."/>  <pr:license start_date="..." url="..." version="..."> tittle + type </pr:license>  |
-| license_ref.type | ali: free_to_read pr:license | ditto |
-| license_ref.url | ali: free_to_read pr:license | ditto |
-| license_ref.version | ali: free_to_read pr:license | ditto |
-| license_ref.start | ali: free_to_read pr:license | ditto |
-| provider_agent | pr: note | From  {provider_agent} via Jisc Publications Router.' |
-| links | pr: relation  pr: download_link | <pr:relation url="..." format="..." packaging="..." />  <pr:download_link format="..." packaging="..." [ public=Bool ]"  primary=Bool filename="..." /> |
-| formats_to_download | dcterms: format | element for any downloadable format |
+| PubRouter Metadata | Eprint terms | Description |
+|-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| journal.title | publication 
+| journal.abbrev_title | ---- 
+| journal.volume | volume 
+| journal.issue | number
+| journal.publisher | publisher
+| journal.identifier.type | ---- | We list one identifier for a journal, if there are multiple identifiers we prioritise using the identifier with identifier.type value of eissn/essn, then issn and finally any other ssn value. 
+| journal.identifier.id | issn | This will be the id value of the favoured ssn type.
+| article.title | title | 
+| article.sub_title | title | Any subtitles are appended to the title, like so: "Title - \<subtitle1\> - \<subtitle2\> - \<subtitle3\> ..."
+| article.type | type | 
+| article.version | note | Stored in Licensing information line of note, will see "** License for \<article_version\> version of this article... "
+| article.start_page | pagerange | 
+| article.end_page | pagerange | 
+| article.page_range | pagerange | 
+| article.num_pages | pagerange |
+| article.language | ---- |
+| article.abstract | abstract | 
+| article.identifier.type | ---- | We list one identifier for an article, if there are multiple identifiers we prioritise a DOI, else use whichever other identifier is present. 
+| article.identifier.id | id_number | 
+| article.subject | keywords | Subjects are entered as one entry, separated by commas. For example "\<subject1>, \<subject2>, ..."
+| author.type | ---- | 
+| author.name.firstname | creators.item.name.given | 
+| author.name.surname | creators.item.name.family | 
+| author.name.fullname | creators.item.name | 
+| author.name.suffix | ---- |
+| author.organisation_name | ---- |
+| author.identifier.type | creators.item | If type is email, this will be listed as "id", else an individual tag of the same name as author.identifier.type with text of author.identifier.id will be created. 
+| author.identifier.id | creators.item.\<type\> | If the id is an email, and there are multiple emails associated with this author, these will be listed as an individual string as a comma separated list. 
+| author.affiliation | ---- |
+| contributor.type | contributors.item.type |
+| contributor.name.firstname | contributors.item.name.given | 
+| contributor.name.surname | contributors.item.name.family | 
+| contributor.name.fullname | contributors.item.name |
+| contributor.name.suffix | ---- | 
+| contributor.organisation_name | ---- |
+| contributor.identifier.type | ---- |  If id type is email, this will be listed as "id", else an individual tag of the same name as author.identifier.type with text of author.identifier.id will be created. 
+| contributor.identifier.id | contributors.item.\<type\> | If the id is an email, and there are multiple emails associated with this contributor, these will be listed as an individual string as a comma separated list. 
+| contributor.affiliation | ---- |
+| accepted_date | date | If accepted_date is present, but publication_date is not, then date_type field will be 'Accepted' and ispublished field will be 'inpress' 
+| publication_date | date | If publication_date is present, then date_type field will be 'published' and ispublished field will be 'pub'
+| history_date | ---- | 
+| publication_status | ---- |
+| funding | funding.item | Full funding information for a funder will be found within an item tag under the funding tag. Information will be presented as so "** Funder: \<funding.name\>; Grant num: \<funding.grant_number\>; \<funding.identifier1.type\>: \<funding.identifier1.id\>; \<funding.identifier2.type\>: \<funding.identifier2.id\>, ..."
+| embargo.start | ---- |
+| embargo.end | note | Any embargo information will be written in note as "** Embargo End Date: \<embargo.start\>"
+| embargo.duration | ---- |
+| license_ref | note | License information will be written in note as "** License for \<article_version\> version of this article starting on \<license_ref.start\>: \<license_ref.url\>/\<license_ref.type\>/\<license_ref.title\>"
 
 ## Example XML Output
 
 An example Atom Entry document containing the metadata listed above is shown here
-
 ```xml
-      <?xml version="1.0"?>
-<entry xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/">
-	<pr:note>** From FTP publisher via Jisc Publications Router.</pr:note>
-	<pr:download_link url="http://pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/non-pdf-files.zip" format="application/zip" filename="non-pdf-files.zip" packaging="http://purl.org/net/sword/package/SimpleZip" primary="false"/>
-	<pr:download_link url="http://pubrouter.jisc.ac.uk/api/v2/notification/c37bcc16c2474ca8be1e7028aa1ed53b/content/eprints-rioxx/elife-0000.pdf" format="application/pdf" primary="true" filename="elife-0000.pdf"/>
-	<dcterms:format>application/pdf</dcterms:format>
-	<pr:source volume="6">eLife</pr:source>
-	<pr:source_id type="eissn">2050-084X</pr:source_id>
-	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
-	<dcterms:title>Using the Volta phase plate with defocus for cryo-EM single particle analysis</dcterms:title>
-	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
-	<dcterms:type>article</dcterms:type>
-	<pr:page_range>e00001</pr:page_range>
-	<dcterms:language>en</dcterms:language>
-	<dcterms:abstract>Previously, we reported an in-focus data acquisition ...</dcterms:abstract>
-	<pr:identifier type="publisher-id">00000</pr:identifier>
-	<pr:identifier type="doi">10.7554/elife.00000</pr:identifier>
-	<dcterms:subject>Research Advance</dcterms:subject>
-	<dcterms:subject>Biophysics and Structural Biology</dcterms:subject>
-	<dcterms:subject>phase plate</dcterms:subject>
-	<dcterms:subject>cryo-EM</dcterms:subject>
-	<dcterms:subject>proteasome</dcterms:subject>
-	<dcterms:subject>None</dcterms:subject>
-	<dcterms:dateAccepted>2017-01-20</dcterms:dateAccepted>
-	<rioxxterms:publication_date>2017-01-21</rioxxterms:publication_date>
-	<dcterms:medium>electronic</dcterms:medium>
-	<pr:history_date type="received">2016-11-07</pr:history_date>
-	<pr:history_date type="submitted">2016-11-07</pr:history_date>
-	<pr:history_date type="collection">2017</pr:history_date>
-	<pr:history_date type="accepted">2017-01-20</pr:history_date>
-	<pr:history_date type="pub">2017-01-21</pr:history_date>
-	<pr:license url="http://creativecommons.org/licenses/by/4.0/">This article is distributed under the terms of the Creative Commons Attribution License.</pr:license>
-	<pr:author>
-		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
-		<pr:id type="orcid">0000-0001-6406-0000</pr:id>
-		<pr:email>danev@biochem.mpg.de</pr:email>
-		<pr:surname>Danev</pr:surname>
-		<pr:firstnames>Radostin</pr:firstnames>
-	</pr:author>
-	<pr:author>
-		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
-		<pr:id type="orcid">0000-0001-7019-0000</pr:id>
-		<pr:surname>Tegunov</pr:surname>
-		<pr:firstnames>Dimitry</pr:firstnames>
-	</pr:author>
-	<pr:author>
-		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
-		<pr:surname>Baumeister</pr:surname>
-		<pr:firstnames>Wolfgang</pr:firstnames>
-	</pr:author>
-	<pr:contributor>
-		<pr:type>http://www.loc.gov/loc.terms/relators/EDT</pr:type>
-		<pr:surname>Scheres</pr:surname>
-		<pr:firstnames>Sjors HW</pr:firstnames>
-	</pr:contributor>
-</entry>
+<eprints xmlns="http://eprints.org/ep2/data/2.0">
+	<eprint>
+		<id_number>55.aa/base.1</id_number>
+		<title>Test Article - Test Article SUBtitle</title>
+		<abstract>Abstract of the work </abstract>
+		<type>article</type>
+		<creators>
+			<item>
+				<name>
+					<family>Jones</family>
+					<given>Richard</given>
+				</name>
+				<orcid>aaaa-0000-1111-bbbb</orcid>
+				<id>richard@example.com, richard2@example.com</id>
+			</item>
+			<item>
+				<name>
+					<family>MacGillivray</family>
+					<given>Mark</given>
+				</name>
+				<orcid>dddd-2222-3333-cccc</orcid>
+				<id>mark@example.com</id>
+			</item>
+		</creators>
+		<contributors>
+			<item>
+				<type>http://www.loc.gov/loc.terms/relators/EDT</type>
+				<name>
+					<family>Williams</family>
+					<given>Manolo</given>
+				</name>
+				<id>manolo@example.com</id>
+			</item>
+		</contributors>
+		<publisher>Premier Publisher</publisher>
+		<publication>Journal of Important Things</publication>
+		<volume>Number of a journal (or other document) within a series</volume>
+		<number>Issue number of a journal, or in rare instances, a book</number>
+		<pagerange>Text describing discontinuous pagination.</pagerange>
+		<issn>1234-5678</issn>
+		<date>2015-01-01</date>
+		<date_type>published</date_type>
+		<ispublished>pub</ispublished>
+		<keywords>science, technology, arts, medicine</keywords>
+		<related_url>
+			<item>
+				<url>http://testing.no.real.jisc.ac.uk/api/v1/notification/1234567890/content/2</url>
+			</item>
+			<item>
+				<url>http://url</url>
+			</item>
+		</related_url>
+		<funders>
+			<item>** Funder: BBSRC; Grant num: BB/34/juwef; ringold: bbsrcid</item>
+		</funders>
+		<note>
+** Embargo End Date: 01-01-2016
+** History: submitted 03-07-2014.
+** Licence for VoR version of this article starting on 12-11-2016: http://url</note>
+	</eprint>
+</eprints>
 ```
