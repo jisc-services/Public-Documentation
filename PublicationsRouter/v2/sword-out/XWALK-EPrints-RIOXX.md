@@ -1,4 +1,4 @@
-# JPER Core Metadata to Dublin Core/RIOXX XML
+# JPER Core Metadata to PubRouter.xsd valid XML
 
 
 
@@ -44,7 +44,7 @@ The following table lists the various terms which the xwalk will populate, then 
 
 ## Example XML Output
 
-An example Atom Entry document containing the metadata listed above is shown here
+An example Entry document containing the metadata listed above is shown here
 
 ```xml
 <?xml version="1.0"?>
