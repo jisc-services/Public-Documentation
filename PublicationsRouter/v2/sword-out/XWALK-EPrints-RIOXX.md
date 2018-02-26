@@ -14,6 +14,7 @@ For information about the schemas see:
 
 * [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
 * [RIOXX](http://rioxx.net/v2-0-final/)
+* [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd)
 
 The following table lists the various terms which the xwalk will populate, then the relevant metadata items which will populate these terms along with an example of how the xml would look. 
 
