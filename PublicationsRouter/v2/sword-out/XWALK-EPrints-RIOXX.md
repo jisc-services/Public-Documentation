@@ -47,7 +47,7 @@ The following table lists the various terms which the xwalk will populate, then 
 An example Atom Entry document containing the metadata listed above is shown here
 
 ```xml
-    <?xml version="1.0"?>
+<?xml version="1.0"?>
 <entry xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
 	<pr:download_link url="http://testing.no.real.jisc.ac.uk/api/v1/notification/1234567890/content/1" format="text/html" filename="1" primary="false"/>
 	<pr:relation url="http://testing.no.real.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf"/>
