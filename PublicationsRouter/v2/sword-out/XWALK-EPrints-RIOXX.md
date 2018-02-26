@@ -34,7 +34,7 @@ The following table lists first the Dublin Core fields which the xwalk populates
 | dcterms:abstract | article.abstract | | \<dcterms:abstract> [article.abstract] \</dcterms:abstract> |
 | pr:identifier | article.identifier.id, article.identifier.type | | \<pr:identifier type=[article.identifier.type]> [article.identifier.id] \</pr:identifier> |
 | dcterms:subject | article.subject | | \<dcterms:subject> [article.subject] \</dcterms:subject> |
-| pr:author | author.type, author.name, author.organisation_name, author.identifier, author.identifier.id | | \<pr:author><pr:type>[author.type]</pr:type><pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id><pr:firstnames>[author.name.firstname]</pr:firstnames><pr:surname>[author.name.surname]</pr:surname></pr:author>
+| pr:author | author.type, author.name, author.organisation_name, author.identifier, author.identifier.id | | \<pr:author>\<pr:type>[author.type]\</pr:type>\<pr:id type=[author.identifier.type]>[author.identifier.id]\</pr:id>\<pr:firstnames>[author.name.firstname]\</pr:firstnames>\<pr:surname>[author.name.surname]\</pr:surname>\</pr:author>
 
 
 ## Example XML Output
