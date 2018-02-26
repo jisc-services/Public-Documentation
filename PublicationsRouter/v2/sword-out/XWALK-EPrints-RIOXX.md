@@ -17,8 +17,8 @@ For information about the schemas see:
 
 The following table lists first the Dublin Core fields which the xwalk populates. It then lists the RIOXX fields which the xwalk populates. 
 
-| Terms | PubRouter Metadata fields | Description | Example
-|:-----------------------------:|:---------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Terms | PubRouter Metadata fields | Description | Example |
+|:-----------------------------:|:---------------------------------------------:|:-------------------------:|:------------------------------------------------------------------------------------------------------------------------:|
 | pr:source | journal.title, journal.abbrevTitle,  journal.volume,  journal.issue| | <pr:source volume=[journal.volume] issue=[journal.issue]> [journal.title] + [journal.abbrevTitle] </pr:source> |
 | dcterms:publisher  | journal.publisher | | \<dcterms:publisher\> [journal.publisher] \</dcterms:publisher\> |
 | pr:source_id | journal.identifier.id, journal.identifier.type | | <pr:source_id type=[journal.identifier.type]> [journal.identifier.id] \</pr:source_id> |
@@ -31,40 +31,6 @@ The following table lists first the Dublin Core fields which the xwalk populates
 | pr:num_pages | article.num_pages |  | \<pr:num_pages> [article.num_pages] \</pr:num_pages> |
 | article.language | dcterms :language |  |
 | article.abstract | dcterms :abstract |  |
-| article.identifier.type | pr :identifier  | <pr:identifier> type: id </pr:identifier>  <rioxxterms:version_of_record> doi </rioxxterms:version_of_record> |
-| article.identifier.id | pr :identifier  | ditto |
-| article.subject | dcterms :subject |  |
-| author.type | pr: author | <pr: author>  <pr:type> type </pr:type>  </pr:author> |
-| author.name | pr: author | <pr: author>  <pr:surname> </pr:surname>  <pr:firstname> </pr:firstname>  <pr:suffix> </pr:suffix> </pr:author> |
-| author.organisation_name | pr: author | <pr: author>  <pr:org_name> organisation_name </pr:org_name>  </pr:author> |
-| author.identifier.orcid | pr: author | <pr: author>  <pr:id> orcid </pr:id>  </pr:author> |
-| author.identifier.email | pr: author | <pr: author>  <pr:email> email </pr:email>  </pr:author> |
-| author.affiliation | ---- |   |
-| contributor.type | pr: contributor | <pr:contributor>  <pr:type> type </pr:type>  </pr:contributor> |
-| contributor.name | pr: contributor | <pr: contributor>  <pr:surname>  </pr:surname>  <pr:firstname>  </pr:firstname>     <pr:suffix> </pr:suffix> </pr:contributor> |
-| contributor.organisation_name | pr: contributor | <pr: contributor>  <pr:org_name> organisation_name </pr:org_name>  </pr:contributor> |
-| contributor.identifier.orcid | pr: contributor | <pr: contributor>  <pr:id> orcid </pr:id>  </pr:contributor> |
-| contributor.identifier.email | pr: contributor | <pr: contributor>  <pr:email> email </pr:email>  </pr:contributor> |
-| contributor.affiliation | ---- |   |
-| accepted_date | dcterms :dateAccepted |  |
-| publication_date | rioxxterms: publication_date  dcterms: medium | Date of formal issuance (e.g., publication) of the resource.  <dcterms:medium>publication_format </dcterms:medium> |
-| history_date.type | pr: history_date | <pr:history_date  type="type"> date </pr:history_date> |
-| history_date.date * | pr: history_date | Eprints uses "submitted" when history_date.type is "received"   <pr:history_date  type="submitted"> date </pr:history_date> |
-| publication_status | --- |  |
-| project.name  | rioxxterms: project | <rioxxterms:project rioxxterms:funder_id="identifier" rioxxterms:funder_name="name"> grant_number </rioxxterms:project> |
-| project.identifier | rioxxterms: project |  |
-| project.grant_number | rioxxterms: project |  |
-| embargo.start | pr: embargo | <pr:embargo start_date="..." end_date="..." /> |
-| embargo.end | pr: embargo | ditto |
-| embargo.duration | --- |  |
-| license_ref.title | ali: free_to_read  pr:license | <ali:free_to_read ali:end_date="..." ali:start_date="..."/>  <pr:license start_date="..." url="..." version="..."> tittle + type </pr:license>  |
-| license_ref.type | ali: free_to_read pr:license | ditto |
-| license_ref.url | ali: free_to_read pr:license | ditto |
-| license_ref.version | ali: free_to_read pr:license | ditto |
-| license_ref.start | ali: free_to_read pr:license | ditto |
-| provider_agent | pr: note | From  {provider_agent} via Jisc Publications Router.' |
-| links | pr: relation  pr: download_link | <pr:relation url="..." format="..." packaging="..." />  <pr:download_link format="..." packaging="..." [ public=Bool ]"  primary=Bool filename="..." /> |
-| formats_to_download | dcterms: format | element for any downloadable format |
 
 
 ## Example XML Output
