@@ -5,13 +5,7 @@
 This document describes the crosswalk from the notification metadata fields received via the JPER API to the
  XML format supplied to repositories via SWORDv2.
  
-The approach to the crosswalk is:
-
-* If there is a DC or DCTerms field to which the value can be written, do so
-* If there is also a RIOXX field which is different, do that one too
-
-This means that repositories which impelement one or other or both will have good changes of extracting useful metadata.
-
+This crosswalk maps values in the metadata to terms in the PubRouter.xsd document. The PubRouter.xsd document is made up of a mixture of Rioxx terms, DC terms and PubRouter defined terms. Priority is granted to DC terms, then additionally Rioxx terms will be populated. Finally, PubRouter defined terms. 
 For information about the schemas see:
 
 * [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
