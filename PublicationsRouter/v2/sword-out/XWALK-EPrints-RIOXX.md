@@ -34,7 +34,15 @@ The following table lists first the Dublin Core fields which the xwalk populates
 | dcterms:abstract | article.abstract | | \<dcterms:abstract> [article.abstract] \</dcterms:abstract> |
 | pr:identifier | article.identifier.id, article.identifier.type | | \<pr:identifier type=[article.identifier.type]> [article.identifier.id] \</pr:identifier> |
 | dcterms:subject | article.subject | | \<dcterms:subject> [article.subject] \</dcterms:subject> |
-| pr:author | author.type, author.name, author.organisation_name, author.identifier, author.identifier.id | | \<pr:author>\<pr:type>[author.type]\</pr:type>\<pr:id type=[author.identifier.type]>[author.identifier.id]\</pr:id>\<pr:firstnames>[author.name.firstname]\</pr:firstnames>\<pr:surname>[author.name.surname]\</pr:surname>\</pr:author>
+| pr:author | author.name, author.organisation_name, author.identifier, author.email author.type | | \<pr:author>\<pr:type>[author.type]\</pr:type>\<pr:id type=[author.identifier.type]>[author.identifier.id]\</pr:id>\<pr:email>[author.email]\</pr:email>\<pr:firstnames>[author.name.firstname]\</pr:firstnames>\<pr:surname>[author.name.surname]\</pr:surname>\</pr:author> |
+| pr:contributor | contributor.type, contributor.name, contributor.organisation_name, contributor.identifier | | \<pr:contributor>\<pr:type>[contributor.type]\</pr:type>\<pr:id type=[author.identifier.type]>[author.identifier.id]\</pr:id>\<pr:email>[contributor.email]\</pr:email>\<pr:surname>[contributor.name.surname]\</pr:surname>\<pr:firstnames>[contributor.name.firstname]\</pr:firstnames>\<pr:org_name>[contributor.organisation_name]\</pr:org_name> |
+| dcterms:dateAccepted | accepted_date | | \<dcterms:dateAccepted> [accepted_date] \</dcterms:dateAccepted> | 
+| rioxxterms:publication_date | publication_date | | \<rioxxterms:publication_date> [publication_date] \</rioxxterms:publication_date> |
+| dcterms:medium | publication_date.publication_format | | \<dcterms:medium> [publication_date.publication_format] \</dcterms:medium> | 
+| pr:history_date | history_date.type, history_date.date | | \<pr:history_date type=[history_date.type]> [history_date.date] \</pr:history_date> |
+| rioxxterms:project | project.name, project.identifier, project.grant_number | | \<rioxxterms:project funder_id=[project.identifier] funder_name=[project.name]> [project.grant_number] \</rioxxterms:project> |
+| pr:embargo | embargo.start, embargo.end | | \<pr:embargo start_date=[embargo.start] end_date=[embargo.end]>\</pr:embargo> |
+
 
 
 ## Example XML Output
