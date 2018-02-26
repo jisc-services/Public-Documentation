@@ -25,12 +25,16 @@ The following table lists first the Dublin Core fields which the xwalk populates
 | dcterms:title | article.title | A name given to the resource. | \<dcterms:title> [article.title] </dcterms:title> |
 | dcterms:type | article.type | The nature or genre of the resource. | \<dcterms:type> [article.type] </dcterms:type> |
 | rioxxterms:type | article.type | The nature or genre of the resource. | \<rioxxterms:type> [article.type] </rioxxterms:type> |
+| rioxxterms:version | article.version | | \<rioxxterms:version> [article.version] \</rioxxterms:version>
 | pr:start_page | article.start_page |  | \<pr:start_page> [article.start_page] \</pr:start_page> |
 | pr:end_page | article.end_page |  | \<pr:end_page> [article.end_page] \</pr:end_page> |
 | pr:page_range | article.page_range |  | \<pr:page_range> [article.page_range] \</pr:page_range> |
 | pr:num_pages | article.num_pages |  | \<pr:num_pages> [article.num_pages] \</pr:num_pages> |
-| article.language | dcterms :language |  |
-| article.abstract | dcterms :abstract |  |
+| dcterms:language | article.language | | \<dcterms:language> [article.language] \</dcterms:language> |
+| dcterms:abstract | article.abstract | | \<dcterms:abstract> [article.abstract] \</dcterms:abstract> |
+| pr:identifier | article.identifier.id, article.identifier.type | | \<pr:identifier type=[article.identifier.type]> [article.identifier.id] \</pr:identifier> |
+| dcterms:subject | article.subject | | \<dcterms:subject> [article.subject] \</dcterms:subject> |
+| pr:author | author.type, author.name, author.organisation_name, author.identifier, author.identifier.id | | \<pr:author><pr:type>[author.type]</pr:type><pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id><pr:firstnames>[author.name.firstname]</pr:firstnames><pr:surname>[author.name.surname]</pr:surname></pr:author>
 
 
 ## Example XML Output
