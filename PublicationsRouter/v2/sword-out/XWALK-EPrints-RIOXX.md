@@ -24,8 +24,8 @@ The following table lists first the Dublin Core fields which the xwalk populates
 | pr:source_id | journal.identifier.id<br> journal.identifier.type | <pr:source_id type=[journal.identifier.type]> [journal.identifier.id] \</pr:source_id> |
 | [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title |  \<dcterms:title> [article.title] </dcterms:title> |
 | [dcterms:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type |  \<dcterms:type> [article.type] </dcterms:type> |
-| rioxxterms:type | article.type |  \<rioxxterms:type> [article.type] </rioxxterms:type> |
-| rioxxterms:version | article.version |  \<rioxxterms:version> [article.version] \</rioxxterms:version>
+| [rioxxterms:type](http://www.rioxx.net/profiles/v2-0-final/) | article.type |  \<rioxxterms:type> [article.type] </rioxxterms:type> |
+| [rioxxterms:version](http://www.rioxx.net/profiles/v2-0-final/) | article.version |  \<rioxxterms:version> [article.version] \</rioxxterms:version>
 | pr:start_page | article.start_page |  \<pr:start_page> [article.start_page] \</pr:start_page> |
 | pr:end_page | article.end_page |  \<pr:end_page> [article.end_page] \</pr:end_page> |
 | pr:page_range | article.page_range |   \<pr:page_range> [article.page_range] \</pr:page_range> |
@@ -37,10 +37,10 @@ The following table lists first the Dublin Core fields which the xwalk populates
 | pr:author | author.name<br> author.organisation_name<br> author.identifier<br> author.email author.type | \<pr:author><br> &nbsp;&nbsp;&nbsp;&nbsp;  \<pr:type>[author.type]\</pr:type><br> &nbsp;&nbsp;&nbsp;&nbsp;  \<pr:id type=[author.identifier.type]>[author.identifier.id]\</pr:id><br>  &nbsp;&nbsp;&nbsp;&nbsp; \<pr:email>[author.email]\</pr:email><br> &nbsp;&nbsp;&nbsp;&nbsp;  \<pr:firstnames>[author.name.firstname]\</pr:firstnames><br> &nbsp;&nbsp;&nbsp;&nbsp;  \<pr:surname>[author.name.surname]\</pr:surname> <br> \</pr:author> |
 | pr:contributor | contributor.type<br> contributor.name<br> contributor.organisation_name<br> contributor.identifier | \<pr:contributor><br> &nbsp;&nbsp;&nbsp;&nbsp; \<pr:type>[contributor.type]\</pr:type><br> &nbsp;&nbsp;&nbsp;&nbsp; \<pr:id type=[author.identifier.type]>[author.identifier.id]\</pr:id><br> &nbsp;&nbsp;&nbsp;&nbsp; \<pr:email>[contributor.email]\</pr:email> <br> &nbsp;&nbsp;&nbsp;&nbsp; \<pr:surname>[contributor.name.surname]\</pr:surname> <br> &nbsp;&nbsp;&nbsp;&nbsp; \<pr:firstnames>[contributor.name.firstname]\</pr:firstnames> <br> &nbsp;&nbsp;&nbsp;&nbsp; \<pr:org_name>[contributor.organisation_name]\</pr:org_name> <br> \</pr:contributor> |
 | [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | \<dcterms:dateAccepted> [accepted_date] \</dcterms:dateAccepted> | 
-| rioxxterms:publication_date | publication_date | \<rioxxterms:publication_date> [publication_date] \</rioxxterms:publication_date> |
+| [rioxxterms:publication_date](http://www.rioxx.net/profiles/v2-0-final/) | publication_date | \<rioxxterms:publication_date> [publication_date] \</rioxxterms:publication_date> |
 | [dcterms:medium](http://dublincore.org/documents/dcmi-terms/#terms-medium) | publication_date.publication_format | \<dcterms:medium> [publication_date.publication_format] \</dcterms:medium> | 
 | pr:history_date | history_date.type<br> history_date.date | \<pr:history_date type=[history_date.type]> [history_date.date] \</pr:history_date> |
-| rioxxterms:project | project.name<br> project.identifier<br>project.grant_number | \<rioxxterms:project funder_id=[project.identifier] funder_name=[project.name]> [project.grant_number] \</rioxxterms:project> |
+| [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | project.name<br> project.identifier<br>project.grant_number | \<rioxxterms:project funder_id=[project.identifier] funder_name=[project.name]> [project.grant_number] \</rioxxterms:project> |
 | pr:embargo | embargo.start<br> embargo.end | \<pr:embargo start_date=[embargo.start] end_date=[embargo.end]>\</pr:embargo> |
 
 
