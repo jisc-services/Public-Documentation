@@ -21,14 +21,14 @@ The following table lists first the Dublin Core fields which the xwalk populates
 |:-----------------------------:|:---------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | pr:source | journal.title, journal.abbrevTitle,  journal.volume,  journal.issue| | <pr:source volume=[journal.volume] issue=[journal.issue]> [journal.title] + [journal.abbrevTitle] </pr:source> |
 | dcterms:publisher  | journal.publisher | | \<dcterms:publisher\> [journal.publisher] \</dcterms:publisher\> |
-| pr:source_id | journal.identifier.id, journal.identifier.type | | <pr:source_id type=[journal.identifier.type]> [journal.identifier.id] \</pr:source_id>
-| dcterms:title | article.title | A name given to the resource. | \<dcterms:title> [article.title] </dcterms:title>
-| dcterms:type | article.type | The nature or genre of the resource. | \<dcterms:type> [article.type] </dcterms:type>
-| rioxxterms:type | article.type | The nature or genre of the resource. | \<rioxxterms:type> [article.type] </rioxxterms:type>
-| pr:start_page | article.start_page |  | \<pr:start_page> [article.start_page] \</pr:start_page>
-| pr:end_page | article.end_page |  | \<pr:end_page> [article.end_page] \</pr:end_page>
-| pr:page_range | article.page_range |  | \<pr:page_range> [article.page_range] \</pr:page_range>
-| pr:num_pages | article.num_pages |  | \<pr:num_pages> [article.num_pages] \</pr:num_pages>
+| pr:source_id | journal.identifier.id, journal.identifier.type | | <pr:source_id type=[journal.identifier.type]> [journal.identifier.id] \</pr:source_id> |
+| dcterms:title | article.title | A name given to the resource. | \<dcterms:title> [article.title] </dcterms:title> |
+| dcterms:type | article.type | The nature or genre of the resource. | \<dcterms:type> [article.type] </dcterms:type> |
+| rioxxterms:type | article.type | The nature or genre of the resource. | \<rioxxterms:type> [article.type] </rioxxterms:type> |
+| pr:start_page | article.start_page |  | \<pr:start_page> [article.start_page] \</pr:start_page> |
+| pr:end_page | article.end_page |  | \<pr:end_page> [article.end_page] \</pr:end_page> |
+| pr:page_range | article.page_range |  | \<pr:page_range> [article.page_range] \</pr:page_range> |
+| pr:num_pages | article.num_pages |  | \<pr:num_pages> [article.num_pages] \</pr:num_pages> |
 | article.language | dcterms :language |  |
 | article.abstract | dcterms :abstract |  |
 | article.identifier.type | pr :identifier  | <pr:identifier> type: id </pr:identifier>  <rioxxterms:version_of_record> doi </rioxxterms:version_of_record> |
