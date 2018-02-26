@@ -15,7 +15,7 @@ For information about the schemas see:
 * [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
 * [RIOXX](http://rioxx.net/v2-0-final/)
 
-The following table lists first the Dublin Core fields which the xwalk populates. It then lists the RIOXX fields which the xwalk populates. 
+The following table lists the various terms which the xwalk will populate, then the relevant metadata items which will populate these terms along with an example of how the xml would look. 
 
 | Terms | PubRouter Metadata fields | Example |
 |:-----------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------------|
