@@ -48,93 +48,60 @@ An example Atom Entry document containing the metadata listed above is shown her
 
 ```xml
     <?xml version="1.0"?>
-    <entry xmlns="http://www.w3.org/2005/Atom"
-            xmlns:dcterms="http://purl.org/dc/terms/"
-            xmlns:atom="http://www.w3.org/2005/Atom"
-            xmlns:ali="http://www.niso.org/schemas/ali/1.0/"
-            xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/"
-            xmlns:dc="http://purl.org/dc/elements/">
-
-        <!-- some atom standard elements -->
-        <generator uri="http://bitbucket.org/beno/python-sword2" version="0.1"/>
-        <atom:updated>2015-10-13T11:10:47.060613</atom:updated>
-
-        <!-- links to content files -->
-        <dc:identifier>http://pubsrouter.jisc.ac.uk/api/v1/notification/1234567890/content</dc:identifier>
-        <dc:identifier>http://pubsrouter.jisc.ac.uk/api/v1/notification/1234567890/content/SimpleZip</dc:identifier>
-
-        <!-- embargo information -->
-        <dcterms:available>2016-01-01T00:00:00Z</dcterms:available>
-        <ali:license_ref start_date="2016-01-01T00:00:00Z">http://creativecommons.org/cc-by</ali:license_ref>
-
-        <!-- article title -->
-        <dc:title>An important article about science</dc:title>
-        <atom:title>An important article about science</atom:title>
-
-        <!-- version of the article described here -->
-        <rioxxterms:version>AAM</rioxxterms:version>
-
-        <!-- publisher of the journal in which the article appears
-        <dc:publisher>Premier Publisher</dc:publisher>
-
-        <!-- the journal (name and issns) in which the article appears -->
-        <dc:source>Journal of Science</dc:source>
-        <atom:source>Journal of Science</atom:source>
-        <dc:source>issn:1234-5678</dc:source>
-        <dc:source>eissn:1234-5678</dc:source>
-        <dc:source>pissn:9876-5432</dc:source>
-
-        <!-- identifier for the item, including version_of_record if a DOI -->
-        <dc:source>doi:10.pp/jit</dc:source>
-        <dc:identifier>doi:10.pp/jit.1</dc:identifier>
-        <rioxxterms:version_of_record>doi:10.pp/jit.1</rioxxterms:version_of_record>
-
-        <!-- type of article -->
-        <dc:type>article</dc:type>
-
-        <!-- author of the article (may be repeated), with their various properties -->
-        <dc:creator>Richard Jones</dc:creator>
-        <atom:author>
-            <atom:name>Richard Jones</atom:name>
-        </atom:author>
-        <dc:creator>orcid:aaaa-0000-1111-bbbb</dc:creator>
-        <dc:creator>email:richard@example.com</dc:creator>
-        <rioxxterms:author id="orcid:aaaa-0000-1111-bbbb email:richard@example.com">Richard Jones</rioxxterms:author>
-
-        <!-- author affiliation -->
-        <dc:contributor>Cottage Labs</dc:contributor>
-        <atom:contributor>
-            <atom:name>Cottage Labs</atom:name>
-        </atom:contributor>
-
-        <!-- language of the article -->
-        <dc:language>eng</dc:language>
-
-        <!-- publication date -->
-        <rioxxterms:publication_date>2015-01-01T00:00:00Z</rioxxterms:publication_date>
-        <dc:date>2015-01-01T00:00:00Z</dc:date>
-        <atom:published>2015-01-01T00:00:00Z</atom:published>
-
-        <!-- date accepted -->
-        <dcterms:dateAccepted>2014-09-01T00:00:00Z</dcterms:dateAccepted>
-
-        <!-- date submitted -->
-        <dcterms:dateSubmitted>2014-07-03T00:00:00Z</dcterms:dateSubmitted>
-
-        <!-- rights information (see also ali:license_ref above) -->
-        <dc:rights>http://creativecommons.org/cc-by</dc:rights>
-        <atom:rights>http://creativecommons.org/cc-by</atom:rights>
-
-        <!-- funder information -->
-        <rioxxterms:project funder_name="BBSRC" funder_id="ringold:bbsrcid">BB/34/juwef</rioxxterms:project>
-        <atom:contributor>
-            <atom:name>BBSRC</atom:name>
-        </atom:contributor>
-
-        <!-- subject/keywords -->
-        <dc:subject>science</dc:subject>
-        <dc:subject>technology</dc:subject>
-        <dc:subject>arts</dc:subject>
-        <dc:subject>medicine</dc:subject>
-    </entry>
+<entry xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
+	<pr:download_link url="http://testing.no.real.jisc.ac.uk/api/v1/notification/1234567890/content/1" format="text/html" filename="1" primary="false"/>
+	<pr:relation url="http://testing.no.real.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf"/>
+	<pr:download_link url="http://testing.no.real.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf" public="true" filename="2.pdf" primary="true"/>
+	<dcterms:format>application/pdf</dcterms:format>
+	<pr:source issue="Issue number of a journal, or in rare instances, a book" volume="Number of a journal (or other document) within a series">Journal of Important Things</pr:source>
+	<pr:source_id type="issn">1234-5678</pr:source_id>
+	<pr:source_id type="eissn">1234-5678</pr:source_id>
+	<pr:source_id type="pissn">9876-5432</pr:source_id>
+	<pr:source_id type="doi">10.pp/jit</pr:source_id>
+	<dcterms:publisher>Premier Publisher</dcterms:publisher>
+	<dcterms:title>Test Article</dcterms:title>
+	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
+	<dcterms:type>article</dcterms:type>
+	<rioxxterms:version>VoR</rioxxterms:version>
+	<pr:start_page>Page number on which a document starts</pr:start_page>
+	<pr:end_page>Page number on which a document ends</pr:end_page>
+	<pr:page_range>Text describing discontinuous pagination.</pr:page_range>
+	<pr:num_pages>Total number of pages </pr:num_pages>
+	<dcterms:language>en</dcterms:language>
+	<dcterms:language/>
+	<dcterms:abstract>Abstract of the work </dcterms:abstract>
+	<pr:identifier type="doi">55.aa/base.1</pr:identifier>
+	<rioxxterms:version_of_record>55.aa/base.1</rioxxterms:version_of_record>
+	<dcterms:subject>science</dcterms:subject>
+	<dcterms:subject>technology</dcterms:subject>
+	<dcterms:subject>arts</dcterms:subject>
+	<dcterms:subject>medicine</dcterms:subject>
+	<dcterms:dateAccepted>2014-09-01</dcterms:dateAccepted>
+	<rioxxterms:publication_date>2015-01-01</rioxxterms:publication_date>
+	<pr:history_date type="submitted">2014-07-03</pr:history_date>
+	<rioxxterms:project funder_id="ringold:bbsrcid" funder_name="BBSRC">BB/34/juwef</rioxxterms:project>
+	<pr:license url="http://url" start_date="12-11-2016" version="1">licence title</pr:license>
+	<pr:embargo start_date="2015-01-01T00:00:00Z" end_date="2016-01-01T00:00:00Z"/>
+	<pr:author>
+		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
+		<pr:id type="orcid">aaaa-0000-1111-bbbb</pr:id>
+		<pr:email>richard@example.com</pr:email>
+		<pr:email>richard2@example.com</pr:email>
+		<pr:surname>Jones</pr:surname>
+		<pr:firstnames>Richard</pr:firstnames>
+	</pr:author>
+	<pr:author>
+		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
+		<pr:id type="orcid">dddd-2222-3333-cccc</pr:id>
+		<pr:email>mark@example.com</pr:email>
+		<pr:surname>MacGillivray</pr:surname>
+		<pr:firstnames>Mark</pr:firstnames>
+	</pr:author>
+	<pr:contributor>
+		<pr:type>http://www.loc.gov/loc.terms/relators/EDT</pr:type>
+		<pr:email>manolo@example.com</pr:email>
+		<pr:surname>Williams</pr:surname>
+		<pr:firstnames>Manolo</pr:firstnames>
+	</pr:contributor>
+</entry>
 ```
