@@ -17,7 +17,7 @@ The following table lists the various terms which the xwalk will populate, then 
 | Terms | PubRouter Metadata fields | Example |
 |:-----------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------------|
 | [pr:source](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L133) | journal.title<br> journal.abbrevTitle<br>  journal.volume<br>  journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]> [journal.title] + [journal.abbrevTitle] </pr:source>` |
-| [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher)  | journal.publisher | `<dcterms:publisher\> [journal.publisher] </dcterms:publisher\>` |
+| [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher)  | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |
 | [pr:source_id](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L151) | journal.identifier.id<br> journal.identifier.type | `<pr:source_id type=[journal.identifier.type]> [journal.identifier.id] </pr:source_id>` |
 | [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title |  `<dcterms:title> [article.title] </dcterms:title>` |
 | [dcterms:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dcterms:type> [article.type] </dcterms:type>` |
