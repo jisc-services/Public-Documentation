@@ -17,20 +17,11 @@ any notes regarding the transformation:
 | issn | journal.identifier.id | `<issn> [journal.identifier.id] </issn>` |
 | title | article.title <br> article.subtitle | `<title> [article.title] - [article.subtitle1] - [article.subtitle2] -...</title>` |
 | type | article.type | `<type> [article.type] </type>` |
-| article.version | note | Stored in Licensing information line of note, will see "** License for \<article_version\> version of this article... "
 | pagerange | article.page_range | `<pagerange> [article.page_range] </pagerange>` |
 | abstract | article.abstract | `<abstract> [article.abstract] </abstract>` |
-| article.identifier.type | ---- | We list one identifier for an article, if there are multiple identifiers we prioritise a DOI, else use whichever other identifier is present. 
-| article.identifier.id | id_number | 
-| article.subject | keywords | Subjects are entered as one entry, separated by commas. For example "\<subject1>, \<subject2>, ..."
-| author.type | ---- | 
-| author.name.firstname | creators.item.name.given | 
-| author.name.surname | creators.item.name.family | 
-| author.name.fullname | creators.item.name | 
-| author.name.suffix | ---- |
-| author.organisation_name | ---- |
-| author.identifier.type | creators.item | If type is email, this will be listed as "id", else an individual tag of the same name as author.identifier.type with text of author.identifier.id will be created. 
-| author.identifier.id | creators.item.\<type\> | If the id is an email, and there are multiple emails associated with this author, these will be listed as an individual string as a comma separated list. 
+| id_number | article.identifier.id | `<id_number> [article.identifier.id] </id_number>` |
+|  keywords | article.subject | `<keywords> [article.subject1], [article.subject2], ... </keywords>`
+| creators.item | author.name.surname <br> author.name.firstname <br> author.identifier.type <br> author.identifier.id <br> author.email | `<creators>` <br> &nbsp;&nbsp; `<item>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<[author.identifier.type]> author.identifier.id </[author.identifier.type]>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<id> [author.email] </id>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<name>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<family> [author.name.surname] </family>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<given> [author.name.firstname] </given>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `</name>` <br> &nbsp;&nbsp; `</item>` <br> `</creators>` |
 | author.affiliation | ---- |
 | contributor.type | contributors.item.type |
 | contributor.name.firstname | contributors.item.name.given | 
@@ -50,6 +41,7 @@ any notes regarding the transformation:
 | embargo.end | note | Any embargo information will be written in note as "** Embargo End Date: \<embargo.start\>"
 | embargo.duration | ---- |
 | license_ref | note | License information will be written in note as "** License for \<article_version\> version of this article starting on \<license_ref.start\>: \<license_ref.url\>/\<license_ref.type\>/\<license_ref.title\>"
+| article.version | note | Stored in Licensing information line of note, will see "** License for \<article_version\> version of this article... "
 
 ## Example XML Output
 
