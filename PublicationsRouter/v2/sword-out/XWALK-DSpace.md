@@ -22,22 +22,14 @@ The following table lists the PubRouter internal metadata JSON fields (left hand
 | dcterms:contributor | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<dcterms:contributor> [contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.identifier.type]: [contributor.identifier.id]; [contributor.organisation_name] </dcterms:creator>`  |
 | dcterms:dateAccepted | accepted_date | `<dcterms:dateAccepted> [accepted_date] </dcterms:dateAccepted>` |
 | dcterms:issued | publication_date | `<dcterms:issued> [publication_date] </dcterms:issued>` |
-| history_date.type | description | History: {type} {date}, {type} {date}, ...' |
-| history_date.date | description | History: {type} {date}, {type} {date}, ...' |
-| history_date.date | dateSubmitted | Dspace uses dateSubmitted when history_date.type=="received"  |
-| publication_status | description |  |
-| project.name  | description | Funding information |
-| project.identifier | description | Funding information |
-| project.grant_number | description | Funding information |
-| embargo.start | rights |  |
-| embargo.end | rights |  |
-| embargo.duration | rights |  |
-| license_ref.title | rights |  |
-| license_ref.type | rights |  |
-| license_ref.url | rights |  |
-| license_ref.version | rights |  |
-| license_ref.start | rights |  |
-| provider_agent | description | From  {provider_agent} via Jisc Publications Router.' |
+| dcterms:rights | embargo.start <br> embargo.end <br> embargo.duration | `<dcterms:rights> Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dcterms:rights>` |
+| dcterms:rights| license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights> License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
+| dcterms:description | article.version | `<dcterms:description> Version: [article.version] </dcterms:description>` |
+| dcterms:description | provider_agent | `<dcterms:description> From [provider_agent] via Jisc Publications Router. </dcterms:description>` |
+| dcterms:description | publication_status | `<dcterms:description> Publication status: [publication_status] </dcterms:description>` | 
+| dcterms:description | history_date.date_type <br> history_date.date | `<dcterms:description> History: [history_date.date_type], [history_date.date] </dcterms:description>` |
+| dcterms:description | funding.name <br> funding.grant_number <br> funding.identifier | `<dcterms:description> Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dcterms:description>` |
+
 
 ## Example XML Output
 
