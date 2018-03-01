@@ -22,26 +22,12 @@ any notes regarding the transformation:
 | id_number | article.identifier.id | `<id_number> [article.identifier.id] </id_number>` |
 |  keywords | article.subject | `<keywords> [article.subject1], [article.subject2], ... </keywords>`
 | creators.item | author.name.surname <br> author.name.firstname <br> author.identifier.type <br> author.identifier.id <br> author.email | `<creators>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<[author.identifier.type]> author.identifier.id </[author.identifier.type]>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<id> [author.email] </id>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<name>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `<family> [author.name.surname] </family>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<given> [author.name.firstname] </given>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `</name>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `</item>` <br> `</creators>` |
-| author.affiliation | ---- |
-| contributor.type | contributors.item.type |
-| contributor.name.firstname | contributors.item.name.given | 
-| contributor.name.surname | contributors.item.name.family | 
-| contributor.name.fullname | contributors.item.name |
-| contributor.name.suffix | ---- | 
-| contributor.organisation_name | ---- |
-| contributor.identifier.type | ---- |  If id type is email, this will be listed as "id", else an individual tag of the same name as author.identifier.type with text of author.identifier.id will be created. 
-| contributor.identifier.id | contributors.item.\<type\> | If the id is an email, and there are multiple emails associated with this contributor, these will be listed as an individual string as a comma separated list. 
-| contributor.affiliation | ---- |
-| accepted_date | date | If accepted_date is present, but publication_date is not, then date_type field will be 'Accepted' and ispublished field will be 'inpress' 
-| publication_date | date | If publication_date is present, then date_type field will be 'published' and ispublished field will be 'pub'
-| history_date | ---- | 
-| publication_status | ---- |
-| funding | funding.item | Full funding information for a funder will be found within an item tag under the funding tag. Information will be presented as so "** Funder: \<funding.name\>; Grant num: \<funding.grant_number\>; \<funding.identifier1.type\>: \<funding.identifier1.id\>; \<funding.identifier2.type\>: \<funding.identifier2.id\>, ..."
-| embargo.start | ---- |
-| embargo.end | note | Any embargo information will be written in note as "** Embargo End Date: \<embargo.start\>"
-| embargo.duration | ---- |
-| license_ref | note | License information will be written in note as "** License for \<article_version\> version of this article starting on \<license_ref.start\>: \<license_ref.url\>/\<license_ref.type\>/\<license_ref.title\>"
-| article.version | note | Stored in Licensing information line of note, will see "** License for \<article_version\> version of this article... "
+| contributors.item | contributor.name.surname <br> contributor.name.firstname <br> contributor.identifier.type <br> contributor.identiier.id <br> contributor.type <br> contributor.email |  `<contributors>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<type> [contributor.type] </type>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<[contributor.identifier.type]> contributor.identifier.id </[contributor.identifier.type]>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<id> [contributor.email] </id>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<name>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `<family> [contributor.name.surname] </family>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<given> [contributor.name.firstname] </given>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `</name>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `</item>` <br> `</contributors>` |
+| date | publication_date <br> accepted_date | Prioritises a publication_date <br> `<date> [publication_date OR accepted_date] </date>`
+| date_type | publication_date <br> accepted_date | If publication date then published, if accepted date then Accepted <br> `<date_type> [published OR Accepted] </date_type>`
+| funders.item | funding.grant_number <br> funding.name <br> funding.identifier | `<funders>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item> ** Funder: [funding.name]; Grant num: [funding.grant_number]; [funding.identifier.type]: [funding.identifier.id] </item>` <br> `</funders>` |
+| note |  embargo.end | Any embargo information will be written in `<note>` as "** Embargo End Date: [embargo.start]"
+| note | license_ref <br> article.version | License information will be written in `<note>` as "** License for [article.version] version of this article starting on [license_ref.start]: [license_ref.url OR license_ref.type OR license_ref.title]"
 
 ## Example XML Output
 
