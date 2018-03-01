@@ -52,7 +52,11 @@ The behaviour during an individual notification deposit is as follows:
 
 Router is certified to work with Dspace 5.x
 
+
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
+In order that you do not lose any information if your XSLT does not yet do what you want, Router will also deposit
+a full copy of the Atom Entry XML as a file attached to the eprint.  For information about the metadata held in that
+file see the [Crosswalk Documentation](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml)
 
 
 ### Deposit process
