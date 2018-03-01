@@ -8,25 +8,18 @@ This document describes the crosswalk from the notification metadata fields rece
 The following table lists the notification fields in the JSON, then the DC/RIOXX fields it will be transformed to, and
 any notes regarding the transformation:
 
-| PubRouter Metadata | Eprints.Eprint terms | Description |
+| Eprints.Eprint terms | PubRouter Metadata | XML Format |
 |-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| journal.title | publication 
-| journal.abbrev_title | ---- 
-| journal.volume | volume 
-| journal.issue | number
-| journal.publisher | publisher
-| journal.identifier.type | ---- | We list one identifier for a journal, if there are multiple identifiers we prioritise using the identifier with identifier.type value of eissn/essn, then issn and finally any other ssn value. 
-| journal.identifier.id | issn | This will be the id value of the favoured ssn type.
-| article.title | title | 
-| article.sub_title | title | Any subtitles are appended to the title, like so: "Title - \<subtitle1\> - \<subtitle2\> - \<subtitle3\> ..."
-| article.type | type | 
+| publication |  journal.title | `<publication> [journal.title] </publication>` |
+| volume | journal.volume | `<volume> [journal.volume] </volume>` |
+| number | journal.issue | `<number> [journal.issue] </volume>` |
+| publisher | journal.publisher | `<publisher> [journal.publisher] </publisher>` |
+| issn | journal.identifier.id | `<issn> [journal.identifier.id] </issn>` |
+| title | article.title <br> article.subtitle | `<title> [article.title] - [article.subtitle1] - [article.subtitle2] -...</title>` |
+| type | article.type | `<type> [article.type] </type>` |
 | article.version | note | Stored in Licensing information line of note, will see "** License for \<article_version\> version of this article... "
-| article.start_page | pagerange | 
-| article.end_page | pagerange | 
-| article.page_range | pagerange | 
-| article.num_pages | pagerange |
-| article.language | ---- |
-| article.abstract | abstract | 
+| pagerange | article.page_range | `<pagerange> [article.page_range] </pagerange>` |
+| abstract | article.abstract | `<abstract> [article.abstract] </abstract>` |
 | article.identifier.type | ---- | We list one identifier for an article, if there are multiple identifiers we prioritise a DOI, else use whichever other identifier is present. 
 | article.identifier.id | id_number | 
 | article.subject | keywords | Subjects are entered as one entry, separated by commas. For example "\<subject1>, \<subject2>, ..."
