@@ -7,9 +7,9 @@ For information about the schema see:
 * [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
 * [DSPACE schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries)
 
-The following table lists the PubRouter internal metadata JSON fields (left hand column) and the output XML elements they are transformed to (middle column), with explanatory notes in the last column.
+The following table lists the the output XML elements (left most column), PubRouter internal metadata JSON fields (central column) and  the XML format which the terms take in the XML (right most column). 
 
-| DC terms | PubRouter Metadata | XML Template |
+| DC terms | PubRouter Metadata | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.page_range <br>  | `<dcterms:bibliographicCitation> [journal.title], volume [journal.volume], issue [journal.issue], page [article.page_range] </dcterms:bibliographicCitation>` |
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |
