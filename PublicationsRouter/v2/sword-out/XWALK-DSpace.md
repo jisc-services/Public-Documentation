@@ -11,24 +11,24 @@ The following table lists the PubRouter internal metadata JSON fields (left hand
 
 | DC terms | PubRouter Metadata | XML Template |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
-| dcterms:bibliographicCitation | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.page_range <br>  | `<dcterms:bibliographicCitation> [journal.title], volume [journal.volume], issue [journal.issue], page [article.page_range] </dcterms:bibliographicCitation>` |
-| dcterms:publisher | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |
-| dcterms:source | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source> [journal.identifier.type]: [journal.identifier.id] </dcterms:source>` |
-| dcterms:title | article.title | `<dcterms:title> [article.title] </dcterms:title>` |
-| dcterms:language | article.language | `<dcterms:language> [article.language] </dcterms:language>` |
-| dcterms:abstract | article.abstract | `<dcterms:abstract> [article.abstract] </dcterms:abstract>` |
-| dcterms:subject |  article.subject | `<dcterms:subject> [article.subject] </dcterms:subject>` |
-| dcterms:creator | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier | `<dcterms:creator> [author.surname], [author.firstname]; [author.identifier.type]: [author.identifier.id]; [author.organisation_name] </dcterms:creator>` |
-| dcterms:contributor | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<dcterms:contributor> [contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.identifier.type]: [contributor.identifier.id]; [contributor.organisation_name] </dcterms:creator>`  |
-| dcterms:dateAccepted | accepted_date | `<dcterms:dateAccepted> [accepted_date] </dcterms:dateAccepted>` |
-| dcterms:issued | publication_date | `<dcterms:issued> [publication_date] </dcterms:issued>` |
-| dcterms:rights | embargo.start <br> embargo.end <br> embargo.duration | `<dcterms:rights> Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dcterms:rights>` |
-| dcterms:rights| license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights> License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
-| dcterms:description | article.version | `<dcterms:description> Version: [article.version] </dcterms:description>` |
-| dcterms:description | provider_agent | `<dcterms:description> From [provider_agent] via Jisc Publications Router. </dcterms:description>` |
-| dcterms:description | publication_status | `<dcterms:description> Publication status: [publication_status] </dcterms:description>` | 
-| dcterms:description | history_date.date_type <br> history_date.date | `<dcterms:description> History: [history_date.date_type], [history_date.date] </dcterms:description>` |
-| dcterms:description | funding.name <br> funding.grant_number <br> funding.identifier | `<dcterms:description> Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dcterms:description>` |
+| [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.page_range <br>  | `<dcterms:bibliographicCitation> [journal.title], volume [journal.volume], issue [journal.issue], page [article.page_range] </dcterms:bibliographicCitation>` |
+| [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |
+| [dcterms:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source> [journal.identifier.type]: [journal.identifier.id] </dcterms:source>` |
+| [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dcterms:title> [article.title] </dcterms:title>` |
+| [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dcterms:language> [article.language] </dcterms:language>` |
+| [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract> [article.abstract] </dcterms:abstract>` |
+| [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) |  article.subject | `<dcterms:subject> [article.subject] </dcterms:subject>` |
+| [dcterms:creator](http://dublincore.org/documents/dcmi-terms/#terms-creator) | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier | `<dcterms:creator> [author.surname], [author.firstname]; [author.identifier.type]: [author.identifier.id]; [author.organisation_name] </dcterms:creator>` |
+| [dcterms:contributor](http://dublincore.org/documents/dcmi-terms/#terms-contributor) | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<dcterms:contributor> [contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.identifier.type]: [contributor.identifier.id]; [contributor.organisation_name] </dcterms:creator>`  |
+| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted> [accepted_date] </dcterms:dateAccepted>` |
+| [dcterms:issued](http://dublincore.org/documents/dcmi-terms/#terms-issued) | publication_date | `<dcterms:issued> [publication_date] </dcterms:issued>` |
+| [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dcterms:rights> Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dcterms:rights>` |
+| [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights> License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dcterms:description> Version: [article.version] </dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider_agent | `<dcterms:description> From [provider_agent] via Jisc Publications Router. </dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dcterms:description> Publication status: [publication_status] </dcterms:description>` | 
+|[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description> History: [history_date.date_type], [history_date.date] </dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dcterms:description> Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dcterms:description>` |
 
 
 ## Example XML Output
