@@ -1,17 +1,16 @@
-# JPER Core Metadata to Dublin Core for DSPACE
+# PubRouter DSPACE XML Schema Description
 
-This document describes the crosswalk from the notification metadata fields received via the JPER API to the
- XML format supplied to repositories via SWORDv2.
+This document describes the XML output by PubRouter for ingestion into DSPACE repositories via the SWORDv2 interface. 
  
 For information about the schema see:
 
 * [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
+* [DSPACE schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries)
 
-The following table lists the notification fields in the JSON, then the DC terms fields it will be transformed to, and
-any notes regarding the transformation:
+The following table lists the PubRouter internal metadata JSON fields (left hand column) and the output XML elements they are transformed to (middle column), with explanatory notes in the last column.
 
-| PubRouter Metadata | DC terms | Description |
-|:-----------------------------:|:-------------------------:|:------------------------------------------------------------:|
+| PubRouter Metadata | DC terms | Notes |
+|:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | journal.title | bibliographicCitation |  |
 | journal.abbrevTitle | bibliographicCitation |  |
 | journal.volume | bibliographicCitation |  |

@@ -1,5 +1,4 @@
-file:/C:/Users/ben.murray/Documents/PubRouter/PubRouter-App2/jper-sword-out/jper_sword_out/tests/resources/eprints_expected.xml# JPER Core Metadata to EPrints XML
-
+# PubRouter EPrints XML Schema Description
 This document describes the crosswalk from the notification metadata fields received via the JPER API to the
  XML format supplied to repositories via SWORDv2.
 

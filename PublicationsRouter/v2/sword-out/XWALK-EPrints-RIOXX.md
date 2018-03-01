@@ -1,4 +1,4 @@
-# JPER Core Metadata to PubRouter.xsd valid XML
+# PubRouter EPrints-RIOXX XML Schema Description
 
 
 
