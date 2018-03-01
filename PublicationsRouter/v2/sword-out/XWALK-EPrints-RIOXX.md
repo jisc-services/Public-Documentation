@@ -12,9 +12,9 @@ For information about the schemas see:
 * [RIOXX](http://rioxx.net/v2-0-final/)
 * [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd)
 
-The following table lists the various terms which the xwalk will populate, then the relevant metadata items which will populate these terms along with an example of how the xml would look. 
+The following table lists the various terms which the xwalk will populate, then the relevant metadata items which will populate these terms along with the template of the stated xml term. This template will be setup such that elements inside \<tags> will be XML terms and elements in [square brackets] will be from our metadata fields. 
 
-| Terms | PubRouter Metadata fields | Example |
+| Terms | PubRouter Metadata fields | XML template |
 |:-----------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------------|
 | [pr:source](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L133) | journal.title<br> journal.abbrevTitle<br>  journal.volume<br>  journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]> [journal.title] + [journal.abbrevTitle] </pr:source>` |
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher)  | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |

@@ -9,44 +9,19 @@ For information about the schema see:
 
 The following table lists the PubRouter internal metadata JSON fields (left hand column) and the output XML elements they are transformed to (middle column), with explanatory notes in the last column.
 
-| PubRouter Metadata | DC terms | Notes |
+| DC terms | PubRouter Metadata | XML Template |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
-| journal.title | bibliographicCitation |  |
-| journal.abbrevTitle | bibliographicCitation |  |
-| journal.volume | bibliographicCitation |  |
-| journal.issue | bibliographicCitation |  |
-| journal.publisher | publisher |  |
-| journal.identifier.issn | source  | (issn: value) |
-| journal.identifier.eissn | source | (eissn: value) |
-| journal.identifier.pissn | source  | (pissn: value) |
-| journal.identifier.doi | source | (doi: value) |
-| article.title | title | A name given to the resource. |
-| article.subtitle | title | A name given to the resource. |
-| article.type | type | The nature or genre of the resource. |
-| article.version | description |  |
-| article.start_page | bibliographicCitation |  |
-| article.end_page | bibliographicCitation |  |
-| article.page_range | bibliographicCitation |  |
-| article.num_pages | ---- |   |
-| article.language | language |  |
-| article.abstract | abstract |  |
-| article.identifier.type | identifier  | (type: id) |
-| article.identifier.id | identifier  | (type: id) |
-| article.subject | subject |  |
-| author.type | creator |  |
-| author.name | creator |  |
-| author.organisation_name | creator |  |
-| author.identifier.orcid | creator |  |
-| author.identifier.email | creator |  |
-| author.affiliation | ---- |   |
-| contributor.type | contributor |  |
-| contributor.name | contributor |  |
-| contributor.organisation_name | contributor |  |
-| contributor.identifier.orcid | contributor |  |
-| contributor.identifier.email | contributor |  |
-| contributor.affiliation | ---- |   |
-| accepted_date | dateAccepted |  |
-| publication_date | issued | Date of formal issuance (e.g., publication) of the resource. |
+| dcterms:bibliographicCitation | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.page_range <br>  | `<dcterms:bibliographicCitation> [journal.title], volume [journal.volume], issue [journal.issue], page [article.page_range] </dcterms:bibliographicCitation>` |
+| dcterms:publisher | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |
+| dcterms:source | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source> [journal.identifier.type]: [journal.identifier.id] </dcterms:source>` |
+| dcterms:title | article.title | `<dcterms:title> [article.title] </dcterms:title>` |
+| dcterms:language | article.language | `<dcterms:language> [article.language] </dcterms:language>` |
+| dcterms:abstract | article.abstract | `<dcterms:abstract> [article.abstract] </dcterms:abstract>` |
+| dcterms:subject |  article.subject | `<dcterms:subject> [article.subject] </dcterms:subject>` |
+| dcterms:creator | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier | `<dcterms:creator> [author.surname], [author.firstname]; [author.identifier.type]: [author.identifier.id]; [author.organisation_name] </dcterms:creator>` |
+| dcterms:contributor | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<dcterms:contributor> [contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.identifier.type]: [contributor.identifier.id]; [contributor.organisation_name] </dcterms:creator>`  |
+| dcterms:dateAccepted | accepted_date | `<dcterms:dateAccepted> [accepted_date] </dcterms:dateAccepted>` |
+| dcterms:issued | publication_date | `<dcterms:issued> [publication_date] </dcterms:issued>` |
 | history_date.type | description | History: {type} {date}, {type} {date}, ...' |
 | history_date.date | description | History: {type} {date}, {type} {date}, ...' |
 | history_date.date | dateSubmitted | Dspace uses dateSubmitted when history_date.type=="received"  |
