@@ -1,12 +1,10 @@
 # PubRouter EPrints XML Schema Description
-This document describes the crosswalk from the notification metadata fields received via the JPER API to the
- XML format supplied to repositories via SWORDv2.
+This document describes the XML output by PubRouter for ingestion into EPrints repositories via the SWORDv2 interface.
 
- For more information about the schema see: 
+For more information about the schema see: 
 * [EPrints XML](http://wiki.eprints.org/w/XML_Export_Format)
 
-The following table lists the notification fields in the JSON, then the DC/RIOXX fields it will be transformed to, and
-any notes regarding the transformation:
+The following table lists the the output XML elements (left most column), PubRouter internal metadata JSON fields (central column) and the XML format which the terms take in the XML (right most column).
 
 | Eprints.Eprint terms | PubRouter Metadata | XML Format |
 |-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
