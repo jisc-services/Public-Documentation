@@ -56,9 +56,9 @@ An example Atom Entry document containing the metadata listed above is shown her
 	<dcterms:creator>Palankar,Raghavendra</dcterms:creator>
 	<dcterms:creator>van den Brandt,Cindy</dcterms:creator>
 	<dcterms:creator>Schwaiger,Theresa</dcterms:creator>
-	<dcterms:creator>K&#252;hn,Jens-Peter</dcterms:creator>
+	<dcterms:creator>Kohn,Jens-Peter</dcterms:creator>
 	<dcterms:creator>Ribback,Silvia</dcterms:creator>
-	<dcterms:creator>Gl&#246;ckl,Gunnar</dcterms:creator>
+	<dcterms:creator>Gluckl,Gunnar</dcterms:creator>
 	<dcterms:creator>Evert,Matthias</dcterms:creator>
 	<dcterms:creator>Weitschies,Werner</dcterms:creator>
 	<dcterms:creator>Hosten,Norbert</dcterms:creator>
