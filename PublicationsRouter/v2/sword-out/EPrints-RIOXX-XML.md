@@ -1,6 +1,6 @@
-# PubRouter EPrints-RIOXX XML Schema Description
+# PubRouter EPrints-RIOXX XML Description
 
-This document describes the  RIOXXplus XML output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus plugins.
+This document describes the RIOXXplus XML output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus plugins.
 
 Background information:
 * [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd) - Eprints-RIOXX schema definition
@@ -47,8 +47,6 @@ The following table lists:
 | [pr:download_link](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L302) | links.format<br>links.url<br>links.packaging  | `<pr:download_link url=[links.url] filename=(derived from links.url) format=[links.format] public=(true\|false) packaging=[links.packaging] primary=(true\|false)></pr:download_link>` | {0..n} Links to full-text files; *public* attribute determines if displayable or not; *primary* attrib determines if version, license & embargo information is to be associated with article |
 
 
-
-
 ## Example XML Output
 
 An example Entry document containing the metadata listed above is shown here.
@@ -70,12 +68,11 @@ An example Entry document containing the metadata listed above is shown here.
 	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
 	<dcterms:type>article</dcterms:type>
 	<rioxxterms:version>VoR</rioxxterms:version>
-	<pr:start_page>Page number on which a document starts</pr:start_page>
-	<pr:end_page>Page number on which a document ends</pr:end_page>
-	<pr:page_range>Text describing discontinuous pagination.</pr:page_range>
-	<pr:num_pages>Total number of pages </pr:num_pages>
+	<pr:start_page>7</pr:start_page>
+	<pr:end_page>11</pr:end_page>
+	<pr:page_range>7-11</pr:page_range>
+	<pr:num_pages>4</pr:num_pages>
 	<dcterms:language>en</dcterms:language>
-	<dcterms:language/>
 	<dcterms:abstract>Abstract of the work </dcterms:abstract>
 	<pr:identifier type="doi">55.aa/base.1</pr:identifier>
 	<rioxxterms:version_of_record>55.aa/base.1</rioxxterms:version_of_record>
@@ -83,12 +80,14 @@ An example Entry document containing the metadata listed above is shown here.
 	<dcterms:subject>technology</dcterms:subject>
 	<dcterms:subject>arts</dcterms:subject>
 	<dcterms:subject>medicine</dcterms:subject>
-	<dcterms:dateAccepted>2014-09-01</dcterms:dateAccepted>
-	<rioxxterms:publication_date>2015-01-01</rioxxterms:publication_date>
-	<pr:history_date type="submitted">2014-07-03</pr:history_date>
+	<dcterms:dateAccepted>2017-05-11</dcterms:dateAccepted>
+	<rioxxterms:publication_date>2017-08-22</rioxxterms:publication_date>
+	<pr:history_date type="submitted">2017-02-21</pr:history_date>
+	<pr:history_date type="accepted">2017-05-11</pr:history_date>
+	<pr:history_date type="published">2017-08-22</pr:history_date>
 	<rioxxterms:project funder_id="ringold:bbsrcid" funder_name="BBSRC">BB/34/juwef</rioxxterms:project>
-	<pr:license url="http://url" start_date="12-11-2016" version="1">licence title</pr:license>
-	<pr:embargo start_date="2015-01-01" end_date="2016-01-01"/>
+	<pr:license url="https://creativecommons.org/licenses/by/4.0/" start_date="2018-08-22" version="4.0">licence title</pr:license>
+	<pr:embargo start_date="2017-08-22" end_date="2018-08-22"/>
 	<pr:author>
 		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
 		<pr:id type="orcid">aaaa-0000-1111-bbbb</pr:id>
