@@ -13,7 +13,7 @@ The following table lists:
 * Column 3 - the output XML element construction (format) - see note
 * Column 4 - cardinality (number of elements permitted) and notes.
 
-**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the XML actually output these field  holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.  Text derived through processing is indicated in `( parentheses )`.
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.  Text derived through processing is indicated in `( parentheses )`.
 
 
 | XML Element Terms | PubRouter Metadata | XML Format | Cardinality & Notes |
