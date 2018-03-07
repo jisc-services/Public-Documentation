@@ -1,11 +1,11 @@
-# PubRouter DSPACE XML Schema Description
+# PubRouter Dspace XML Schema Description
 
-This document describes the XML output by PubRouter for ingestion into DSPACE repositories via the SWORDv2 interface. 
+This document describes the XML output by PubRouter for ingestion into DSpace repositories via the SWORDv2 interface. 
  
 For background information related to the schema see:
 
 * [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
-* [DSPACE schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries).
+* [DSpace schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries).
 
 The following table lists:
 * Column 1 - the XML elements output by PubRouterin XML elements
