@@ -10,7 +10,8 @@ Background information:
 The following table lists:
 * Column 1 - the XML elements output by PubRouter
 * Column 2 - PubRouter internal metadata JSON fields from which the output is derived
-* Column 3 - the output XML element construction (format) - see note. 
+* Column 3 - the output XML element construction (format) - see note
+* Column 4 - cardinality (number of elements permitted) and notes.
 
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the XML actually output these field  holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.  Text derived through processing is indicated in `( parentheses )`.
 
@@ -25,7 +26,7 @@ The following table lists:
 | [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dcterms:language>[article.language]</dcterms:language>` | {0..n} Controlled value, conforming to ISO 639–3 (2 or 3 characters) E.g. “en” or “eng” for English |
 | [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract>[article.abstract]</dcterms:abstract>` | {0..1} |
 | [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) | article.subject | `<dcterms:subject>[article.subject] </dcterms:subject>` | {0..n} Subject keywords |
-| [dcterms:medium](http://dublincore.org/documents/dcmi-terms/#terms-medium) | publication_date.publication_format | `<dcterms:medium> [publication_date.publication_format] </dcterms:medium>` |  {0..1} print or electronic |
+| [dcterms:medium](http://dublincore.org/documents/dcmi-terms/#terms-medium) | publication_date. publication_format | `<dcterms:medium> [publication_date.publication_format] </dcterms:medium>` |  {0..1} print or electronic |
 | [dcterms:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dcterms:type>[article.type]</dcterms:type>` | {0..1} Resource type (uncontrolled list) |
 | [rioxxterms:type](http://www.rioxx.net/profiles/v2-0-final/) | article.type |  `<rioxxterms:type>[article.type]</rioxxterms:type> `| {0..1} Resource type (from controlled list - rioxxterms:typeList) |
 | [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted>[accepted_date]</dcterms:dateAccepted>` | {0..1} Accepted date: YYYY-MM-DD format |
