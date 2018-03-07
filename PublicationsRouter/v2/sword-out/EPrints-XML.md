@@ -10,7 +10,7 @@ The following table lists:
 * Column 2 - PubRouter internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
-**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the XML actually output these field  holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
 | Eprint element terms | PubRouter Metadata | XML Format |
 |-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
