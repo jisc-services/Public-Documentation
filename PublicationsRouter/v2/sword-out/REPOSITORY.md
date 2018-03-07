@@ -4,49 +4,49 @@ This document provides information on how to get your repository set up to take 
 
 ## Account Setup
 
-Firstly, you will need to contact pubrouter@jisc.ac.uk to create an account. For that, you must provide:
+Firstly, you will need to contact pubrouter@jisc.ac.uk to have an account created. For that, you must provide:
 
-* The matching parameters using the template linked [here](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv).
-* A *username* and *password* for a user in your repository who has the rights to create content via SWORDv2.
-   * For Eprints deposits into *Manage Deposits* a User role is enough.
-   * For Eprints deposits into the *Review queue* an Editor or Admin role is required.
-   * For DSpace deposits into a collection an Admin role on the collection is required.
+* The matching parameters using this [Excel template] (https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT - if using the Excel template, then when completed you should save it as a CSV file. 
+* A *username* and *password* for an account in your repository which has a role with the rights to create content via SWORDv2:
+   * For Eprints deposits into *Manage Deposits* the account needs *User* role
+   * For Eprints deposits into the *Review queue* an *Editor* or *Admin* role is required
+   * For DSpace deposits into a collection an *Admin* role on the collection is required
 * A collection URL into which the system will deposit the content
    * Eprints collection: `http://eprints.<domain-name>.ac.uk/id/contents`
-   * DSpace collection: `http://dspace.<domain-name>.ac.uk/swordv2/collection/<handle-id>/<collection-id>` (usually obtained from the collection URL `http://dspace.domain.ac.uk/handle/<handle-id>/<collection-id>` find out more: [DSpace URLs and Identifiers](https://wiki.duraspace.org/display/DSDOC5x/Functional+Overview#FunctionalOverview-PersistentURLsandIdentifiers))
+   * DSpace collection: `http://dspace.<domain-name>.ac.uk/swordv2/collection/<handle-id>/<collection-id>` (usually obtained from the collection URL `http://dspace.domain.ac.uk/handle/<handle-id>/<collection-id>` find out more here: [DSpace URLs and Identifiers](https://wiki.duraspace.org/display/DSDOC5x/Functional+Overview#FunctionalOverview-PersistentURLsandIdentifiers)).
 
-Once setup is complete, notifications which satisfy your matching parameters will be automatically deposited into your repository.
+Once account setup is complete, notifications which satisfy your matching parameters will be automatically deposited into your repository.
 
-Any configuration can be updated at any time in the PubRouter Account page.
+Any configuration can be updated at any time via your PubRouter Account page.
 
 ## EPrints
 
-Router is only certified to work with EPrints 3.3. Two modes of integration are available:
+Router is only certified to work with EPrints 3.3. Two SWORD2 integration options exist:
 
-* Eprints Native – This results in deposits with a basic set of meta-data.
-* Eprints RIOXX - This will populate the additional RIOXX fields with meta-data.
+* Eprints Native – this results in deposits with a basic set of meta-data
+* Eprints RIOXXplus – this will populate additional RIOXX fields with meta-data.
 
 ### Eprints Native
 
-EPrints Native is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work.  
+EPrints Native is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work with your repository.
 
-### Eprints RIOXX Plugin
+### Eprints RIOXXplus
 
-Eprints RIOXX format provides metadata consistency by capturing additional fields required by the [RIOXX application profile](http://rioxx.net/v2-0-final/).
+Eprints RIOXXplus integration is appropriate only where your repository has the RIOXX plugin installed, it enables additional fields required by the [RIOXX application profile](http://rioxx.net/v2-0-final/) to be automatically populated by PubRouter.
 
-If your Eprints repository has the RIOXX plugin installed, then PubRouter can better populate the RIOXX fields if you also install the [*Jisc PubRouter RIOXXplus Connector Plugin*](http://wiki.eprints.org/w/Jisc_Publications_Router) and set PubRouter account repository configuration to "Eprints RIOXX”.
+In order to take advantage of PubRouter's RIOXXplus option your repository will need the [*Jisc PubRouter RIOXXplus Connector Plugin*](http://wiki.eprints.org/w/Jisc_Publications_Router) to be installed, and your PubRouter account set to "Eprints RIOXX” (via your Account Admin page).
 
 ### Deposit process
 
 The behaviour during an individual notification deposit is as follows:
 
-1. Metadata will be deposited as a new item into the collection you specified in your account settings.
+1. Metadata will be deposited as a new item into the collection you specified in your account settings
 
-2. The raw metadata provided by the publisher may also be supplied as an XML file attached to the item.
+2. The raw metadata provided by the publisher may also be supplied as an XML file attached to the item
 
-3. If there are fulltext files associated, such as PDFs of the  they will be attached to the item.
+3. If article fulltext files, such as PDFs, are available they will be attached to the item
 
-4. The item will be left in the sword user's workarea or review queue, depending on the deposit location that has been selected in the user's PubRouter Admin page.
+4. The item will be left in the sword user's workarea or review queue (depending on the deposit location selected on your PubRouter Account Admin page).
 
 ## DSpace
 
@@ -54,22 +54,21 @@ Router is certified to work with Dspace 5.x
 
 
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
-In order that you do not lose any information if your XSLT does not yet do what you want, Router will also deposit
-a full copy of the Atom Entry XML as a file attached to the eprint.  For information about the metadata held in that
-file see the [Crosswalk Documentation](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml)
+
+Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
 
 ### Deposit process
 
 The behaviour during an individual notification deposit is as follows:
 
-1. Metadata will be deposited as a new item into the collection you specified in your account settings.
+1. Metadata will be deposited as a new item into the collection you specified in your account settings
 
-2. The raw metadata provided by the publisher may also be supplied as an XML file attached to the item.
+2. The raw metadata provided by the publisher may also be supplied as an XML file attached to the item
 
-3. If there are fulltext files associated, they will be attached to the item.
+3. If article fulltext files are available they will be attached to the item
 
-4. Upon completion, the item will be injected into the collection's workflow
+4. Upon completion, the item will be injected into the collection's workflow.
  
 ### Metadata customisation
 
@@ -84,4 +83,4 @@ If you wish to also support RIOXX into your DSpace repository, there are some re
 
 
 
-If you need any help with repository plugins then refer to [JISC Repository Technical Support](https://www.jisc.ac.uk/repository-technical-support)
+If you need any help with repository plugins then refer to [JISC Repository Technical Support](https://www.jisc.ac.uk/repository-technical-support).
