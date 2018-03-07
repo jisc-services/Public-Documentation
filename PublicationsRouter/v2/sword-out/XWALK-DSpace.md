@@ -12,13 +12,11 @@ The following table lists:
 * Column 2 - PubRouter internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
-### NOTE: XML Format 
-Field holders are shown in `[square brackets]`, in the output XML these field  holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the Journal.  Any other text is output as it appears in the format.
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the XML actually output these field  holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
 | DC terms | PubRouter Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
-| [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.page_range] </dcterms:bibliographicCitation>`<br>
-Example: `<dcterms:bibliographicCitation>Nature, volume 18, issue 3, page 12-14</dcterms:bibliographicCitation>`|
+| [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.page_range] </dcterms:bibliographicCitation>`<br>Example: `<dcterms:bibliographicCitation>Nature, volume 18, issue 3, page 12-14</dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` |
 | [dcterms:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source>[journal.identifier.type]: [journal.identifier.id] </dcterms:source>` |
 | [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dcterms:title> [article.title] </dcterms:title>` |
