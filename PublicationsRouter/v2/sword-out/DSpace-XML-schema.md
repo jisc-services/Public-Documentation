@@ -8,7 +8,7 @@ For background information related to the schema see:
 * [DSpace schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries).
 
 The following table lists:
-* Column 1 - the XML elements output by PubRouterin XML elements
+* Column 1 - the XML elements output by PubRouter 
 * Column 2 - PubRouter internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
