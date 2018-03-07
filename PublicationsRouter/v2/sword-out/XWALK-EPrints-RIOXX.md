@@ -1,50 +1,56 @@
 # PubRouter EPrints-RIOXX XML Schema Description
 
+This document describes the XML output by PubRouter for ingestion into Eprints repositories via the SWORDv2 interface.
+
+Background information:
+* [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd) - Eprints-RIOXX schema definition
+* [Dubin Core dcterms](http://dublincore.org/documents/dcmi-terms/)
+* [RIOXX XML profile](http://rioxx.net/v2-0-final/)
+
+The following table lists:
+* Column 1 - the XML elements output by PubRouter
+* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
+* Column 3 - the output XML element construction (format) - see note. 
+
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the XML actually output these field  holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.  Text derived through processing is indicated in `( parentheses )`.
 
 
-This document describes the crosswalk from the notification metadata fields received via the JPER API to the
- XML format supplied to repositories via SWORDv2.
- 
-This crosswalk maps values in the metadata to terms in the PubRouter.xsd document. The PubRouter.xsd document is made up of a mixture of Rioxx terms, DC terms and PubRouter defined terms. Priority is granted to DC terms, then additionally Rioxx terms will be populated. Finally, PubRouter defined terms. 
-For information about the schemas see:
+| XML Element Terms | PubRouter Metadata | XML Format | Cardinality & Notes |
+|:-----------------------------|:-----------------------|:------------------------------------------------------------------------------|:----------------------------------|
+| [pr:source](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L130) | journal.title<br>journal.volume<br>journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]>[journal.title]</pr:source>` | {0..1} |
+| [pr:source_id](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L148) | journal.identifier.id<br> journal.identifier.type | `<pr:source_id type=[journal.identifier.type]>[journal.identifier.id]</pr:source_id>` | {1..n} e.g. ISSN |
+| [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher)  | journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` | {0..1} Publisher name |
+| [dcterms:format](http://dublincore.org/documents/dcmi-terms/#terms-format)  | links.format | `<dcterms:format>[links.format]</dcterms:format>` | {0..n} Mime type(s) of article full-text files associated with metadata notification |
+| [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title |  `<dcterms:title>[article.title]</dcterms:title>` | {1..1} |
+| [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dcterms:language>[article.language]</dcterms:language>` | {0..n} Controlled value, conforming to ISO 639–3 (2 or 3 characters) E.g. “en” or “eng” for English |
+| [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract>[article.abstract]</dcterms:abstract>` | {0..1} |
+| [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) | article.subject | `<dcterms:subject>[article.subject] </dcterms:subject>` | {0..n} Subject keywords |
+| [dcterms:medium](http://dublincore.org/documents/dcmi-terms/#terms-medium) | publication_date.publication_format | `<dcterms:medium> [publication_date.publication_format] </dcterms:medium>` |  {0..1} print or electronic |
+| [dcterms:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dcterms:type>[article.type]</dcterms:type>` | {0..1} Resource type (uncontrolled list) |
+| [rioxxterms:type](http://www.rioxx.net/profiles/v2-0-final/) | article.type |  `<rioxxterms:type>[article.type]</rioxxterms:type> `| {0..1} Resource type (from controlled list - rioxxterms:typeList) |
+| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted>[accepted_date]</dcterms:dateAccepted>` | {0..1} Accepted date: YYYY-MM-DD format |
+| [rioxxterms:publication_date](http://www.rioxx.net/profiles/v2-0-final/) | publication_date | `<rioxxterms:publication_date>[publication_date]</rioxxterms:publication_date>` | {0..1} Possible formats: YYYY-MM-DD \| YYYY-MM \| YYYY \| YYYY, season |
+| [rioxxterms:version](http://www.rioxx.net/profiles/v2-0-final/) | article.version |  `<rioxxterms:version>[article.version]</rioxxterms:version>` | {0..1} Version of article (controlled value from rioxxterms:versionList) |
+| [rioxxterms:version_of_record](http://www.rioxx.net/profiles/v2-0-final/) | article.identifier.type<br>article.identifier.id |  `<rioxxterms:version>[article.version]</rioxxterms:version>` | {0..1} DOI where version is one of VoR \| CVoR \| EVoR |
+| [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | funding.name<br> project.identifier<br>funding.grant_number | `<rioxxterms:project funder_id=[funding.identifier.type]:[funding.identifier.id] funder_name=[funding.name]>[funding.grant_number] </rioxxterms:project>` | {0..n} Note the funder_id attribute holds a compound string of general format "type:id" e.g. "FundRef:10.13039/100000002" |
+| [pr:license](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L252) | license_ref.title<br>license_ref.type<br>license_ref.url<br>license_ref.version<br>license_ref.start | `<pr:license start_date=[license_ref.start] url=[license_ref.url] version=[license_ref.version]>[license_ref.title or license_ref.type]</pr:license>` | {0..n} May have many licenses; start format: YYYY-MM-DD |
+| [pr:embargo](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L272) | embargo.start<br> embargo.end<br>embargo.duration | `<pr:embargo start_date=[embargo.start] end_date=[embargo.end]></pr:embargo>` | {0..1} At least one of attributes start \| end must be present, format: YYYY-MM-DD |
+| [pr:start_page](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L170) | article.start_page | `<pr:start_page>[article.start_page]</pr:start_page>` | {0..1} |
+| [pr:end_page](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L177) | article.end_page | `<pr:end_page>[article.end_page]</pr:end_page>` | {0..1} |
+| [pr:page_range](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L184) | article.page_range | `<pr:page_range>[article.page_range]</pr:page_range>` | {0..1} |
+| [pr:num_pages](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L191) | article.num_pages |  `<pr:num_pages>[article.num_pages]</pr:num_pages>` | {0..1} |
+| [pr:identifier](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L200) | article.identifier.id<br> article.identifier.type | `<pr:identifier type=[article.identifier.type]>[article.identifier.id]</pr:identifier>` | {0..n} Identifier such as DOI URI or Pubmed Id |
+| [pr:history_date](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L221) | history_date.type<br> history_date.date | `<pr:history_date type=[history_date.type]>[history_date.date]</pr:history_date>` | {0..n} Any publishing event dates, YYYY-MM-DD |
+| [pr:author](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L288) | author.type<br>author.name<br>author.organisation_name<br>author.identifier<br>author.email | `<pr:author>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:type>[author.type]</pr:type> `<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id>`<br>  &nbsp;&nbsp;&nbsp;&nbsp; `<pr:email>[author.email]</pr:email>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:surname>[author.name.surname]</pr:surname>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:firstnames>[author.name.firstname]</pr:firstnames>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:suffix>[author.name.suffix]</pr:suffix>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:org_name>[author.organisation_name]</pr:org_name>`<br> `</pr:author>` | {0..n} Multiple authors; any author may have multiple Ids and/or Emails|
+| [pr:contributor](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L30) |  contributor.type<br>contributor.name<br>contributor.organisation_name<br>contributor.identifier<br>contributor.email | `<pr:contributor>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:type>[contributor.type]</pr:type>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:email>[contributor.email]</pr:email>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:surname>[contributor.name.surname]</pr:surname>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:firstnames>[contributor.name.firstname]</pr:firstnames>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:org_name>[contributor.organisation_name]</pr:org_name>` <br> `</pr:contributor>` | {0..n} |
+| [pr:download_link](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L302) | links.format<br>links.url<br>links.packaging  | `<pr:download_link url=[links.url] filename=(derived from links.url) format=[links.format] public=(true\|false) packaging=[links.packaging] primary=(true\|false)></pr:download_link>` | {0..n} Links to full-text files; *public* attribute determines if displayable or not; *primary* attrib determines if version, license & embargo information is to be associated with article |
 
-* [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
-* [RIOXX](http://rioxx.net/v2-0-final/)
-* [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd)
-
-The following table lists the the output XML elements (left most column), PubRouter internal metadata JSON fields (central column) and the XML format which the terms take in the XML (right most column).
-
-| Terms | PubRouter Metadata | XML Format |
-|:-----------------------------|:-----------------------|:--------------------------------------------------------------------------------------------------------------|
-| [pr:source](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L133) | journal.title<br> journal.abbrevTitle<br>  journal.volume<br>  journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]> [journal.title] + [journal.abbrevTitle] </pr:source>` |
-| [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher)  | journal.publisher | `<dcterms:publisher> [journal.publisher] </dcterms:publisher>` |
-| [pr:source_id](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L151) | journal.identifier.id<br> journal.identifier.type | `<pr:source_id type=[journal.identifier.type]> [journal.identifier.id] </pr:source_id>` |
-| [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title |  `<dcterms:title> [article.title] </dcterms:title>` |
-| [dcterms:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dcterms:type> [article.type] </dcterms:type>` |
-| [rioxxterms:type](http://www.rioxx.net/profiles/v2-0-final/) | article.type |  `<rioxxterms:type> [article.type] </rioxxterms:type> `|
-| [rioxxterms:version](http://www.rioxx.net/profiles/v2-0-final/) | article.version |  `<rioxxterms:version> [article.version] </rioxxterms:version>`|
-| [pr:start_page](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L173) | article.start_page |  `<pr:start_page> [article.start_page] </pr:start_page>` |
-| [pr:end_page](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L180) | article.end_page |  `<pr:end_page> [article.end_page] </pr:end_page>` |
-| [pr:page_range](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L187) | article.page_range |   `<pr:page_range> [article.page_range] </pr:page_range>` |
-| [pr:num_pages](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L194) | article.num_pages |  `<pr:num_pages> [article.num_pages] </pr:num_pages>` |
-| [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dcterms:language> [article.language] </dcterms:language>` |
-| [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract> [article.abstract] </dcterms:abstract>` |
-| [pr:identifier](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L203) | article.identifier.id<br> article.identifier.type | `<pr:identifier type=[article.identifier.type]> [article.identifier.id] </pr:identifier>` |
-| [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) | article.subject | `<dcterms:subject> [article.subject] </dcterms:subject>` |
-| [pr:author](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L30) | author.name<br> author.organisation_name<br> author.identifier<br> author.email author.type | `<pr:author>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:type>[author.type]</pr:type> `<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id>`<br>  &nbsp;&nbsp;&nbsp;&nbsp; `<pr:email>[author.email]</pr:email>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:firstnames>[author.name.firstname]</pr:firstnames>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:surname>[author.name.surname]</pr:surname>` <br> `</pr:author>` |
-| [pr:contributor](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L30) | contributor.type<br> contributor.name<br> contributor.organisation_name<br> contributor.identifier | `<pr:contributor>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:type>[contributor.type]</pr:type>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:email>[contributor.email]</pr:email>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:surname>[contributor.name.surname]</pr:surname>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:firstnames>[contributor.name.firstname]</pr:firstnames>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:org_name>[contributor.organisation_name]</pr:org_name>` <br> `</pr:contributor>` |
-| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted> [accepted_date] </dcterms:dateAccepted>` | 
-| [rioxxterms:publication_date](http://www.rioxx.net/profiles/v2-0-final/) | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` |
-| [dcterms:medium](http://dublincore.org/documents/dcmi-terms/#terms-medium) | publication_date.publication_format | `<dcterms:medium> [publication_date.publication_format] </dcterms:medium>` | 
-| [pr:history_date](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L224) | history_date.type<br> history_date.date | `<pr:history_date type=[history_date.type]> [history_date.date] </pr:history_date>` |
-| [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | project.name<br> project.identifier<br>project.grant_number | `<rioxxterms:project funder_id=[project.identifier] funder_name=[project.name]> [project.grant_number] </rioxxterms:project>` |
-| [pr:embargo](https://github.com/jisc-services/Public-Documentation/blob/b69603c7bf410e2a812c06d6facdaed509174968/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd#L275) | embargo.start<br> embargo.end | `<pr:embargo start_date=[embargo.start] end_date=[embargo.end]></pr:embargo>` |
 
 
 
 ## Example XML Output
 
-An example Entry document containing the metadata listed above is shown here
+An example Entry document containing the metadata listed above is shown here.
 
 ```xml
 <?xml version="1.0"?>
@@ -81,7 +87,7 @@ An example Entry document containing the metadata listed above is shown here
 	<pr:history_date type="submitted">2014-07-03</pr:history_date>
 	<rioxxterms:project funder_id="ringold:bbsrcid" funder_name="BBSRC">BB/34/juwef</rioxxterms:project>
 	<pr:license url="http://url" start_date="12-11-2016" version="1">licence title</pr:license>
-	<pr:embargo start_date="2015-01-01T00:00:00Z" end_date="2016-01-01T00:00:00Z"/>
+	<pr:embargo start_date="2015-01-01" end_date="2016-01-01"/>
 	<pr:author>
 		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
 		<pr:id type="orcid">aaaa-0000-1111-bbbb</pr:id>
