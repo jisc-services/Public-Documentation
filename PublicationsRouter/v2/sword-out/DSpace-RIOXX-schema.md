@@ -1,3 +1,3 @@
-# JPER Core Metadata to Dublin Core/RIOXX XML
+# PubRouter DSpace RIOXX XML Schema Description
 
 This document is a placeholder till a DSpace-RIOXX mapping is founded. 
