@@ -1,6 +1,6 @@
 # PubRouter EPrints-RIOXX XML Schema Description
 
-This document describes the XML output by PubRouter for ingestion into Eprints repositories via the SWORDv2 interface.
+This document describes the  RIOXXplus XML output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus plugins.
 
 Background information:
 * [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd) - Eprints-RIOXX schema definition
