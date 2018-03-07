@@ -1,4 +1,4 @@
-# PubRouter DSpace XML Schema Description
+# PubRouter DSpace XML Description
 
 This document describes the XML output by PubRouter for ingestion into DSpace repositories via the SWORDv2 interface. 
  
