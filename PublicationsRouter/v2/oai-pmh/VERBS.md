@@ -231,3 +231,21 @@ PubRouter API request:
 Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=GetRecord&identifier=987654321&metadataPrefix=oai_dc`
 
 Example return: 
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+    <responseDate>2018-05-23T14:29:54Z</responseDate>
+    <request verb="GetRecord" identifier="oai:pubrouter.jisc.ac.uk/notification:d2b949b769e1451da6792fa10b1c420b" metadataPrefix="oai_dc">http://pubrouter.jisc.ac.uk/repo/012b7a4352904fb99ec5fc5e09ab0a0c</request>
+    <GetRecord>
+        <record>
+            <header xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                <identifier>oai:pubrouter.jisc.ac.uk/notification:d2b949b769e1451da6792fa10b1c420b</identifier>
+                <datestamp>2018-02-01T15:21:06Z</datestamp>
+            </header>
+            <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+            ... (for example of metadata go to XWALK.md)
+            </metadata>
+        </record>
+    </GetRecord>
+</OAI-PMH>
+```
