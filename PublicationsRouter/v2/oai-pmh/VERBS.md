@@ -158,11 +158,20 @@ Example response:
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
     <responseDate>2018-05-23T14:26:53Z</responseDate>
-    <request verb="ListRecords" from="2017-01-01" metadataPrefix="oai_dc">http://pubrouter.jisc.ac.uk/repo/012b7a4352904fb99ec5fc5e09ab0a0c</request>
+    <request verb="ListRecords" from="2017-01-01" metadataPrefix="oai_dc">http://pubrouter.jisc.ac.uk/repo/123456789</request>
     <ListRecords>
         <record>
             <header xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
-                <identifier>oai:pubrouter.jisc.ac.uk/notification:d2b949b769e1451da6792fa10b1c420b</identifier>
+                <identifier>oai:pubrouter.jisc.ac.uk/notification:987654321</identifier>
+                <datestamp>2018-02-01T15:21:06Z</datestamp>
+            </header>
+            <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+            ... (for example of metadata go to XWALK.md)
+            </metadata>
+        </record>
+        <record>
+            <header xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+                <identifier>oai:pubrouter.jisc.ac.uk/notification:987654322</identifier>
                 <datestamp>2018-02-01T15:21:06Z</datestamp>
             </header>
             <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -193,11 +202,11 @@ Example return:
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
     <responseDate>2018-05-23T14:29:54Z</responseDate>
-    <request verb="GetRecord" identifier="oai:pubrouter.jisc.ac.uk/notification:d2b949b769e1451da6792fa10b1c420b" metadataPrefix="oai_dc">http://pubrouter.jisc.ac.uk/repo/012b7a4352904fb99ec5fc5e09ab0a0c</request>
+    <request verb="GetRecord" identifier="oai:pubrouter.jisc.ac.uk/notification:d2b949b769e1451da6792fa10b1c420b" metadataPrefix="oai_dc">http://pubrouter.jisc.ac.uk/repo/123456789</request>
     <GetRecord>
         <record>
             <header xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
-                <identifier>oai:pubrouter.jisc.ac.uk/notification:d2b949b769e1451da6792fa10b1c420b</identifier>
+                <identifier>oai:pubrouter.jisc.ac.uk/notification:987654321</identifier>
                 <datestamp>2018-02-01T15:21:06Z</datestamp>
             </header>
             <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
