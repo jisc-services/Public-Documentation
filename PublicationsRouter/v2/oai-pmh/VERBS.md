@@ -9,7 +9,7 @@ There is one form for the OAI endpoint:
 
 This is mounted at a repository specific web route, of the following form:
 
-* `/repo/<repo_id>` where <repo_id> is the account identifier for the repository
+* `https://pubrouter.jisc.ac.uk/oaipmh/repo/<repo_id>` where <repo_id> is the account identifier for the repository
 
 Note that OAI-PMH sets are not available because the account ids should not be published explicitly.
 
