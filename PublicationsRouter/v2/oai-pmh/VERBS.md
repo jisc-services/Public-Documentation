@@ -1,13 +1,8 @@
 # OAI-PMH Verb to PubRouter API mapping
 
-This document describes the mapping that this application provides from the [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their associated parameters
-to the PubRouter API.
+This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs/requests and their interpretation by PubRouter. 
 
-There is one form for the OAI endpoint:
-
-* For a specific repository's set of routed notifications
-
-This is mounted at a repository specific web route, of the following form:
+The endpoint must be pointed at a specific repository like so:
 
 * `https://pubrouter.jisc.ac.uk/oaipmh/repo/<repo_id>` where <repo_id> is the account identifier for the repository
 
@@ -46,19 +41,6 @@ Example return:
     </Identify>
 </OAI-PMH>
 ```
-
-
-## ListSets (not yet properly supported)
-
-This request asks the OAI-PMH server to list the sets that are available to the client
-
-Incoming parameters:
-
-* verb: ListSets
-
-Returned information
-
-* An empty list - sets are not supported by this endpoint
 
 ## ListMetadataFormats
 
@@ -183,6 +165,10 @@ Example response:
 </OAI-PMH>
 ```
 
+## Paging Control 
+To use pagination, just make a request using the retrieved resumption token like so. Where verb is either ListRecords or ListIdentifiers. 
+Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&resumptionToken=123781387136816813asdasd781813`
+
 ## GetRecord
 
 This request asks the OAI-PMH server to provide the full metadata record for the identifier received:
@@ -216,3 +202,15 @@ Example return:
     </GetRecord>
 </OAI-PMH>
 ```
+
+## ListSets (not yet properly supported)
+
+This request asks the OAI-PMH server to list the sets that are available to the client
+
+Incoming parameters:
+
+* verb: ListSets
+
+Returned information
+
+* An empty list - sets are not supported by this endpoint
