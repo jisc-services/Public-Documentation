@@ -25,7 +25,7 @@ Note that given the simplicity of the OAI_DC format, only a limited subset of th
 | metadata.license_ref | oai_dc:rights |
 | metadata.embargo | oai_dc:rights |
 
-Example Document
+Example Document, values in square brackets refer to the value taken from PubRouter's metadata, values in brackets indicate the cardinality of the field. 
 ```xml
 <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<oai_dc:dc xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
