@@ -28,28 +28,31 @@ Note that given the simplicity of the OAI_DC format, only a limited subset of th
 | [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
 
 
-Example Metadata Document, values in square brackets refer to the field in PubRouter's metadata, values in brackets indicate the cardinality of the field. 
+Example xml returned
 ```xml
 <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<oai_dc:dc xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
-		<dc:language>[metadata.article.language](0..n)</dc:language>
-		<dc:title>[metadata.article.title](1)</dc:title>
-		<dc:creator>[metadata.authors](1..n)</dc:creator>
-		<dc:subject>[metadata.article.subject](0..n)</dc:subject>
-		<dc:description>[metadata.article.version](0..1)</dc:description>
-		<dc:description>[metadata.publication_status](0..1)</dc:description>
-		<dc:description>[metadata.history_date](0..n)</dc:description>
-		<dc:description>[metadata.funding](0..n)</dc:description>
-		<dc:description>[provider.agent](1)</dc:description>
-		<dc:publisher>[metadata.journal.publisher](0..1)</dc:publisher>
-		<dc:contributor>[metadata.contributor](0..n)</dc:contributor>
-		<dc:identifier>[metadata.article.identifier](0..n)</dc:identifier>
-		<dc:source>[metadata.journal.identifier](0..n)</dc:source>
-		<dc:source>[metadata.journal.title](0..1)</dc:source>
-		<dc:type>[metadata.article.type](0..1)</dc:type>
-		<dc:date>[metadata.publication_date](1)</dc:date>
-		<dc:rights>[metadata.license_ref](0..n)</dc:rights>
-		<dc:rights>[metadata.embargo](0..1)</dc:rights>
+	<generator uri="http://pubrouter.jisc.ac.uk/python-sword2" version="0.2"/>
+		<dc:language>en</dc:language>
+		<dc:source>pissn: 0017-5749</dc:source>
+		<dc:source>eissn: 1468-3288</dc:source>
+		<dc:publisher>BMJ Publishing Group</dc:publisher>
+		<dc:description>From Publisher via Jisc Publications Router.</dc:description>
+		<dc:creator>Mahajan,Ujjwal M</dc:creator>
+		<dc:creator>Teller,Steffen</dc:creator>
+		<dc:contributor>Sendler,Matthias</dc:contributor>
+		<dc:title>Tumour-specific delivery of siRNA-coupled superparamagnetic iron oxide nanoparticles, targeted against PLK1, stops progression of pancreatic cancer</dc:title>
+		<dc:identifier>publisher-id: gutjnl-2016-311393</dc:identifier>
+		<dc:identifier>doi: 10.1136/gutjnl-2016-311393</dc:identifier>
+		<dc:subject>Pancreas</dc:subject>
+		<dc:subject>PANCREATIC CANCER</dc:subject>
+		<dc:description>Publication status: Published</dc:description>
+		<dc:description>History: received 2016-01-03, rev-recd 2016-04-01, accepted 2016-04-18, ppub 2016-05, epub 2016-05-12</dc:description>
+		<dc:rights>Licence for this article: https://testing.org/licenses/by/4.0/ uat lic 3 License uat testing</dc:rights>
+		<dc:rights>Embargo: starts 2016-05-12, ends 2016-12-12, duration 7 months from publication.</dc:rights>
+		<dc:type>article</dc:type>
+		<dc:date>2018-01-01</dc:date>
+		<dc:source>Journal of Interesting Things</dc:source>
 	</oai_dc:dc>
 </metadata>
 ```
