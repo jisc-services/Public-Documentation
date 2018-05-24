@@ -4,26 +4,24 @@ This table defines the mapping from the core PubRouter notification fields to th
 
 Note that given the simplicity of the OAI_DC format, only a limited subset of the PubRouter notification fields are available.
 
-| PubRouter Field | OAI_DC field |
-|------------|--------------|
-| metadata.article.title | oai_dc:title |
-| metadata.article.language | oai_dc:language |
-| metadata.author | oai_dc:creator |
-| metadata.article.subject | oai_dc:subject |
-| metadata.article.version | oai_dc:description |
-| metadata.publication_status | oai_dc:description |
-| metadata.history_date | oai_dc:description |
-| metadata.funding | oai_dc:description |
-| provider.agent | oai_dc:description |
-| metadata.journal.publisher | oai_dc:publisher |
-| metadata.contributors | oai_dc:contributor |
-| metadata.article.identifier | oai_dc:identifier |
-| metadata.journal.identifier | oai_dc:source |
-| metadata.journal.title | oai_dc:source |
-| metadata.article.type | oai_dc:type |
-| metadata.publication_date | oai_dc:date |
-| metadata.license_ref | oai_dc:rights |
-| metadata.embargo | oai_dc:rights |
+| oai_dc terms | PubRouter Metadata (source) | XML Format |
+|:-----------------------------|:-------------------------|:------------------------------------------------------------|
+| [dc:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dc:publisher>[journal.publisher] </dc:publisher>` |
+| [dc:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dc:source>[journal.identifier.type]: [journal.identifier.id] </dc:source>` |
+| [dc:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dc:title> [article.title] </dc:title>` |
+| [dc:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dc:language>[article.language] </dc:language>` |
+| [dc:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) |  article.subject | `<dc:subject>[article.subject] </dc:subject>` |
+| [dc:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier) | article.identifier | `<dc:identifier>[article.identifier.type]: [article.identifier.value]</dc:identifier>`
+| [dc:creator](http://dublincore.org/documents/dcmi-terms/#terms-creator) | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier | `<dc:creator>[author.surname], [author.firstname]; [author.identifier.type]: [author.identifier.id]; [author.organisation_name] </dc:creator>` |
+| [dc:contributor](http://dublincore.org/documents/dcmi-terms/#terms-contributor) | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<dc:contributor>[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.identifier.type]: [contributor.identifier.id]; [contributor.organisation_name] </dc:creator>`  |
+| [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dc:rights>Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dc:rights>` |
+| [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dc:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dc:rights>` |
+| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dc:description>Version: [article.version] </dc:description>` |
+| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider_agent | `<dc:description>From [provider_agent] via Jisc Publications Router. </dc:description>` |
+| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dc:description>Publication status: [publication_status] </dc:description>` | 
+| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dc:description>History: [history_date.date_type], [history_date.date] </dc:description>` |
+| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dc:description>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dc:description>` |
+
 
 Example Metadata Document, values in square brackets refer to the field in PubRouter's metadata, values in brackets indicate the cardinality of the field. 
 ```xml
