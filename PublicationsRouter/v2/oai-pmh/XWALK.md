@@ -10,6 +10,7 @@ Note that given the simplicity of the OAI_DC format, only a limited subset of th
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dc:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dc:publisher>[journal.publisher] </dc:publisher>` |
 | [dc:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dc:source>[journal.identifier.type]: [journal.identifier.id] </dc:source>` |
+| [dc:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.title | `<dc:source>[journal.title]</dc:source>` |
 | [dc:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dc:title> [article.title] </dc:title>` |
 | [dc:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dc:language>[article.language] </dc:language>` |
 | [dc:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) |  article.subject | `<dc:subject>[article.subject] </dc:subject>` |
@@ -23,6 +24,8 @@ Note that given the simplicity of the OAI_DC format, only a limited subset of th
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dc:description>Publication status: [publication_status] </dc:description>` | 
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dc:description>History: [history_date.date_type], [history_date.date] </dc:description>` |
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dc:description>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dc:description>` |
+| [dc:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dc:type>[article.type]</dc:type>` |
+| [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
 
 
 Example Metadata Document, values in square brackets refer to the field in PubRouter's metadata, values in brackets indicate the cardinality of the field. 
