@@ -4,6 +4,8 @@ This table defines the mapping from the core PubRouter notification fields to th
 
 Note that given the simplicity of the OAI_DC format, only a limited subset of the PubRouter notification fields are available.
 
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
+
 | oai_dc terms | PubRouter Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dc:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dc:publisher>[journal.publisher] </dc:publisher>` |
