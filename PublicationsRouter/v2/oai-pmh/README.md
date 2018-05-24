@@ -11,7 +11,7 @@ The base endpoint of all OAI-PMH requests to PubRouter is:
 
     https://pubrouter.jisc.ac.uk/oaipmh
     
-Though this endpoint must be used with reference to a specific repository. So the endpoint would in practice be used like so: 
+Though this endpoint can currently only be used with reference to a specific repository. So the endpoint would in practice be used like so: 
 ```
 https://pubrouter.jisc.ac.uk/oaipmh/repo/<repo id>
 ```
