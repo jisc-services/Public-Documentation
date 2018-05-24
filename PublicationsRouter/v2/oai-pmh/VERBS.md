@@ -4,7 +4,7 @@ This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/op
 
 The endpoint must be pointed at a specific repository like so:
 
-* `https://pubrouter.jisc.ac.uk/oaipmh/repo/<repo_id>` where <repo_id> is the account identifier for the repository
+* `https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution_id>` where <institution_id> is the account identifier of the institution
 
 Note that OAI-PMH sets are not available because the account ids should not be published explicitly.
 
@@ -22,7 +22,9 @@ Returned information:
 * Email address: from configuration
 * Earliest datestamp: 3 months before current date
 
-Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=Identify`
+Example request: 
+
+```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=Identify```
 
 Example return: 
 ```xml
@@ -55,14 +57,16 @@ Returned information:
 
 * Metadata Format: oai_dc (schema: http://www.openarchives.org/OAI/2.0/oai_dc.xsd, namespace: http://www.openarchives.org/OAI/2.0/oai_dc/)
 
-Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListMetadataFormats`
+Example request: 
+
+```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListMetadataFormats```
 
 Example return: 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
     <responseDate>2018-05-23T14:21:04Z</responseDate>
-    <request verb="ListMetadataFormats">http://pubrouter.jisc.ac.uk/repo/012b7a4352904fb99ec5fc5e09ab0a0c</request>
+    <request verb="ListMetadataFormats">http://pubrouter.jisc.ac.uk/repo/123456789</request>
     <ListMetadataFormats>
         <metadataFormat>
             <metadataPrefix>oai_dc</metadataPrefix>
@@ -90,7 +94,9 @@ Returned information:
 * Identifiers: notification id
 * Resumption Token: base64 encoded request parameters for next page
 
-Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListIdentifiers&from=2017-01-01&metadataPrefix=oai_dc`
+Example request: 
+
+```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListIdentifiers&from=2017-01-01&metadataPrefix=oai_dc```
 
 Example return
 ```xml
@@ -133,7 +139,9 @@ Returned information:
 * Records: notification metadata, only oai_dc metadata prefix is supported
 * Resumption Token: base64 encoded request parameters for next page
 
-Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&from=2017-01-01&metadataPrefix=oai_dc`
+Example request: 
+
+```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&from=2017-01-01&metadataPrefix=oai_dc```
 
 Example response:
 ```xml
@@ -166,8 +174,13 @@ Example response:
 ```
 
 ## Paging Control 
-To use pagination, just make a request using the retrieved resumption token like so. Where verb is either ListRecords or ListIdentifiers. 
-Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&resumptionToken=123781387136816813asdasd781813`
+To use pagination, just make a request using the retrieved resumption token (together with verb ListRecords or ListIdentifiers).
+
+Example request:
+
+```
+GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&resumptionToken=123781387136816813asdasd781813
+```
 
 ## GetRecord
 
@@ -181,7 +194,11 @@ Returned information:
 
 * Record: notification metadata, only oai_dc metadata prefix is supported
 
-Example request: `GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=GetRecord&identifier=987654321&metadataPrefix=oai_dc`
+Example request: 
+
+```
+GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=GetRecord&identifier=987654321&metadataPrefix=oai_dc
+```
 
 Example return: 
 ```xml
