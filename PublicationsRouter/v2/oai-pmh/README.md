@@ -21,8 +21,8 @@ For example:
 	
 This request would return a list of all records for repository of id 123456789 from 2016-01-01, and the results would be in oai_dc formatted xml. 
 
-## Using OAI-PMH with PubRouter 
-Read about OAI-PMH **verbs** supported by PubRouter [here](./VERBS.md).
+## [OAI-PMH requests/verbs with PubRouter](./VERBS.md) 
+Read about PubRouter's interpretation of the OAI-PMH verbs. 
 
-## What data can we expect to have returned?
-Read about the mapping from our native PubRouter notification format into the oai_dc formatted xml [here](./XWALK.md)
+## [Expected data output?](./XWALK.md)
+Read about the mapping from our native PubRouter notification format into the oai_dc formatted xml.
