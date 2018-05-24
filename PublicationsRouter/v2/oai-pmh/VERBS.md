@@ -10,7 +10,7 @@ Note that OAI-PMH sets are not available because the account ids should not be p
 
 ## Identify
 
-This request asks the OAI-PMH server to identify itself and provide some useful information for the client
+This verb asks the OAI-PMH server to identify itself and provide some useful information for the client
 
 Incoming parameters:
 
@@ -46,7 +46,7 @@ Example response:
 
 ## ListMetadataFormats
 
-This request asks the OAI-PMH server to list the metadata formats that are available to the client
+This verb asks the OAI-PMH server to list the metadata formats that are available to the client
 
 Incoming parameters:
 
@@ -80,7 +80,7 @@ Example response:
 
 ## ListIdentifiers
 
-This request asks the OAI-PMH server to list the identifiers of all records which match the parameters of the request:
+This verb asks the OAI-PMH server to list the identifiers of all records which match the parameters of the request:
 
 * verb: ListIdentifiers
 * from: from-date lower bound for request (optional) this may be in one of two formats: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ (e.g. 2016-09-23T11:30:45Z)
@@ -125,7 +125,7 @@ Example response:
 
 ## ListRecords
 
-This request asks the OAI-PMH server to list the full metadata records of all records which match the parameters of the request:
+This verb asks the OAI-PMH server to list the full metadata records of all records which match the parameters of the request:
 
 * verb: ListRecords
 * from: from-date lower bound for request (optional) this may be in one of two formats: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ (e.g. 2016-09-23T11:30:45Z)
@@ -184,7 +184,7 @@ GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListRecords&resumpti
 
 ## GetRecord
 
-This request asks the OAI-PMH server to provide the full metadata record for the identifier received:
+This verb asks the OAI-PMH server to provide the full metadata record for the identifier received:
 
 * verb: GetRecord
 * identifier: notification id
