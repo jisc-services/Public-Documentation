@@ -28,6 +28,7 @@ Note that given the simplicity of the OAI_DC format, only a limited subset of th
 | [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
 
 
+
 Example xml returned
 ```xml
 <metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
