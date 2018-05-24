@@ -26,7 +26,7 @@ Example request:
 
 ```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=Identify```
 
-Example return: 
+Example response: 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
@@ -61,7 +61,7 @@ Example request:
 
 ```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListMetadataFormats```
 
-Example return: 
+Example response: 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
@@ -98,7 +98,7 @@ Example request:
 
 ```GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=ListIdentifiers&from=2017-01-01&metadataPrefix=oai_dc```
 
-Example return
+Example response:
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
@@ -200,7 +200,7 @@ Example request:
 GET https://pubrouter.jisc.ac.uk/oaipmh/repo/123456789?verb=GetRecord&identifier=987654321&metadataPrefix=oai_dc
 ```
 
-Example return: 
+Example response: 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <OAI-PMH xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
@@ -220,9 +220,9 @@ Example return:
 </OAI-PMH>
 ```
 
-## ListSets (not yet properly supported)
+## ListSets (unsupported)
 
-This request asks the OAI-PMH server to list the sets that are available to the client
+This verb requests the OAI-PMH server to list the sets that are available to the client. Note that sets are not supported by PubRouter, so use of this verb will result in an empty list response.
 
 Incoming parameters:
 
@@ -230,4 +230,4 @@ Incoming parameters:
 
 Returned information
 
-* An empty list - sets are not supported by this endpoint
+* An empty list - sets are not supported by PubRouter
