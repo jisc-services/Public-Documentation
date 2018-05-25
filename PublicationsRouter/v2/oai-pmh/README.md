@@ -26,8 +26,8 @@ This request would return a list of all records for institution with id 12345678
 
 This endpoint currently only supports oai_dc formatted metadata, and can only access notifications going back 3 months.
 
-## [OAI-PMH requests/verbs with PubRouter](./VERBS.md) 
-Read about PubRouter's interpretation of the OAI-PMH verbs. 
+## Using OAI-PMH with PubRouter
+Read about [OAI-PMH **verbs**](./VERBS.md) supported by PubRouter.
 
-## [Expected data output?](./XWALK.md)
-Read about the mapping from our native PubRouter notification format into the oai_dc formatted xml.
+## Data returned by PubRouter
+Read about the mapping from our native PubRouter notification format into the [oai_dc formatted xml](./XWALK.md).
