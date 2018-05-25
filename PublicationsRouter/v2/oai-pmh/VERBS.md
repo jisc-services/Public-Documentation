@@ -1,16 +1,16 @@
-# OAI-PMH Verb to PubRouter API mapping
+# PubRouter's implementation of OAI-PMH Verbs
 
-This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs/requests and their interpretation by PubRouter. 
+This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their interpretation by PubRouter. 
 
-The endpoint must be pointed at a specific repository like so:
+The endpoint must be targetted at a specific institution's dataset, like so:
 
-* `https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution_id>` where <institution_id> is the account identifier of the institution
+* `https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution_id>` where *<institution_id>* is the account identifier of the institution.
 
-Note that OAI-PMH sets are not available because the account ids should not be published explicitly.
+Note that OAI-PMH sets are not supported by PubRouter.
 
 ## Identify
 
-This verb asks the OAI-PMH server to identify itself and provide some useful information for the client
+This verb asks the OAI-PMH server to identify itself and provide some useful information for the client.
 
 Incoming parameters:
 
@@ -125,7 +125,7 @@ Example response:
 
 ## ListRecords
 
-This verb asks the OAI-PMH server to list the full metadata records of all records which match the parameters of the request:
+This verb asks the OAI-PMH server to list metadata for all records which match the parameters of the request:
 
 * verb: ListRecords
 * from: from-date lower bound for request (optional) this may be in one of two formats: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ (e.g. 2016-09-23T11:30:45Z)
