@@ -9,7 +9,7 @@ This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/op
 * ListSets (unsupported)
 
 
-The endpoint must be targetted at a specific institution's dataset, like so:
+The OAI-PMH endpoint must be targetted at a specific institution's dataset, like so:
 
 * `https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution_id>` where *<institution_id>* is the account identifier of the institution.
 
