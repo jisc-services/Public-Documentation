@@ -1,6 +1,13 @@
 # OAI-PMH Verbs implemented by PubRouter
 
-This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their interpretation by PubRouter. 
+This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their interpretation by PubRouter:
+* [Identify](#identify)
+* [ListMetadataFormats](#listmetadataformats)
+* [ListIdentifiers](#listidentifiers)
+* [ListRecords](#listrecords)
+* [GetRecord](#getrecord)
+* ListSets (unsupported)
+
 
 The endpoint must be targetted at a specific institution's dataset, like so:
 
