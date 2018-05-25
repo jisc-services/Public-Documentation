@@ -11,12 +11,12 @@ The base endpoint of all OAI-PMH requests to PubRouter is:
 
     https://pubrouter.jisc.ac.uk/oaipmh
     
-Though this endpoint can currently only be used with reference to a specific repository. So the effective endpoint would actually be: 
+Though this can only be used with reference to a specific PubRouter account; so the effective endpoint is: 
 ```
-https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution id>
+https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution_id>
 ```
 
-Where "institution_id" is the account id of the Institution whose notifications are to be retrieved.
+Where `<institution_id>` is the account id of the Institution whose notifications are to be retrieved.
 
 For example:
 
