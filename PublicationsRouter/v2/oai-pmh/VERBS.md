@@ -1,4 +1,4 @@
-# PubRouter's implementation of OAI-PMH Verbs
+# OAI-PMH Verbs implemented by PubRouter
 
 This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their interpretation by PubRouter. 
 
