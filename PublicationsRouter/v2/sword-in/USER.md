@@ -31,7 +31,7 @@ For example, using curl, you might do the following:
 
 ## Send a package as a new notification
 
-If you want to send a notification as a package, the zip should be in a format listed [here.](../api/Packaging.md#a-guide-to-the-formats).
+If you want to send a notification as a package, the zip should be in a format listed [here.](../api/Packaging.md#a-guide-to-the-formats)
 
 Get the URL of the collection from the Service Document (see above), and then do the following
 
