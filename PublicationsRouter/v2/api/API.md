@@ -626,7 +626,7 @@ If submission was successful you will receive a 204 (No Content). Else, a 400 wi
 
 ### CSV Submission
 
-To submit CSV, make a POST request against the endpoint, with content-type of `multipart/form-data` and a file submission, key value of `file` with the csv file as the value. For valid csv format see [here for a csv template](http://pubrouter.jisc.ac.uk/static/csvtemplate.csv) or [here for an excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx).  
+To submit CSV, make a POST request against the endpoint, with content-type of `multipart/form-data` and a form submission, key value of `'file'` with the csv file as the value. For valid csv format see [here for a csv template](http://pubrouter.jisc.ac.uk/static/csvtemplate.csv) or [here for an excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx).  
 
     POST /config?api_key=<api_key>
     Header:
@@ -634,7 +634,7 @@ To submit CSV, make a POST request against the endpoint, with content-type of `m
     Form:
         'file': config.csv
 
-        
+If submission was successful you will receive a 204 (No Content). Else, a 400 will be raised upon invalid content submitted, or a 404 if unauthenticated. 
 
 
     
