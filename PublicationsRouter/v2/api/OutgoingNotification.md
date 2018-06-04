@@ -137,7 +137,7 @@ The JSON structure of the model is as follows:
 				"id": "<funder identifier>"
 				}
 			],
-			"grant_number": "<funder's grant number>"
+			"grant_numbers": ["<list of grant numbers associated with this funder>"]
 			}
 		],
 		"embargo": {
@@ -148,13 +148,17 @@ The JSON structure of the model is as follows:
 		"license_ref": [
 			{
 			"title": "<name of licence>",
-			"type": "<type; Note: will have value 'ali_free' for an ali:free-to-read element >", 
+			"type": "<type>", 
 			"url": "<url>",
 			"version": "<license version; for example: 4.0>",
-			"start": "<Date licence starts (YYYY-MM-DD format)>",
-			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
+			"start": "<Date licence starts (YYYY-MM-DD format)>"
 			}
-		]
+		],
+		"free2read": {
+			"start": "<start date of ali:free-to-read license>",
+			"end": "<end date of ali:free-to-read license>"
+		},
+		"refereed": "<whether or not the record was refereed: true, false or null>"
 	}
 }
 ```
@@ -224,7 +228,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.funding.name | Funder name | unicode |  |
 | metadata.funding.identifier.type | Funder identifier type (e.g "ringold") - no vocabulary for this field in this version of the system | unicode |  |
 | metadata.funding.identifier.id | Funder identifier (e.g. Ringold ID) | unicode |  |
-| metadata.funding.grant_number | Grant number for funding source behind this article | unicode |  |
+| metadata.funding.grant_numbers | List of grant numbers associated with funding source behind this article | unicode |  |
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.duration | Embargo duration in DAYS | unicode |  |
@@ -234,4 +238,6 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.license_ref.end | License end date (optional) | unicode |  |
+| metadata.free2read.start | Ali:free-to-read license start date | unicode | |
+| metadata.free2read.end | Ali:free-to-read license end date | unicode | |
+| metadata.refereed | Whether the record has been refereed: true, false or null | unicode | |
