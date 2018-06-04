@@ -29,12 +29,9 @@ For example, using curl, you might do the following:
 
     curl -i https://email:password@pubrouter.jisc.ac.uk/sword/
 
-(check with Jisc for the correct base url of the live service).
-
 ## Send a package as a new notification
 
-Once you have constructed and validated (see above) a  Zip file of the appropriate packaging format (see the JPER packaging documentation for details),
-you can send your notifications to your collection.
+If you want to send a notification as a package, the zip should be in a format listed [here].(../api/Packaging.md#a-guide-to-the-formats).
 
 Get the URL of the collection from the Service Document (see above), and then do the following
 
