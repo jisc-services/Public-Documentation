@@ -6,7 +6,7 @@ This document provides information on how to get your repository set up to take 
 
 Firstly, you will need to contact pubrouter@jisc.ac.uk to have an account created. For that, you must provide:
 
-* The matching parameters using this [Excel template] (https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT - if using the Excel template, then when completed you should save it as a CSV file. 
+* The matching parameters using this [Excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT - if using the Excel template, then when completed you should save it as a CSV file. 
 * A *username* and *password* for an account in your repository which has a role with the rights to create content via SWORDv2:
    * For Eprints deposits into *Manage Deposits* the account needs *User* role
    * For Eprints deposits into the *Review queue* an *Editor* or *Admin* role is required
@@ -55,7 +55,7 @@ Router is certified to work with Dspace 5.x
 
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
 
-Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
+Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
 
 ### Deposit process
