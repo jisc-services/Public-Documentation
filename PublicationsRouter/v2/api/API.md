@@ -588,7 +588,7 @@ If the notification content is found and authentication succeeds you will receiv
 Note that a successful access by a Repository account user will log a successful delivery of content notification into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
 
 # API for matching configuration
-If you are an institution you have access to the endpoint `/config`. This endpoint allows you to either update or retrieve your current matching configuration. 
+If you are a repository user you have access to the endpoint `/config`. This endpoint allows you to either update or retrieve your current matching configuration. This endpoint requires authentication, using an api key. 
 
 ## Retrieving Matching Configuration
 
@@ -635,6 +635,3 @@ To submit CSV, make a POST request against the endpoint, with content-type of `m
         'file': config.csv
 
 If submission was successful you will receive a 204 (No Content). Else, a 400 will be raised upon invalid content submitted, or a 404 if unauthenticated. 
-
-
-    
