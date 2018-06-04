@@ -1,5 +1,5 @@
 # Matching Config Structure
-Document contains structure of JSON for submission and tr
+Document contains structure of matching configuration JSON for both submission and retrieval. Used in POST/GET requests respectively against endpoint `/config`.
 
 ## JSON Submitted Structure
 The structure of a JSON submission for matching configuration must match the following format: 
