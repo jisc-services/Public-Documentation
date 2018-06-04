@@ -31,6 +31,7 @@ This page has the following contents:
   
  
 * [API for retrieving notifications](./API.md#api-for-retrieving-notifications)
+* [API for changing matching configuration](./API.md#api-for-matching-configuration)
 
 ### Alternatives to REST API ###
 
@@ -585,3 +586,55 @@ If the notification content is found and authentication succeeds you will receiv
     Binary Package
 
 Note that a successful access by a Repository account user will log a successful delivery of content notification into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
+
+# API for matching configuration
+If you are an institution you have access to the endpoint `/config`. This endpoint allows you to either update or retrieve your current matching configuration. 
+
+## Retrieving Matching Configuration
+
+To retrieve your current matching configuration from this endpoint, simply make a GET request against the endpoint with your API key. 
+
+    GET /config?api_key=<api_key>
+
+If authentication was successful then you will receive a 200 (OK) and a JSON containing your current repository configuration:
+
+    HTTP 1.1  200 OK
+    Content-Type: application/json
+    
+    {
+        "matching_configuration": ["values"],
+        ...
+    }
+
+For information regarding the JSON data structure returned, see [matching config structure].(./MatchingConfig.md)
+
+## Submitting Matching Configuration
+
+To submit new matching configuration changes using this endpoint, you must make a POST request against the endpoint. You have two choices with regards to the format of content you submit. You can either submit a JSON data structure, or a csv file. 
+
+### JSON Submission
+
+To submit JSON, make a POST request against the endpoint, with content-type of `application/JSON` and with valid JSON (see [matching config structure](./MatchingConfig.md)). 
+
+    POST /config?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        { "Valid JSON matching config structure" } 
+
+If submission was successful you will receive a 204 (No Content). Else, a 400 will be raised upon invalid content submitted, or a 404 if unauthenticated. 
+
+### CSV Submission
+
+To submit CSV, make a POST request against the endpoint, with content-type of `multipart/form-data` and a file submission, key value of `file` with the csv file as the value. For valid csv format see [here for a csv template](http://pubrouter.jisc.ac.uk/static/csvtemplate.csv) or [here for an excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx).  
+
+    POST /config?api_key=<api_key>
+    Header:
+        multipart/form-data
+    Form:
+        'file': config.csv
+
+        
+
+
+    
