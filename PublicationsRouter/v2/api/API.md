@@ -2,9 +2,9 @@
 
 Jisc Publications Router exposes an REST API that may be used to submit and/or retrieve publication notifications.  These pages document the API interfaces and data formats.
 
-The current version of the API is v3, and it can be accessed at
+The current version of the API is v2, and it can be accessed at
 
-    https://pubrouter.jisc.ac.uk/api/v3
+    https://pubrouter.jisc.ac.uk/api/v2
 
 All URL paths provided in this document will extend from this base url.
 
@@ -520,13 +520,13 @@ In order to tell the difference between (1) and (2), compare the following two l
         {
             "type" : "package",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v2/notification/123456789/content",
             "packaging" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "fulltext",
             "format" : "application/pdf",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/publisher.pdf",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v2/notification/123456789/content/publisher.pdf",
         }
     ]
 
@@ -551,13 +551,13 @@ Notifications with binary content will contain contain a links section like:
         {
             "type" : "package",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v2/notification/123456789/content",
             "packaging" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "package",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/SimpleZip",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v2/notification/123456789/content/SimpleZip",
             "packaging" : "http://purl.org/net/sword/package/SimpleZip"
         }
     ]
