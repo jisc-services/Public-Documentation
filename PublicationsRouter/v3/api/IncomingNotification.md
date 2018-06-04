@@ -1,8 +1,6 @@
-# Provider Outgoing Notification
+# Incoming Notification
 
-The PubRouter ProviderOutgoingNotification is the structure available to publishers of meta-data output by PubRouter for notifications that have been matched (designated for transmission) to at least one Repository.
-
-It differs from the [OutgoingNotification](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/api/OutgoingNotification.md) only by the addition of the *id* and *route* elements in the *provider* object (i.e. provider.id and provider.route).
+The PubRouter IncomingNotification is the structure used by a Publisher to send publication meta-data to PubRouter for routing to Repositories.
 
 ## JSON Data Structure
 
@@ -10,27 +8,21 @@ The JSON structure of the model is as follows:
 
 ```json
 {
-	"id": "string",
-	"created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
-	"analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
-	"event": "string",
+	"event": "<keyword for the kind of notification: acceptance, publication, etc.>",
 	"provider": {
-		"id" : "<user account id of the provider>",
 		"agent": "<string defining the software/process which put the content here, provided by provider>",
-		"ref": "<provider's globally unique reference for this research object>",
-		"route" : "<method by which notification was received: native api, sword, ftp>"
+		"ref": "<provider's globally unique reference for this research object>"
 	},
 	"content": {
-   		"packaging_format": "<identifier for packaging format used>"
-	}, 
+		"packaging_format": "<identifier for packaging format used>"
+	},
 	"links": [
-	    	{
+	 	{
 		"type": "<link type: splash|fulltext>",
 		"format": "<text/html|application/pdf|application/xml|application/zip|...>",
-		"url": "<provider's splash, fulltext or machine readable page>",
-	        "packaging": "<package format identifier string>"
-        	}
-	], 
+		"url": "<provider's splash, fulltext or machine readable page>"
+		}
+	],
 	"metadata": {
 		"journal": {
 			"title": "<Journal / publication title>",
@@ -51,7 +43,7 @@ The JSON structure of the model is as follows:
 			    }, {
 				"type": "doi",
 				"id": "<doi for the journal or series>"
-				}
+			    }
 			]
 		},
 		"article": {
@@ -69,7 +61,8 @@ The JSON structure of the model is as follows:
 				{
 				"type": "doi",
 				"id": "<doi for the record>"
-				}
+				}, {
+			    	}
 			],
 			"subject": [ "<subject keywords/classifications>" ]
 		},
@@ -81,7 +74,7 @@ The JSON structure of the model is as follows:
 				"surname": "<author surname>",
 				"fullname": "<author name>",
 				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
-				},
+			},
 			"organisation_name": "<Name of organisation if author is an organisation >",
 			"identifier": [
 			    {
@@ -90,6 +83,7 @@ The JSON structure of the model is as follows:
 			    }, {
 				"type": "email",
 				"id": "<author's email address>"
+			    }, {
 			    }
 			],
 			"affiliation": "<author affiliation>"
@@ -97,24 +91,25 @@ The JSON structure of the model is as follows:
 		],
 		"contributor": [
 			{
-			"type": "<Type of contribution author>",
+			"type": "<Type of contribution like editor..>",
 			"name": {
-				"firstname": "<author first name>",
-				"surname": "<author surname>",
-				"fullname": "<author name>",
+				"firstname": "<contributor first name>",
+				"surname": "<contributor surname>",
+				"fullname": "<contributor name>",
 				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
-				},
-			"organisation_name": "<Name of organisation if author is an organisation >",
+			},
+			"organisation_name": "<Name of organisation if contributor is an organisation >",
 			"identifier": [
 			    {
 				"type": "orcid",
-				"id": "<author's orcid>"
+				"id": "<contributor's orcid>"
 			    }, {
 				"type": "email",
-				"id": "<author's email address>"
+				"id": "<contributor's email address>"
+			    }, {
 			    }
 			],
-			"affiliation": "<author affiliation>"
+			"affiliation": "<contributor affiliation>"
 			}
 		],
 		"accepted_date": "<date YYYY-MM-DD format>",
@@ -155,7 +150,7 @@ The JSON structure of the model is as follows:
 			"title": "<name of licence>",
 			"type": "<type>",
 			"url": "<url>",
-			"version": "<version>",
+			"version": "<version of license; for example: 4.0>" ,
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
 			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
 			}
@@ -164,23 +159,19 @@ The JSON structure of the model is as follows:
 }
 ```
 
-Each of the fields is defined as laid out in the table below.  All fields are optional unless otherwise specified:
+## Field Definitions
 
-| Field | Description | Datatype | Format | Allowed Values |
+Each of the fields in the JSON structure above is defined in the table below in the order that they appear (dot notation is used to qualify them).  NOTE that REQUIRED fields are indicated with an asterisk (*) in the Field column, all other fields are optional.
+
+| Field (* = Required field) | Description | Datatype | Format | Allowed Values |
 | ----- | ----------- | -------- | ------ | -------------- |
-| id | opaque, persistent system identifier for this record | unicode |  |  |
-| created_date | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
-| analysis_date | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
-| event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode |  |  |
-| provider.id | User account ID of provider | unicode | free text |  |
+| event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode | free text |  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
-| provider.route | Method by which notification was received: native api, sword, ftp | unicode | free text |  |
 | content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
-| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL | |
-| links.packaging | Package format identifier for the resource available at the URL | unicode |  |  |
+| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL | | 
 | metadata.journal.title * | Title of the journal or publication | unicode |  |  |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode |  |  |
 | metadata.journal.volume | Number of a journal (or other document) within a series | unicode |  |  |

@@ -1,3 +1,9 @@
+# Provider Outgoing Notification
+
+The PubRouter ProviderOutgoingNotification is the structure available to publishers of meta-data output by PubRouter for notifications that have been matched (designated for transmission) to at least one Repository.
+
+It differs from the [OutgoingNotification](./OutgoingNotification.md) only by the addition of the *id*, *route* and *ref* elements in the *provider* object (i.e. provider.id, provider.ref and provider.route).
+
 # Outgoing Notification
 
 The PubRouter OutgoingNotification is the meta-data structure output by PubRouter for notifications that have been matched (designated for transmission) to at least one Repository.
@@ -13,7 +19,10 @@ The JSON structure of the model is as follows:
 	"analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
 	"event": "string",
 	"provider": {
-		"agent": "<string defining the software/process which put the content here, provided by provider>"
+		"id" : "<user account id of the provider>",
+		"agent": "<string defining the software/process which put the content here, provided by provider>",
+		"ref": "<provider's globally unique reference for this research object>",
+		"route" : "<method by which notification was received: native api, sword, ftp>"
 	},
 	"content": {
    		"packaging_format": "<identifier for packaging format used>"
@@ -137,7 +146,7 @@ The JSON structure of the model is as follows:
 				"id": "<funder identifier>"
 				}
 			],
-			"grant_number": "<funder's grant number>"
+			"grant_numbers": ["<list of grant numbers associated with this funder>"]
 			}
 		],
 		"embargo": {
@@ -148,13 +157,17 @@ The JSON structure of the model is as follows:
 		"license_ref": [
 			{
 			"title": "<name of licence>",
-			"type": "<type; Note: will have value 'ali_free' for an ali:free-to-read element >", 
+			"type": "<type>", 
 			"url": "<url>",
 			"version": "<license version; for example: 4.0>",
-			"start": "<Date licence starts (YYYY-MM-DD format)>",
-			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
+			"start": "<Date licence starts (YYYY-MM-DD format)>"
 			}
-		]
+		],
+		"free2read": {
+			"start": "<start date of ali:free-to-read license>",
+			"end": "<end date of ali:free-to-read license>"
+		},
+		"refereed": "<whether or not the record was refereed: true, false or null>"
 	}
 }
 ```
@@ -167,7 +180,10 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | created_date | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode |  |
-| provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |
+| provider.id | User account ID of provider | unicode | free text |  |
+| provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
+| provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
+| provider.route | Method by which notification was received: native api, sword, ftp | unicode | free text |  |
 | content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
@@ -224,7 +240,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.funding.name | Funder name | unicode |  |
 | metadata.funding.identifier.type | Funder identifier type (e.g "ringold") - no vocabulary for this field in this version of the system | unicode |  |
 | metadata.funding.identifier.id | Funder identifier (e.g. Ringold ID) | unicode |  |
-| metadata.funding.grant_number | Grant number for funding source behind this article | unicode |  |
+| metadata.funding.grant_numbers | List of grant numbers associated with funding source behind this article | unicode |  |
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.duration | Embargo duration in DAYS | unicode |  |
@@ -234,4 +250,6 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.license_ref.end | License end date (optional) | unicode |  |
+| metadata.free2read.start | Ali:free-to-read license start date | unicode | |
+| metadata.free2read.end | Ali:free-to-read license end date | unicode | |
+| metadata.refereed | Whether the record has been refereed: true, false or null | unicode | |
