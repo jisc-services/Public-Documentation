@@ -9,7 +9,7 @@ Each package format has a URI which unambiguously identifies it, and we use this
 | Format | Description |
 |--------|-------------|
 | [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
-| [http://purl.org/net/sword/package/SimpleZip](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
+| [http://purl.org/net/sword/package/SimpleZip](#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
 
 When sending or retrieving packages from PubRouter, the format needs to be specified.
 
@@ -29,13 +29,13 @@ JSON in the **links** section, for example:
         {
             "type" : "package",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v1/notification/123456789/content",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
             "packaging" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "package",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v1/notification/123456789/content/SimpleZip",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/SimpleZip",
             "packaging" : "http://purl.org/net/sword/package/SimpleZip"
         }
     ]
@@ -48,8 +48,8 @@ PubRouter accepts and disseminates packages in the following formats:
 
 | Format | Accepts from publishers| Disseminates to repositories |
 |----| :---: | :---: |
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httpspubsrouterjiscacukfilesandjats) | Yes | Yes |
-| [http://purl.org/net/sword/package/SimpleZip](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | No | Yes |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubsrouterjiscacukfilesandjats) | Yes | Yes |
+| [http://purl.org/net/sword/package/SimpleZip](#httppurlorgnetswordpackagesimplezip) | No | Yes |
 
 If a package format can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
 
