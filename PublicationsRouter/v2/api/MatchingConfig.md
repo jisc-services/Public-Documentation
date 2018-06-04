@@ -10,7 +10,7 @@ The structure of a JSON submission for matching configuration must match the fol
   "postcodes" : ["list of postcodes where authors may list their affiliation address"],
   "domains": ["list of domain names the institution owns or operates under"],
   "grants": ["list of grant numbers affiliated with the institution"],
-  "author_ids": [# list of author identifier objects of format
+  "author_ids": [
                   {
                      "type": "the type of identifier, either 'email' or 'ORCID'",
                      "id": "the value, so either the email address or the ORCID"
