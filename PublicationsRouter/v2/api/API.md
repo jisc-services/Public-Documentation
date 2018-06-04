@@ -606,7 +606,7 @@ If authentication was successful then you will receive a 200 (OK) and a JSON con
         ...
     }
 
-For information regarding the JSON data structure returned, see [matching config structure].(./MatchingConfig.md)
+For information regarding the JSON data structure returned, see [matching config structure](./MatchingConfig.md).
 
 ## Submitting Matching Configuration
 
@@ -614,7 +614,7 @@ To submit new matching configuration changes using this endpoint, you must make 
 
 ### JSON Submission
 
-To submit JSON, make a POST request against the endpoint, with content-type of `application/JSON` and with valid JSON (see [matching config structure](./MatchingConfig.md)). 
+To submit JSON, make a POST request against the endpoint, with content-type of `application/JSON` and with valid JSON (see [matching config structure](./MatchingConfig.md#retrieved-structure)). 
 
     POST /config?api_key=<api_key>
     Header:
