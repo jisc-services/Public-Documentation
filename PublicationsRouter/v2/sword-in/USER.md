@@ -17,81 +17,61 @@ but you won't need it much after that.
 The Service Document lists the collections that you can send your notifications to, the mimetypes and the packaging formats
 that are supported.
 
-In this version of the system there are only two collections:
+There will only be one collection - this will be the collection for your user account.
 
-1. validate - you can send content here to check whether it's correctly formatted for sending to the router
-2. notify - you can send content here when you're ready to notify us of a new publication
+You can get the URL for your collection by retrieving the service document, which you can do like this:
 
-You'll be able to get the URLs for those collections by retrieving the service document, which you can do like this:
+    GET /
 
-    GET /service-document
-
-This will require you to provide your username and api key via HTTP Basic Authentication.
+This will require you to provide your email and password via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
-    curl -i http://username:api_key@pubsrouter.jisc.ac.uk/sword/service-document
-
-(check with Jisc for the correct base url of the live service).
-
-## Send a package for validation
-
-Once you have constructed a Zip file of the appropriate packaging format (see the JPER packaging documentation for details),
-you'll want to check that it works with the router.  You can do this by sending it to the "validate" collection before you
-try sending it for real.
-
-Get the URL of the collection from the Service Document (in the section above), and then do the following
-
-    POST /collection/validate
-    Content-Disposition: filename=filename.zip
-    Content-Type: application/zip
-    Packaging: https://pubrouter.jisc.ac.uk/FilesAndJATS
-    
-    [binary content]
-
-This will require you to provide your username and api key via HTTP Basic Authentication.
-
-For example, using curl, you might do the following:
-
-    curl -i --data-binary "@test.zip" -H "Content-Disposition: filename=test.zip" -H "Content-Type: application/zip" -H "Packaging: https://pubsrouter.jisc.ac.uk/FilesAndJATS" http://userame:api_key@pubsrouter.jisc.ac.uk/sword/collection/validate
-
-In response to this you will either receive a SWORDv2 error document detailing any problems with the request, or a
-successful 202 (Accepted) response.  If you get the latter, you are good to start sending your notifications to the "notify"
-collection.
+    curl -i https://email:password@pubrouter.jisc.ac.uk/sword/
 
 ## Send a package as a new notification
 
-Once you have constructed and validated (see above) a  Zip file of the appropriate packaging format (see the JPER packaging documentation for details),
-you can send your notifications to the live "notify" collection for inclusion in the router.
+If you want to send a notification as a package, the zip should be in a format listed [here.](../api/Packaging.md#a-guide-to-the-formats)
 
 Get the URL of the collection from the Service Document (see above), and then do the following
 
-    POST /collection/notify
+    POST /collections/<YOUR_USER_ID>
     Content-Disposition: filename=filename.zip
     Content-Type: application/zip
-    Packaging: https://pubsrouter.jisc.ac.uk/FilesAndJATS
     
     [binary content]
 
-This will require you to provide your username and api key via HTTP Basic Authentication.
+This will require you to provide your email and password via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
-    curl -i --data-binary "@article.zip" -H "Content-Disposition: filename=article.zip" -H "Content-Type: application/zip" -H "Packaging: https://pubsrouter.jisc.ac.uk/FilesAndJATS" http://userame:api_key@pubsrouter.jisc.ac.uk/sword/collection/notify
+    curl -i --data-binary "@article.zip" -H "Content-Disposition: filename=article.zip" -H "Content-Type: application/zip" https://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_USER_ID>
 
 In response to this you will either receive a SWORDv2 error document detailing any problems with the request, or a
-successful 201 (Created) response.  If you get the former, you should consider sending the package to the "validate"
-endpoint for a proper check-over.
+successful 201 (Created) response.  If you get a different response, the returned XML should provide an explanation for your error.
 
 Along with the successful response you will receive an HTTP header "Location" which gives you the "Edit-IRI" for your
 notification.  If you want to access your notification again, you'll need this.  You will also get an XML deposit receipt
 document, which provides you with a variety of other URLs to access parts of your created notification (see below for more
 details).
 
+## Deposit metadata and files separately
+
+You can also deposit metadata and files separely using the Continued Deposit functionality of SWORD2.
+
+Get the URL of the collection from the Service Document the same in the previous section. Instead of submitting a package, you can submit multiple files. An example of this, using curl is below:
+
+    curl -i --data-binary "@jats.xml" -H "Content-Disposition: filename=jats.xml" -H "Content-Type: application/xml" -H "In-Progress: true" https://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_USER_ID>
+
+After this, you can continue your deposit by using the "Edit-Media" IRI as part of the SWORD2 spec, which will be listed in the deposit receipt of the previous request. Just remember to set the In-Progress header to false (or not set it at all) when you have finished depositing files, or it will never be processed:
+
+    curl -i --data-binary "@article.pdf" -H "Content-Disposition: filename=article.pdf" -H "Content-Type: application/xml" https://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_USER_ID>/<YOUR_NOTIFICATION_ID>/media
+
+You can repeat this for as many files as you like, but note that any XML files submitted in this way MUST be JATS XML files or they will fail to create notifications.
 
 ## Retrieving details of previously created notifications
 
-Once you've sent something to the "notify" collection, you may want to retrieve it again to see what happened to it.
+Once you've deposited a notification, you may want to retrieve it again to see what happened to it.
 
 There are a number of options for ways you can retreive it:
 
@@ -109,13 +89,11 @@ This is obtained by making a request to the Edit-IRI directly, which will return
 
     GET Edit-IRI
     
-This will require you to provide your username and api key via HTTP Basic Authentication.
+This will require you to provide your email and password via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
-    curl -i http://username:api_key@pubsrouter.jisc.ac.uk/sword/entry/b581851855c7414eaef4d7fd3f49ed50
-
-(Note that the long id at the end will be specific to your individual notifications)
+    curl -i http://username:api_key@pubrouter.jisc.ac.uk/sword/collections/<YOUR_USER_ID>/<YOUR_NOTIFICATION_ID>
 
 This will give back the XML deposit receipt, which contains the identifiers that you need to access the binary
 content and the staus report.
@@ -127,51 +105,16 @@ receipt, see the section above on how to get it.
 
 In the deposit receipt you'll see a section that looks like this:
 
-    <link rel="edit-media" href="http://pubsrouter.jisc.ac.uk/sword/entry/b581851855c7414eaef4d7fd3f49ed50/content"/>
+    <link rel="edit-media" href="http://pubrouter.jisc.ac.uk/sword/collections/<YOUR_USER_ID>/<YOUR_NOTIFICATION_ID>/media"/>
 
 This is the "Edit Media IRI" (EM-IRI), and you can do:
 
     GET MR-IRI
     
-This will require you to provide your username and api key via HTTP Basic Authentication.
+This will require you to provide your email and password via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
-    curl -i http://username:api_key@pubsrouter.jisc.ac.uk/sword/entry/b581851855c7414eaef4d7fd3f49ed50/content
+    curl -i http://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_USER_ID>/<YOUR_NOTIFICATION_ID>/media
 
 This will return to you the binary content you originally deposited.
-
-
-### Retrieving the Statement
-
-To get the statement you need the "State-IRI" from the deposit receipt.  If you don't have the deposit
-receipt, see the section above on how to get it.
-
-In the deposit receipt you'll see a section that looks like this:
-
-    <link rel="http://purl.org/net/sword/terms/statement" 
-        type="application/atom+xml;type=feed" 
-        href="http://pubsrouter.jisc.ac.uk/sword/entry/b581851855c7414eaef4d7fd3f49ed50/statement/atom"/>
-
-(there may be more than one of these, as the statement is available in different formats - pick your favourite).
-
-You can then do:
-
-    GET State-IRI
-
-This will require you to provide your username and api key via HTTP Basic Authentication.
-
-For example, using curl, you might do the following:
-
-    curl -i http://username:api_key@pubsrouter.jisc.ac.uk/entry/b581851855c7414eaef4d7fd3f49ed50/statement/atom
-
-This will return to you an XML document (in this case as an Atom Feed) which describes the structure and state of
-your item, as per the SWORDv2 specification documentation.
-
-If you are feeling particularly adventurous, you may also content negotiate with the server for the format of the statement
-via the Edit-IRI (where you get the deposit receipt from):
-
-    curl -i -H "Accept: application/atom+xml;type=feed" http://username:api_key@pubsrouter.jisc.ac.uk/entry/b581851855c7414eaef4d7fd3f49ed50
-    
-    curl -i -H "Accept: application/rdf+xml" http://username:api_key@pubsrouter.jisc.ac.uk/entry/b581851855c7414eaef4d7fd3f49ed50
-
