@@ -10,12 +10,11 @@ The structure of a JSON submission for matching configuration must match the fol
   "postcodes" : ["list of postcodes where authors may list their affiliation address"],
   "domains": ["list of domain names the institution owns or operates under"],
   "grants": ["list of grant numbers affiliated with the institution"],
-  "author_ids": [
-                  {
-                     "type": "the type of identifier, either 'email' or 'ORCID'",
-                     "id": "the value, so either the email address or the ORCID"
-                  }
-                ]
+  "author_ids": ["list of identifier objects of format
+					{
+						'type': 'the type of identifier, either email or ORCID', 
+						'id': 'the value, so either the email address or the ORCID'
+					}"]
 }
 ```
 
@@ -24,13 +23,17 @@ For more information regarding CSV structure see [here for a csv template](http:
 
 ## Retrieved Structure
 The structure of JSON returned after a GET request will match the following format: 
-```JSON
+```
 {
   "name_variants": ["list of name variants the institution is known by"],
   "postcodes" : ["list of postcodes where authors may list their affiliation address"],
   "domains": ["list of domain names the institution owns or operates under"],
   "grants": ["list of grant numbers affiliated with the institution"],
-  "author_ids": ["list of identifier objects of format {'type': 'the type of identifier, either email or ORCID', 'id': 'the value, so either the email address or the ORCID'}"],
+  "author_ids": ["list of identifier objects of format
+					{
+						'type': 'the type of identifier, either email or ORCID', 
+						'id': 'the value, so either the email address or the ORCID'
+					}"],
   "id": "the id of this repository configuration object (used internally, not of use externally)",
   "repository": "id of the repository retrieved",
   "created_date": "date this repository configuration object was created",
