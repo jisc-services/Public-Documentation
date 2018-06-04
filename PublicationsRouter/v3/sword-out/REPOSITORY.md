@@ -55,7 +55,7 @@ Router is certified to work with Dspace 5.x
 
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
 
-Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
+Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
 
 ### Deposit process
