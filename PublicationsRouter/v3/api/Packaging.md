@@ -8,7 +8,7 @@ Each package format has a URI which unambiguously identifies it, and we use this
 
 | Format | Description |
 |--------|-------------|
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](/#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
 | [http://purl.org/net/sword/package/SimpleZip](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/api/Packaging.md#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
 
 When sending or retrieving packages from PubRouter, the format needs to be specified.
