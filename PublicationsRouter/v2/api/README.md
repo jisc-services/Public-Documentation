@@ -14,7 +14,7 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 * [API for sending notifications (Publishers)](./Send.md)
 * [API for retrieving notifications](./Retrieve.md)
-* [API for changing matching configuration](/Config.md)
+* [API for changing matching configuration](./Config.md)
 
 ### Alternatives to REST API ###
 
