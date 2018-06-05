@@ -122,7 +122,7 @@ In order to tell the difference between (1) and (2), compare the following two l
             "type" : "package",
             "format" : "application/zip",
             "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
-            "packaging" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "fulltext",
@@ -131,7 +131,7 @@ In order to tell the difference between (1) and (2), compare the following two l
         }
     ]
 
-The first link has type "package" and also has an element **packaging** which tells you this is of the format "https://pubsrouter.jisc.ac.uk/FilesAndJATS".
+The first link has type "package" and also has an element **packaging** which tells you this is of the format "https://pubrouter.jisc.ac.uk/FilesAndJATS".
 
 The second link does not contain a **packaging** element at all, and does not have "package" as its type.
 
@@ -153,7 +153,7 @@ Notifications with binary content will contain contain a links section like:
             "type" : "package",
             "format" : "application/zip",
             "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
-            "packaging" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "package",
