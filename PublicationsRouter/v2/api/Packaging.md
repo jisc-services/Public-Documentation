@@ -8,7 +8,7 @@ Each package format has a URI which unambiguously identifies it, and we use this
 
 | Format | Description |
 |--------|-------------|
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubsrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubrouterjiscacukfilesandjats) | A flat file structure with JATS XML embedded |
 | [http://purl.org/net/sword/package/SimpleZip](#httppurlorgnetswordpackagesimplezip) | A zipped, flat file structure of unspecified files |
 
 When sending or retrieving packages from PubRouter, the format needs to be specified.
@@ -18,7 +18,7 @@ JSON `content.packaging_format` field, thus:
 
     {
         "content" : {
-            "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            "packaging_format" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
     }
 
@@ -30,7 +30,7 @@ JSON in the **links** section, for example:
             "type" : "package",
             "format" : "application/zip",
             "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
-            "packaging" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
+            "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "package",
@@ -48,7 +48,7 @@ PubRouter accepts and disseminates packages in the following formats:
 
 | Format | Accepts from publishers| Disseminates to repositories |
 |----| :---: | :---: |
-| [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubsrouterjiscacukfilesandjats) | Yes | Yes |
+| [https://pubrouter.jisc.ac.uk/FilesAndJATS](#httpspubrouterjiscacukfilesandjats) | Yes | Yes |
 | [http://purl.org/net/sword/package/SimpleZip](#httppurlorgnetswordpackagesimplezip) | No | Yes |
 
 If a package format can be accepted, publishers may use it to deposit binary content associated with a notification into PubRouter.
@@ -58,7 +58,7 @@ If a package format can be disseminated, it will either be sent to your reposito
 
 ## A guide to the formats
 
-### https://pubsrouter.jisc.ac.uk/FilesAndJATS 
+### https://pubrouter.jisc.ac.uk/FilesAndJATS 
 
 (Note: this URI does not link anywhere).
 
