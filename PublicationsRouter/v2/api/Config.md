@@ -6,7 +6,7 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths provided in this document will extend from this base url.
 
-If you have an Institution account you have access to the endpoint ``/config` which allows you to retrieve and/or replace your current matching configuration. This endpoint requires authentication using an api key.
+If you have an Institution account you have access to the endpoint `/config` which allows you to retrieve and/or replace your current matching configuration. This endpoint requires authentication using an api key.
 
 ## Retrieving Matching Configuration
 
