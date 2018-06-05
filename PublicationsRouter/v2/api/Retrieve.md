@@ -9,7 +9,7 @@ All URL paths provided in this document will extend from this base url.
 If you are a repository, consuming notifications from PubRouter, you have access to 2 endpoints:
 
 1. The **[notification list feed](#notification-list-feed-endpoint)** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
-2. The **[notification](##individual-notification-endpoint)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
+2. The **[notification](#individual-notification-endpoint)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
 
 Notifications are represented in our native JSON format as an [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) (or a [Provider's Outgoing Notification](./ProviderOutgoingNotification.md#provider-outgoing-notification) if you are the publisher who created it).
 
