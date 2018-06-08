@@ -7,6 +7,11 @@ This document tells you all you need to know to get connected to JPER via this a
 
 The API is built on the SWORDv2 specification, which you can [read about here](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html)
 
+The service can currently be reached at:
+
+    https://pubrouter.jisc.ac.uk/sword
+    
+
 ## Getting Started: retrieving the service document
 
 The Service Document tells you all you need to know about the SWORDv2 endpoint that you're going to be interacting with.
