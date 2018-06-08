@@ -15,7 +15,7 @@ The following operations are utilised
 
 ## Metadata Deposit
 
-This is the process which creates a new repository object containing the [notification metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml).
+This is the process which creates a new repository object containing the [notification metadata](./).
 
 In line with section 6.3.3. of the SWORDv2 specification, it is as follows:
 
