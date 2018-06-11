@@ -59,7 +59,7 @@ You may list the notifications routed to just your repository or, alternatively,
 
 Note that as notifications are never updated (only created), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysis_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
 
-### Request paramters
+### Request parameters
 
 The REST call must include the `since` parameter and may include additional parameters:
 
