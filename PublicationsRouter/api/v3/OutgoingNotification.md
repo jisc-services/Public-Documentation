@@ -158,7 +158,7 @@ The JSON structure of the model is as follows:
 			"start": "<start date of ali:free-to-read license>",
 			"end": "<end date of ali:free-to-read license>"
 		},
-		"refereed": "<whether or not the record was refereed: true, false or null>"
+		"refereed": "<whether or not the record was refereed: true or false>"
 	}
 }
 ```
@@ -232,12 +232,13 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.duration | Embargo duration in DAYS | unicode |  |
-| metadata.license_ref | This array of objects may contain both license AND ali:free-to-read information (this may be changed in a future version of the API).  The `metadata.license_ref.type` field will have value "ali_free" for ali:free-to-read entries.  | | |
+| metadata.license_ref | Array of license_ref objects, list will be empty if no licenses found for this article | | |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |
 | metadata.license_ref.type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | unicode |  |
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
+| metadata.free2read | Ali:free-to-read license information, will be absent from JSON if no free2read licenses apply | | |
 | metadata.free2read.start | Ali:free-to-read license start date | unicode | |
 | metadata.free2read.end | Ali:free-to-read license end date | unicode | |
-| metadata.refereed | Whether the record has been refereed: true, false or null | unicode | |
+| metadata.refereed | Whether the record has been refereed: true or false| unicode | |
