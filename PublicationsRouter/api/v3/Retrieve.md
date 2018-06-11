@@ -51,19 +51,21 @@ Note that the "total" may increase between requests, as new notifications are ad
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more information.
 
 ---
-### Notification List Feed Endpoint
+## Notification List Feed Endpoint
 
-This endpoint lists routed notifications in "analysed_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
+This endpoint lists routed notifications in "analysis_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
 
 You may list the notifications routed to just your repository or, alternatively, all notifications that were routed to any repository.
 
-Note that as notifications are never updated (only created), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysed_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
+Note that as notifications are never updated (only created), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysis_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
 
-Allowed parameters for each request are:
+### Request paramters
 
-* **api_key** - [optional] - May be used for tracking API usage, but no authentication is required for this endpoint.
-* **since** - [required] - Timestamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC timezone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z
-* **page** - [optional] - Page number of results to return, defaults to 1.
+The REST call must include the `since` parameter and may include additional parameters:
+
+* **since** - [required] - Analysis date Time-stamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC time zone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z.  The response will include all records with an `analysis_date` greater than or equal to the `since` date
+* **api_key** - [optional] - May be used for tracking API usage, but no authentication is required for this endpoint
+* **page** - [optional] - Page number of results to return, defaults to 1. Where the number of results exceeds the `pageSize` it will be necessary to make successive requests, incrementing the `page` value each time
 * **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
 
 ### 1. Repository routed notifications
@@ -85,7 +87,7 @@ This endpoint lists all routed notifications irrespective of the repositories th
 You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
 
 ---
-### Individual Notification Endpoint
+## Individual Notification Endpoint
 
 This endpoint will return to you the JSON record for an individual notification.
 
@@ -137,7 +139,7 @@ The second link does not contain a **packaging** element at all, and does not ha
 
 This means the first link is a link to package held by PubRouter, and the second is a proxy for a URL hosted by the publisher.
 
-#### Packaged Content
+### Packaged Content
 
 Some notifications may have binary content associated with them.  If this is the case, you will see one or more **links** elements
 appearing in the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) JSON that you retrieve via either the **Notification List Feed** or the **Individual Notification**.
