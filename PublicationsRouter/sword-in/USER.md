@@ -1,18 +1,17 @@
-# JPER SWORDv2 Deposit Endpoint
+# PubRouter SWORDv2 Deposit Endpoint
 
-This application provides a thin interface between the JPER notification API and a publisher's SWORDv2 deposit 
-client, allowing the publisher to interact with JPER via SWORDv2 rather than its native API.
+PubRouter provides a SWORD2 interface that enables publishers to deposit article metadata and content into PubRouter using a SWORD client (as an alternative to the PubRouter REST API or FTP).
 
-This document tells you all you need to know to get connected to JPER via this approach.
+This page tells you all you need to know to get connected to PubRouter using this approach.
 
-The API is built on the SWORDv2 specification, which you can [read about here](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html)
+The inteface is built on the SWORDv2 specification, which you can [read about here](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html)
 
-The service can currently be reached at:
+The PubRouter SWORD2 service endpoint is:
 
     https://pubrouter.jisc.ac.uk/sword
     
 
-## Getting Started: retrieving the service document
+## Getting Started: retrieving the Service Document
 
 The Service Document tells you all you need to know about the SWORDv2 endpoint that you're going to be interacting with.
 
@@ -78,7 +77,7 @@ You can repeat this for as many files as you like, but note that any XML files s
 
 Once you've deposited a notification, you may want to retrieve it again to see what happened to it.
 
-There are a number of options for ways you can retreive it:
+There are a number of options for ways you can retrieve it:
 
 1. You can request a copy of the original deposit receipt you got when you first sent the notification
 2. You can request a copy of the binary content package you originally deposited
@@ -103,7 +102,7 @@ For example, using curl, you might do the following:
 This will give back the XML deposit receipt, which contains the identifiers that you need to access the binary
 content and the staus report.
 
-### Retreiving the binary content
+### Retrieving the binary content
 
 To get the binary content, you need the "Edit Media IRI" from the deposit receipt.  If you don't have the deposit
 receipt, see the section above on how to get it.
