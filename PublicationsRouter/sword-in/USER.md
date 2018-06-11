@@ -4,7 +4,7 @@ PubRouter provides a SWORD2 interface that enables publishers to deposit article
 
 This page tells you all you need to know to get connected to PubRouter using this approach.
 
-The inteface is built on the SWORDv2 specification, which you can [read about here](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html)
+The interface is built on the SWORDv2 specification, which you can [read about here](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html)
 
 The PubRouter SWORD2 service endpoint is:
 
