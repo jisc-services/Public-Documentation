@@ -1,6 +1,6 @@
-# JPER SWORDv2 Protocol Operations
+# PubRouter SWORDv2 Protocol Operations
 
-This document describes the process of carrying out SWORD deposits against repositories subscribed to the JPER
+This document describes the process of carrying out SWORD deposits against repositories subscribed to the PubRouter
 service.
 
 Section numbers referenced here are as per the [SWORDv2 profile](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html):
