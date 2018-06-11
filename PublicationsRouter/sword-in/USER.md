@@ -26,7 +26,7 @@ There will only be one collection - this will be the collection for your user ac
 
 You can get the URL for your collection by retrieving the service document, which you can do like this:
 
-    GET /sword/
+    GET /
 
 This will require you to provide your email and password via HTTP Basic Authentication.
 
@@ -40,7 +40,7 @@ If you want to send a notification as a package, the zip should be in a format l
 
 Get the URL of the collection from the Service Document (see above), and then do the following
 
-    POST /sword/collections/<YOUR_USER_ID>
+    POST /collections/<YOUR_USER_ID>
     Content-Disposition: filename=filename.zip
     Content-Type: application/zip
     
@@ -114,7 +114,7 @@ In the deposit receipt you'll see a section that looks like this:
 
 This is the "Edit Media IRI" (EM-IRI), and you can do:
 
-    GET MR-IRI
+    GET EM-IRI
     
 This will require you to provide your email and password via HTTP Basic Authentication.
 
