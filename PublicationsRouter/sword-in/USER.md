@@ -21,7 +21,7 @@ but you won't need it much after that.
 The Service Document lists the collections that you can send your notifications to, the mimetypes and the packaging formats
 that are supported.
 
-You will have access to a single collection, which will "named" as your PubRouter Account ID.
+You will have access to a single collection, with your PubRouter Account ID as its name.
 
 You can get the URL for your collection by retrieving the service document, which you can do like this:
 
