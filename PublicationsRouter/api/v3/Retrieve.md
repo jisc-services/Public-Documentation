@@ -46,7 +46,9 @@ message in the body:
         ]
     }
 ```
-Note that the "total" may increase between requests, as new notifications are added to the end of the list.
+NOTES:
+* the "total" may increase between requests, as new notifications are added to the end of the list
+* the ordering of the JSON elements may vary (for example notifications may appear first).
 
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more information.
 
