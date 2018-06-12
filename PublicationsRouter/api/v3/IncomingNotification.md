@@ -168,7 +168,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode | free text |  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
-| content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubsrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
+| content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL | | 
