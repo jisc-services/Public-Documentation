@@ -4,14 +4,16 @@ The PubRouter OutgoingNotification is the meta-data structure output by PubRoute
 
 ## JSON Data Structure
 
-The full JSON structure of the model is shown here.  IMPORTANT: the structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure. 
+The full JSON structure of the model is shown here.
+
+IMPORTANT: the structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure. 
 
 ```json
 {
 	"id": "string",
 	"created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
 	"analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
-	"event": "string",
+	"event": "string - keyword for the event triggering the notification: acceptance, publication, etc.",
 	"provider": {
 		"agent": "<string defining the software/process which put the content here, provided by provider>"
 	},
@@ -165,14 +167,16 @@ The full JSON structure of the model is shown here.  IMPORTANT: the structure re
 
 ## Field Definitions
 
-Each of the fields in the JSON structure above is defined in the table below in the order that they appear (dot notation is used to qualify them). NOTE that field which will always be populated are indicated with an asterisk (*) in the Field column, all other fields are optional.
+Each of the fields in the JSON structure above is defined in the table below in the order that they appear (dot notation is used to qualify them).
+
+NOTE that fields which will always be populated are indicated with an asterisk (*) in the Field column, all other fields are optional.
 
 | Field | Description | Datatype | Format |
 | ----- | ----------- | -------- | ------ |
 | id * | opaque, persistent system identifier for this record | unicode |  |
 | created_date * | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
-| event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode |  |
+| event | keyword for the event triggering the notification: acceptance, publication, etc. | unicode |  |
 | provider * | Object describing the source of this notification | object | | 
 | provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
 | content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
