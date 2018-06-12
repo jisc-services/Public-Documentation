@@ -177,6 +177,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
 | links.packaging | Package format identifier for the resource available at the URL | unicode |  |
+| metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode |  |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode |  |
 | metadata.journal.volume | Number of a journal (or other document) within a series | unicode |  |
@@ -184,6 +185,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.journal.publisher * | Publisher(s) of the article (Array field) | unicode |  |
 | metadata.journal.identifier.type * |  Identifier type (e.g. "issn", "eissn", "pissn", "doi") - no vocabulary for this field in this version of the system | unicode |  |
 | metadata.journal.identifier.id * | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |
+| metadata.article * | Object describing various details of the article | object | | 
 | metadata.article.title * | Title of the Article| unicode |  |
 | metadata.article.sub_title | Sub-title (if any) of the Article | unicode |  |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode |  |
@@ -197,6 +199,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.article.identifier.type * | Type of identifier (e.g. DOI) | unicode |  |
 | metadata.article.identifier.id * | Article identfier value (e.g. DOI number) | unicode |  |
 | metadata.article.subject | Subject classification(s) / keyword(s) (Array field) | unicode |  |
+| metadata.author * | Array of author objects describing authors of this article | array | | 
 | metadata.author.type | Type of author (e.g. corresponding) | unicode |  |
 | metadata.author.name.firstname * | Author's firstname(s) - space separated if more than one | unicode |  |
 | metadata.author.name.surname * | Author's surname (lastname) | unicode |  |
@@ -206,6 +209,7 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.author.identifier.type * | Type of identifier (e.g. ORCID, email) | unicode |  |
 | metadata.author.identifier.id * | Author identfier value (e.g. ORCID number, email address) | unicode |  |
 | metadata.author.affiliation | Author organisational affiliation | unicode | free text  |
+| metadata.contributor | Array of contributor objects describing contributors to this article | array | |
 | metadata.contributor.type | Type of contributor (e.g. editor) | unicode |  |
 | metadata.contributor.name.firstname | Contributor's firstname(s) - space separated if more than one | unicode |  |
 | metadata.contributor.name.surname | Contributor's surname (lastname) | unicode |  |
@@ -216,29 +220,33 @@ Each of the fields is defined as laid out in the table below.  All fields are op
 | metadata.contributor.identifier.id | Contributor identfier value (e.g. ORCID number, email address) | unicode |  |
 | metadata.contributor.affiliation | Contributor organisational affiliation | unicode | free text  |
 | metadata.accepted_date | Date publication accepted for publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
+| metadata.publication_date | Object describing date that article was published | object | | 
 | metadata.publication_date.publication_format | Format of publication (print, electronic) | unicode | print or electronic |
 | metadata.publication_date.date | Date of publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | metadata.publication_date.year | Year of publication | unicode | YYYY |
 | metadata.publication_date.month | Month of publication (where known) | unicode | MM |
 | metadata.publication_date.day | Day of publication (where known) | unicode | DD |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |
+| metadata.history_date | Array of objects describing dates of this article at different stages of it's history | array | | 
 | metadata.history_date.date_type | Type of date: received, accepted | unicode |  |
 | metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |
+| metadata.funding | List of funding information associated with this article | array | | 
 | metadata.funding.name | Funder name | unicode |  |
 | metadata.funding.identifier.type | Funder identifier type (e.g "ringold") - no vocabulary for this field in this version of the system | unicode |  |
 | metadata.funding.identifier.id | Funder identifier (e.g. Ringold ID) | unicode |  |
 | metadata.funding.grant_numbers | List of grant numbers associated with funding source behind this article | unicode |  |
+| metadata.embargo | Embargo information for this article | object | | 
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |
 | metadata.embargo.duration | Embargo duration in DAYS | unicode |  |
-| metadata.license_ref | Array of license_ref objects, list will be empty if no licenses found for this article | | |
+| metadata.license_ref | Array of license_ref objects, describing licenses associated with this article | | |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |
 | metadata.license_ref.type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | unicode |  |
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.free2read | Ali:free-to-read license information, will be absent from JSON if no free2read licenses apply | | |
+| metadata.free2read | Ali:free-to-read license information | | |
 | metadata.free2read.start | Ali:free-to-read license start date | unicode | |
 | metadata.free2read.end | Ali:free-to-read license end date | unicode | |
 | metadata.refereed | Whether the record has been refereed: true or false| unicode | |
