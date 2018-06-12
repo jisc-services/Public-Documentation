@@ -174,7 +174,7 @@ The JSON structure of the model is as follows:
 
 ## Field Definitions
 
-Each of the fields in the JSON structure above is defined in the table below in the order that they appear (dot notation is used to qualify them).  NOTE that REQUIRED fields are indicated with an asterisk (*) in the Field column, all other fields are optional.
+Each of the fields in the JSON structure above is defined in the table below in the order that they appear (dot notation is used to qualify them).  NOTE that field which will always be populated are indicated with an asterisk (*) in the Field column, all other fields are optional.
 
 | Field | Description | Datatype | Format |
 | ----- | ----------- | -------- | ------ |
