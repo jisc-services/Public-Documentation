@@ -157,7 +157,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			}
 		],
 		"free2read": {
-			"start": "<start date of ali:free-to-read, "YYYY-MM-DD" format (or empty string)>",
+			"start": "<start date of ali:free-to-read, YYYY-MM-DD format (or empty string)>",
 			"end": "<end date of ali:free-to-read, YYYY-MM-DD format (or empty string)>"
 		},
 		"refereed": "<whether or not the record was refereed: true or false>"
