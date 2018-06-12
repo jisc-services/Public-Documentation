@@ -27,7 +27,7 @@ You can get the URL for your collection by retrieving the service document, whic
 
     GET /
 
-This will require you to provide your PubRouter credentials: email and password via HTTP Basic Authentication.
+This will require you to provide your PubRouter credentials (email and password) via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
