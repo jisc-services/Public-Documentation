@@ -173,6 +173,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | created_date * | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode |  |
+| provider * | Object describing the source of this notification | object | | 
 | provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
 | content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
 | links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
