@@ -1,6 +1,6 @@
-# JPER SWORDv2 Protocol Operations
+# PubRouter SWORDv2 Protocol Operations
 
-This document describes the process of carrying out SWORD deposits against repositories subscribed to the JPER
+This document describes the process of carrying out SWORD deposits against repositories subscribed to the PubRouter
 service.
 
 Section numbers referenced here are as per the [SWORDv2 profile](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html):
@@ -15,7 +15,7 @@ The following operations are utilised
 
 ## Metadata Deposit
 
-This is the process which creates a new repository object containing the [notification metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/XWALK.md#jper-core-metadata-to-dublin-corerioxx-xml).
+This is the process which creates a new repository object containing the [notification metadata](./).
 
 In line with section 6.3.3. of the SWORDv2 specification, it is as follows:
 
