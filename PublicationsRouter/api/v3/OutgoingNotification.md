@@ -10,10 +10,10 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 
 ```json
 {
-	"id": "string",
-	"created_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
-	"analysis_date": "date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z",
-	"event": "string - keyword for the event triggering the notification: acceptance, publication, etc.",
+	"id": "<string>",
+	"created_date": "<date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
+	"analysis_date": "<date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z>",
+	"event": "<keyword for the event triggering the notification: acceptance, publication, etc.>",
 	"provider": {
 		"agent": "<string defining the software/process which put the content here, provided by provider>"
 	},
@@ -173,15 +173,15 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 | Field | Description | Datatype | Format |
 | ----- | ----------- | -------- | ------ |
-| id * | opaque, persistent system identifier for this record | unicode |  |
+| id * | Opaque, persistent system identifier for this record | unicode |  |
 | created_date * | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
-| event | keyword for the event triggering the notification: acceptance, publication, etc. | unicode |  |
+| event | Keyword for the event triggering the notification: acceptance, publication, etc. | unicode |  |
 | provider * | Object describing the source of this notification | object | | 
 | provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
 | content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
-| links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
-| links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
+| links.type | Keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
+| links.format | The mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
 | links.packaging | Package format identifier for the resource available at the URL | unicode |  |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
