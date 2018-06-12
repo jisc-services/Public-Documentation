@@ -166,8 +166,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			}
 		],
 		"free2read": {
-			"start": "<start date of ali:free-to-read license>",
-			"end": "<end date of ali:free-to-read license>"
+			"start": "<start date of ali:free-to-read, YYYY-MM-DD format (or empty string)>",
+			"end": "<end date of ali:free-to-read, YYYY-MM-DD format (or empty string)>"
 		},
 		"refereed": "<whether or not the record was refereed: true, false or null>"
 	}
@@ -265,7 +265,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.free2read | Ali:free-to-read license information | | |
-| metadata.free2read.start | Ali:free-to-read license start date | unicode | |
-| metadata.free2read.end | Ali:free-to-read license end date | unicode | |
+| metadata.free2read | Ali:free-to-read information | | |
+| metadata.free2read.start | Ali:free-to-read Start date "YYYY-DD-MM", or may be an empty string | unicode | |
+| metadata.free2read.end | Ali:free-to-read End date "YYYY-DD-MM", or may be an empty string | unicode | |
 | metadata.refereed | Whether the record has been refereed: true or false| unicode | |
