@@ -10,7 +10,7 @@ The PubRouter OutgoingNotification is the meta-data structure output by PubRoute
 
 ## JSON Data Structure
 
-The JSON structure of the model is as follows:
+The full JSON structure of the model is shown here.  However, the structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure. 
 
 ```json
 {
