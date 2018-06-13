@@ -145,7 +145,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 		"embargo": {
 			"start": "<embargo start date>",
 			"end": "<embargo end date>",
-			"duration": "<embargo duration in days>"
+			"duration": "<embargo duration in months>"
 		},
 		"license_ref": [
 			{
@@ -236,7 +236,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |
 | metadata.history_date | Array of objects describing dates of this article at different stages of it's history | array | | 
 | metadata.history_date.date_type | Type of date: received, accepted | unicode |  |
-| metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
+| metadata.history_date.date | Date of particular publishing event | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |
 | metadata.funding | List of funding information associated with this article | array | | 
 | metadata.funding.name | Funder name | unicode |  |
@@ -244,9 +244,9 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.funding.identifier.id | Funder identifier (e.g. Ringold ID) | unicode |  |
 | metadata.funding.grant_numbers | List of grant numbers associated with funding source behind this article | unicode |  |
 | metadata.embargo | Embargo information for this article | object | | 
-| metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |
-| metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |
-| metadata.embargo.duration | Embargo duration in DAYS | unicode |  |
+| metadata.embargo.start | Date that embargo starts | unicode | YYYY-MM-DD |
+| metadata.embargo.end | Date that embargo ends | unicode | YYYY-MM-DD |
+| metadata.embargo.duration | Embargo duration in MONTHS | unicode |  |
 | metadata.license_ref | Array of license_ref objects, describing licenses associated with this article | | |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |
 | metadata.license_ref.type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | unicode |  |
@@ -254,6 +254,6 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
 | metadata.free2read | Ali:free-to-read information | | |
-| metadata.free2read.start | Ali:free-to-read Start date "YYYY-DD-MM", or may be an empty string | unicode | |
-| metadata.free2read.end | Ali:free-to-read End date "YYYY-DD-MM", or may be an empty string | unicode | |
+| metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
+| metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.refereed | Whether the record has been refereed: true or false| unicode | |
