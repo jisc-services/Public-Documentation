@@ -3,7 +3,7 @@
 This document describes the RIOXXplus XML output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus plugins.
 
 Background information:
-* [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/v2/sword-out/pubrouter-xml/pubrouter.xsd) - Eprints-RIOXX schema definition
+* [PubRouter.xsd](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/sword-out/pubrouter-xml/pubrouter.xsd) - Eprints-RIOXX schema definition
 * [Dubin Core dcterms](http://dublincore.org/documents/dcmi-terms/)
 * [RIOXX XML profile](http://rioxx.net/v2-0-final/)
 
