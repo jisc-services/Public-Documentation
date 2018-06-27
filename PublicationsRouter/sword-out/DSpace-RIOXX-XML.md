@@ -34,7 +34,7 @@ The following table lists:
 | [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#type)  | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication_date)  | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
 | [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project)  | funding.name <br> funding.identifier <br> funding.grant_number  | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>` |
-| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) | license_ref.url <br>  | `<ali:license_ref start=”YYYY-MM-DD”> [license_ref.url] </ali:license_ref>` |
+| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) | license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
 | **[pubr:author](http://)** | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
 | **[pubr:contributor](http://)** | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
 | **[pubr:sponsorship](http://)** | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </pubr:sponsorship>` |
@@ -69,8 +69,6 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	<dcterms:subject>Developmental Biology and Stem Cells</dcterms:subject>
 	<dcterms:title>A stochastic multicellular model identifies biological watermarks from disorders in self-organized patterns of phyllotaxis</dcterms:title>
 
-	<rioxxterms:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </rioxxterms:author>
-	<rioxxterms:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </rioxxterms:contributor>
 	<rioxxterms:version>VoR</rioxxterms:version>
 	<rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
 	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
@@ -80,6 +78,8 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 
 	<ali:license_ref start=”2018-09-10”>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
 	
+	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
+	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
 	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP0054-2013  </pubr:sponsorship>
 	<pubr:embargo_date>2018-09-10</pubr:embargo_date> 
 
