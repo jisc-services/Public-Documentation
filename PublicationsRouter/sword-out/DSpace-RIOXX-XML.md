@@ -22,7 +22,7 @@ The following table lists:
 
 
 
-| DC terms | PubRouter Metadata (source) | RIOXX XML Format |
+| DC terms {Cardinality} | PubRouter Metadata (source) | RIOXX XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation)<br>{0..1} | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range] </dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) <br>{0..1}| journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` |
