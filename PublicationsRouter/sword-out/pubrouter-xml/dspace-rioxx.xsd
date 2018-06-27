@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
+	targetNamespace="http://pubrouter.jisc.ac.uk/dspacerioxx/"
+	xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/"
+	xmlns:ali="http://ali.niso.org/2014/ali/1.0/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
+	xmlns="http://pubrouter.jisc.ac.uk/dspacerioxx/">
+	<xs:import namespace="http://www.rioxx.net/schema/v2.0/rioxxterms/" schemaLocation="http://rioxx.net/schema/v2.0/rioxx/rioxxterms.xsd"/>
+	<xs:import namespace="http://www.niso.org/schemas/ali/1.0/" schemaLocation="http://www.niso.org/schemas/ali/1.0/ali.xsd"/>
+	<xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
+
+  <xs:annotation>
+		<xs:documentation xml:lang="en">
+			Schema made for interoperability of JISC Publications Router with DSpace (with RIOXX patch).
+
+			Created 2018-06
+
+			This schema is to expose maximum meta-data in XML format for the DSpace repository.
+
+			External documentation:
+				For rioxxterms documentation, view documentation at http://www.rioxx.net/schema/v2.0/rioxx/
+				For dcterms documentation, view documentation at http://dublincore.org/documents/2012/06/14/dcmi-terms/?v=terms
+				For ali documentation, view documentation at http://www.niso.org/apps/group_public/download.php/14226/rp-22-2015_ALI.pdf
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:complexType name="contributor_type">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				Contributor_type specifies a structure used for both Authors and Contributors (non-authors).
+				
+				The generic structure is:
+				<element id="ORCID-URI" email="some.body@email.com">Surname, Firstname(s)</element>
+				<element email="organization@email.com">Organization name</element>
+				(Where, in our implementation below, 'element' is either 'author' or 'contributor').
+				
+				Both the 'id' and 'email' are optional.
+				
+				For individuals, the Surname must come first, separated by a comma from Firstname(s) and/or intitials. 
+				For other entities, such as organizations, simple text without commas should be provided.
+			</xs:documentation>
+		</xs:annotation>
+    
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="id" type="xs:anyURI"/>
+				<xs:attribute name="email" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:element name="entry">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="sponsorship" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Text representation of Grant funding applicable to the article, in general format:
+							"Funder: Funder name, Grant-num: grant-number, FundRef: funder-identifier"
+							However, this may be truncated to "Funder: Funder name, Grant-num: grant-number" if no identifier is available.
+					   </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="embargo_date" minOccurs="0" type="xs:date">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Date "YYYY-MM-DD" format, specifying the Embargo End Date.  (This is the date at which the article becomes open-access).
+					   </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="contributor_type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Author details, including name and other information where available such as email, ORCID etc.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				
+				<xs:element name="contributor" minOccurs="0" maxOccurs="unbounded" type="contributor_type">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Contributor details, including name and other information where available, such as email, ORCID etc.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>
