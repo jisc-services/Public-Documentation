@@ -22,29 +22,29 @@ The following table lists:
 
 
 
-| DC terms + {Cardinality} | PubRouter Metadata (source) | RIOXX XML Format |
+| XML element + {Cardinality} | PubRouter Metadata (source) | RIOXX XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation)<br>{0..1} | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range] </dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) <br>{0..1}| journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` |
-| [dcterms:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source>[journal.identifier.type]: [journal.identifier.id] </dcterms:source>` |
-| [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dcterms:title> [article.title] </dcterms:title>` |
-| [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dcterms:language>[article.language] </dcterms:language>` |
-| [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract>[article.abstract] </dcterms:abstract>` |
-| [dcterms:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier) | article.identifier.type <br> article.identifier.id  | `<dcterms:identifier>[article.identifier.type]: [article.identifier.id] </dcterms:identifier>` |
-| [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) |  article.subject | `<dcterms:subject>[article.subject] </dcterms:subject>` |
-|[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date] </dcterms:description>` |
-| [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
-| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted>[accepted_date] </dcterms:dateAccepted>` |
-| [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version) | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
-| [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record) | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
-| [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#type)  | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
-| [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication_date)  | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
-| [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project)  | funding.name <br> funding.identifier <br> funding.grant_number  | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>` |
-| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) | license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
-| **[pubr:author](http://)** | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
-| **[pubr:contributor](http://)** | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
-| **[pubr:sponsorship](http://)** | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </pubr:sponsorship>` |
-| **[pubr:embargo_date](http://)** | embargo.end | `<pubr:embargo_date>[embargo.end]</dcterms:pubr:embargo_date>` |
+| [dcterms:source](http://dublincore.org/documents/dcmi-terms/#terms-source)<br>{0..n} | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source>[journal.identifier.type]: [journal.identifier.id] </dcterms:source>` |
+| [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title)<br>{1..1} | article.title | `<dcterms:title> [article.title] </dcterms:title>` |
+| [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language)<br>{0..1} | article.language | `<dcterms:language>[article.language] </dcterms:language>` |
+| [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract)<br>{0..1} | article.abstract | `<dcterms:abstract>[article.abstract] </dcterms:abstract>` |
+| [dcterms:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier)<br>{0..n} | article.identifier.type <br> article.identifier.id  | `<dcterms:identifier>[article.identifier.type]: [article.identifier.id] </dcterms:identifier>` |
+| [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject)<br>{0..n} |  article.subject | `<dcterms:subject>[article.subject] </dcterms:subject>` |
+|[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) <br>{1..n} | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date] </dcterms:description>` |
+| [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights)<br>{0..n} | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
+| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted)<br>{0..1} | accepted_date | `<dcterms:dateAccepted>[accepted_date] </dcterms:dateAccepted>` |
+| [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version)<br>{0..1} | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
+| [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record)<br>{1..1} | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
+| [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#type)<br>{1..1}  | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
+| [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication_date) <br>{0..1} | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
+| [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project) <br>{0..n} | funding.name <br> funding.identifier <br> funding.grant_number  | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>` |
+| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref)<br>{0..n}| license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
+| **[pubr:author](http://)**<br>{0..n} | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
+| **[pubr:contributor](http://)**<br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
+| **[pubr:sponsorship](http://)**<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </pubr:sponsorship>` |
+| **[pubr:embargo_date](http://)**<br>{0..1} | embargo.end | `<pubr:embargo_date>[embargo.end]</dcterms:pubr:embargo_date>` |
 
 
 
