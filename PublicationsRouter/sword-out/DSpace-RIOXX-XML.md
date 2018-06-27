@@ -26,17 +26,64 @@ The following table lists:
 | [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract>[article.abstract] </dcterms:abstract>` |
 | [dcterms:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier) | article.identifier.type <br> article.identifier.id  | `<dcterms:identifier>[article.identifier.type]: [article.identifier.id] </dcterms:identifier>` |
 | [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) |  article.subject | `<dcterms:subject>[article.subject] </dcterms:subject>` |
-| [dcterms:issued](http://dublincore.org/documents/dcmi-terms/#terms-issued) | publication_date | `<dcterms:issued>[publication_date] </dcterms:issued>` |
 |[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date] </dcterms:description>` |
 | [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
-| [rioxxterms:author](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#author) | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier | `<rioxxterms:author id="[author.identifier.id (orcid)]">[author.surname], [author.firstname]; [author.organisation_name] </rioxxterms:author>` |
 | [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted>[accepted_date] </dcterms:dateAccepted>` |
-| [rioxxterms:contributor](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#contributor) | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<rioxxterms:contributor id="[contributor.identifier.id (orcid)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </dcterms:creator>`  |
 | [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version) | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
 | [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record) | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
 | [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#type)  | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication_date)  | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
 | [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project)  | funding.name <br> funding.identifier <br> funding.grant_number  | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>` |
-| **[dc:description_sponsorship]**(http://)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dc:description_sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dc:description_sponsorship>` |
-| **[dcterms:rights_uri]**(http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.url | `<dcterms:rights_uri> [license_ref.url] </dcterms:rights_uri>` |
-| **[dcterms:embargodate]**(http://) | embargo.end | `<dcterms:embargodate>Embargo end date: [embargo.end] </dcterms:embargodate>` |
+| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) | license_ref.url <br>  | `<ali:license_ref start=”YYYY-MM-DD”> [license_ref.url] </ali:license_ref>` |
+| **[pubr:author](http://)** | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
+| **[pubr:contributor](http://)** | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
+| **[pubr:sponsorship](http://)** | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </pubr:sponsorship>` |
+| **[pubr:embargo_date](http://)** | embargo.end | `<pubr:embargo_date>[embargo.end]</dcterms:pubr:embargo_date>` |
+
+
+
+## Example XML Output
+
+An example RIOXX Entry document containing the metadata listed above is shown here
+
+```xml
+<?xml version="1.0"?>
+<entry xmlns:ali="http://www.niso.org/schemas/ali/1.0/" 
+	   xmlns:pubr="http://pubrouter.jisc.ac.uk/dspacerioxx/" 
+	   xmlns:dcterms="http://purl.org/dc/terms/" 
+	   xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
+	
+	<dcterms:abstract>Exploration of developmental mechanisms classically relies on analysis of pattern regularities. Whether disorders induced by biological noise may carry information on building principles of developmental systems is an important debated question. Here, we addressed theoretically this question using phyllotaxis, the geometric arrangement of plant aerial organs, as a model system. Phyllotaxis arises from reiterative organogenesis driven by lateral inhibitions at the shoot apex. Motivated by recurrent observations of disorders in phyllotaxis patterns, we revisited in depth the classical deterministic view of phyllotaxis. We developed a stochastic model of primordia initiation at the shoot apex, integrating locality and stochasticity in the patterning system. This stochastic model recapitulates phyllotactic patterns, both regular and irregular, and makes quantitative predictions on the nature of disorders arising from noise. We further show that disorders in phyllotaxis instruct us on the parameters governing phyllotaxis dynamics, thus that disorders can reveal biological watermarks of developmental systems.</dcterms:abstract>
+	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393</dcterms:bibliographicCitation>
+	<dcterms:dateAccepted>2016-05-03</dcterms:dateAccepted>
+	<dcterms:description>** From FTP publisher via Jisc Publications Router.</dcterms:description>
+	<dcterms:identifier>publisher-id: gutjnl-2016-311393</dcterms:identifier>
+	<dcterms:language>en</dcterms:language>
+	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
+	<dcterms:rights>Licence for this article: https://testing.org/licenses/by/4.0/ uat lic 3 License uat testing</dcterms:rights>
+	<dcterms:rights>Embargo: starts 2016-05-12, ends 2016-12-12, duration 7 months from publication.</dcterms:rights>
+	<dcterms:source>pissn: 0017-5749</dcterms:source>
+	<dcterms:source>eissn: 1468-3288</dcterms:source>
+	<dcterms:subject>Pancreas</dcterms:subject>
+	<dcterms:subject>PANCREATIC CANCER</dcterms:subject>
+	<dcterms:subject>Developmental Biology and Stem Cells</dcterms:subject>
+	<dcterms:title>A stochastic multicellular model identifies biological watermarks from disorders in self-organized patterns of phyllotaxis</dcterms:title>
+
+	<rioxxterms:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </rioxxterms:author>
+	<rioxxterms:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </rioxxterms:contributor>
+	<rioxxterms:version>VoR</rioxxterms:version>
+	<rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
+	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
+	<rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
+	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP0054-2013</rioxxterms:project>
+	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP8888-2013</rioxxterms:project>
+
+	<ali:license_ref start=”2018-09-10”>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
+	
+	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP0054-2013  </pubr:sponsorship>
+	<pubr:embargo_date>2018-09-10</pubr:embargo_date> 
+
+</entry>
+
+```
+
