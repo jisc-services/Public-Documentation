@@ -9,11 +9,16 @@ For background information related to the schema see:
 * [DSpace schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries).
 
 The following table lists:
-* Column 1 - the XML elements output by PubRouter 
+* Column 1 - the XML elements output by PubRouter and cardinality
 * Column 2 - PubRouter internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
 **NOTE: RIOXX XML format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
+**Cardinality:**
+* {0..1} – zero or one
+* {0..n} – zero or more
+* {1..1} – exactly one (i.e. a mandatory element)
+* {1..n} – one or more (i.e. a mandatory element)
 
 
 | DC terms | PubRouter Metadata (source) | RIOXX XML Format |
