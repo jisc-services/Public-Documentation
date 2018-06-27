@@ -55,13 +55,14 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	
 	<dcterms:abstract>Exploration of developmental mechanisms classically relies on analysis of pattern regularities. Whether disorders induced by biological noise may carry information on building principles of developmental systems is an important debated question. Here, we addressed theoretically this question using phyllotaxis, the geometric arrangement of plant aerial organs, as a model system. Phyllotaxis arises from reiterative organogenesis driven by lateral inhibitions at the shoot apex. Motivated by recurrent observations of disorders in phyllotaxis patterns, we revisited in depth the classical deterministic view of phyllotaxis. We developed a stochastic model of primordia initiation at the shoot apex, integrating locality and stochasticity in the patterning system. This stochastic model recapitulates phyllotactic patterns, both regular and irregular, and makes quantitative predictions on the nature of disorders arising from noise. We further show that disorders in phyllotaxis instruct us on the parameters governing phyllotaxis dynamics, thus that disorders can reveal biological watermarks of developmental systems.</dcterms:abstract>
 	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393</dcterms:bibliographicCitation>
-	<dcterms:dateAccepted>2016-05-03</dcterms:dateAccepted>
+	<dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
 	<dcterms:description>** From FTP publisher via Jisc Publications Router.</dcterms:description>
 	<dcterms:identifier>publisher-id: gutjnl-2016-311393</dcterms:identifier>
 	<dcterms:language>en</dcterms:language>
 	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
-	<dcterms:rights>Licence for this article: https://testing.org/licenses/by/4.0/ uat lic 3 License uat testing</dcterms:rights>
-	<dcterms:rights>Embargo: starts 2016-05-12, ends 2016-12-12, duration 7 months from publication.</dcterms:rights>
+	<dcterms:rights>Licence for this article on 2016-07-06: http://www.psychoceramics.org/license_v1.html/ </dcterms:rights>
+	<dcterms:rights>Licence for this article starting on 2017-07-06: http://creativecommons.org/licenses/by/4.0/</dcterms:rights>
+	<dcterms:rights>Embargo: starts 2016-07-06, ends 2017-07-06, duration 12 months from publication.</dcterms:rights>
 	<dcterms:source>pissn: 0017-5749</dcterms:source>
 	<dcterms:source>eissn: 1468-3288</dcterms:source>
 	<dcterms:subject>Pancreas</dcterms:subject>
@@ -76,12 +77,12 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP0054-2013</rioxxterms:project>
 	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP8888-2013</rioxxterms:project>
 
-	<ali:license_ref start=”2018-09-10”>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
+	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
 	
 	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
 	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
 	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP0054-2013  </pubr:sponsorship>
-	<pubr:embargo_date>2018-09-10</pubr:embargo_date> 
+	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
 
 </entry>
 
