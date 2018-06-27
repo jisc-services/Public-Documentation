@@ -47,6 +47,7 @@ The following table lists:
 An example RIOXX Entry document containing the metadata listed above is shown here
 
 ```xml
+
 <?xml version="1.0"?>
 <entry xmlns:ali="http://www.niso.org/schemas/ali/1.0/" 
 	   xmlns:pubr="http://pubrouter.jisc.ac.uk/dspacerioxx/" 
@@ -60,15 +61,24 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	<dcterms:identifier>publisher-id: gutjnl-2016-311393</dcterms:identifier>
 	<dcterms:language>en</dcterms:language>
 	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
-	<dcterms:rights>Licence for this article on 2016-07-06: http://www.psychoceramics.org/license_v1.html/ </dcterms:rights>
-	<dcterms:rights>Licence for this article starting on 2017-07-06: http://creativecommons.org/licenses/by/4.0/</dcterms:rights>
-	<dcterms:rights>Embargo: starts 2016-07-06, ends 2017-07-06, duration 12 months from publication.</dcterms:rights>
 	<dcterms:source>pissn: 0017-5749</dcterms:source>
 	<dcterms:source>eissn: 1468-3288</dcterms:source>
 	<dcterms:subject>Pancreas</dcterms:subject>
 	<dcterms:subject>PANCREATIC CANCER</dcterms:subject>
 	<dcterms:subject>Developmental Biology and Stem Cells</dcterms:subject>
 	<dcterms:title>A stochastic multicellular model identifies biological watermarks from disorders in self-organized patterns of phyllotaxis</dcterms:title>
+	<dcterms:rights>Licence for this article on 2016-07-06: http://www.psychoceramics.org/license_v1.html/ </dcterms:rights>
+	<dcterms:rights>Licence for this article starting on 2017-07-06: http://creativecommons.org/licenses/by/4.0/</dcterms:rights>
+	<dcterms:rights>Embargo: starts 2016-07-06, ends 2017-07-06, duration 12 months from publication.</dcterms:rights>
+
+	<ali:license_ref start='2016-07-06'>http://www.psychoceramics.org/license_v1.html/</ali:license_ref> 
+	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
+	
+	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
+	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
+	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
+	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP0054-2013  </pubr:sponsorship>
+	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP8888-2013  </pubr:sponsorship>
 
 	<rioxxterms:version>VoR</rioxxterms:version>
 	<rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
@@ -76,13 +86,6 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	<rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
 	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP0054-2013</rioxxterms:project>
 	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP8888-2013</rioxxterms:project>
-
-	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
-	
-	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
-	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
-	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP0054-2013  </pubr:sponsorship>
-	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
 
 </entry>
 
