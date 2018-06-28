@@ -77,7 +77,6 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	<dcterms:rights>Licence for this article starting on 2017-07-06: http://creativecommons.org/licenses/by/4.0/</dcterms:rights>
 	<dcterms:rights>Embargo: starts 2016-07-06, ends 2017-07-06, duration 12 months from publication.</dcterms:rights>
 
-	<ali:license_ref start='2016-07-06'>http://www.psychoceramics.org/license_v1.html/</ali:license_ref> 
 	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
 	
 	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
