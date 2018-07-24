@@ -55,10 +55,11 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 ```xml
 
 <?xml version="1.0"?>
-<entry xmlns:ali="http://www.niso.org/schemas/ali/1.0/" 
-	   xmlns:pubr="http://pubrouter.jisc.ac.uk/dspacerioxx/" 
-	   xmlns:dcterms="http://purl.org/dc/terms/" 
-	   xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
+<entry xmlns="http://www.w3.org/2005/Atom" 
+	xmlns:ali="http://www.niso.org/schemas/ali/1.0/" 
+	xmlns:pubr="http://pubrouter.jisc.ac.uk/dspacerioxx/" 
+	xmlns:dcterms="http://purl.org/dc/terms/" 
+	xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
 	
 	<dcterms:abstract>Exploration of developmental mechanisms classically relies on analysis of pattern regularities. Whether disorders induced by biological noise may carry information on building principles of developmental systems is an important debated question. Here, we addressed theoretically this question using phyllotaxis, the geometric arrangement of plant aerial organs, as a model system. Phyllotaxis arises from reiterative organogenesis driven by lateral inhibitions at the shoot apex. Motivated by recurrent observations of disorders in phyllotaxis patterns, we revisited in depth the classical deterministic view of phyllotaxis. We developed a stochastic model of primordia initiation at the shoot apex, integrating locality and stochasticity in the patterning system. This stochastic model recapitulates phyllotactic patterns, both regular and irregular, and makes quantitative predictions on the nature of disorders arising from noise. We further show that disorders in phyllotaxis instruct us on the parameters governing phyllotaxis dynamics, thus that disorders can reveal biological watermarks of developmental systems.</dcterms:abstract>
 	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393</dcterms:bibliographicCitation>
