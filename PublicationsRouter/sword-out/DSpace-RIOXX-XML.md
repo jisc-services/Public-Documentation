@@ -90,8 +90,8 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 	<rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
 	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
 	<rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
-	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP0054-2013</rioxxterms:project>
-	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="FundRef:http://dx.doi.org/10.13039/100004412">RGP8888-2013</rioxxterms:project>
+	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="http://dx.doi.org/10.13039/100004412">RGP0054-2013</rioxxterms:project>
+	<rioxxterms:project funder_name="Human Frontier Science Program" funder_id="http://dx.doi.org/10.13039/100004412">RGP8888-2013</rioxxterms:project>
 
 </entry>
 
