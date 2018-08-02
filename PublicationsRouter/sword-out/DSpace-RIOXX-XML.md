@@ -43,7 +43,7 @@ The following table lists:
 | [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref)<br>{0..1}| license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
 | **[pubr:author](http://)**<br>{0..n} | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
 | **[pubr:contributor](http://)**<br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
-| **[pubr:sponsorship](http://)**<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </pubr:sponsorship>` |
+| **[pubr:sponsorship](http://)**<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], Funder ID: [funding.identifier.id] </pubr:sponsorship>` |
 | **[pubr:embargo_date](http://)**<br>{0..1} | embargo.end | `<pubr:embargo_date>[embargo.end]</dcterms:pubr:embargo_date>` |
 
 
