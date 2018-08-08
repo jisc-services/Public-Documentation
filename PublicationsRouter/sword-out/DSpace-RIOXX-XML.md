@@ -51,7 +51,7 @@ The table below lists:
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication_date) <br>{0..1} | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
 | [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project) <br>{0..n} | funding.name <br> funding.identifier <br> funding.grant_number  | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>` |
 | [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref)<br>{0..1}<br><sub>Note that while RIOXX allows for multiple ali:license_ref elements, the DSpace RIOXX patch can only handle one; hence we recommend that the earliest open access license is sent in this element.</sub>| license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
-| [pubr:openaccess_uri]()<br>{0..1} | TBC | `<pubr:openaccess_uri>[TBC]</pubr:openaccess_uri>` |
+| [pubr:openaccess_uri]()<br>{0..1} | links.url | `<pubr:openaccess_uri>[links.url]</pubr:openaccess_uri>` |
 | [pubr:author]()<br>{0..n} | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
 | [pubr:contributor]()<br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
 | [pubr:sponsorship]()<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], Funder ID: [funding.identifier.id] </pubr:sponsorship>` |
@@ -91,7 +91,7 @@ This is an example Dspace-RIOXX Entry XML document output by PubRouter that cont
 
 	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
 	
-	<pubr:openaccess_uri>!!!! TO BE CONFIRMED !!!!</pubr:openaccess_uri> 
+	<pubr:openaccess_uri>http://doi.org/123456789/article.pdf</pubr:openaccess_uri> 
 	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
 	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
 	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
