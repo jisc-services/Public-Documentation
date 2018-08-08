@@ -59,7 +59,7 @@ The table below lists:
 
 
 
-## Example PubRouter-DSpace-RIOXX XML ##
+## Example PubRouter DSpace-RIOXX XML ##
 
 This is an example Dspace-RIOXX Entry XML document output by PubRouter that contains the metadata elements listed above.
 
