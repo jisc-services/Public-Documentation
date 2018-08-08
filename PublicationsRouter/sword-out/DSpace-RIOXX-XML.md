@@ -1,4 +1,4 @@
-# PubRouter DSpace RIOXX XML Description
+# PubRouter DSpace-RIOXX XML Description
 
 This page describes the Dspace-RIOXX XML output by PubRouter for ingest via the SWORDv2 interface into DSpace repositories with the [RIOXX patch](https://github.com/atmire/RIOXX) installed. (Note that PubRouter can output a completely different XML document for "vanilla" DSpace repositories that do not use the RIOXX patch.)
  
@@ -8,20 +8,9 @@ For background information related to the schema see:
 * [RIOXX](http://www.rioxx.net/)
 * [DSpace schema](https://wiki.duraspace.org/display/DSDOC4x/Metadata+and+Bitstream+Format+Registries).
 
-The following table lists:
-* Column 1 - the XML elements output by PubRouter and cardinality:
-	* {0..1} – zero or one
-	* {0..n} – zero or more
-	* {1..1} – exactly one (i.e. a mandatory element)
-	* {1..n} – one or more (i.e. a mandatory element)
-* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
-* Column 3 - the output XML element construction (format) - see note. 
-
-**NOTE: RIOXX XML format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter internal JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
-
 ## Namespaces ##
 
-The DSpace RIOXX XML uses 4 namespaces:
+The DSpace-RIOXX XML uses 4 namespaces:
 
 | Namespace | URI | Description |
 |:----------|:----|:------------|
@@ -31,6 +20,17 @@ The DSpace RIOXX XML uses 4 namespaces:
 | pubr       | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc PubRouter-DSpace schema |
 
 ## XML Elements ##
+
+The table below lists:
+* Column 1 - the XML elements output by PubRouter and cardinality:
+	* {0..1} – zero or one
+	* {0..n} – zero or more
+	* {1..1} – exactly one (i.e. a mandatory element)
+	* {1..n} – one or more (i.e. a mandatory element)
+* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
+* Column 3 - the output XML element construction (format) - see note. 
+
+**NOTE: RIOXX XML format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter internal JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
 | XML element and {Cardinality} | PubRouter Metadata (source) | RIOXX XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
