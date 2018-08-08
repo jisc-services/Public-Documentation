@@ -1,6 +1,6 @@
 # PubRouter DSpace RIOXX XML Description
 
-This document describes the RIOXX XML output by PubRouter for ingestion into DSpace repositories via the SWORDv2 interface. 
+This page describes the Dspace-RIOXX XML output by PubRouter for ingest via the SWORDv2 interface into DSpace repositories with the [RIOXX patch](https://github.com/atmire/RIOXX) installed. (Note that PubRouter can output a completely different XML document for "vanilla" DSpace repositories that do not use the RIOXX patch.)
  
 For background information related to the schema see:
 
@@ -19,10 +19,20 @@ The following table lists:
 
 **NOTE: RIOXX XML format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter internal JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
+## Namespaces ##
 
+The DSpace RIOXX XML uses 4 namespaces:
 
+| Namespace | URI | Description |
+|:----------|:----|:------------|
+| ali        | http://www.niso.org/schemas/ali/1.0/ | National Information Standards Organisation's Access and License Information schema  |
+| dcterms    | http://purl.org/dc/terms/ | DublinCore (extended) terms schema |
+| rioxxterms | http://www.rioxx.net/schema/v2.0/rioxx/ | RIOXX schema |
+| pubr       | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc PubRouter-DSpace schema |
 
-| XML element + {Cardinality} | PubRouter Metadata (source) | RIOXX XML Format |
+## XML Elements ##
+
+| XML element and {Cardinality} | PubRouter Metadata (source) | RIOXX XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation)<br>{0..1} | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range] </dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) <br>{0..1}| journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` |
@@ -41,16 +51,17 @@ The following table lists:
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication_date) <br>{0..1} | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
 | [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project) <br>{0..n} | funding.name <br> funding.identifier <br> funding.grant_number  | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>` |
 | [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref)<br>{0..1}<br><sub>Note that while RIOXX allows for multiple ali:license_ref elements, the DSpace RIOXX patch can only handle one; hence we recommend that the earliest open access license is sent in this element.</sub>| license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
-| **[pubr:author](http://)**<br>{0..n} | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
-| **[pubr:contributor](http://)**<br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
-| **[pubr:sponsorship](http://)**<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], Funder ID: [funding.identifier.id] </pubr:sponsorship>` |
-| **[pubr:embargo_date](http://)**<br>{0..1} | embargo.end | `<pubr:embargo_date>[embargo.end]</dcterms:pubr:embargo_date>` |
+| [pubr:openaccess_uri]()<br>{0..1} | TBC | `<pubr:openaccess_uri>[TBC]</pubr:openaccess_uri>` |
+| [pubr:author]()<br>{0..n} | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
+| [pubr:contributor]()<br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
+| [pubr:sponsorship]()<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], Funder ID: [funding.identifier.id] </pubr:sponsorship>` |
+| [pubr:embargo_date]()<br>{0..1} | embargo.end | `<pubr:embargo_date>[embargo.end]</pubr:embargo_date>` |
 
 
 
-## Example XML Output
+## Example PubRouter-DSpace-RIOXX XML ##
 
-An example RIOXX Entry document containing the metadata listed above is shown here
+This is an example Dspace-RIOXX Entry XML document output by PubRouter that contains the metadata elements listed above.
 
 ```xml
 
@@ -80,6 +91,7 @@ An example RIOXX Entry document containing the metadata listed above is shown he
 
 	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
 	
+	<pubr:openaccess_uri>!!!! TO BE CONFIRMED !!!!</pubr:openaccess_uri> 
 	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
 	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
 	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
