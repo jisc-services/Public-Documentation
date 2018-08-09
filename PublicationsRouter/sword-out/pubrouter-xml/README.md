@@ -1,7 +1,5 @@
 # PubRouter XML Schema Definitiions
 
-## Overview
-
 Two XML Schemas have been defined for the purpose of sending article metadata to Eprints and Dspace repositories that are "RIOXX enabled" through the installation of their respective RIOXX plugin / patch (which were developed and enhanced with Jisc funding).  This enables maximum information harvested by PubRouter to be passed on to these repositories.
 
 The two schemas build upon elements from industry standard schemas:
@@ -28,5 +26,5 @@ between the two repositories necessitated development of different schemas for t
 | [dspace-rioxx.xsd](./dspace-rioxx.xsd) | pubr   | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc PubRouter-DSpace schema |
 
 
-NOTE that these schemas are still work-in-progress as they currently define only the new elements, and not the elements 
+**NOTE** that these schemas are still **work-in-progress** as they currently define only the new elements, and not the elements 
 included from the industry standard schemas noted above.
