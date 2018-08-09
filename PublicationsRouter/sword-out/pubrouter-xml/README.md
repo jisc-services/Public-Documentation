@@ -24,8 +24,8 @@ between the two repositories necessitated development of different schemas for t
 
 | Schema | Namespace | URI | Description |
 |:--|:----------|:----|:------------|
-| eprints-rioxx.xsd | pr    | http://pubrouter.jisc.ac.uk/rioxxplus/  | Jisc PubRouter-Eprints schema |
-| dspace-rioxx.xsd | pubr   | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc PubRouter-DSpace schema |
+| [eprints-rioxx.xsd](./eprints-rioxx.xsd) | pr    | http://pubrouter.jisc.ac.uk/rioxxplus/  | Jisc PubRouter-Eprints schema |
+| [dspace-rioxx.xsd](./dspace-rioxx.xsd) | pubr   | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc PubRouter-DSpace schema |
 
 
 NOTE that these schemas are still work-in-progress as they currently define only the new elements, and not the elements 
