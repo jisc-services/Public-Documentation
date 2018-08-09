@@ -10,7 +10,7 @@
 	<xs:import namespace="http://www.niso.org/schemas/ali/1.0/" schemaLocation="http://www.niso.org/schemas/ali/1.0/ali.xsd"/>
 	<xs:import namespace="http://purl.org/dc/terms/" schemaLocation="http://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd"/>
 
-  <xs:annotation>
+	<xs:annotation>
 		<xs:documentation xml:lang="en">
 			Schema made for interoperability of JISC Publications Router with DSpace (with RIOXX patch).
 
