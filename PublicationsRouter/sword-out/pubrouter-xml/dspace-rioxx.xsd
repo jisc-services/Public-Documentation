@@ -53,24 +53,6 @@
 	<xs:element name="entry">
 		<xs:complexType>
 			<xs:all>
-				<xs:element name="sponsorship" minOccurs="0" maxOccurs="unbounded" type="xs:string">
-					<xs:annotation>
-						<xs:documentation xml:lang="en">
-							Text representation of Grant funding applicable to the article, in general format:
-							"Funder: Funder name, Grant-num: grant-number, FundRef: funder-identifier"
-							However, this may be truncated to "Funder: Funder name, Grant-num: grant-number" if no identifier is available.
-					   </xs:documentation>
-					</xs:annotation>
-				</xs:element>
-
-				<xs:element name="embargo_date" minOccurs="0" type="xs:date">
-					<xs:annotation>
-						<xs:documentation xml:lang="en">
-							Date "YYYY-MM-DD" format, specifying the Embargo End Date.  (This is the date at which the article becomes open-access).
-					   </xs:documentation>
-					</xs:annotation>
-				</xs:element>
-
 				<xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="contributor_type">
 					<xs:annotation>
 						<xs:documentation xml:lang="en">
@@ -86,6 +68,33 @@
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
+				
+				<xs:element name="embargo_date" minOccurs="0" type="xs:date">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Date "YYYY-MM-DD" format, specifying the Embargo End Date.  (This is the date at which the article becomes open-access).
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="openaccess_uri" minOccurs="0" type="xs:string">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							URI to article full-text (e.g. PDF).
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
+				<xs:element name="sponsorship" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Text representation of Grant funding applicable to the article, in general format:
+							"Funder: Funder name, Grant-num: grant-number, FundRef: funder-identifier"
+							However, this may be truncated to "Funder: Funder name, Grant-num: grant-number" if no identifier is available.
+						</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
