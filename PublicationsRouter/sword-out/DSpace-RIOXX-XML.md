@@ -54,7 +54,7 @@ The table below lists:
 | [pubr:openaccess_uri](./pubrouter-xsd/dspace-rioxx.xsd)<br>{0..1} | links.url | `<pubr:openaccess_uri>[links.url]</pubr:openaccess_uri>` |
 | [pubr:author](./pubrouter-xsd/dspace-rioxx.xsd)<br>{0..n} | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier.orcid <br> author.identifier.email | `<pubr:author id="[author.identifier.id (orcid)]" email="[author.identifier.id (email)]">[author.surname], [author.firstname]; [author.organisation_name] </pubr:author>` |
 | [pubr:contributor](./pubrouter-xsd/dspace-rioxx.xsd)<br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier.orcid <br> contributor.identifier.email <br> contributor.type | `<pubr:contributor id="[contributor.identifier.id (orcid)] email="[contributor.identifier.id (email)]">[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.organisation_name] </pubr:contributor>`  |
-| [pubr:sponsorship](./pubrouter-xsd/dspace-rioxx.xsd)<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], Grant no: [funding.grant_number], Funder ID: [funding.identifier.id] </pubr:sponsorship>` |
+| [pubr:sponsorship](./pubrouter-xsd/dspace-rioxx.xsd)<br>{0..n} | funding.name <br> funding.grant_number <br> funding.identifier | `<pubr:sponsorship>Funder: [funding.name], [funding.identifier.type]: [funding.identifier.id], Grant(s):  [funding.grant_numbers] </pubr:sponsorship>` |
 | [pubr:embargo_date](./pubrouter-xsd/dspace-rioxx.xsd)<br>{0..1} | embargo.end | `<pubr:embargo_date>[embargo.end]</pubr:embargo_date>` |
 
 
