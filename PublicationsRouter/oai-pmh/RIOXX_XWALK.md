@@ -20,6 +20,7 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
 | [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project) | funding.name <br> funding.identifier <br> funding.grant_number | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>`|
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication-date) | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
 | [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref)| license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
+| [ali:free_to_read](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#free_to_read) | free2read.start <br> free2read.end | `<ali:free_to_read start_date=[free2read.start] end_date=[free2read.end]></ali:free_to_read> |
 | [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dc:rights>Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dc:rights>` |
 | [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dc:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title]</dc:rights>` |
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dc:description>Version: [article.version]</dc:description>` |
@@ -29,4 +30,36 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dc:description>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id]</dc:description>` |
 | [dc:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dc:type>[article.type]</dc:type>` |
 | [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
+
+```xml
+```xml
+<metadata xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:doc="http://www.lyncode.com/xoai" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
+	<rioxx:rioxx>
+    <ali:free_to_read />
+    <ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
+    <dc:description>Abstract text for dspace rioxx</dc:description>
+    <dc:format>application/octet-stream</dc:format>
+    <dc:identifier>https://dspace-rioxx.pubrouter.jisc.ac.uk/bitstream/123456789/10/2/rioxx_test_simple_zip.zip</dc:identifier>
+    <dc:language>en</dc:language>
+    <dc:publisher>eLife Sciences Publications, Ltd</dc:publisher>
+    <dc:subject>Pancreas</dc:subject>
+    <dc:subject>PANCREATIC CANCER</dc:subject>
+    <dc:subject>Developmental Biology and Stem Cells</dc:subject>
+    <dc:title>test deposit 2</dc:title>
+    <dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
+    <rioxxterms:author first-named-author="true" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Sendler, Matthias</rioxxterms:author>
+    <rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Palankar, Raghavendra</rioxxterms:author>
+    <rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Kühn, Jens-Peter</rioxxterms:author>
+    <rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Evert, Matthias</rioxxterms:author>
+    <rioxxterms:contributor>Benet, Jonh</rioxxterms:contributor>
+    <rioxxterms:contributor>Mayerle,Julia</rioxxterms:contributor>
+    <rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
+    <rioxxterms:type>Journal Article/Review</rioxxterms:type>
+    <rioxxterms:version>VoR</rioxxterms:version>
+    <rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
+    <rioxxterms:project rioxxterms:funder_name="National Science Foundation" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000001">RGP0000-2010</rioxxterms:project>
+    <rioxxterms:project rioxxterms:funder_name="National Institutes of Health" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000002">RGP5555-2015</rioxxterms:project>
+	</rioxx:rioxx>
+</metadata>
+```
 
