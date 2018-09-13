@@ -32,7 +32,7 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
 | [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
 
 ```xml
-<metadata xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:doc="http://www.lyncode.com/xoai" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
   <rioxx:rioxx>
     <ali:free_to_read />
     <ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
