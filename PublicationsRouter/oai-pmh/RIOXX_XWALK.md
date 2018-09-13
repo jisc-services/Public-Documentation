@@ -34,32 +34,32 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
 ```xml
 ```xml
 <metadata xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxxterms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:doc="http://www.lyncode.com/xoai" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
-    <rioxx:rioxx>
-		<ali:free_to_read />
-		<ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
-		<dc:description>Abstract text for dspace rioxx</dc:description>
-		<dc:format>application/octet-stream</dc:format>
-		<dc:identifier>https://dspace-rioxx.pubrouter.jisc.ac.uk/bitstream/123456789/10/2/rioxx_test_simple_zip.zip</dc:identifier>
-		<dc:language>en</dc:language>
-		<dc:publisher>eLife Sciences Publications, Ltd</dc:publisher>
-		<dc:subject>Pancreas</dc:subject>
-		<dc:subject>PANCREATIC CANCER</dc:subject>
-		<dc:subject>Developmental Biology and Stem Cells</dc:subject>
-		<dc:title>test deposit 2</dc:title>
-		<dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
-		<rioxxterms:author first-named-author="true" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Sendler, Matthias</rioxxterms:author>
-		<rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Palankar, Raghavendra</rioxxterms:author>
-		<rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Kühn, Jens-Peter</rioxxterms:author>
-		<rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Evert, Matthias</rioxxterms:author>
-		<rioxxterms:contributor>Benet, Jonh</rioxxterms:contributor>
-		<rioxxterms:contributor>Mayerle,Julia</rioxxterms:contributor>
-		<rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
-		<rioxxterms:type>Journal Article/Review</rioxxterms:type>
-		<rioxxterms:version>VoR</rioxxterms:version>
-		<rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
-		<rioxxterms:project rioxxterms:funder_name="National Science Foundation" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000001">RGP0000-2010</rioxxterms:project>
-		<rioxxterms:project rioxxterms:funder_name="National Institutes of Health" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000002">RGP5555-2015</rioxxterms:project>
-	</rioxx:rioxx>
+  <rioxx:rioxx>
+    <ali:free_to_read />
+	<ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
+	<dc:description>Abstract text for dspace rioxx</dc:description>
+	<dc:format>application/octet-stream</dc:format>
+	<dc:identifier>https://dspace-rioxx.pubrouter.jisc.ac.uk/bitstream/123456789/10/2/rioxx_test_simple_zip.zip</dc:identifier>
+	<dc:language>en</dc:language>
+	<dc:publisher>eLife Sciences Publications, Ltd</dc:publisher>
+	<dc:subject>Pancreas</dc:subject>
+	<dc:subject>PANCREATIC CANCER</dc:subject>
+	<dc:subject>Developmental Biology and Stem Cells</dc:subject>
+	<dc:title>test deposit 2</dc:title>
+	<dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
+	<rioxxterms:author first-named-author="true" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Sendler, Matthias</rioxxterms:author>
+	<rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Palankar, Raghavendra</rioxxterms:author>
+	<rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Kühn, Jens-Peter</rioxxterms:author>
+	<rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Evert, Matthias</rioxxterms:author>
+	<rioxxterms:contributor>Benet, Jonh</rioxxterms:contributor>
+	<rioxxterms:contributor>Mayerle,Julia</rioxxterms:contributor>
+	<rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
+	<rioxxterms:type>Journal Article/Review</rioxxterms:type>
+	<rioxxterms:version>VoR</rioxxterms:version>
+	<rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
+	<rioxxterms:project rioxxterms:funder_name="National Science Foundation" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000001">RGP0000-2010</rioxxterms:project>
+	<rioxxterms:project rioxxterms:funder_name="National Institutes of Health" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000002">RGP5555-2015</rioxxterms:project>
+  </rioxx:rioxx>
 </metadata>
 ```
 
