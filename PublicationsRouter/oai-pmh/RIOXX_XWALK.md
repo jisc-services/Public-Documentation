@@ -46,10 +46,10 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
     <dc:subject>Developmental Biology and Stem Cells</dc:subject>
     <dc:title>test deposit 2</dc:title>
     <dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
-    <rioxxterms:author first-named-author="true" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Sendler, Matthias</rioxxterms:author>
-    <rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Palankar, Raghavendra</rioxxterms:author>
-    <rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Kühn, Jens-Peter</rioxxterms:author>
-    <rioxxterms:author first-named-author="false" rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Evert, Matthias</rioxxterms:author>
+    <rioxxterms:author rioxxterms:id="http://orcid.org/0000-0000-0000-0001">Sendler, Matthias</rioxxterms:author>
+    <rioxxterms:author rioxxterms:id="http://orcid.org/0000-0000-0000-0002">Palankar, Raghavendra</rioxxterms:author>
+    <rioxxterms:author rioxxterms:id="http://orcid.org/0000-0000-0000-0003">Kühn, Jens-Peter</rioxxterms:author>
+    <rioxxterms:author rioxxterms:id="http://orcid.org/0000-0000-0000-0004">Evert, Matthias</rioxxterms:author>
     <rioxxterms:contributor>Benet, Jonh</rioxxterms:contributor>
     <rioxxterms:contributor>Mayerle,Julia</rioxxterms:contributor>
     <rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
