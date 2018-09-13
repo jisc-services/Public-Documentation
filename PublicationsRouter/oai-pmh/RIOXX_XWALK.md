@@ -54,7 +54,7 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
     <rioxxterms:version>VoR</rioxxterms:version>
     <rioxxterms:version_of_record>http://doi.org/10.7554/elife.14093</rioxxterms:version_of_record>
     <rioxxterms:project rioxxterms:funder_name="National Science Foundation" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000001">RGP0000-2010</rioxxterms:project>
-    <rioxxterms:project rioxxterms:funder_name="National Institutes of Health" rioxxterms:funder_id="http://dx.doi.org/10.13039/100000002">RGP5555-2015</rioxxterms:project>
+    <rioxxterms:project rioxxterms:funder_name="National Institutes of Health">RGP5555-2015</rioxxterms:project>
   </rioxx:rioxx>
 </metadata>
 ```
