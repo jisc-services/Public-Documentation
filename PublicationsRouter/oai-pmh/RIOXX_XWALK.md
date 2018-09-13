@@ -1,12 +1,10 @@
-# PubRouter Notification to OAI_DC Crosswalk
+# PubRouter Notification to RIOXX Crosswalk
 
-The table below lists the OAI_DC terms that are provided by PubRouter's implementation of OAI-PMH, and shows how PubRouter's metadata elements are mapped to these.
-
-Note that given the simplicity of the OAI_DC format, only a subset of the PubRouter notification fields are available.
+The table below lists the RIOXX terms that are provided by PubRouter's implementation of OAI-PMH, and shows how PubRouter's metadata elements are mapped to these.
 
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
-| oai_dc terms | PubRouter Metadata (source) | XML Format |
+| rioxx terms | PubRouter Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dc:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dc:publisher>[journal.publisher]</dc:publisher>` |
 | [dc:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dc:source>[journal.identifier.type]: [journal.identifier.id]</dc:source>` |
@@ -14,9 +12,14 @@ Note that given the simplicity of the OAI_DC format, only a subset of the PubRou
 | [dc:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dc:title>[article.title]</dc:title>` |
 | [dc:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dc:language>[article.language]</dc:language>` |
 | [dc:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject) |  article.subject | `<dc:subject>[article.subject]</dc:subject>` |
-| [dc:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier) | article.identifier | `<dc:identifier>[article.identifier.type]: [article.identifier.value]</dc:identifier>`
-| [dc:creator](http://dublincore.org/documents/dcmi-terms/#terms-creator) | author.firstname <br> author.surname <br> author.organisation_name <br> author.identifier | `<dc:creator>[author.surname], [author.firstname]; [author.identifier.type]: [author.identifier.id]; [author.organisation_name]</dc:creator>` |
-| [dc:contributor](http://dublincore.org/documents/dcmi-terms/#terms-contributor) | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier <br> contributor.type | `<dc:contributor>[contributor.type]: [contributor.surname], [contributor.firstname]; [contributor.identifier.type]: [contributor.identifier.id]; [contributor.organisation_name]</dc:contributor>`  |
+| [dc:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier) | article.identifier | `<dc:identifier>[article.identifier.type]: [article.identifier.value]</dc:identifier>` |
+| [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version) | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
+| [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record) | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
+| [rioxxterms:author](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#author) | author.firstname <br> author.surname <br> author.identifier | `<rioxxterms:author id=[author.identifier]>[author.surname], [author.firstname]</rioxxterms:author>` |
+| [rioxxterms:contributor](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#contributor) | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier | `<rioxxterms:contributor id=[>[contributor.identifier]: [contributor.surname], [contributor.firstname] OR [contributor.organisation_name]</rioxxterms:contributor>`  |
+| [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project) | funding.name <br> funding.identifier <br> funding.grant_number | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>`|
+| [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication-date) | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
+| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref)| license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
 | [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dc:rights>Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dc:rights>` |
 | [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dc:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title]</dc:rights>` |
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dc:description>Version: [article.version]</dc:description>` |
@@ -26,35 +29,4 @@ Note that given the simplicity of the OAI_DC format, only a subset of the PubRou
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dc:description>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id]</dc:description>` |
 | [dc:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dc:type>[article.type]</dc:type>` |
 | [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
-
-
-
-Example xml returned
-```xml
-<metadata xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
-	<oai_dc:dc xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
-	<generator uri="http://pubrouter.jisc.ac.uk/python-sword2" version="0.2"/>
-		<dc:language>en</dc:language>
-		<dc:source>pissn: 0017-5749</dc:source>
-		<dc:source>eissn: 1468-3288</dc:source>
-		<dc:source>Journal of Interesting Things</dc:source>
-		<dc:publisher>BMJ Publishing Group</dc:publisher>
-		<dc:description>From Publisher via Jisc Publications Router.</dc:description>
-		<dc:creator>Mahajan,Ujjwal M</dc:creator>
-		<dc:creator>Teller,Steffen</dc:creator>
-		<dc:contributor>Sendler,Matthias</dc:contributor>
-		<dc:title>Tumour-specific delivery of siRNA-coupled superparamagnetic iron oxide nanoparticles, targeted against PLK1, stops progression of pancreatic cancer</dc:title>
-		<dc:identifier>publisher-id: gutjnl-2016-311393</dc:identifier>
-		<dc:identifier>doi: 10.1136/gutjnl-2016-311393</dc:identifier>
-		<dc:subject>Pancreas</dc:subject>
-		<dc:subject>PANCREATIC CANCER</dc:subject>
-		<dc:description>Publication status: Published</dc:description>
-		<dc:description>History: received 2016-01-03, rev-recd 2016-04-01, accepted 2016-04-18, ppub 2016-05, epub 2016-05-12</dc:description>
-		<dc:rights>Licence for this article: https://testing.org/licenses/by/4.0/ uat lic 3 License uat testing</dc:rights>
-		<dc:rights>Embargo: starts 2016-05-12, ends 2016-12-12, duration 7 months from publication.</dc:rights>
-		<dc:type>article</dc:type>
-		<dc:date>2018-01-01</dc:date>
-	</oai_dc:dc>
-</metadata>
-```
 
