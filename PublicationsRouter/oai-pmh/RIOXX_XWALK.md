@@ -23,11 +23,9 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
 | [ali:free_to_read](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#free_to_read) | free2read.start <br> free2read.end | `<ali:free_to_read start_date=[free2read.start] end_date=[free2read.end]></ali:free_to_read> |
 | [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dc:rights>Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dc:rights>` |
 | [dc:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dc:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title]</dc:rights>` |
-| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dc:description>Version: [article.version]</dc:description>` |
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider_agent | `<dc:description>From [provider_agent] via Jisc Publications Router.</dc:description>` |
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dc:description>Publication status: [publication_status]</dc:description>` | 
 | [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dc:description>History: [history_date.date_type], [history_date.date] </dc:description>` |
-| [dc:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dc:description>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id]</dc:description>` |
 | [dc:type](http://dublincore.org/documents/dcmi-terms/#terms-type) | article.type | `<dc:type>[article.type]</dc:type>` |
 | [dc:date](http://dublincore.org/documents/dcmi-terms/#terms-type) | publication_date | `<dc:date>[publication_date]</dc:date>` |
 
@@ -36,7 +34,7 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
   <rioxx:rioxx>
     <ali:free_to_read />
     <ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
-    <dc:description>Abstract text for dspace rioxx</dc:description>
+    <dc:description>From FTP publisher via Jisc Publications Router.</dc:description>
     <dc:identifier>pubmed: 30157316</dc:identifier>
     <dc:language>en</dc:language>
     <dc:publisher>eLife Sciences Publications, Ltd</dc:publisher>
