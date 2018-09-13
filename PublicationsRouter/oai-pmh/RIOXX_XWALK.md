@@ -37,8 +37,7 @@ The table below lists the RIOXX terms that are provided by PubRouter's implement
     <ali:free_to_read />
     <ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
     <dc:description>Abstract text for dspace rioxx</dc:description>
-    <dc:format>application/octet-stream</dc:format>
-    <dc:identifier>https://dspace-rioxx.pubrouter.jisc.ac.uk/bitstream/123456789/10/2/rioxx_test_simple_zip.zip</dc:identifier>
+    <dc:identifier>pubmed: 30157316</dc:identifier>
     <dc:language>en</dc:language>
     <dc:publisher>eLife Sciences Publications, Ltd</dc:publisher>
     <dc:subject>Pancreas</dc:subject>
