@@ -1,4 +1,4 @@
-# PubRouter Notification to RIOXX Crosswalk
+# PubRouter Notification to OAI-RIOXX Crosswalk
 
 The table below lists the RIOXX terms that are provided by PubRouter's implementation of OAI-PMH, and shows how PubRouter's metadata elements are mapped to these.
  
