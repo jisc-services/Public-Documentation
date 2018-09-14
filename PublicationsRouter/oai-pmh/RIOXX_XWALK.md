@@ -51,9 +51,9 @@ The table below lists:
 | [rioxxterms:contributor](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#contributor)  <br>{0..n} | contributor.firstname <br> contributor.surname <br> contributor.organisation_name <br> contributor.identifier | `<rioxxterms:contributor id=[>[contributor.identifier]: [contributor.surname], [contributor.firstname] OR [contributor.organisation_name]</rioxxterms:contributor>`  |
 | [rioxxterms:project](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#project)  <br>{0..n} | funding.name <br> funding.identifier <br> funding.grant_number | `<rioxxterms:project funder_name="[funding.name]" funder_id="[funding.identifier.id (DOI)]">[funding.grant_number]</rioxxterms:project>`|
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication-date)  <br>{0..1} | publication_date | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
-| [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxx/rioxxterms_.html#type)  <br>{1..n} | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
+| [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxx/rioxxterms_.html#type)  <br>{1..1} | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
 | [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version)  <br>{0..1} | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
-[rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record) | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
+[rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record)  <br>{1..1} | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
 |
 
 ```xml
