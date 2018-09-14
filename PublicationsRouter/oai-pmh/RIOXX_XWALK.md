@@ -1,6 +1,34 @@
 # PubRouter Notification to RIOXX Crosswalk
 
 The table below lists the RIOXX terms that are provided by PubRouter's implementation of OAI-PMH, and shows how PubRouter's metadata elements are mapped to these.
+ 
+For background information related to the schema see:
+
+* [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
+* [RIOXX](http://www.rioxx.net/)
+* [OAI_PMH](https://www.openarchives.org/pmh/)
+
+## Namespaces ##
+
+The DSpace-RIOXX XML uses 4 namespaces:
+
+| Namespace | URI | Description |
+|:----------|:----|:------------|
+| ali        | http://www.niso.org/schemas/ali/1.0/ | National Information Standards Organisation's Access and License Information schema  |
+| dc    | http://purl.org/dc/elements/1.1/ | DublinCore |
+| dcterms    | http://purl.org/dc/terms/ | DublinCore (extended) terms schema |
+| rioxxterms | http://www.rioxx.net/schema/v2.0/rioxx/ | RIOXX schema |
+
+## XML Elements ##
+
+The table below lists:
+* Column 1 - the XML elements output by PubRouter and cardinality:
+	* {0..1} – zero or one
+	* {0..n} – zero or more
+	* {1..1} – exactly one (i.e. a mandatory element)
+	* {1..n} – one or more (i.e. a mandatory element)
+* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
+* Column 3 - the output XML element construction (format) - see note. 
 
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
