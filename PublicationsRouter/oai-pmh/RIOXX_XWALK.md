@@ -41,7 +41,7 @@ The table below lists:
 | [dc:description](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__description)  <br>{0..n}  | history_date.date_type <br> history_date.date | `<dc:description>History: [history_date.date_type], [history_date.date] </dc:description>` |
 | [dc:identifier](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__identifier)  <br>{0..1} | links.url <br> This field MUST contain an HTTP URI which is a persistent identifier for the resource. | `<dc:identifier>[links.url]</dc:identifier>` |
 | [dc:language](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__language) <br>{0..n} | article.language | `<dc:language>[article.language]</dc:language>` |
-| [dc:publisher](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__publisher)  <br>{0..n} | journal.publisher | `<dc:publisher>[journal.publisher]</dc:publisher>` |
+| [dc:publisher](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__publisher)  <br>{0..1} | journal.publisher | `<dc:publisher>[journal.publisher]</dc:publisher>` |
 | [dc:source](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__source)  <br>{0..n} | journal.identifier.type <br> journal.identifier.id  | `<dc:source>[journal.identifier.type]: [journal.identifier.id]</dc:source>` |
 | [dc:source](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__source)  <br>{0..1} | journal.title | `<dc:source>[journal.title]</dc:source>` |
 | [dc:subject](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__subject)  <br>{0..n} |  article.subject | `<dc:subject>[article.subject]</dc:subject>` |
