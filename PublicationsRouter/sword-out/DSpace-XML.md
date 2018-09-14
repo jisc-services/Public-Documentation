@@ -34,7 +34,7 @@ The following table lists:
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider_agent | `<dcterms:description>From [provider_agent] via Jisc Publications Router. </dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dcterms:description>Publication status: [publication_status] </dcterms:description>` | 
 |[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date] </dcterms:description>` |
-| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_number <br> funding.identifier | `<dcterms:description>Funder: [funding.name], Grant no: [funding.grant_number], [funding.identifier.type]: [funding.identifier.id] </dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_numbers <br> funding.identifier | `<dcterms:description>Funder: [funding.name], [funding.identifier.type]: [funding.identifier.id], Grant(s):  [funding.grant_numbers] </dcterms:description>` |
 
 
 ## Example XML Output
