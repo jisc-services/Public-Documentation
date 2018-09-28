@@ -54,7 +54,7 @@ The table below lists:
 | [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxx/rioxxterms_.html#type)  <br>{1..1} | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
 | [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version)  <br>{0..1} | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
 [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record)  <br>{1..1} | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
-|
+
 
 ```xml
 <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
