@@ -153,7 +153,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			"type": "<type>", 
 			"url": "<url>",
 			"version": "<license version; for example: 4.0>",
-			"start": "<Date licence starts (YYYY-MM-DD format)>"
+			"start": "<Date licence starts (YYYY-MM-DD format)>",
+			"specific_use": "<article version this license specifically refers to, eg. am, vor, cvor, ..>"
 			}
 		],
 		"free2read": {
@@ -253,6 +254,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
+| metadata.license_ref.specific_use | Article version this license specifically refers to, eg. am, vor, cvor (optional) | unicode | | ["am", "vor", "cvor", "evor", "p"] |
 | metadata.free2read | Ali:free-to-read information | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
