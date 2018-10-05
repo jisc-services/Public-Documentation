@@ -152,7 +152,8 @@ The JSON structure of the model is as follows:
 			"url": "<url>",
 			"version": "<version of license; for example: 4.0>" ,
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
-			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
+			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >",
+			"specific-use": "<article version this license specifically refers to, eg. am, vor, cvor, ..>"
 			}
 		]
 	}
@@ -233,3 +234,4 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.license_ref.version | Version of the licence | unicode |  |  |
 | metadata.license_ref.start | License start date | unicode |  |  |
 | metadata.license_ref.end | License end date (optional) | unicode |  |  |
+| metadata.license_ref.specific_use | Article version this license specifically refers to, eg. am, vor, cvor (optional) | unicode | | ["am", "vor", "cvor", "evor", "p"] |
