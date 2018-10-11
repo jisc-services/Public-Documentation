@@ -74,8 +74,8 @@ The table below lists:
     <rioxxterms:author rioxxterms:id="http://orcid.org/0000-0000-0000-0002">Palankar, Raghavendra</rioxxterms:author>
     <rioxxterms:author>Kühn, Jens-Peter</rioxxterms:author>
     <rioxxterms:author rioxxterms:id="http://orcid.org/0000-0000-0000-0004">Evert, Matthias</rioxxterms:author>
-    <rioxxterms:contributor>Benet, Jonh</rioxxterms:contributor>
-    <rioxxterms:contributor>Mayerle,Julia</rioxxterms:contributor>
+    <rioxxterms:contributor>Editor: Benet, Jonh</rioxxterms:contributor>
+    <rioxxterms:contributor>Translator: Mayerle,Julia</rioxxterms:contributor>
     <rioxxterms:publication_date>2016-07-06</rioxxterms:publication_date>
     <rioxxterms:type>Journal Article/Review</rioxxterms:type>
     <rioxxterms:version>VoR</rioxxterms:version>
