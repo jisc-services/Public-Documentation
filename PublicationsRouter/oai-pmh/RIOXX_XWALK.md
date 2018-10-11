@@ -10,7 +10,7 @@ For background information related to the schema see:
 
 ## Namespaces ##
 
-The DSpace-RIOXX XML uses 4 namespaces:
+The OAI-PMH-RIOXX XML uses 4 namespaces:
 
 | Namespace | URI | Description |
 |:----------|:----|:------------|
