@@ -62,6 +62,7 @@ The table below lists:
     <ali:free_to_read />
     <ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
     <dc:description>From FTP publisher via Jisc Publications Router.</dc:description>
+    <dc:description>Publication status: Published</dc:description>
     <dc:identifier>http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC6042627&blobtype=pdf</dc:identifier>
     <dc:language>en</dc:language>
     <dc:publisher>eLife Sciences Publications, Ltd</dc:publisher>
