@@ -1,12 +1,13 @@
-# PubRouter Notification to OAI-RIOXX Crosswalk
+# PubRouter OAI-PMH rioxx XML Specification
 
-The table below lists the RIOXX terms that are provided by PubRouter's implementation of OAI-PMH, and shows how PubRouter's metadata elements are mapped to these.
- 
+This page defines the XML that PubRouter will output via its OAI-PMH interface when a metadataPrefix of **oai_rioxx** is specified as an argument in the request URL (i.e. `...&metadataPrefix=rioxx`).  It also shows the mapping that is used to create this XML from PubRouter's internal data-model.
+
 For background information related to the schema see:
 
-* [Dubin Core](http://dublincore.org/documents/dcmi-terms/)
+* [Dublin Core](http://dublincore.org/documents/dcmi-terms/)
 * [RIOXX](http://www.rioxx.net/)
 * [OAI_PMH](https://www.openarchives.org/pmh/)
+* [OAI-OMH and RIOXX](http://www.rioxx.net/2015/11/25/rioxx-and-oai-pmh/)
 
 ## Namespaces ##
 
@@ -34,8 +35,8 @@ The table below lists:
 
 | rioxx terms | PubRouter Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
-| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) <br>{0..n} | license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
 | [ali:free_to_read](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#free_to_read) <br>{0..1} | free2read.start (optional) <br> free2read.end (optional) | `<ali:free_to_read start_date="[free2read.start]" end_date="[free2read.end]"></ali:free_to_read> |
+| [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) <br>{0..n} | license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
 | [dc:description](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__description)  <br>{0..n} | provider_agent | `<dc:description>From [provider_agent] via Jisc Publications Router.</dc:description>` |
 | [dc:description](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__description)  <br>{0..n}  | publication_status | `<dc:description>Publication status: [publication_status]</dc:description>` | 
 | [dc:description](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__description)  <br>{0..n}  | history_date.date_type <br> history_date.date | `<dc:description>History: [history_date.date_type], [history_date.date] </dc:description>` |
