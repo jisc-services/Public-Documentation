@@ -34,47 +34,10 @@ The table below lists:
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
 
-<table>
-<thead><tr><th>rioxx terms</th><th>PubRouter Metadata (source)</th><th>XML Format</th></tr></thead>
-<tbody>
-<tr>
-    <td><a href="http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#free_to_read">ali:free_to_read</a> <br>{0..1}</td>
-    <td>free2read.start (optional) <br> free2read.end (optional) </td>
-    <td>`<ali:free_to_read start_date="[free2read.start]" end_date="[free2read.end]"></ali:free_to_read> </td>
-</tr>
-<tr>
-    <td><a href="http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref">ali:license_ref</a> <br>{0..n}</td>
-    <td>license_ref.url <br> license_ref.url.start </td>
-    <td> `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` </td>
-</tr>	
-<tr>
-    <td><a href=""></a></td>
-    <td></td>
-    <td></td>
-</tr>	
-<tr>
-    <td><a href=""></a></td>
-    <td></td>
-    <td></td>
-</tr>	
-	
-<tr>
-    <td rowspan=3>a</td>
-    <td></td>
-    <td></td>
-</tr>
-<tr>
-    <td></td>
-    <td></td>
-</tr>
-
-</tbody>
-</table>
-
 
 | rioxx terms | PubRouter Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
-| | | |
+| [ali:free_to_read](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#free_to_read) <br>{0..1} | free2read.start (optional) <br> free2read.end (optional) | `<ali:free_to_read start_date="[free2read.start]" end_date="[free2read.end]"></ali:free_to_read> |
 | [ali:license_ref](http://www.rioxx.net/schema/v2.0/rioxx/ali_1_0.html#license_ref) <br>{0..n} | license_ref.url <br> license_ref.url.start  | `<ali:license_ref start=”[license_ref.url.start]”> [license_ref.url] </ali:license_ref>` |
 | [dc:description](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__description)  <br>{0..n} | provider_agent | `<dc:description>From [provider_agent] via Jisc Publications Router.</dc:description>` |
 | [dc:description](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__description)  <br>{0..n}  | publication_status | `<dc:description>Publication status: [publication_status]</dc:description>` | 
