@@ -32,7 +32,12 @@ Note that given the simplicity of the OAI_DC format, only a subset of the PubRou
 Example xml returned
 ```xml
 <metadata>
-	<oai_dc:dc xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<oai_dc:dc 
+            xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" 
+            xmlns:dc="http://purl.org/dc/elements/1.1/" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
+	    http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
 	<generator uri="http://pubrouter.jisc.ac.uk/python-sword2" version="0.2"/>
 		<dc:language>en</dc:language>
 		<dc:source>pissn: 0017-5749</dc:source>
