@@ -105,28 +105,33 @@ If you are sending only the notification JSON, the request must take the form:
 
 ### 2. Validate Metadata + Package request
 
-If you are sending binary content as well as the metadata, the request must take the form:
+If you are sending binary content as well as the metadata, the request should be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
 
     POST /validate?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
+        Content-Type: multipart/related; boundary=FullTextBoundary
 
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --FullTextBoundary
+        Content-Disposition: name="metadata"
         Content-Type: application/json
 
         {Incoming Notification JSON}
 
-        --FulltextBoundary
+        --FullTextBoundary
 
-        Content-Disposition: form-data; name="content"
+        Content-Disposition: name="content"
         Content-Type: application/zip
 
-        Binary Package
+        {Binary Package}
 
-        --FulltextBoundary--
+        --FullTextBoundary--
+
+This is quite simple to do in curl by using the -F flag:
+
+```bash
+curl -H 'Content-Type: multipart/related' -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
+```
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 
@@ -138,12 +143,12 @@ To do this, send the bare-minimum JSON notification, with only the format identi
 
     POST /validate?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
+        Content-Type: multipart/related; boundary=FulltextBoundary
 
     Body:
         --FulltextBoundary
 
-        Content-Disposition: form-data; name="metadata"
+        Content-Disposition: name="metadata"
         Content-Type: application/json
 
         {
@@ -154,7 +159,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
 
         --FulltextBoundary
 
-        Content-Disposition: form-data; name="content"
+        Content-Disposition: name="content"
         Content-Type: application/zip
 
         Binary Package
