@@ -358,15 +358,21 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 
 ---
 
-### Sending multipart requests with Curl
+## Sending multipart requests with Curl
 
 The multipart requests are quite complex, but they can be easily represented using curl's -F flag:
 
 
 ```bash
 # Validate endpoint
-curl -XPOST -H 'Content-Type: multipart/related' -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
+curl -XPOST -H 'Content-Type: multipart/related' \
+-F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \ 
+-F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
+https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
 
 # Notification endpoint
-curl -XPOST -H 'Content-Type: multipart/related' -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' https://pubrouter.jisc.ac.uk/api/v3/notification?api_key=<my_api_key>
+curl -XPOST -H 'Content-Type: multipart/related' \
+-F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \
+-F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
+https://pubrouter.jisc.ac.uk/api/v3/notification?api_key=<my_api_key>
 ```
