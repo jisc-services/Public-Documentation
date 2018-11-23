@@ -68,6 +68,7 @@ Router does not output the following RIOXX elements:
 * [dc:relation](http://www.rioxx.net/schema/v2.0/rioxx/terms_.html#http___purl.org_dc_terms__relation)
 * [rioxxterms:apc](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#apc)
 
+## Example OAI-PMH RIOXX XML ##
 
 ```xml
 <metadata>
