@@ -109,23 +109,22 @@ If you are sending binary content as well as the metadata, the request should be
 
     POST /validate?api_key=<api_key>
     Header:
-        Content-Type: multipart/related; boundary=FullTextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+        
     Body:
-        --FullTextBoundary
-        Content-Disposition: name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
-        {Incoming Notification JSON}
-
-        --FullTextBoundary
-
-        Content-Disposition: name="content"
+        
+        {{Incoming notification JSON}}
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
+        
+        {{Zip Content}}
 
-        {Binary Package}
-
-        --FullTextBoundary--
+        --------------------------586e648803c83e39---
 
 This is quite simple to do in curl by using the -F flag:
 
@@ -143,29 +142,27 @@ To do this, send the bare-minimum JSON notification, with only the format identi
 
     POST /validate?api_key=<api_key>
     Header:
-        Content-Type: multipart/related; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
+        
         {
-            "content" : {
-                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-            },
+            "content": {
+                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+            }
         }
-
-        --FulltextBoundary
-
-        Content-Disposition: name="content"
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
 
-        Binary Package
-
-        --FulltextBoundary--
-
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
+    
 
 ### 4. Validate List of notifications with Metadata-only request
 
