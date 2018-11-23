@@ -55,7 +55,7 @@ The table below lists:
 | [rioxxterms:publication_date](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#publication-date)  <br>{0..1} | publication_date <br> (yyyy-mm-dd) | `<rioxxterms:publication_date> [publication_date] </rioxxterms:publication_date>` | 
 | [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxx/rioxxterms_.html#type)  <br>{1..1} * | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
 | [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version)  <br>{0..1} *<br><i style="font-size:smaller">NOTE: Possible versions - [AO, SMUR, AM, P, VoR, CVoR, EVoR, NA]</i>  | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
-| [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record)  <br>{1..1}<br> <i style="font-size:smaller">Note: The DOI is formatted as a HTTP URI.</i>  | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
+| [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record)  <br>{1..1}<br> <sub><i>Note: The DOI is formatted as a HTTP URI.</i></sub>  | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
 
 \* - Asterisked cardinalities do not conform to the RIOXX specification. This is because PubRouter either does not record sufficient information, or it records more than RIOXX expects.
 
