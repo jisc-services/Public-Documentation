@@ -296,24 +296,22 @@ If you are sending binary content as well as the metadata, the request must take
 
     POST /notification?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
-        {Incoming Notification JSON}
-
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="content"
+        
+        {{Incoming Notification JSON}}
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
 
-        Binary Package
-
-        --FulltextBoundary--
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 
@@ -327,29 +325,26 @@ For example:
 
     POST /notification?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
+        
         {
-            "content" : {
-                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-            },
+            "content": {
+                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+            }
         }
-
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="content"
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
 
-        Binary Package
-
-        --FulltextBoundary--
-
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
 
 ### 4. Notification List with Metadata-only request
 
