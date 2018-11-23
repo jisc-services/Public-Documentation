@@ -60,8 +60,8 @@ The table below lists:
 NOTE: Anything tagged with a * has a strictly different cardinality then the actual RIOXX specification. This is due to either PubRouter not being able to provide enough information to meet the requirement of the RIOXX specification because the metedata in question was sparsely populated, or that we do not record enough information to strictly meet the RIOXX specification.
 
 ```xml
-<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
-  <rioxx:rioxx>
+<metadata>
+  <rioxx:rioxx xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:ali="http://ali.niso.org/2014/ali/1.0" xmlns:rioxx="http://www.rioxx.net/schema/v2.0/rioxx/">
     <ali:free_to_read />
     <ali:license_ref ali:start_date="2016-07-06">http://creativecommons.org/licenses/by/4.0/</ali:license_ref>
     <dc:description>From FTP publisher via Jisc Publications Router.</dc:description>
