@@ -374,8 +374,11 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 
 ## Sending multipart requests with Curl
 
-The multipart requests are quite complex, but they can be easily represented using curl's -F flag:
+The multipart requests are quite complex, but they can be easily formed using curl's -F flag.
 
+Note in the following examples you would need to replace `<my_api_key>` by your actual API key value, and files named after the `@` symbol would need to exist (i.e. for `@metadata.json`a file named "metadata.json" containing JSON metadata, would need to exist in the current directory.
+
+#### Validate endpoint
 
 ```bash
 # Validate endpoint
@@ -383,6 +386,12 @@ curl -XPOST -H 'Content-Type: multipart/related' \
 -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \ 
 -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
 https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
+
+```
+
+#### Notification endpoint
+
+```bash
 
 # Notification endpoint
 curl -XPOST -H 'Content-Type: multipart/related' \
