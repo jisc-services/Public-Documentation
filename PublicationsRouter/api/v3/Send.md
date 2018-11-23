@@ -6,10 +6,16 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths provided in this document will extend from this base url.
 
+### Validation and Live endpoints
+
 If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
 
 1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to PubRouter
+
 2. **Notification endpoint** - for "live" use, sending real notifications to PubRouter
+
+
+### Sending Metadata only or Metadata plus full-text article
 
 You can create content in 2 ways in PubRouter:
 
@@ -23,7 +29,7 @@ You can create content in 2 ways in PubRouter:
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
-#### Important information about notification metadata
+### Important information about notification metadata
 
 If you are providing metadata, you should include as much institution and author identifying metadata as possible to give us the best chance of routing the content to a suitable repository; and as much bibliographic data as possible to provide institutions with a rich set of information.
 
@@ -61,7 +67,9 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
         }
     ]
 
+
 ---
+
 
 ## Validation Endpoints
 
@@ -105,7 +113,7 @@ If you are sending only the notification JSON, the request must take the form:
 
 ### 2. Validate Metadata + Package request
 
-If you are sending binary content as well as the metadata, the request should be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
+If you are sending binary content as well as the metadata, then a multi-part request must be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
 
     POST /validate?api_key=<api_key>
     Header:
@@ -357,6 +365,7 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 
 
 ---
+
 
 ## Sending multipart requests with Curl
 
