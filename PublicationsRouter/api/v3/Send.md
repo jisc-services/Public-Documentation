@@ -68,7 +68,6 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
     ]
 &nbsp;
 &nbsp;
----
 &nbsp;
 &nbsp;
 ## Validation Endpoints
@@ -180,9 +179,10 @@ If you are sending a list of notifications, the request must take the form shown
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-
----
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 ## Notification Endpoints (for sending notifications to PubRouter)
 
 The Notification API endpoints takes an identical request (header and body) to the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
@@ -362,11 +362,10 @@ If you are sending a list of notifications, the request must take the form:
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-
-
----
-
-
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 ## Sending multipart requests with Curl
 
 The multipart requests are quite complex, but they can be easily represented using curl's -F flag:
