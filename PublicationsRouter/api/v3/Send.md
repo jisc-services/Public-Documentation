@@ -66,11 +66,10 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
             "url" : "http://example.com/article1/fulltext.pdf",
         }
     ]
-\
-\
+
+##  
 ---
-\
-\
+##  
 ## Validation Endpoints
 
 You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful.
