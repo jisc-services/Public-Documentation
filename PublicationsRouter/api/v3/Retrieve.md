@@ -112,11 +112,11 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more info.
 
-Some notifications may contain one or more **links** elements. This means that there is binary content associated with the notification available for download.  The link will be packaged binary content held by PubRouter on behalf of the publisher.
+Some notifications may contain one or more **links** elements. This means that there is binary content associated with the notification available for download.  The link will either be pointing at packaged binary content held by PubRouter on behalf of the publisher, or a link pointing at an external resource (likely the full text). 
 
 You can issue a GET request on the URL contained within a link element to receive the content.
 
-Links will look like the following and give you the URL and tell you which type of packaging has been used to package up the binary: 
+Links will look like one of the following:
 
     "links" : [
         {
@@ -124,8 +124,17 @@ Links will look like the following and give you the URL and tell you which type 
             "format" : "application/zip",
             "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
             "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+        },
+        {
+            "type": "fulltext", 
+            "format": "application/pdf", 
+            "url": "https://externallink.ac.uk/123456789"
         }
     ]
+    
+The first link is a packaged binary link, and includes the packaging type used to package the binary. Packaging types are explained in further detail in the next section. 
+
+The second link is to an external site, this will not have a packaging type. The type field will be describing the type of content (likely fulltext), and the format field describes the content's format (likely application/pdf, or text/html). 
 
 ### Packaged Content
 
