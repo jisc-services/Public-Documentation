@@ -112,14 +112,11 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more info.
 
-Some notifications may contain one or more **links** elements.  In this event, this means that there is binary content associated with the notification available for download.  Each of the links could be one of two kinds:
+Some notifications may contain one or more **links** elements. This means that there is binary content associated with the notification available for download.  The link will be packaged binary content held by PubRouter on behalf of the publisher.
 
-1. Packaged binary content held by PubRouter on behalf of the publisher (see the next section)
-2. A proxy-URL (proxying through the Router) for public content hosted on the web by the publisher
+You can issue a GET request on the URL contained within a link element to receive the content.
 
-In either case you can issue a GET request on the URL to receive the content.
-
-In order to tell the difference between (1) and (2), compare the following two links:
+Links will look like the following and give you the URL and tell you which type of packaging has been used to package up the binary: 
 
     "links" : [
         {
@@ -127,19 +124,8 @@ In order to tell the difference between (1) and (2), compare the following two l
             "format" : "application/zip",
             "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
             "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-        },
-        {
-            "type" : "fulltext",
-            "format" : "application/pdf",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/publisher.pdf",
         }
     ]
-
-The first link has type "package" and also has an element **packaging** which tells you this is of the format "https://pubrouter.jisc.ac.uk/FilesAndJATS".
-
-The second link does not contain a **packaging** element at all, and does not have "package" as its type.
-
-This means the first link is a link to package held by PubRouter, and the second is a proxy for a URL hosted by the publisher.
 
 ### Packaged Content
 
