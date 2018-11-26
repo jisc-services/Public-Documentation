@@ -376,7 +376,7 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 
 The multipart requests are quite complex, but they can be easily formed using curl's -F flag.
 
-Note in the following examples you would need to replace `<my_api_key>` by your actual API key value, and files named after the `@` symbol would need to exist (i.e. for `@metadata.json`a file named "metadata.json" containing JSON metadata, would need to exist in the current directory).
+Note in the following examples you would need to replace `<my_api_key>` by your actual API key value, and files named after the `@` symbol would need to exist (e.g. for `@metadata.json`a file named "metadata.json" containing JSON metadata, would need to exist in the current directory).
 
 #### Validate endpoint
 
