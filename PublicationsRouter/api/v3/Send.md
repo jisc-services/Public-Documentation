@@ -224,25 +224,11 @@ Note these are different from the Validation endpoint.
 ```
 
 #### Responses only for Notification List endpoint ####
-* If the list contains something that is not a JSON object and none of the submitted notifications were successfully processed then the system will respond with a **406 (Not Acceptable)** and the response body:
+
+* If some notifications in the list succeed and some fail, then the system will respond with a **202** and the response body:
 
 ```
-    HTTP 1.1  406 Not Acceptable
-    Content-Type: application/json
-
-    {
-        "successful": 0,
-        "total": <the number of items received in the list>,
-        "success_ids": [],
-        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "human readable error message"
-    }
-```
-
-* If the list contains something that is not a JSON object, but before it is encountered at least one notification in the list was successfuly processed then the system will respond with a **206 (Partial Content)** and the response body:
-
-```
-    HTTP 1.1  206 Partial Content
+    HTTP 1.1  202 Accepted
     Content-Type: application/json
 
     {
@@ -259,7 +245,7 @@ Note these are different from the Validation endpoint.
 * On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
 
 ```
-    HTTP 1.1  202 Accepted
+    HTTP 1.1  201 Accepted
     Content-Type: application/json
     Location: <url for api endpoint for accepted notification>
 
@@ -274,7 +260,7 @@ Note these are different from the Validation endpoint.
 * On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body.  Note you may obtain this successful notification even if some of the notifications in the list could not be processed - these are identified in the fail_ids list.
 
 ```
-    HTTP 1.1  202 Accepted
+    HTTP 1.1  201 Created
     Content-Type: application/json
 
     {
