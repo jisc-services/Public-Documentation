@@ -242,10 +242,10 @@ Note these are different from the Validation endpoint.
 ```
 
 #### Success Response - Single Notification ####
-* On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
+* On **successful completion** of the request, the system will respond with 201 (Accepted) and the following response body
 
 ```
-    HTTP 1.1  201 Accepted
+    HTTP 1.1  201 Created
     Content-Type: application/json
     Location: <url for api endpoint for accepted notification>
 
