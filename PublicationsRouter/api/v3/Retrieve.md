@@ -128,13 +128,13 @@ Links will look like one of the following:
         {
             "type": "fulltext", 
             "format": "application/pdf", 
-            "url": "https://externallink.ac.uk/123456789"
+            "url": "https://some_publisher_site.com/some_file_name.pdf"
         }
     ]
     
 The first link is a packaged binary link, and includes the packaging type used to package the binary. Packaging types are explained in further detail in the next section. 
 
-The second link is to an external site, this will not have a packaging type. The type field will be describing the type of content (likely fulltext), and the format field describes the content's format (likely application/pdf, or text/html). 
+The second link is to an external site, this will not have a packaging type. The type field will be describing the type of content (likely _fulltext_), and the format field describes the content's format (likely _application/pdf_, or _text/html_). 
 
 ### Packaged Content
 
