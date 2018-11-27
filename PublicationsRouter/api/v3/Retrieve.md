@@ -112,14 +112,11 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more info.
 
-Some notifications may contain one or more **links** elements.  In this event, this means that there is binary content associated with the notification available for download.  Each of the links could be one of two kinds:
+Some notifications may contain one or more **links** elements. This means that there is binary content associated with the notification available for download.  The link will either be pointing at packaged binary content held by PubRouter on behalf of the publisher, or a link pointing at an external resource (likely the full text). 
 
-1. Packaged binary content held by PubRouter on behalf of the publisher (see the next section)
-2. A proxy-URL (proxying through the Router) for public content hosted on the web by the publisher
+You can issue a GET request on the URL contained within a link element to receive the content.
 
-In either case you can issue a GET request on the URL to receive the content.
-
-In order to tell the difference between (1) and (2), compare the following two links:
+Links will look like one of the following:
 
     "links" : [
         {
@@ -129,17 +126,15 @@ In order to tell the difference between (1) and (2), compare the following two l
             "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
-            "type" : "fulltext",
-            "format" : "application/pdf",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/publisher.pdf",
+            "type": "fulltext", 
+            "format": "application/pdf", 
+            "url": "https://some_publisher_site.com/some_file_name.pdf"
         }
     ]
+    
+The first link is a packaged binary link, and includes the packaging type used to package the binary. Packaging types are explained in further detail in the next section. 
 
-The first link has type "package" and also has an element **packaging** which tells you this is of the format "https://pubrouter.jisc.ac.uk/FilesAndJATS".
-
-The second link does not contain a **packaging** element at all, and does not have "package" as its type.
-
-This means the first link is a link to package held by PubRouter, and the second is a proxy for a URL hosted by the publisher.
+The second link is to an external site, this will not have a packaging type. The type field will be describing the type of content (likely _fulltext_), and the format field describes the content's format (likely _application/pdf_, or _text/html_). 
 
 ### Packaged Content
 
