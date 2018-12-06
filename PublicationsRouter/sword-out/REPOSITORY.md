@@ -50,13 +50,17 @@ The behaviour during an individual notification deposit is as follows:
 
 ## DSpace
 
-Router is certified to work with Dspace 5.x
+Router is certified to work with Dspace 5.x Two SWORD2 integration options exist:
 
+* DSpace Native – this results in deposits with a basic set of meta-data
+* DSpace-RIOXX – this will populate additional RIOXX fields with meta-data.
 
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
 
 Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
+### DSpace RIOXX
+If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard DC terms fields to be automatically populated by PubRouter, then PubRouter requires you to have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
 
 ### Deposit process
 
@@ -78,8 +82,6 @@ can be found in
     dspace/config/modules/swordv2-server.cfg
     
 By default the conversion will crosswalk a broad selection of Dublin Core fields, but this may be customised. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
-
-If you wish to also support RIOXX into your DSpace repository, there are some repository patches (versions 3, 4 or 5) available on request by email to info@atmire.com.
 
 
 
