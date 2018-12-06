@@ -4,7 +4,7 @@ This document provides information on how to get your repository set up to take 
 
 ## PubRouter Account Setup
 
-Firstly, you will need to contact [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=PubRouter%20-%20getting%20connected%20(institution)), mentioning Publications Router in your query, to have an account created. For that, you must provide:
+Firstly, you will need to contact [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=PubRouter%20-%20account%20creation%20(institution)), mentioning Publications Router in your query, to have an account created. For that, you must provide:
 
 * The matching parameters using this [Excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT: if using the Excel template it should be saved as a CSV file upon completion, as this is the only format supported by PubRouter. 
 * A *username* and *password* for an account in your repository which has a role with the rights to create content via SWORDv2:
