@@ -36,7 +36,7 @@ EPrints Native is configured by default to accept incoming requests via [SWORDv2
 
 Eprints RIOXXplus integration is appropriate only where your repository has the RIOXX plugin installed, it enables additional fields required by the [RIOXX application profile](http://rioxx.net/v2-0-final/) to be automatically populated by PubRouter.
 
-In order to take advantage of PubRouter's RIOXXplus option your repository will need the [*Jisc PubRouter RIOXXplus Connector Plugin*](http://wiki.eprints.org/w/Jisc_Publications_Router) to be installed, and your PubRouter account set to "Eprints RIOXX” (via your Account Admin page).
+In order to take advantage of PubRouter's RIOXXplus option your repository will need the [Jisc PubRouter RIOXXplus Connector Plugin](http://wiki.eprints.org/w/Jisc_Publications_Router) to be installed, and your PubRouter account set to "Eprints RIOXX” (via your Account Admin page).
 
 ### Deposit Process
 
