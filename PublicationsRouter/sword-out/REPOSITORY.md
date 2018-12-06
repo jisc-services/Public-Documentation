@@ -63,7 +63,7 @@ Router will create a new item in your repository that includes an Atom Entry XML
 DSpace Vanilla will populate your repository with a broad selection of [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
 ### DSpace RIOXX
-If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields to be automatically populated by PubRouter, then PubRouter requires you to have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
+If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields from PubRouter, then PubRouter requires you to have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
 
 ### Deposit process
 
