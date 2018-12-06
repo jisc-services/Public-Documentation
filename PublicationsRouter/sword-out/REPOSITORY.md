@@ -60,7 +60,7 @@ Dspace needs to be configured and enabled following [these instructions](https:/
 Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
 ### DSpace Vanilla
-DSpace Vanilla will crosswalk a broad selection of [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields, but this may be customised. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
+DSpace Vanilla will populate your repository with a broad selection of [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
 ### DSpace RIOXX
 If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields to be automatically populated by PubRouter, then PubRouter requires you to have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
@@ -84,7 +84,7 @@ can be found in
 
     dspace/config/modules/swordv2-server.cfg
     
-
+It is possible to edit this configuration file to effect which DSpace Item metadata fields are populated by PubRouter- see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
 
 If you need any help with repository plugins then refer to [JISC Repository Technical Support](https://www.jisc.ac.uk/repository-technical-support).
