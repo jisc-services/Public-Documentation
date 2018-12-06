@@ -21,7 +21,10 @@ Any configuration can be updated at any time via your PubRouter Account page.
 
 ## EPrints
 
-Router is only certified to work with EPrints 3.3. Two SWORD2 integration options exist:
+Router is only certified to work with EPrints 3.3. 
+
+### version
+Two SWORD2 integration options exist:
 
 * Eprints Native – this results in deposits with a basic set of meta-data
 * Eprints RIOXXplus – this will populate additional RIOXX fields with meta-data.
@@ -40,7 +43,7 @@ In order to take advantage of PubRouter's RIOXXplus option your repository will 
 
 The behaviour during an individual notification deposit is as follows:
 
-1. Metadata will be deposited as a new item into the collection you specified in your account settings
+1. Metadata will be deposited as a new item into the collection you specified in your PubRouter account settings
 
 2. The raw metadata provided by the publisher may also be supplied as an XML file attached to the item
 
@@ -50,20 +53,22 @@ The behaviour during an individual notification deposit is as follows:
 
 ## DSpace
 
-Router is certified to work with Dspace 5.x Two SWORD2 integration options exist:
+Router is certified to work with Dspace 5.x.
+
+Two SWORD2 integration options exist:
 
 * DSpace Native – this results in deposits with a basic set of meta-data
-* DSpace-RIOXX – this will populate additional RIOXX fields with meta-data.
+* DSpace-RIOXX – this will populate additional RIOXX fields with meta-data (if the RIOXX patch is installed).
 
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
 
 Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
-### DSpace Vanilla
-DSpace Vanilla will populate your repository with a broad selection of [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
+### DSpace Native Integration
+DSpace Native will populate your repository with a broad selection of [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields; see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.  This mode of integration should work with any existing DSpace v5.x repository.
 
-### DSpace RIOXX
-If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields from PubRouter, then PubRouter requires you to have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
+### DSpace RIOXX Integration
+If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields from PubRouter, then you must have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
 
 ### Deposit process
 
@@ -84,7 +89,7 @@ can be found in
 
     dspace/config/modules/swordv2-server.cfg
     
-It is possible to edit this configuration file to effect which DSpace Item metadata fields are populated by PubRouter- see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
+It is possible to edit this configuration file to affect which DSpace Item metadata fields are populated by PubRouter- see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
 
 If you need any help with repository plugins then refer to [JISC Repository Technical Support](https://www.jisc.ac.uk/repository-technical-support).
