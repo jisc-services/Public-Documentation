@@ -6,10 +6,16 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths provided in this document will extend from this base url.
 
+### Validation and Live endpoints
+
 If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
 
 1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to PubRouter
+
 2. **Notification endpoint** - for "live" use, sending real notifications to PubRouter
+
+
+### Sending Metadata only or Metadata plus full-text article
 
 You can create content in 2 ways in PubRouter:
 
@@ -23,7 +29,7 @@ You can create content in 2 ways in PubRouter:
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
-#### Important information about notification metadata
+### Important information about notification metadata
 
 If you are providing metadata, you should include as much institution and author identifying metadata as possible to give us the best chance of routing the content to a suitable repository; and as much bibliographic data as possible to provide institutions with a rich set of information.
 
@@ -60,8 +66,11 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
             "url" : "http://example.com/article1/fulltext.pdf",
         }
     ]
-
----
+	
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## Validation Endpoints
 
@@ -105,28 +114,26 @@ If you are sending only the notification JSON, the request must take the form:
 
 ### 2. Validate Metadata + Package request
 
-If you are sending binary content as well as the metadata, the request must take the form:
+If you are sending binary content as well as the metadata, then a multi-part request must be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
 
     POST /validate?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+        
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
-        {Incoming Notification JSON}
-
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="content"
+        
+        {{Incoming notification JSON}}
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
+        
+        {{Zip Content}}
 
-        Binary Package
-
-        --FulltextBoundary--
+        --------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 
@@ -138,29 +145,27 @@ To do this, send the bare-minimum JSON notification, with only the format identi
 
     POST /validate?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
+        
         {
-            "content" : {
-                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-            },
+            "content": {
+                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+            }
         }
-
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="content"
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
 
-        Binary Package
-
-        --FulltextBoundary--
-
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
+    
 
 ### 4. Validate List of notifications with Metadata-only request
 
@@ -176,8 +181,11 @@ If you are sending a list of notifications, the request must take the form shown
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-
----
+	
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## Notification Endpoints (for sending notifications to PubRouter)
 
@@ -216,25 +224,11 @@ Note these are different from the Validation endpoint.
 ```
 
 #### Responses only for Notification List endpoint ####
-* If the list contains something that is not a JSON object and none of the submitted notifications were successfully processed then the system will respond with a **406 (Not Acceptable)** and the response body:
+
+* If some notifications in the list succeed and some fail, then the system will respond with a **202** and the response body:
 
 ```
-    HTTP 1.1  406 Not Acceptable
-    Content-Type: application/json
-
-    {
-        "successful": 0,
-        "total": <the number of items received in the list>,
-        "success_ids": [],
-        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "human readable error message"
-    }
-```
-
-* If the list contains something that is not a JSON object, but before it is encountered at least one notification in the list was successfuly processed then the system will respond with a **206 (Partial Content)** and the response body:
-
-```
-    HTTP 1.1  206 Partial Content
+    HTTP 1.1  202 Accepted
     Content-Type: application/json
 
     {
@@ -248,10 +242,10 @@ Note these are different from the Validation endpoint.
 ```
 
 #### Success Response - Single Notification ####
-* On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body
+* On **successful completion** of the request, the system will respond with 201 (Accepted) and the following response body
 
 ```
-    HTTP 1.1  202 Accepted
+    HTTP 1.1  201 Created
     Content-Type: application/json
     Location: <url for api endpoint for accepted notification>
 
@@ -266,7 +260,7 @@ Note these are different from the Validation endpoint.
 * On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body.  Note you may obtain this successful notification even if some of the notifications in the list could not be processed - these are identified in the fail_ids list.
 
 ```
-    HTTP 1.1  202 Accepted
+    HTTP 1.1  201 Created
     Content-Type: application/json
 
     {
@@ -294,24 +288,22 @@ If you are sending binary content as well as the metadata, the request must take
 
     POST /notification?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
-        {Incoming Notification JSON}
-
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="content"
+        
+        {{Incoming Notification JSON}}
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
 
-        Binary Package
-
-        --FulltextBoundary--
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 
@@ -325,29 +317,26 @@ For example:
 
     POST /notification?api_key=<api_key>
     Header:
-        Content-Type: multipart/form-data; boundary=FulltextBoundary
-
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
     Body:
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="metadata"
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
         Content-Type: application/json
-
+        
         {
-            "content" : {
-                "packaging_format" : "https://pubsrouter.jisc.ac.uk/FilesAndJATS"
-            },
+            "content": {
+                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+            }
         }
-
-        --FulltextBoundary
-
-        Content-Disposition: form-data; name="content"
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
         Content-Type: application/zip
 
-        Binary Package
-
-        --FulltextBoundary--
-
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
 
 ### 4. Notification List with Metadata-only request
 
@@ -363,6 +352,36 @@ If you are sending a list of notifications, the request must take the form:
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+	
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
+## Sending multipart requests with Curl
 
----
+The multipart requests are quite complex, but they can be easily formed using curl's -F flag.
+
+Note in the following examples you would need to replace `<my_api_key>` by your actual API key value, and files named after the `@` symbol would need to exist (e.g. for `@metadata.json`a file named "metadata.json" containing JSON metadata, would need to exist in the current directory).
+
+#### Validate endpoint
+
+```bash
+# Validate endpoint
+curl -XPOST -H 'Content-Type: multipart/related' \
+-F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \ 
+-F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
+https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
+
+```
+
+#### Notification endpoint
+
+```bash
+
+# Notification endpoint
+curl -XPOST -H 'Content-Type: multipart/related' \
+-F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \
+-F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
+https://pubrouter.jisc.ac.uk/api/v3/notification?api_key=<my_api_key>
+```

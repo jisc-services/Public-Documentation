@@ -24,6 +24,12 @@ If authentication was successful then you will receive a 200 (OK) and a JSON doc
         ...
     }
 
+Otherwise, if authentication was unsucessful you will receive a 401 (Unauthorized) 
+
+
+    HTTP 1.1  401 Unauthorized
+
+
 For information regarding the JSON data structure returned, see [matching config structure](./MatchingConfig.md).
 
 ## Submitting Matching Configuration
