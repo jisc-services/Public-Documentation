@@ -23,23 +23,22 @@ Any configuration can be updated at any time via your PubRouter Account page.
 
 Router is only certified to work with EPrints 3.3. 
 
-### version
 Two SWORD2 integration options exist:
 
 * Eprints Native – this results in deposits with a basic set of meta-data
 * Eprints RIOXXplus – this will populate additional RIOXX fields with meta-data.
 
-### Eprints Native
+### Eprints Native Integration
 
 EPrints Native is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work with your repository.
 
-### Eprints RIOXXplus
+### Eprints RIOXXplus Integration
 
 Eprints RIOXXplus integration is appropriate only where your repository has the RIOXX plugin installed, it enables additional fields required by the [RIOXX application profile](http://rioxx.net/v2-0-final/) to be automatically populated by PubRouter.
 
 In order to take advantage of PubRouter's RIOXXplus option your repository will need the [*Jisc PubRouter RIOXXplus Connector Plugin*](http://wiki.eprints.org/w/Jisc_Publications_Router) to be installed, and your PubRouter account set to "Eprints RIOXX” (via your Account Admin page).
 
-### Deposit process
+### Deposit Process
 
 The behaviour during an individual notification deposit is as follows:
 
@@ -70,7 +69,7 @@ DSpace Native will populate your repository with a broad selection of [Dublin Co
 ### DSpace RIOXX Integration
 If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields from PubRouter, then you must have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.
 
-### Deposit process
+### Deposit Process
 
 The behaviour during an individual notification deposit is as follows:
 
@@ -82,7 +81,7 @@ The behaviour during an individual notification deposit is as follows:
 
 4. Upon completion, the item will be injected into the collection's workflow.
  
-### Metadata customisation
+### Metadata Customisation
 
 All the metadata will be converted to DSpace Item metadata following the rules laid down in the swordv2-server.cfg file, which
 can be found in
