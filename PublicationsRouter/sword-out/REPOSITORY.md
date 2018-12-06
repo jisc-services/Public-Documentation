@@ -2,11 +2,11 @@
 
 This document provides information on how to get your repository set up to take deposits from Router.
 
-## Account Setup
+## PubRouter Account Setup
 
-Firstly, you will need to contact help@jisc.ac.uk, mentioning Publications Router in your query, to have an account created. For that, you must provide:
+Firstly, you will need to contact [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=PubRouter%20-%20account%20creation%20(institution)), mentioning Publications Router in your query, to have an account created. For that, you must provide:
 
-* The matching parameters using this [Excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT - if using the Excel template, then when completed you should save it as a CSV file. 
+* The matching parameters using this [Excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT: if using the Excel template it should be saved as a CSV file upon completion, as this is the only format supported by PubRouter. 
 * A *username* and *password* for an account in your repository which has a role with the rights to create content via SWORDv2:
    * For Eprints deposits into *Manage Deposits* the account needs *User* role
    * For Eprints deposits into the *Review queue* an *Editor* or *Admin* role is required
@@ -21,26 +21,28 @@ Any configuration can be updated at any time via your PubRouter Account page.
 
 ## EPrints
 
-Router is only certified to work with EPrints 3.3. Two SWORD2 integration options exist:
+Router is only certified to work with EPrints 3.3. 
+
+Two SWORD2 integration options exist:
 
 * Eprints Native – this results in deposits with a basic set of meta-data
 * Eprints RIOXXplus – this will populate additional RIOXX fields with meta-data.
 
-### Eprints Native
+### Eprints Native Integration
 
 EPrints Native is configured by default to accept incoming requests via [SWORDv2](https://wiki.eprints.org/w/SWORD_2.0), so the router's deposit mechanism will automatically work with your repository.
 
-### Eprints RIOXXplus
+### Eprints RIOXXplus Integration
 
 Eprints RIOXXplus integration is appropriate only where your repository has the RIOXX plugin installed, it enables additional fields required by the [RIOXX application profile](http://rioxx.net/v2-0-final/) to be automatically populated by PubRouter.
 
-In order to take advantage of PubRouter's RIOXXplus option your repository will need the [*Jisc PubRouter RIOXXplus Connector Plugin*](http://wiki.eprints.org/w/Jisc_Publications_Router) to be installed, and your PubRouter account set to "Eprints RIOXX” (via your Account Admin page).
+In order to take advantage of PubRouter's RIOXXplus option your repository will need the [Jisc PubRouter RIOXXplus Connector Plugin](http://wiki.eprints.org/w/Jisc_Publications_Router) to be installed, and your PubRouter account set to "Eprints RIOXXplus” (via your Account Admin page).
 
-### Deposit process
+### Deposit Process
 
 The behaviour during an individual notification deposit is as follows:
 
-1. Metadata will be deposited as a new item into the collection you specified in your account settings
+1. Metadata will be deposited as a new item into the collection you specified in your PubRouter account settings
 
 2. The raw metadata provided by the publisher may also be supplied as an XML file attached to the item
 
@@ -50,15 +52,24 @@ The behaviour during an individual notification deposit is as follows:
 
 ## DSpace
 
-Router is certified to work with Dspace 5.x
+Router is certified to work with Dspace 5.x.
 
+Two SWORD2 integration options exist:
+
+* DSpace Native – this results in deposits with a basic set of meta-data
+* DSpace-RIOXX – this will populate additional RIOXX fields with meta-data (if the RIOXX patch is installed).
 
 Dspace needs to be configured and enabled following [these instructions](https://wiki.duraspace.org/display/DSDOC5x/SWORDv2+Server).
 
 Router will create a new item in your repository that includes an Atom Entry XML file containing all [PubRouter metadata](./).  This means that even if your repository's crosswalk (XSLT) does not yet automatically extract all metadata, the full set will remain available.
 
+### DSpace Native Integration
+DSpace Native will populate your repository with a broad selection of [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields; see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.  This mode of integration should work with any existing DSpace v5.x repository.
 
-### Deposit process
+### DSpace RIOXX Integration
+If you wish to receive [RIOXX](http://rioxx.net/v2-0-final/) metadata in addition to the standard [Dublin Core](http://dublincore.org/documents/dcmi-terms/) fields from PubRouter, then you must have applied the [DSpace RIOXX patch](https://github.com/atmire/RIOXX) to your repository.  Also, your PubRouter account will need to be set to "DSpace RIOXX” (via your Account Admin page).
+
+### Deposit Process
 
 The behaviour during an individual notification deposit is as follows:
 
@@ -70,17 +81,14 @@ The behaviour during an individual notification deposit is as follows:
 
 4. Upon completion, the item will be injected into the collection's workflow.
  
-### Metadata customisation
+### Metadata Customisation
 
 All the metadata will be converted to DSpace Item metadata following the rules laid down in the swordv2-server.cfg file, which
 can be found in
 
     dspace/config/modules/swordv2-server.cfg
     
-By default the conversion will crosswalk a broad selection of Dublin Core fields, but this may be customised. See [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
-
-If you wish to also support RIOXX into your DSpace repository, there are some repository patches (versions 3, 4 or 5) available on request by email to info@atmire.com.
-
+It is possible to edit this configuration file to affect which DSpace Item metadata fields are populated by PubRouter- see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
 
 If you need any help with repository plugins then refer to [JISC Repository Technical Support](https://www.jisc.ac.uk/repository-technical-support).
