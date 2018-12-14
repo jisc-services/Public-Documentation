@@ -232,7 +232,7 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
-	"created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
         "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
         "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
         "last_error": <error message describing the error which caused the last failed notification to fail>
