@@ -232,10 +232,27 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
+	"created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
+        "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
+        "last_error": <error message describing the error which caused the last failed notification to fail>
+    }
+```
+
+
+#### Success Response - Notification List ####
+* On **successful completion** of the request, the system will respond with 201 (Created) and the following response body.  
+
+```
+    HTTP 1.1  201 Created
+    Content-Type: application/json
+
+    {
+        "successful": <number of successfully processed notifications>,
+        "total": <the number of items received in the list>,
         "success_ids": [ <list of IDs of successfully processed notifications> ],
         "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "A notification in the list is not a JSON object, the id of the latest
-                    notification processed was '5'. Error: <human readable error message>"
+        "last_error": "<Last error message>"
     }
 ```
 
@@ -251,22 +268,6 @@ Note these are different from the Validation endpoint.
         "status" : "accepted",
         "id" : "<unique identifier for the notification>",
         "location" : "<url path for api endpoint for newly created notification>"
-    }
-```
-
-#### Success Response - Notification List ####
-* On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body.  Note you may obtain this successful notification even if some of the notifications in the list could not be processed - these are identified in the fail_ids list.
-
-```
-    HTTP 1.1  201 Created
-    Content-Type: application/json
-
-    {
-        "successful": <number of successfully processed notifications>,
-        "total": <the number of items received in the list>,
-        "success_ids": [ <list of IDs of successfully processed notifications> ],
-        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "<Last error message>"
     }
 ```
 
