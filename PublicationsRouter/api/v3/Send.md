@@ -266,7 +266,6 @@ Note these are different from the Validation endpoint.
     Location: <url for api endpoint for accepted notification>
 
     {
-        "status" : "accepted",
         "id" : "<unique identifier for the notification>",
         "location" : "<url path for api endpoint for newly created notification>"
     }
