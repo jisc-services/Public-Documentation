@@ -91,7 +91,6 @@ Any of the validation endpoints listed below will return one of these responses.
     Content-Type: application/json
 
     {
-        "status": "error",
         "error" : "human readable error message"
     }
 ```
@@ -218,7 +217,6 @@ Note these are different from the Validation endpoint.
     Content-Type: application/json
 
     {
-        "status": "error",
         "error" : "human readable error message"
     }
 ```
