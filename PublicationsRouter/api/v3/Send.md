@@ -204,6 +204,7 @@ Any of the notification endpoints listed below will return one of these response
 Note these are different from the Validation endpoint.
 
 #### Error Responses ####
+
 * On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a **401 (Unauthorised)** and no response body.
 
 ```
@@ -221,9 +222,9 @@ Note these are different from the Validation endpoint.
     }
 ```
 
-#### Responses only for Notification List endpoint ####
+#### Success Responses for Notification List endpoint ####
 
-* If some notifications in the list succeed and some fail, then the system will respond with a **202** and the response body:
+* **202 - Partial success** - when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the response body:
 
 ```
     HTTP 1.1  202 Accepted
@@ -240,8 +241,7 @@ Note these are different from the Validation endpoint.
 ```
 
 
-#### Success Response - Notification List ####
-* On **successful completion** of the request, the system will respond with 201 (Created) and the following response body.  
+* **201 - Success** - when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the response body:  
 
 ```
     HTTP 1.1  201 Created
@@ -250,15 +250,15 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
-	"created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
         "success_ids": [ <list of IDs of successfully processed notifications> ],
         "fail_ids": [ <list of IDs of notifications that could not be processed> ],
         "last_error": "<Last error message>"
     }
 ```
 
-#### Success Response - Single Notification ####
-* On **successful completion** of the request, the system will respond with 201 (Accepted) and the following response body
+#### Success Response for Single Notification ####
+* **201 - Success** - if the request is successful then an HTTP **201 (Created)** code is provided with the response body:
 
 ```
     HTTP 1.1  201 Created
