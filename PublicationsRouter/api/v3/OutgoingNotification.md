@@ -13,7 +13,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 	"id": "<string>",
 	"created_date": "<date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
 	"analysis_date": "<date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z>",
-	"event": "<keyword for the event triggering the notification: acceptance, publication, etc.>",
+	"event": "<keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
 	"provider": {
 		"agent": "<string defining the software/process which put the content here, provided by provider>"
 	},
@@ -176,7 +176,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | id * | Opaque, persistent system identifier for this record | unicode |  |
 | created_date * | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
-| event | Keyword for the event triggering the notification: acceptance, publication, etc. | unicode |  |
+| event | Keyword indicating publishing event that gave rise to this notification (one of: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised')| unicode | text | 
 | provider * | Object describing the source of this notification | object | | 
 | provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
 | content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
@@ -235,7 +235,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.publication_date.day | Day of publication (where known) | unicode | DD |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |
 | metadata.history_date | Array of objects describing dates of this article at different stages of it's history | array | | 
-| metadata.history_date.date_type | Type of date: received, accepted | unicode |  |
+| metadata.history_date.date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub | unicode |  |  |
 | metadata.history_date.date | Date of particular publishing event | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |
 | metadata.funding | List of funding information associated with this article | array | | 

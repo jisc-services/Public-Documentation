@@ -8,7 +8,7 @@ The JSON structure of the model is as follows:
 
 ```json
 {
-	"event": "<keyword for the kind of notification: acceptance, publication, etc.>",
+	"event": "<keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
 	"provider": {
 		"agent": "<string defining the software/process which put the content here, provided by provider>",
 		"ref": "<provider's globally unique reference for this research object>"
@@ -165,11 +165,11 @@ Each of the fields in the JSON structure above is defined in the table below in 
 
 | Field (* = Required field) | Description | Datatype | Format | Allowed Values |
 | ----- | ----------- | -------- | ------ | -------------- |
-| event | Keyword for this kind of notification - no restrictions on use in this version of the system | unicode | free text |  |
+| event | Keyword indicating publishing event that gave rise to this notification | unicode | text | undefined, submitted, accepted, published, corrected, revised  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
 | content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
-| links.type | keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
+| links.type | Keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |  |
 | links.format | mimetype of the resource available at the URL (e.g. text/html) | unicode |  |  |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL | | 
 | metadata.journal.title * | Title of the journal or publication | unicode |  |  |
@@ -217,7 +217,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.publication_date.month | Month of publication (where known) | unicode | MM |  |
 | metadata.publication_date.day | Day of publication (where known) | unicode | DD |  |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |  |
-| metadata.history_date.date_type | Type of date: received, accepted | unicode |  |  |
+| metadata.history_date.date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub | unicode |  |  |
 | metadata.history_date.date | Date (YYYY-MM-DD format) | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |  |
 | metadata.funding.name | Funder name | unicode |  |  |
