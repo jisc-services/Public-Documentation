@@ -1,0 +1,594 @@
+openapi: 3.0.2
+info:
+  title: PubRouter API
+  description: PubRouter's API - used for checking metadata, sending submissions and editing repository config.
+  version: '3'
+servers:
+  - url: 'https://uat.pubrouter.jisc.ac.uk/api/v3'
+paths:
+  /config:
+    get:
+      tags:
+        - Repository
+      summary: GET the repository's match config.
+      description: This can be used to check your own match config. It returns a JSON object with your current matching parameters.
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: 200 OK - Success
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+    post:
+      tags:
+        - Repository
+      summary: Replace the repository's match config.
+      description: This is used to replace your own match config. It uses the same object as the GET method.
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '204':
+           $ref: '#/components/responses/NoContent'
+        '400':
+          description: Invalid submission
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+  /validate:
+    post:
+      tags:
+        - Publisher
+      summary: Validate submissions to PubRouter.
+      description: |
+        You can use this to test if the structure of your metadata only deposit or multipart deposit is valid.
+        NOTE: This is currently using the wrong content type, and you will get a specific 400 error with a successful request. This will change in the future when the swagger application framework updates.
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      requestBody:
+        $ref: '#/components/requestBodies/SingleNotificationValidate'
+      responses:
+        '204':
+           $ref: '#/components/responses/NoContent'
+        '400':
+          description: Invalid submission
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+  /validate/list:
+    post:
+      tags:
+        - Publisher
+      summary: Validate a deposit as a list of metadata.
+      description: Validates a list of metadata submissions to PubRouter.
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      requestBody:
+        $ref: '#/components/requestBodies/ListNotification'
+      responses:
+        '204':
+          $ref: '#/components/responses/NoContent'
+        '400':
+          description: 400 - Bad request. Invalid submission
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+  /notification:
+    post:
+      tags:
+        - Publisher
+      summary: Send notifications to PubRouter
+      description: |
+        Send a single metadata only or multipart notification.
+        NOTE: This uses the wrong content-type (should be multipart/related), but it will still work as intended. This will be fixed in an upcoming swagger application framework update.
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      requestBody:
+        $ref: '#/components/requestBodies/SingleNotification'
+      responses:
+        '201':
+          description: 201 - Created. Valid submission.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '400':
+          description: 400 - Bad request. Invalid submission.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+  /notification/list:
+    post:
+      tags:
+        - Publisher
+      summary: Send a list of notifications to PubRouter
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      requestBody:
+        $ref: '#/components/requestBodies/ListNotification'
+      responses:
+        '201':
+          description: 201 - Created. All of the metadata was valid.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '202':
+          description: 202 - Accepted. Some of the metadata was valid, but there was also some errors.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '400':
+          description: 400 - Bad request. Invalid submission
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+  /notification/{notificationId}:
+    get:
+      tags:
+        - Anyone
+      parameters:
+        - $ref: '#/components/parameters/NotificationID'
+      summary: Get the metadata for a specific notification
+      responses:
+        '200':
+          description: 200 - Notification found.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+        '404':
+          description: 404 - No notification found.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+  /notification/{notificationId}/content:
+    get:
+      tags:
+        - Repository
+      parameters:
+        - $ref: '#/components/parameters/NotificationID'
+        - $ref: '#/components/parameters/ApiKey'
+      summary: Get the zip content of a notification.
+      description: If available, returns the original zip content for a set notification.
+      responses:
+        '200':
+          description: 200 - Found notification and returned content.
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/BadApiKey'
+  /routed:
+    get:
+      tags:
+        - Repository
+      parameters:
+        - $ref: '#/components/parameters/RoutedSince'
+        - $ref: '#/components/parameters/RoutedPage'
+        - $ref: '#/components/parameters/RoutedPageSize'
+        - $ref: '#/components/parameters/ApiKey'
+      summary: Get a list of notifications that were routed since a given date.
+      responses:
+        '200':
+          description: 200 - There were some notifications after the since date.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '[]'
+        '400':
+          description: 400 - There was a missing since parameter, or the page/page size parameters were bad.
+          content:
+            application/json:
+              examples:
+                '0':
+                  value: '{}'
+
+components:
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      schema:
+        type: string
+      example: (UUID)
+      
+    NotificationID: 
+      in: path
+      name: notificationId
+      required: true
+      schema:
+        type: string
+      description: Notification ID
+    
+    RoutedSince:
+      in: query
+      name: since
+      required: true
+      schema:
+        type: string
+      example: 2018-08-08
+      
+    RoutedPage:
+      in: query
+      name: page
+      schema:
+        type: string
+      example: 1
+    
+    RoutedPageSize:
+      in: query
+      name: pageSize
+      schema:
+        type: string
+      example: 25
+  
+  requestBodies:
+    SingleNotificationValidate:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              metadata:
+                type: string
+                format: binary
+              content:
+                type: string
+                format: binary
+          encoding:
+            metadata:
+              contentType: application/json
+            content:
+              contentType: application/zip
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JSONNote'
+    SingleNotification:
+      content:
+        multipart/related:
+          schema:
+            type: object
+            properties:
+              metadata:
+                $ref: '#/components/schemas/JSONNote'
+              content:
+                type: string
+                format: binary
+          encoding:
+            metadata:
+              contentType: application/json
+            content:
+              contentType: application/zip
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JSONNote'
+    ListNotification:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JSONNoteList'
+
+  schemas:
+    JSONNoteList:
+      type: array
+      items:
+        type: object
+        properties:
+          notification:
+            $ref: '#/components/schemas/JSONNote'
+          id:
+            type: string
+    JSONNote:
+      type: object
+      properties:
+        provider:
+          $ref: '#/components/schemas/NoteProvider'
+        content:
+          $ref: '#/components/schemas/NoteContent'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteLink'
+        metadata:
+          $ref: '#/components/schemas/NoteMetadata'
+    NoteProvider:
+      type: object
+      properties:
+        agent:
+          type: string
+          example: Elsevier
+    NoteContent:
+      type: object
+      properties:
+        packaging_format:
+          type: string
+          example: https://purl.org/net/SimpleZip
+    NoteLink:
+      type: object
+      properties:
+        format:
+          type: string
+          example: application/pdf
+        url:
+          type: string
+    NoteMetadata:
+      type: object
+      properties:
+        journal:
+          $ref: '#/components/schemas/NoteJournal'
+        article:
+          $ref: '#/components/schemas/NoteArticle'
+        contributor:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteContributor'
+        author:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteContributor'
+        accepted_date:
+          type: string
+          format: date
+        publication_date:
+          $ref: '#/components/schemas/NotePublicationDate'
+        history_date:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteHistoryDate'
+        publication_status:
+          type: string
+        funding:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteFunding'
+        embargo:
+          $ref: '#/components/schemas/NoteEmbargo'
+        license_ref:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteLicenseRef'
+        free2read:
+          $ref: '#/components/schemas/NoteFree2Read'
+        refereed:
+          type: string
+          example: true
+
+    NoteIdentifier:
+      type: object
+      properties:
+        'type':
+          type: string
+        id:
+          type: string
+    NoteJournal:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Journal Title
+        abbrev_title:
+          type: string
+          example: Abbreviated journal title
+        volume:
+          type: string
+          example: "12"
+        issue:
+          type: string
+          example: "32"
+        publisher:
+          type: array
+          items:
+            type: string
+            example: Elsevier
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteIdentifier'
+    NoteArticle:
+      type: object
+      properties:
+        title:
+          type: string
+          example: Article title
+        sub_title:
+          type: array
+          items:
+            type: string
+            example: Article subtitle
+        'type':
+          type: string
+          example: Review
+        start_page:
+          type: string
+          example: 1
+        end_page:
+          type: string
+          example: 10
+        page_range:
+          type: string
+          example: "1-10"
+        num_pages:
+          type: integer
+          example: 10
+        language:
+          type: array
+          items:
+            type: string
+            example: English
+        abstract:
+          type: string
+          example: Article abstract
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteIdentifier'
+        subject:
+          type: array
+          items:
+            type: string
+            example: Article subject
+    NoteContributor:
+      type: object
+      properties:
+        'type':
+          type: string
+          example: Author type
+        name:
+          $ref: '#/components/schemas/NoteContributorName'
+        organisation_name:
+          type: string
+          example: Jisc
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteIdentifier'
+        affiliation:
+          type: string
+          example: Jisc United Kingdom
+    NoteContributorName:
+      type: object
+      properties:
+        firstname:
+          type: string
+          example: John
+        surname:
+          type: string
+          example: Doe
+        fullname:
+          type: string
+          example: John Doe
+        suffix:
+          type: string
+          example: Sr.
+    NotePublicationDate:
+      type: object
+      properties:
+        publication_format:
+          type: string
+        date:
+          type: string
+          format: date
+        year:
+          type: integer
+          example: 2018
+        month:
+          type: integer
+          example: 8
+        day:
+          type: integer
+          example: 20
+    NoteHistoryDate:
+      type: object
+      properties:
+        date_type:
+          type: string
+        date:
+          type: string
+          format: date
+    NoteFunding:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Funder
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/NoteIdentifier'
+        grant_numbers:
+          type: array
+          items:
+            type: string
+    NoteEmbargo:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date
+        end:
+          type: string
+          format: date
+        duration:
+          type: integer
+          example: 12
+    NoteLicenseRef:
+      type: object
+      properties:
+        title:
+          type: string
+          example: CC-By
+        'type':
+          type: string
+        url:
+          type: string
+          example: https://creativecommons.org/licenses/by-nc-sa/4.0/
+        version:
+          type: string
+          example: 4.0
+        start:
+          type: string
+    NoteFree2Read:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date
+        end:
+          type: string
+          format: date
+
+  responses:
+    NoContent:
+      description: 204 - No Content. Valid request
+    BadApiKey:
+      description: 401 - Unauthenticated. Missing/incorrect API key, or incorrect user type.
+      content:
+        application/json:
+          examples:
+            '0':
+              value: |
+                {
+                  "error": "A valid API key is required."
+                }
