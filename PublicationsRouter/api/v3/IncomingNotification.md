@@ -165,7 +165,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 
 | Field (* = Required field) | Description | Datatype | Format | Allowed Values |
 | ----- | ----------- | -------- | ------ | -------------- |
-| event | Keyword indicating publishing event that gave rise to this notification | unicode | text | undefined, submitted, accepted, published, corrected, revised  |
+| event | Keyword indicating publishing event that gave rise to this notification. (Note that 'submitted' should be used in place of 'received') | unicode | text | undefined, submitted, accepted, published, corrected, revised  |
 | provider.agent | Free-text field for identifying the API client used to create the notification | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
 | content.packaging_format  | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |  |
