@@ -1,5 +1,8 @@
-# Matching Config Structure
-Document details JSON structures using with config API. Used in GET/POST requests respectively against endpoint `/config`.
+# Matching Parameters
+The main purpose of PubRouter is to forward relevant articles to institutional repositories or CRISs. Each institution defines a set of ***Matching Parameters*** which are used by PubRouter during its analysis of article metadata (author affiliations and grant information) to decide whether an article is relevant to a particular insitution.  
+
+# Matching Parameter Structure
+The JSON structures used with the GET and POST `/config` API endpoints are described below.
 
 ## JSON Structure for GET
 The JSON document returned by a GET request will have the following format:
@@ -7,7 +10,7 @@ The JSON document returned by a GET request will have the following format:
 {
   "name_variants": ["list of name variants the institution is known by"],
   "postcodes" : ["list of postcodes where authors may list their affiliation address"],
-  "domains": ["list of domain names the institution owns or operates under"],
+  "domains": ["list of email or website domain names the institution owns or operates under"],
   "grants": ["list of grant numbers affiliated with the institution"],
   "author_ids": [ // list of identifier objects of format
 		{
@@ -25,14 +28,14 @@ The JSON document returned by a GET request will have the following format:
 Example: 
 ```JSON
 {
-	"name_variants": ["PubRouter University", "University of PubRouter"],
+	"name_variants": ["Oxford University", "University of Oxford"],
 	"postcodes": ["BS1 1SB", "LS2 2SL"],
-	"domains": ["pubrouter.ac.uk", "jisc.ac.uk"],
+	"domains": ["ox.ac.uk"],
 	"grants": ["yyybbb-123", "abcde-321"],
 	"author_ids": [
 		{
 			"type": "email",
-			"id": "pubrouter_employee@gmail.com"
+			"id": "some.one@gmail.com"
 		},
 		{
 			"type": "orcid",
