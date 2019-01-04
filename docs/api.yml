@@ -13,11 +13,11 @@ tags:
 - name: "Publisher"
   description: "Used by publishers to submit articles to PubRouter"
   externalDocs:
-    description: "Find out more:"
+    description: "Find out more"
     url: "https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/Send.md"
 - name: "Retrieving Notifications"
   externalDocs:
-    description: "Find out more:"
+    description: "Find out more"
     url: "https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/Retrieve.md"
 security:
   - ApiKeyAuth: []
@@ -186,6 +186,7 @@ paths:
               schema:
                 type: string
                 format: binary
+                example: <zip content>
         '401':
           $ref: '#/components/responses/BadApiKey'
   /routed:
