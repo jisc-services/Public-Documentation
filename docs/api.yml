@@ -4,17 +4,20 @@ info:
   description: PubRouter's API - used for checking metadata, sending submissions and editing repository config.
   version: '3'
 servers:
+  - url: 'https://pubrouter.jisc.ac.uk/api/v3'
+    description: "PubRouter LIVE"
   - url: 'https://uat.pubrouter.jisc.ac.uk/api/v3'
+    description: "PubRouter UAT"
 tags:
 - name: "Institution Matching Parameters"
 - name: "Publisher"
   description: "Used by publishers to submit articles to PubRouter"
   externalDocs:
-    description: "Find out more:"
+    description: "Find out more"
     url: "https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/Send.md"
-- name: "Anyone"
+- name: "Retrieving Notifications"
   externalDocs:
-    description: "Find out more:"
+    description: "Find out more"
     url: "https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/Retrieve.md"
 security:
   - ApiKeyAuth: []
@@ -24,28 +27,33 @@ paths:
       tags:
         - Institution Matching Parameters
       summary: Retrieve the matching parameter configuration associated with the supplied API key.
-      description: The matching parameters which are used by PubRouter to determine if an article is relevant to an institution are returned as a JSON object.  See here (https://github.com/jisc-services/Public-Documentation/blob/matching-config-description/PublicationsRouter/api/v3/MatchingConfig.md) for more information.
+      description: The matching parameters which are used by PubRouter to determine if an article is relevant to an institution are returned as a JSON object. <a href=https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md>See here</a> for more information.
       responses:
         '200':
           description: 200 OK - Success
           content:
             application/json:
-              examples:
-                '0':
-                  value: '{}'
+              schema:
+                $ref: '#/components/schemas/MatchingParametersSuccess'
         '401':
           $ref: '#/components/responses/BadApiKey'
     post:
       tags:
         - Institution Matching Parameters
       summary: Set the matching parameter configuration associated with the supplied API key.
-      description: Used to set an institution's matching parameters.  (Note that it replaces any existing configuration).  It uses the same JSON object that is returned by the GET method.  See here (https://github.com/jisc-services/Public-Documentation/blob/matching-config-description/PublicationsRouter/api/v3/MatchingConfig.md) for more information.
+      description: Used to set an institution's matching parameters.  (Note that it replaces any existing configuration).  It uses the same JSON object that is returned by the GET method.  <a href=https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md>See here</a> for more information.
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties: {}
+              $ref: "#/components/schemas/MatchingParameters"
+          text/csv:
+            schema:
+              type: string
+              format: binary
+              example: |
+                Name Variants,Domains,Postcodes,Grant Numbers,ORCIDs,Author Emails
+                University of Jisc,jisc.ac.uk,BS20JA,0000-5555,0000-1111-2222-3333,someone@jisc.ac.uk
       responses:
         '204':
            $ref: '#/components/responses/NoContent'
@@ -66,7 +74,7 @@ paths:
         Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br>
         You can submit just article metadata as a JSON package.<br>
         Alternatively if you have both metadata and the article text you will need to make a multipart deposit (with a content-type of 'multipart/related').  NOTE that the current version of swagger does not support this so it is not possible to test it here.<br>
-        See here (https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
+        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/SingleNotificationValidate'
       responses:
@@ -84,7 +92,7 @@ paths:
       description: >
         Use this endpoint to test your intended submission to PubRouter of metadata for multiple articles. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems. <br>
         You can submit only article metadata  as a list of JSON objects.<br>
-        See here (https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
+        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
@@ -101,7 +109,7 @@ paths:
       summary: Send an article notification to PubRouter
       description: >
         Send an article notification to PubRouter either as a JSON object (for metadata only notification) or as a multipart request (with a content-type of 'multipart/related').  NOTE that the current version of swagger does not support this so it is not possible to test it here.<br>
-        See here (https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
+        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/SingleNotification'
       responses:
@@ -122,7 +130,7 @@ paths:
       summary: Send a list of metadata only notifications to PubRouter
       description: >
         Send multiple article notifications as a list of JSON objects.
-        See here (https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
+        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
@@ -145,7 +153,7 @@ paths:
   /notification/{notificationId}:
     get:
       tags:
-        - Anyone
+        - Retrieving Notifications
       parameters:
         - $ref: '#/components/parameters/NotificationID'
       summary: Get the metadata for a specific notification
@@ -178,6 +186,7 @@ paths:
               schema:
                 type: string
                 format: binary
+                example: <zip content>
         '401':
           $ref: '#/components/responses/BadApiKey'
   /routed:
@@ -194,16 +203,13 @@ paths:
           description: 200 - There were some notifications after the since date.
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/RoutedSuccess'
               examples:
                 '0':
                   value: '[]'
         '400':
-          description: 400 - There was a missing since parameter, or the page/page size parameters were bad.
-          content:
-            application/json:
-              examples:
-                '0':
-                  value: '{}'
+          $ref: '#/components/responses/BadRequest'
 
 components:
   securitySchemes:
@@ -295,6 +301,72 @@ components:
             $ref: '#/components/schemas/JSONNoteList'
 
   schemas:
+    MatchingParameters:
+      type: object
+      properties:
+        name_variants:
+          type: array
+          items:
+            type: string
+            example: "University of Jisc"
+        postcodes:
+          type: array
+          items:
+            type: string
+            example: "BS20JA"
+        domains:
+          type: array
+          items:
+            type: string
+            example: "jisc.ac.uk"
+        grants:
+          type: array
+          items:
+            type: string
+            example: "0000-5555"
+        author_ids:
+          type: array
+          items:
+            $ref: "#/components/schemas/NoteIdentifier"
+    MatchingParametersSuccess:
+      type: object
+      properties:
+        name_variants:
+          type: array
+          items:
+            type: string
+            example: "University of Jisc"
+        postcodes:
+          type: array
+          items:
+            type: string
+            example: "BS20JA"
+        domains:
+          type: array
+          items:
+            type: string
+            example: "jisc.ac.uk"
+        grants:
+          type: array
+          items:
+            type: string
+            example: "0000-5555"
+        author_ids:
+          type: array
+          items:
+            $ref: "#/components/schemas/NoteIdentifier"
+        id:
+          type: string
+          example: "(UUID)"
+        repository:
+          type: string
+          example: "(UUID)"
+        created_date:
+          type: string
+          format: date
+        last_updated:
+          type: string
+          format: date
     BadRequest:
       type: object
       properties:
@@ -332,7 +404,28 @@ components:
         last_error:
           type: string
           example: "Notification with ID '2' was an invalid notification"
-        
+    RoutedSuccess:
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/JSONNote'
+        timestamp:
+          type: string
+          format: date
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 25
+        total:
+          type: integer
+          example: 1234
+        since:
+          type: string
+          format: date  
     JSONNoteList:
       type: array
       items:
@@ -416,7 +509,6 @@ components:
         refereed:
           type: string
           example: true
-
     NoteIdentifier:
       type: object
       properties:
