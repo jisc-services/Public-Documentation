@@ -144,13 +144,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotificationListSuccess'
+                $ref: '#/components/schemas/NotificationListCreated'
         '202':
           description: 202 - Accepted. Some of the metadata was valid, but there was also some errors.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NotificationListSuccess'
+                $ref: '#/components/schemas/NotificationListAccepted'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -387,7 +387,7 @@ components:
         location:
           type: string
           example: "/notification/149f72cb93e345708cf924e432d4f996"
-    NotificationListSuccess:
+    NotificationListCreated:
       type: object
       properties:
         successful:
@@ -400,20 +400,54 @@ components:
           type: array
           items:
             type: string
-            example: "1"
+          example:
+            - "1"
+            - "2"
         fail_ids:
           type: array
           items:
             type: string
-            example: "2"
+          example: []
         created_ids:
           type: array
           items:
             type: string
-            example: "149f72cb93e345708cf924e432d4f996"
+          example:
+            - "149f72cb93e345708cf924e432d4f996"
+            - "278f72cb93e345708cf924e432d4f996"
         last_error:
           type: string
-          example: "Notification with ID '2' was an invalid notification"
+          example: ""
+    NotificationListAccepted:
+      type: object
+      properties:
+        successful:
+          type: integer
+          example: 1
+        total:
+          type: integer
+          example: 2
+        success_ids:
+          type: array
+          items:
+            type: string
+          example:
+            - "1"
+        fail_ids:
+          type: array
+          items:
+            type: string
+          example:
+            - "2"
+        created_ids:
+          type: array
+          items:
+            type: string
+          example: 
+            - "149f72cb93e345708cf924e432d4f996"
+        last_error:
+          type: string
+          example: "Notification with ID '2' failed: metadata was not a valid notification"
     RoutedSuccess:
       type: object
       properties:
