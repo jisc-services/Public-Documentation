@@ -72,11 +72,11 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
 &nbsp;
 &nbsp;
 
-## Validation Endpoints
+# Validation endpoints
 
 You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful.
 
-### Possible HTTP Responses
+### Possible HTTP responses
 
 Any of the validation endpoints listed below will return one of these responses.
 
@@ -102,6 +102,9 @@ Any of the validation endpoints listed below will return one of these responses.
 ```
 
 NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
+
+## Single notification validation (POST /validate)
+
 
 
 ### 1. Validate Metadata-only request
@@ -139,7 +142,7 @@ If you are sending binary content as well as the metadata, then a multi-part req
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 
-### 3. Validate Minimum Metadata + Package request
+### 3. Validate minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
 
@@ -169,7 +172,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         --------------------------586e648803c83e39---
     
 
-### 4. Validate List of notifications with Metadata-only request
+## List of Metadata-only notifications validation (POST /validate/list)
 
 If you are sending a list of notifications, the request must take the form shown below.  Note that only metadata can be sent in this way (binary content is not supported):
 
@@ -189,9 +192,13 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 &nbsp;
 &nbsp;
 
-## Notification Endpoints (for sending notifications to PubRouter)
+# Notification endpoints (for sending notifications to PubRouter)
 
-The Notification API endpoints takes an identical request (header and body) to the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
+The Notification API endpoints 
+* POST /notification
+* POST /notification/list
+
+take an identical request (header and body) to the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
 
 Again, you must have "Publisher account" to access this endpoint.
 
@@ -199,24 +206,21 @@ The system will not attempt to aggressively validate the request, but the reques
 
 On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
 
+## Single notification submission (POST /notification)
 
 ### Responses
 
-Any of the notification endpoints listed below will return one of these responses.
+The `POST /notification` endpoint will return one of these responses.
 
 Note these are different from the Validation endpoint.
 	
-&nbsp;
-
-#### Error Responses ####
-
 * **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and no response body.
 
 ```
     HTTP 1.1  401 Unauthorized
 ```
-
-
+	
+&nbsp;
 * **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
 
 ```
@@ -229,48 +233,6 @@ Note these are different from the Validation endpoint.
 ```
 	
 &nbsp;
-&nbsp;
-
-#### Success Responses for Notification List endpoint ####
-
-* **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
-
-```
-    HTTP 1.1  202 Accepted
-    Content-Type: application/json
-
-    {
-        "successful": <number of successfully processed notifications>,
-        "total": <the number of items received in the list>,
-        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
-        "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
-        "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
-        "last_error": <error message describing the error which caused the last failed notification to fail>
-    }
-```
-
-
-* **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
-
-```
-    HTTP 1.1  201 Created
-    Content-Type: application/json
-
-    {
-        "successful": <number of successfully processed notifications>,
-        "total": <the number of items received in the list>,
-        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
-        "success_ids": [ <list of IDs of successfully processed notifications> ],
-        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "<Last error message>"
-    }
-```
-	
-&nbsp;
-&nbsp;
-
-#### Success Response for Single Notification ####
-
 * **201 - Success**: if the request is successful then an HTTP **201 (Created)** code is provided with the JSON response body shown:
 
 ```
@@ -328,7 +290,7 @@ If you are carrying out this request you MUST include the **content.packaging_fo
 &nbsp;
 &nbsp;
 
-### 3. Notification Minimum Metadata + Package request
+### 3. Notification minimum Metadata + Package request
 
 It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
 
@@ -362,7 +324,72 @@ For example:
 &nbsp;
 &nbsp;
 
-### 4. Notification List with Metadata-only request
+## Multiple Metadata-only notifications submission (POST /notification/list)
+
+### Responses
+
+The `POST /notification/list` endpoint will return one of these responses.
+
+Note these are different from the Validation endpoint.
+	
+&nbsp;
+
+* **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and no response body.
+
+```
+    HTTP 1.1  401 Unauthorized
+```
+	
+&nbsp;
+* **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
+
+```
+    HTTP 1.1  400 Bad Request
+    Content-Type: application/json
+
+    {
+        "error" : "human readable error message"
+    }
+```
+	
+&nbsp;
+* **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
+
+```
+    HTTP 1.1  202 Accepted
+    Content-Type: application/json
+
+    {
+        "successful": <number of successfully processed notifications>,
+        "total": <the number of items received in the list>,
+        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
+        "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
+        "last_error": <error message describing the error which caused the last failed notification to fail>
+    }
+```
+	
+&nbsp;
+* **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
+
+```
+    HTTP 1.1  201 Created
+    Content-Type: application/json
+
+    {
+        "successful": <number of successfully processed notifications>,
+        "total": <the number of items received in the list>,
+        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "success_ids": [ <list of IDs of successfully processed notifications> ],
+        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
+        "last_error": "<Last error message>"
+    }
+```
+	
+&nbsp;
+&nbsp;
+
+### Notification List (Metadata-only) request
 
 If you are sending a list of notifications, the request must take the form:
 
@@ -382,13 +409,13 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 &nbsp;
 &nbsp;
 
-## Sending multipart requests with Curl
+# Sending multipart requests with Curl
 
 The multipart requests are quite complex, but they can be easily formed using curl's -F flag.
 
 Note in the following examples you would need to replace `<my_api_key>` by your actual API key value, and files named after the `@` symbol would need to exist (e.g. for `@metadata.json`a file named "metadata.json" containing JSON metadata, would need to exist in the current directory).
 
-#### Validate endpoint
+### Validate endpoint
 
 ```bash
 # Validate endpoint
@@ -399,7 +426,7 @@ https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
 
 ```
 
-#### Notification endpoint
+### Notification endpoint
 
 ```bash
 
