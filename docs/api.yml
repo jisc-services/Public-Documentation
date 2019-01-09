@@ -1,24 +1,31 @@
-openapi: 3.0.2
+openapi: 3.0.1
 info:
   title: PubRouter API
-  description: PubRouter's API - used for checking metadata, sending submissions and editing repository config.
+  description: >
+    Jisc [Publications Router](https://pubrouter.jisc.ac.uk/) exposes an API which may be used to interact with it for the purpose of:
+     * editing repository account matching configuration
+     * retrieving articles (metadata and content)
+     * sending articles (metadata and content).
+     
+     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3). 
+     
   version: '3'
 servers:
-  - url: 'https://pubrouter.jisc.ac.uk/api/v3'
-    description: "PubRouter LIVE"
-  - url: 'https://uat.pubrouter.jisc.ac.uk/api/v3'
-    description: "PubRouter UAT"
+  - url: https://uat.pubrouter.jisc.ac.uk/api/v3
+    description: PubRouter UAT
+  - url: https://pubrouter.jisc.ac.uk/api/v3
+    description: PubRouter LIVE
 tags:
-- name: "Institution Matching Parameters"
-- name: "Publisher"
-  description: "Used by publishers to submit articles to PubRouter"
+- name: Institution Matching Parameters
+- name: Publisher
+  description: Used by publishers to submit articles to PubRouter
   externalDocs:
-    description: "Find out more"
-    url: "https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md"
-- name: "Retrieving Notifications"
+    description: Find out more
+    url: https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md
+- name: Retrieving Notifications
   externalDocs:
-    description: "Find out more"
-    url: "https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md"
+    description: Find out more
+    url: https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md
 security:
   - ApiKeyAuth: []
 paths:
@@ -27,7 +34,7 @@ paths:
       tags:
         - Institution Matching Parameters
       summary: Retrieve the matching parameter configuration associated with the supplied API key.
-      description: The matching parameters which are used by PubRouter to determine if an article is relevant to an institution are returned as a JSON object. <a href=https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md>See here</a> for more information.
+      description: The matching parameters which are used by PubRouter to determine if an article is relevant to an institution are returned as a JSON object. [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md)  for more information.
       responses:
         '200':
           description: 200 OK - Success
@@ -43,7 +50,9 @@ paths:
       summary: Set the matching parameter configuration associated with the supplied API key.
       description: >
         Used to set an institution's matching parameters (note that any existing configuration is replaced).<br><br>
-        The parameters may be supplied either using the same JSON object that is returned by the GET method (<a href=https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md>See here</a> for more information) or a CSV file (more information <a href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Config.md#csv-submission">here</a>).
+        The parameters may be supplied in 2 ways:
+         * using the same [JSON object](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md) that is returned by the GET method
+         * via a CSV file ([more information](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Config.md#csv-submission)).
       requestBody:
         content:
           application/json:
@@ -79,7 +88,7 @@ paths:
         Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br> 
         You can submit just article metadata as a JSON package (with a request content-type of 'application/json').<br><br>
         Alternatively if you have both metadata and the article text you will need to make a multipart deposit (with a content-type of 'multipart/related').  NOTE that Swagger does not currently support this content-type, so we have used "multipart/form-data" so you can see the multipart format and test it (but for live submissions you would need to specify 'multipart/related').<br><br>
-        <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">See here</a> for further information on the JSON metadata structure.
+        [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/SingleNotificationValidate'
       responses:
@@ -97,7 +106,7 @@ paths:
       description: >
         Use this endpoint to test your intended submission to PubRouter of metadata for multiple articles. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems. <br><br>
         You can submit only article metadata  as a list of JSON objects.<br><br>
-        <a href=https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
+        [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
@@ -114,7 +123,7 @@ paths:
       summary: Send an article notification to PubRouter
       description: >
         Send an article notification to PubRouter either as a JSON object (for metadata only notification) or as a multipart request (with a content-type of 'multipart/related').  NOTE that the current version of swagger does not support this so it is not possible to test it here.<br><br>
-        Further information: <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">JSON metadata structure</a> and <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#single-notification-submission-post-notification">Notification endpoint</a>.
+        Further information: [JSON metadata structure](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) and [Notification endpoint](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#single-notification-submission-post-notification).
       requestBody:
         $ref: '#/components/requestBodies/SingleNotification'
       responses:
@@ -134,8 +143,8 @@ paths:
         - Publisher
       summary: Send a list of metadata only notifications to PubRouter
       description: >
-        Send multiple article notifications as a list of JSON objects.
-        Further information: <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">JSON metadata structure</a> and <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#multiple-metadata-only-notifications-submission-post-notificationlist">Notification list endpoint</a>. 
+        Send multiple article notifications as a list of JSON objects.<br><br>
+        Further information: [JSON metadata structure](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) and [Notification list endpoint](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#multiple-metadata-only-notifications-submission-post-notificationlist).
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
@@ -155,13 +164,38 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+  /routed/{repositoryId}:
+    get:
+      tags:
+        - Retrieving Notifications
+      parameters:
+        - $ref: '#/components/parameters/RepositoryID'
+        - $ref: '#/components/parameters/RoutedSince'
+        - $ref: '#/components/parameters/RoutedPage'
+        - $ref: '#/components/parameters/RoutedPageSize'
+      summary: Retrieve a list of notifications routed to a specified repository.
+      description: >
+        This endpoint returns a list of all notifications that have been routed to the specified repository since a particular date.<br><br>
+        The {RepositoryId} is the hexadecimal repository identifier (available from the PubRouter repository account page).
+      responses:
+        '200':
+          description: 200 - There were some notifications after the since date.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutedSuccess'
+              examples:
+                '0':
+                  value: '[]'
+        '400':
+          $ref: '#/components/responses/BadRequest'
   /notification/{notificationId}:
     get:
       tags:
         - Retrieving Notifications
       parameters:
         - $ref: '#/components/parameters/NotificationID'
-      summary: Get the metadata for a specific notification
+      summary: Retrieve the metadata for a specific notification
       responses:
         '200':
           description: 200 - Notification found.
@@ -194,27 +228,6 @@ paths:
                 example: <zip content>
         '401':
           $ref: '#/components/responses/BadApiKey'
-  /routed:
-    get:
-      tags:
-        - Retrieving Notifications
-      parameters:
-        - $ref: '#/components/parameters/RoutedSince'
-        - $ref: '#/components/parameters/RoutedPage'
-        - $ref: '#/components/parameters/RoutedPageSize'
-      summary: Get a list of notifications that were routed since a given date.
-      responses:
-        '200':
-          description: 200 - There were some notifications after the since date.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RoutedSuccess'
-              examples:
-                '0':
-                  value: '[]'
-        '400':
-          $ref: '#/components/responses/BadRequest'
 
 components:
   securitySchemes:
@@ -225,22 +238,31 @@ components:
       example: (UUID)
 
   parameters:
+    RepositoryID: 
+      in: path
+      name: repositoryId
+      required: true
+      schema:
+        type: string
+      description: Repository ID - a hexadecimal string, like e6f073baa57b46b2b6ac621e7f02583a.
+      example: e6f073baa57b46b2b6ac621e7f02583a
+
     NotificationID: 
       in: path
       name: notificationId
       required: true
       schema:
         type: string
-      description: Notification ID
+      description: Notification ID - a hexadecimal string, like 149f72cb93e345708cf924e432d4f996.
       example: 149f72cb93e345708cf924e432d4f996
-    
+      
     RoutedSince:
       in: query
       name: since
       required: true
       schema:
         type: string
-      description: Date to collect notifications from. Format is YYYY-MM-DD.
+      description: Date from which to collect notifications. Date format is YYYY-MM-DD.
       example: "2018-08-08"
       
     RoutedPage:
@@ -248,7 +270,7 @@ components:
       name: page
       schema:
         type: string
-      description: Page number when more than one page of results is returned.
+      description: Page number to retrieve when more than one page of results is returned.<br> [OPTIONAL, defaults to 1].
       example: 1
     
     RoutedPageSize:
@@ -256,7 +278,7 @@ components:
       name: pageSize
       schema:
         type: string
-      description: Maximum number of results returned per page. Defaults to 25, up to 100.
+      description: Maximum number of results to be returned per page, in range 1 - 100.<br>[OPTIONAL, defaults to 25]
       example: 25
 
   requestBodies:
