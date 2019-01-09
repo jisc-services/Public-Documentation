@@ -85,22 +85,24 @@ Any of the validation endpoints listed below will return one of these responses.
     HTTP 1.1  401 Unauthorized
 ```
 
-- On **validation failure** the system will respond with the following:
+- On **validation failure** the system will respond with a **400 (Bad request)** and the JSON body shown:
 ```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
 
     {
-        "status": "error",
         "error" : "human readable error message"
     }
 ```
-- On **validation success** the system will respond with 204 (No Content) and no response body.
+
+
+- On **validation success** the system will respond with **204 (No Content)** and no response body.
 ```
     HTTP 1.1  204 No Content
 ```
 
 NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
+
 
 ### 1. Validate Metadata-only request
 
@@ -203,29 +205,35 @@ On a successful call to this endpoint, your notification will be accepted into P
 Any of the notification endpoints listed below will return one of these responses.
 
 Note these are different from the Validation endpoint.
+	
+&nbsp;
 
 #### Error Responses ####
-* On **authentication failure** (e.g. invalid api_key, incorrect user role) the system will respond with a **401 (Unauthorised)** and no response body.
+
+* **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and no response body.
 
 ```
     HTTP 1.1  401 Unauthorized
 ```
 
-* In the event of a **malformed HTTP request**, the system will respond with a **400 (Bad Request)** and the response body:
+
+* **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
 
 ```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
 
     {
-        "status": "error",
         "error" : "human readable error message"
     }
 ```
+	
+&nbsp;
+&nbsp;
 
-#### Responses only for Notification List endpoint ####
+#### Success Responses for Notification List endpoint ####
 
-* If some notifications in the list succeed and some fail, then the system will respond with a **202** and the response body:
+* **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
 
 ```
     HTTP 1.1  202 Accepted
@@ -234,30 +242,15 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
-        "success_ids": [ <list of IDs of successfully processed notifications> ],
-        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "A notification in the list is not a JSON object, the id of the latest
-                    notification processed was '5'. Error: <human readable error message>"
+        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
+        "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
+        "last_error": <error message describing the error which caused the last failed notification to fail>
     }
 ```
 
-#### Success Response - Single Notification ####
-* On **successful completion** of the request, the system will respond with 201 (Accepted) and the following response body
 
-```
-    HTTP 1.1  201 Created
-    Content-Type: application/json
-    Location: <url for api endpoint for accepted notification>
-
-    {
-        "status" : "accepted",
-        "id" : "<unique identifier for the notification>",
-        "location" : "<url path for api endpoint for newly created notification>"
-    }
-```
-
-#### Success Response - Notification List ####
-* On **successful completion** of the request, the system will respond with 202 (Accepted) and the following response body.  Note you may obtain this successful notification even if some of the notifications in the list could not be processed - these are identified in the fail_ids list.
+* **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
 
 ```
     HTTP 1.1  201 Created
@@ -266,11 +259,33 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
+        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
         "success_ids": [ <list of IDs of successfully processed notifications> ],
         "fail_ids": [ <list of IDs of notifications that could not be processed> ],
         "last_error": "<Last error message>"
     }
 ```
+	
+&nbsp;
+&nbsp;
+
+#### Success Response for Single Notification ####
+
+* **201 - Success**: if the request is successful then an HTTP **201 (Created)** code is provided with the JSON response body shown:
+
+```
+    HTTP 1.1  201 Created
+    Content-Type: application/json
+    Location: <url for api endpoint for accepted notification>
+
+    {
+        "id" : "<unique identifier for the notification>",
+        "location" : "<url path for api endpoint for newly created notification>"
+    }
+```
+	
+&nbsp;
+&nbsp;
 
 ### 1. Notification Metadata-only request
 
@@ -281,6 +296,9 @@ If you are sending only the notification JSON, the request must take the form:
         Content-Type: application/json
     Body:
         {Incoming Notification JSON}
+	
+&nbsp;
+&nbsp;
 
 ### 2. Notification Metadata + Package request
 
@@ -306,6 +324,9 @@ If you are sending binary content as well as the metadata, the request must take
         --------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
+	
+&nbsp;
+&nbsp;
 
 ### 3. Notification Minimum Metadata + Package request
 
@@ -337,6 +358,9 @@ For example:
         {{Zip Content}}       
         
         --------------------------586e648803c83e39---
+	
+&nbsp;
+&nbsp;
 
 ### 4. Notification List with Metadata-only request
 
