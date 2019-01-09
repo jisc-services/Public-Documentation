@@ -14,11 +14,11 @@ tags:
   description: "Used by publishers to submit articles to PubRouter"
   externalDocs:
     description: "Find out more"
-    url: "https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/Send.md"
+    url: "https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md"
 - name: "Retrieving Notifications"
   externalDocs:
     description: "Find out more"
-    url: "https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/Retrieve.md"
+    url: "https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md"
 security:
   - ApiKeyAuth: []
 paths:
@@ -79,7 +79,7 @@ paths:
         Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br> 
         You can submit just article metadata as a JSON package (with a request content-type of 'application/json').<br><br>
         Alternatively if you have both metadata and the article text you will need to make a multipart deposit (with a content-type of 'multipart/related').  NOTE that Swagger does not currently support this content-type, so we have used "multipart/form-data" so you can see the multipart format and test it (but for live submissions you would need to specify 'multipart/related').<br><br>
-        <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">See here</a> for further information on the JSON metadata structure.
+        <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">See here</a> for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/SingleNotificationValidate'
       responses:
@@ -97,7 +97,7 @@ paths:
       description: >
         Use this endpoint to test your intended submission to PubRouter of metadata for multiple articles. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems. <br><br>
         You can submit only article metadata  as a list of JSON objects.<br><br>
-        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
+        <a href=https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
@@ -114,7 +114,7 @@ paths:
       summary: Send an article notification to PubRouter
       description: >
         Send an article notification to PubRouter either as a JSON object (for metadata only notification) or as a multipart request (with a content-type of 'multipart/related').  NOTE that the current version of swagger does not support this so it is not possible to test it here.<br><br>
-        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
+        Further information: <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">JSON metadata structure</a> and <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#single-notification-submission-post-notification">Notification endpoint</a>.
       requestBody:
         $ref: '#/components/requestBodies/SingleNotification'
       responses:
@@ -135,7 +135,7 @@ paths:
       summary: Send a list of metadata only notifications to PubRouter
       description: >
         Send multiple article notifications as a list of JSON objects.
-        <a href=https://github.com/jisc-services/Public-Documentation/blob/development/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure>See here</a> for further information on the JSON metadata structure.
+        Further information: <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure">JSON metadata structure</a> and <a rel="noopener noreferrer" href="https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#multiple-metadata-only-notifications-submission-post-notificationlist">Notification list endpoint</a>. 
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
@@ -248,7 +248,7 @@ components:
       name: page
       schema:
         type: string
-      description: Result page
+      description: Page number when more than one page of results is returned.
       example: 1
     
     RoutedPageSize:
@@ -256,7 +256,7 @@ components:
       name: pageSize
       schema:
         type: string
-      description: Size of result page. Up to 1000.
+      description: Maximum number of results returned per page. Defaults to 25, up to 100.
       example: 25
 
   requestBodies:
@@ -392,7 +392,7 @@ components:
       properties:
         successful:
           type: integer
-          example: 1
+          example: 2
         total:
           type: integer
           example: 2
@@ -406,16 +406,17 @@ components:
           items:
             type: string
             example: "2"
+        created_ids:
+          type: array
+          items:
+            type: string
+            example: "149f72cb93e345708cf924e432d4f996"
         last_error:
           type: string
           example: "Notification with ID '2' was an invalid notification"
     RoutedSuccess:
       type: object
       properties:
-        notifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/JSONNote'
         timestamp:
           type: string
           format: date
@@ -430,7 +431,11 @@ components:
           example: 1234
         since:
           type: string
-          format: date  
+          format: date
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/JSONNote' 
     JSONNoteList:
       type: array
       items:
