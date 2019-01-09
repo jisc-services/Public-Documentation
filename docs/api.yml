@@ -235,7 +235,6 @@ components:
       type: apiKey
       in: query
       name: api_key
-      example: (UUID)
 
   parameters:
     RepositoryID: 
