@@ -17,6 +17,8 @@ Packaged content is available as a zipped file whose contents conform to a suppo
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
 
+Also see the **[API Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API).
+
 ### Possible Responses
 
 - In the event of a **malformed HTTP request**, you will receive a 400 (Bad Request) and an error
