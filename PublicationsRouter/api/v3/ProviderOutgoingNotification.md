@@ -168,8 +168,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 		"free2read": {
 			"start": "<start date of ali:free-to-read, YYYY-MM-DD format (or empty string)>",
 			"end": "<end date of ali:free-to-read, YYYY-MM-DD format (or empty string)>"
-		},
-		"refereed": "<whether or not the record was refereed: true or false>"
+		}
 	}
 }
 ```
@@ -268,4 +267,3 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.free2read | Ali:free-to-read information | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
-| metadata.refereed | Whether the record has been refereed: true or false| unicode | |
