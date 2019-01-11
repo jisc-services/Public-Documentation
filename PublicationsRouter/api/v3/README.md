@@ -10,6 +10,8 @@ All URL paths in this documentation will extend from this base url.
 
 In many cases you will need an API key to access the API.  This can be obtained from your PubRouter account page.
 
+**[Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API) is available.
+
 ### Contents ###
 
 * [API for sending notifications (Publishers)](./Send.md)
