@@ -6,6 +6,8 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths provided in this document will extend from this base url.
 
+Also see the **[API Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API).
+
 ### Validation and Live endpoints
 
 If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
