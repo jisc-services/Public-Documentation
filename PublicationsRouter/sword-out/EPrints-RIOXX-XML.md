@@ -18,9 +18,9 @@ The following table lists:
 
 | XML Element Terms | PubRouter Metadata | XML Format | Cardinality & Notes |
 |:-----------------------------|:-----------------------|:------------------------------------------------------------------------------|:----------------------------------|
-| [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L130) | Information to be displayed in Eprints Additional Information public field | `<pr:note>[text to display]</pr:note>` | {0..n} |
-| [pr:comment](./pubrouter-xsd/eprints-rioxx.xsd#L130) | Information to be displayed in Eprints Comments & Suggestions private field | `<pr:comment>[text to display]</pr:comment>` | {0..1} |
-| [pr:relation](./pubrouter-xsd/eprints-rioxx.xsd#L130) | links.format<br>links.url<br>links.packaging| `<pr:relation url=[links.url] format=[links.format] packaging=[links.packaging]>[text to display]</pr:relation>` | {0..n}<br>If the element has no text to display, then Eprints will display the URL.  |
+| [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L96) | Information to be displayed in Eprints Additional Information public field | `<pr:note>[text to display]</pr:note>` | {0..n} |
+| [pr:comment](./pubrouter-xsd/eprints-rioxx.xsd#L103) | Information to be displayed in Eprints Comments & Suggestions private field | `<pr:comment>[text to display]</pr:comment>` | {0..1} |
+| [pr:relation](./pubrouter-xsd/eprints-rioxx.xsd#L110) | links.format<br>links.url<br>links.packaging| `<pr:relation url=[links.url] format=[links.format] packaging=[links.packaging]>[text to display]</pr:relation>` | {0..n}<br>If the element has no text to display, then Eprints will display the URL.  |
 | [pr:source](./pubrouter-xsd/eprints-rioxx.xsd#L130) | journal.title<br>journal.volume<br>journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]>[journal.title]</pr:source>` | {0..1} |
 | [pr:source_id](./pubrouter-xsd/eprints-rioxx.xsd#L148) | journal.identifier.id<br> journal.identifier.type | `<pr:source_id type=[journal.identifier.type]>[journal.identifier.id]</pr:source_id>` | {1..n}<br>e.g. ISSN |
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher)  | journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` | {0..1}<br>Publisher name |
@@ -39,6 +39,7 @@ The following table lists:
 | [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | funding.name<br> project.identifier<br>funding.grant_numbers | `<rioxxterms:project funder_id=[funding.identifier.type]:[funding.identifier.id] funder_name=[funding.name]>[funding.grant_number] </rioxxterms:project>` | {0..n}<br>Note the funder_id attribute holds a compound string of general format "type:id" e.g. "FundRef:10.13039/100000002" |
 | [pr:license](./pubrouter-xsd/eprints-rioxx.xsd#L252) | license_ref.title<br>license_ref.type<br>license_ref.url<br>license_ref.version<br>license_ref.start | `<pr:license start_date=[license_ref.start] url=[license_ref.url] version=[license_ref.version]>[license_ref.title or license_ref.type]</pr:license>` | {0..n}<br>May have many licenses; start format: YYYY-MM-DD |
 | [pr:embargo](./pubrouter-xsd/eprints-rioxx.xsd#L272) | embargo.start<br> embargo.end<br>embargo.duration | `<pr:embargo start_date=[embargo.start] end_date=[embargo.end]></pr:embargo>` | {0..1}<br>At least one of attributes start \| end must be present, format: YYYY-MM-DD |
+| [ali:free_to_read](./pubrouter-xsd/eprints-rioxx.xsd#L251) | free2read.start<br>free2read.end | `<ali:free_to_read start_date=[free2read.start] end_date=[free2read.end]></ali:free_to_read>` | {0..1}<br>Both start_date and end_date are optional, format: YYYY-MM-DD |
 | [pr:start_page](./pubrouter-xsd/eprints-rioxx.xsd#L170) | article.start_page | `<pr:start_page>[article.start_page]</pr:start_page>` | {0..1} |
 | [pr:end_page](./pubrouter-xsd/eprints-rioxx.xsd#L177) | article.end_page | `<pr:end_page>[article.end_page]</pr:end_page>` | {0..1} |
 | [pr:page_range](./pubrouter-xsd/eprints-rioxx.xsd#L184) | article.page_range | `<pr:page_range>[article.page_range]</pr:page_range>` | {0..1} |
