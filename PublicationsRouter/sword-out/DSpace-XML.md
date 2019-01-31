@@ -30,7 +30,7 @@ The following table lists:
 | [dcterms:issued](http://dublincore.org/documents/dcmi-terms/#terms-issued) | publication_date | `<dcterms:issued>[publication_date] </dcterms:issued>` |
 | [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dcterms:rights>Embargo: starts [embargo.start], ends [embargo.end], duration [embargo.duration] months from publication </dcterms:rights>` |
 | [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.version <br> license_ref.start <br> article.version | `<dcterms:rights>License for [article.version] version of this article: starting on: [license_ref.start] [license_ref.url] [license_ref.type] [license_ref.title] </dcterms:rights>` |
-| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dcterms:description>Version: [article.version] </dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dcterms:description>Article version: [article.version] </dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider_agent | `<dcterms:description>From [provider_agent] via Jisc Publications Router. </dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dcterms:description>Publication status: [publication_status] </dcterms:description>` | 
 |[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date] </dcterms:description>` |
@@ -50,6 +50,7 @@ An example Atom Entry document containing the metadata listed above is shown her
 	<dcterms:source>pissn: 0017-5749</dcterms:source>
 	<dcterms:source>eissn: 1468-3288</dcterms:source>
 	<dcterms:publisher>BMJ Publishing Group</dcterms:publisher>
+	<dc:description>Article version: VoR</dc:description>
 	<dcterms:description>From Publisher via Jisc Publications Router.</dcterms:description>
 	<dcterms:creator>Mahajan,Ujjwal M</dcterms:creator>
 	<dcterms:creator>Teller,Steffen</dcterms:creator>
