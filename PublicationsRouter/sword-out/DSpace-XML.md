@@ -51,7 +51,7 @@ An example Atom Entry document containing the metadata listed above is shown her
 	<dcterms:source>eissn: 1468-3288</dcterms:source>
 	<dcterms:publisher>BMJ Publishing Group</dcterms:publisher>
 	<dc:description>Article version: VoR</dc:description>
-	<dcterms:description>From Publisher via Jisc Publications Router</dcterms:description>
+	<dcterms:description>From BMJ via Jisc Publications Router</dcterms:description>
 	<dcterms:creator>Mahajan,Ujjwal M</dcterms:creator>
 	<dcterms:creator>Teller,Steffen</dcterms:creator>
 	<dcterms:creator>Sendler,Matthias</dcterms:creator>
