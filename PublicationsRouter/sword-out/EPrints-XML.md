@@ -10,7 +10,7 @@ The following table lists:
 * Column 2 - PubRouter internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
-**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Conditional phrases are shown within `{curly brackets}` these will be omitted if there is no data to display; within such phrases choices in data to display are indicated by `|` character, the first non-blank data item is displayed. Any other text is output as it appears in the format.
 
 | Eprint element terms | PubRouter Metadata | XML Format |
 |-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -26,12 +26,15 @@ The following table lists:
 | id_number | article.identifier.id | `<id_number>[article.identifier.id]</id_number>` |
 | keywords | article.subject | `<keywords>[article.subject 1], [article.subject 2], ...</keywords>` |
 | creators.item | author.name.surname <br> author.name.firstname <br> author.identifier.type <br> author.identifier.id <br> author.email | `<creators>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<[author.identifier.type]> author.identifier.id </[author.identifier.type]>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<id>[author.email]</id>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<name>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `<family>[author.name.surname]</family>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<given>[author.name.firstname]</given>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `</name>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `</item>` <br> `</creators>` |
-| contributors.item | contributor.name.surname <br> contributor.name.firstname <br> contributor.identifier.type <br> contributor.identiier.id <br> contributor.type <br> contributor.email |  `<contributors>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<type>[contributor.type]</type>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<[contributor.identifier.type]>contributor.identifier.id</[contributor.identifier.type]>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<id>[contributor.email]</id>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<name>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `<family>[contributor.name.surname]</family>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<given>[contributor.name.firstname]</given>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `</name>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `</item>` <br> `</contributors>` |
-| date | publication_date <br> accepted_date | Prioritises a publication_date <br> `<date>[publication_date OR accepted_date]</date>` |
-| date_type | publication_date <br> accepted_date | If publication date then published, if accepted date then Accepted <br> `<date_type>(published OR Accepted)</date_type>` |
+| contributors.item | contributor.name.surname <br> contributor.name.firstname <br> contributor.identifier.type <br> contributor.identiier.id <br> contributor.type <br> contributor.email | `<contributors>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<type>[contributor.type]</type>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<[contributor.identifier.type]>contributor.identifier.id</[contributor.identifier.type]>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<id>[contributor.email]</id>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<name>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `<family>[contributor.name.surname]</family>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `<given>[contributor.name.firstname]</given>` <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `</name>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `</item>` <br> `</contributors>` |
+| date | publication_date <br> accepted_date | `<date>{[publication_date]\|[accepted_date]}</date>` <br><sub>Output date is publication date, otherwise accepted date.</sub> |
+| date_type | publication_date <br> accepted_date | `<date_type>(published\|Accepted)</date_type>` <br><sub>Output corresponds to the date type appearing in `<date>` element.</sub> |
 | funders.item | funding.grant_numbers <br> funding.name <br> funding.identifier | `<funders>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>** Funder: [funding.name]; [funding.identifier.type]: [funding.identifier.id]; Grant(s): [funding.grant_numbers]</item>` <br> `</funders>` |
-| note |  embargo.end | Any embargo information will be written in `<note>` as `** Embargo End Date: [embargo.start]` |
-| note | license_ref <br> article.version | License information will be written in `<note>` as `** License for [article.version] version of this article starting on [license_ref.start]: [license_ref.url OR license_ref.type OR license_ref.title]` |
+| note | article.version | The article version appears in `<note>` element as: <br> `** Article version: [article.version]` |
+| note | embargo.end | Embargo details appear in `<note>` element as: <br> `** Embargo end date: [embargo.start]` |
+| note | provider_agent | Provider details appear in `<note>` element as: <br> `** From [provider_agent] via Jisc Publications Router` |
+| note | history_date.date_type <br> history_date.date  | History dates appear in `<note>` element as: <br> `** History: [history_date.date_type]{; [history_date.date_type]…}` <br> <sub>Note: will include as many history dates as are available.</sub>   |
+| note | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.start <br> article.version | License details appear in `<note>` element as: <br> `** License for{ [article.version] version of} this article{ starting on [license_ref.start]}: {[license_ref.url]\|[license_ref.title]\|[license_ref.type]}` <br> <sub>Note: The output string contains {conditional phrases} that are included only if the field they contain is not empty; the '\|' character separates alternative values, where the first non-empty value is used.</sub> |
 
 ## Example XML Output
 
@@ -46,18 +49,18 @@ An example Atom Entry document containing the metadata listed above is shown her
 		<creators>
 			<item>
 				<name>
-					<family>Jones</family>
+					<family>Smith</family>
 					<given>Richard</given>
 				</name>
-				<orcid>aaaa-0000-1111-bbbb</orcid>
+				<orcid>8888-0000-1111-9999</orcid>
 				<id>richard@example.com, richard2@example.com</id>
 			</item>
 			<item>
 				<name>
-					<family>MacGillivray</family>
+					<family>Jones</family>
 					<given>Mark</given>
 				</name>
-				<orcid>dddd-2222-3333-cccc</orcid>
+				<orcid>6666-2222-3333-7777</orcid>
 				<id>mark@example.com</id>
 			</item>
 		</creators>
@@ -90,12 +93,13 @@ An example Atom Entry document containing the metadata listed above is shown her
 			</item>
 		</related_url>
 		<funders>
-			<item>** Funder: BBSRC; Grant num: BB/34/juwef; ringold: bbsrcid</item>
+			<item>** Funder: BBSRC; ringold: bbsrcid; Grant(s): BB/34/juwef</item>
 		</funders>
-		<note>
-** Embargo End Date: 01-01-2016
+		<note>** Article version: VoR
+** Embargo end date: 12-12-2016
+** From Premier Publisher via Jisc Publications Router
 ** History: submitted 03-07-2014.
-** Licence for VoR version of this article starting on 12-11-2016: http://url</note>
+** Licence for VoR version of this article starting on 12-12-2016: https://testing.org/licenses/by/4.0/</note>
 	</eprint>
 </eprints>
 ```
