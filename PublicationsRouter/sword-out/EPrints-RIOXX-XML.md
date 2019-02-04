@@ -59,7 +59,7 @@ An example Entry document containing the metadata listed above is shown here.
 <?xml version="1.0"?>
 <entry xmlns="http://www.w3.org/2005/Atom" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
 	<pr:download_link url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/1" format="text/html" filename="1" primary="false"/>
-	<pr:note>Some text to display in Eprints publicly visible Additional Information field</pr:note>
+	<pr:note>** Article version: VoR ** Embargo end date: 22-08-2018 ** From Publisher via Jisc Publications Router ** Licence for VoR version of this article starting on 22-08-2018: https://testing.org/licenses/by/4.0/</pr:note>
 	<pr:comment>Some text to display in Eprints privately visible Comments & Suggestions field</pr:comment>
 	<pr:relation url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf"/>
 	<pr:download_link url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf" public="true" filename="2.pdf" primary="true"/>
@@ -96,17 +96,17 @@ An example Entry document containing the metadata listed above is shown here.
 	<pr:embargo start_date="2017-08-22" end_date="2018-08-22"/>
 	<pr:author>
 		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
-		<pr:id type="orcid">aaaa-0000-1111-bbbb</pr:id>
+		<pr:id type="orcid">6666-0000-1111-2222</pr:id>
 		<pr:email>richard@example.com</pr:email>
 		<pr:email>richard2@example.com</pr:email>
-		<pr:surname>Jones</pr:surname>
+		<pr:surname>Williams</pr:surname>
 		<pr:firstnames>Richard</pr:firstnames>
 	</pr:author>
 	<pr:author>
 		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
-		<pr:id type="orcid">dddd-2222-3333-cccc</pr:id>
+		<pr:id type="orcid">8888-0000-1111-9999</pr:id>
 		<pr:email>mark@example.com</pr:email>
-		<pr:surname>MacGillivray</pr:surname>
+		<pr:surname>Smith</pr:surname>
 		<pr:firstnames>Mark</pr:firstnames>
 	</pr:author>
 	<pr:contributor>
