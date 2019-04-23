@@ -25,7 +25,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 		"type": "<link type: splash|fulltext>",
 		"format": "<text/html|application/pdf|application/xml|application/zip|...>",
 		"url": "<provider's splash, fulltext or machine readable page>",
-	        "packaging": "<package format identifier string>"
+	        "packaging": "<package format identifier string>",
+		"access":"<permitted access level, one of: public|router|special >"
         	}
 	], 
 	"metadata": {
@@ -182,7 +183,8 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | links.type | Keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
 | links.format | The mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
-| links.packaging | Package format identifier for the resource available at the URL | unicode |  |
+| links.packaging | Package format identifier for the resource available at the URL, one of "https://pubrouter.jisc.ac.uk/FilesAndJATS" or "http://purl.org/net/sword/package/SimpleZip" | unicode |  |
+| links.access | URL access type, one of: "public" - indicates the content is available from public URL; "router" - content is in temporary PubRouter store (kept for 3 months); "special" - unpackaged content in temporary PubRouter store (this will duplicate content contained in a package with access-type "router")  | unicode |  |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode |  |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode |  |
