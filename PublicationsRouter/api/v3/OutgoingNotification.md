@@ -154,7 +154,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			"type": "<type>", 
 			"url": "<url>",
 			"version": "<license version; for example: 4.0>",
-			"start": "<Date licence starts (YYYY-MM-DD format)>"
+			"start": "<Date licence starts (YYYY-MM-DD format)>",
+			"best": "<Boolean indicates the optimum open license - will be true for maximum of ONE license in the array>"
 			}
 		],
 		"free2read": {
@@ -254,6 +255,18 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
+| metadata.license_ref.best | Best license indiator, 1 license (at most) in the array will have *best* set to *true*. (See note below). | boolean |  |
 | metadata.free2read | Ali:free-to-read information | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
+
+
+## Notes
+### "Best" licence
+Each object in the **license_ref** array has a Boolean element named **"best"**.  At most, only one licence object in the array will have "best" set to *true*.  NB It is possible for all licence objects to have "best" set to *false* - this occurs where none of the licences has a URL.  
+
+**The "best" element indicates the optimum licence (from an Open Access perspective) on the date that the notification is retrieved**, and is determined by the following algorithm.
+
+Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the license with the earliest future start date.
+
+Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).

@@ -163,7 +163,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			"type": "<type>", 
 			"url": "<url>",
 			"version": "<license version; for example: 4.0>",
-			"start": "<Date licence starts (YYYY-MM-DD format)>"
+			"start": "<Date licence starts (YYYY-MM-DD format)>",
+			"best": "<Boolean indicates the optimum open license - will be true for maximum of ONE license in the array>"
 			}
 		],
 		"free2read": {
@@ -266,6 +267,10 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
+| metadata.license_ref.best | Best license indiator, 1 license (at most) in the array will have *best* set to *true*. (See note below). | boolean |  |
 | metadata.free2read | Ali:free-to-read information | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
+
+## Notes
+See [Notes](../OutgoingNotification.md#Notes) on OutgoingNotification page.
