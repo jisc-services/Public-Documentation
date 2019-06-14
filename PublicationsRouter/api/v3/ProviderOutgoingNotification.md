@@ -273,4 +273,4 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
 
 ## Notes
-See [Notes](../OutgoingNotification.md#Notes) on OutgoingNotification page.
+See [Notes](/PublicationsRouter/api/v3/OutgoingNotification.md#Notes) on OutgoingNotification page.
