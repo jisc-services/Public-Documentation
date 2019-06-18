@@ -269,6 +269,6 @@ Each object in the **license_ref** array has a Boolean element named **"best"**.
 
 Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the license with the earliest future start date.
 
-Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one license, then systems should place a relatively low level of confidence in PubRouter's assessment of which is best.
+Where none of the licences has a URL that is recognised as open by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one license, then systems should place a relatively low level of confidence in PubRouter's assessment of which is best.
 
 This indicator is intended to help systems interpret the license data; it is not meant for display to users.
