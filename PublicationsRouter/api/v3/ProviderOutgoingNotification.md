@@ -186,18 +186,18 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | id * | opaque, persistent system identifier for this record | unicode |  |
 | created_date * | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
-| event | Keyword indicating publishing event that gave rise to this notification (one of: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised')| unicode | text | 
+| event | Keyword indicating publishing event that gave rise to this notification (one of: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised')<br><br>**NOTE** that in practice this field is not used and may be deprecated in future.| unicode | text | 
 | provider * | Object describing the source of this notification | object | | 
-| provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
+| provider.agent * | The notification source - either a Publisher or a consolidator (like PubMed) that Router harvests from | unicode | text |
 | provider.id * | User account ID of provider | unicode | free text |  |
 | provider.ref | Publisher's own identifier for the notification | unicode | free text |  |
 | provider.route * | Method by which notification was received: native api, sword, ftp | unicode | free text |  |
-| content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
-| links.type | Keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
+| content.packaging_format | Package format identifier for the original associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
+| links.type | Keyword for type of resource (e.g. "package" - indicates a zip file, "unpackaged" - indicates an individual file, "fulltext" - article file, "splash" - splash screen) | unicode |  |
 | links.format | The mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
-| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
+| links.url | URL to the associated resource. The links.access value (see below) determines how long the resource will be available at the URL | unicode | URL |
 | links.packaging | Package format identifier for the resource available at the URL | unicode |  |
-| links.access | URL access type, one of: "public" - indicates the content is available from public URL; "router" - content is in temporary PubRouter store (kept for 3 months); "special" - unpackaged content in temporary PubRouter store (this will duplicate content contained in a package with access-type "router")  | unicode |  |
+| links.access | URL access type, one of: "public" - indicates the content is available from public URL for at least 3 months from *created_date*; "router" and "special" - content is in temporary PubRouter store, kept for 3 months from *created_date"; "special" indicates unpackaged content that will duplicate other content contained in a package  | unicode |  |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode |  |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode |  |
@@ -208,7 +208,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.journal.identifier.id * | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |
 | metadata.article * | Object describing various details of the article | object | | 
 | metadata.article.title * | Title of the Article| unicode |  |
-| metadata.article.sub_title | Sub-title (if any) of the Article | unicode |  |
+| metadata.article.subtitle | Sub-title (if any) of the Article | unicode |  |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode |  |
 | metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode |  |
 | metadata.article.start_page | Article start page  | unicode |  |

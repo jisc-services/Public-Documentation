@@ -177,15 +177,15 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | id * | Opaque, persistent system identifier for this record | unicode |  |
 | created_date * | Date this record was created | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Date the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
-| event | Keyword indicating publishing event that gave rise to this notification (one of: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised')| unicode | text | 
+| event | Keyword indicating publishing event that gave rise to this notification (one of: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised')<br><br>**NOTE** that in practice this field is not used and may be deprecated in future. | unicode | text | 
 | provider * | Object describing the source of this notification | object | | 
-| provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
-| content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
-| links.type | Keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode |  |
+| provider.agent * | The notification source - either a Publisher or a consolidator (like PubMed) that Router harvests from | unicode | text |
+| content.packaging_format | Package format identifier for the original associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
+| links.type | Keyword for type of resource (e.g. "package" - indicates a zip file, "unpackaged" - indicates an individual file, "fulltext" - article file, "splash" - splash screen) | unicode |  |
 | links.format | The mimetype of the resource available at the URL (e.g. text/html) | unicode |  |
-| links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
+| links.url | URL to the associated resource. The links.access value (see below) determines how long the resource will be available at the URL | unicode | URL |
 | links.packaging | Package format identifier for the resource available at the URL, one of "https://pubrouter.jisc.ac.uk/FilesAndJATS" or "http://purl.org/net/sword/package/SimpleZip" | unicode |  |
-| links.access | URL access type, one of: "public" - indicates the content is available from public URL; "router" - content is in temporary PubRouter store (kept for 3 months); "special" - unpackaged content in temporary PubRouter store (this will duplicate content contained in a package with access-type "router")  | unicode |  |
+| links.access | URL access type, one of: "public" - indicates the content is available from public URL for at least 3 months from *created_date*; "router" and "special" - content is in temporary PubRouter store, kept for 3 months from *created_date"; "special" indicates unpackaged content that will duplicate other content contained in a package  | unicode |  |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode |  |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode |  |
@@ -196,7 +196,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.journal.identifier.id * | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |
 | metadata.article * | Object describing various details of the article | object | | 
 | metadata.article.title * | Title of the Article| unicode |  |
-| metadata.article.sub_title | Sub-title (if any) of the Article | unicode |  |
+| metadata.article.subtitle | Sub-title (if any) of the Article | unicode |  |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode |  |
 | metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode |  |
 | metadata.article.start_page | Article start page  | unicode |  |
@@ -263,10 +263,12 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 ## Notes
 ### "Best" licence
-Each object in the **license_ref** array has a Boolean element named **"best"**.  At most, only one licence object in the array will have "best" set to *true*.  NB It is possible for all licence objects to have "best" set to *false* - this occurs where none of the licences has a URL.  
+Each object in the **license_ref** array has a Boolean element named **"best"**.  At most, only one licence object in the array will have "best" set to *true*.  NB It is possible for all licence objects to have "best" set to *false* - this occurs where there is more than 1 licence and none has a URL. 
 
-**The "best" element indicates the optimum licence (from an Open Access perspective) on the date that the notification is retrieved**, and is determined by the following algorithm.
+**The "best" element indicates the PubRouter's assessment of the optimum licence (from an Open Access perspective) on the date that the notification is retrieved**, and is determined by the following algorithm.
 
 Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the license with the earliest future start date.
 
-Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).
+Where none of the licences has a URL that is recognised as open by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one license, then systems should place a relatively low level of confidence in PubRouter's assessment of which is best.
+
+This indicator is intended to help systems interpret the license data; it is not meant for display to users.
