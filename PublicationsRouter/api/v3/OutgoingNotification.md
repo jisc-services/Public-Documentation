@@ -80,7 +80,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 				"fullname": "<author name>",
 				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
-			"organisation_name": "<Name of organisation if author is an organisation >",
+			"organisation_name": "<Name of organisation>",
 			"identifier": [
 			    {
 				"type": "orcid",
@@ -102,7 +102,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 				"fullname": "<author name>",
 				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
-			"organisation_name": "<Name of organisation if author is an organisation >",
+			"organisation_name": "<Name of organisation>",
 			"identifier": [
 			    {
 				"type": "orcid",
@@ -214,7 +214,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.author.name.surname * | Author's surname (lastname) | unicode |  |
 | metadata.author.name.fullname | Full name - preferably expressed as "Surname, Firstname(s)" | unicode |  |
 | metadata.author.name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) | unicode |  |
-| metadata.author.organisation_name |Name of organisation if author is an organisation  | unicode |  |
+| metadata.author.organisation_name |Name of organisation (seldom populated)| unicode |  |
 | metadata.author.identifier.type * | Type of identifier (e.g. ORCID, email) | unicode |  |
 | metadata.author.identifier.id * | Author identfier value (e.g. ORCID number, email address) | unicode |  |
 | metadata.author.affiliation | Author organisational affiliation | unicode | free text  |
@@ -237,7 +237,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.publication_date.day | Day of publication (where known) | unicode | DD |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode |  |
 | metadata.history_date | Array of objects describing dates of this article at different stages of it's history | array | | 
-| metadata.history_date.date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub | unicode |  |  |
+| metadata.history_date.date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub | unicode |  |
 | metadata.history_date.date | Date of particular publishing event | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode |  |
 | metadata.funding | List of funding information associated with this article | array | | 
@@ -255,7 +255,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.license_ref.best | Best license indiator, 1 license (at most) in the array will have *best* set to *true*. (See note below). | boolean |  |
+| metadata.license_ref.best | Best license indicator, 1 license (at most) in the array will have *best* set to *true*. (See note below). | boolean |  |
 | metadata.free2read | Ali:free-to-read information | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
