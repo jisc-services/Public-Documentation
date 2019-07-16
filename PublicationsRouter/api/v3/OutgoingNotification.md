@@ -270,12 +270,10 @@ The *best* license indicator (metadata.license_ref.best) is intended to facilita
 
 If you make use of it to capture just one licence into your system's licence filed(s), we **strongly advise that you also capture as a text string the complete list of licences**, together with their start dates, into a field that your users can see for manual checking purposes. This string should be constructed along the following lines:
 
-```
-"Licence for [metadata.article.version] version of this article starting on [metadata.license_ref.start]: [etadata.license_ref.url OR metadata.license_ref.title]"
+>"Licence for [metadata.article.version] version of this article starting on [metadata.license_ref.start]: [metadata.license_ref.url OR metadata.license_ref.title]; ..."
 
 Example: 
-    "Licence for VoR version of this article starting on 20-06-2019: http://creativecommons.org/licenses/by-nc/3.0/"
-```
+>*Licence for VoR version of this article starting on 20-06-2019: http://creativecommons.org/licenses/by-nc/3.0/*
 
 Each object in the **license_ref** array has a Boolean element named **"best"**.  At most, only one licence object in the array will have "best" set to *true*.  NB It is possible for all licence objects to have "best" set to *false* - this occurs where none of the licences has a URL.  
 
