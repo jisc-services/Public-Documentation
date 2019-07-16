@@ -280,15 +280,17 @@ If you make use of it to capture just one licence into your system's licence fil
 Example: 
 >*Licence for VoR version of this article starting on 20-06-2019: http://creativecommons.org/licenses/by-nc/3.0/*
 
-#### "Best" licence indicator details
+#### "Best" licence indicator detail and algorithm
 
 Each object in the **license_ref** array has a Boolean element named ***best***.  At most, only one licence object in the array will have *best* set to *true*.  NB It is possible for all licence objects to have *best* set to *false* - this occurs where none of the licences has a URL.  
 
-**Router's assessment applies on the date that the notification is retrieved** and is determined by the following algorithm.
+Router's assessment **applies on the date that the notification is retrieved** and is determined by the following algorithm:
 
-Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the open license with the earliest future start date.
+* Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the open license with the earliest future start date.
 
-Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in PubRouter's assessment of which is *best*. In all cases, **provision should be made for manual checks by the user**, along the lines indicated above.
+* Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in PubRouter's assessment of which is *best*.
+
+In all cases, **provision should be made for manual checks by the user**, along the lines indicated above.
 
 This indicator is intended to help systems interpret the licence data; it is not meant for display to users.
 
