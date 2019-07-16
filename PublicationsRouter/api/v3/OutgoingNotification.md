@@ -295,6 +295,6 @@ In all cases, **provision should be made for manual checks by the user**, along 
 This indicator is intended to help systems interpret the licence data; it is not meant for display to users.
 
 ### ali:free2read
-The ali:free2read information, if present, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you **must not** rely upon this value.
+The ali:free2read information, if present in the **metadata.free2read element**, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you **must not** rely upon this value.
 
-This element will be deprecated in a future version of the API.  
+The metadata.free2read element will be deprecated in a future version of the API.  
