@@ -282,7 +282,7 @@ Example:
 
 #### "Best" licence indicator detail and algorithm
 
-Each object in the **license_ref** array has a Boolean element named ***best***.  At most, only one licence object in the array will have *best* set to *true*.  NB It is possible for all licence objects to have *best* set to *false* - this occurs where none of the licences has a URL.  
+Each object in the **license_ref** array has a Boolean element named ***best***.  At most, only one licence object in the array will have *best* set to *true*.  NB It is possible for all licence objects to have *best* set to *false* - this occurs where there is more than one license and none has a URL.  
 
 Router's assessment **applies on the date that the notification is retrieved** and is determined by the following algorithm:
 
