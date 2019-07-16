@@ -262,20 +262,27 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 
 ## Notes
-### "Best" licence
+###Licences
 
-The *best* license indicator (metadata.license_ref.best) is intended to facilitate data import into systems that allow the capture of only one licence for a given version of an article. **You should ignore it if your system caters for multiple licences** along the lines of the [NISO ALI standard](https://www.niso.org/schemas/ali/1.0) (in which case you should capture all the licences and their start dates).
+####Systems that can handle multiple licences
+If your system system caters for multiple licences along the lines of the [NISO ALI standard](https://www.niso.org/schemas/ali/1.0) then you should capture all the licences and their start dates and display them accordingly (the *best* license indicator should be ignored).
 
-**It should be used with care**. It indicates Router's assessment of which licence is most likely to represent the post-embargo licence (if an embargo applies), or one that has subsequently come into effect. In many cases this will be reliable but in others it could be wrong, so you should guide your users accordingly. 
+####Systems that can handle only one licence
+If your system can capture only one license for a given version of an article, then the *best* license indicator (metadata.license_ref.best) may be of use, but 
+**it should be used with care**. 
 
-If you make use of it to capture just one licence into your system's licence filed(s), we **strongly advise that you also capture as a text string the complete list of licences**, together with their start dates, into a field that your users can see for manual checking purposes. This string should be constructed along the following lines:
+It indicates Router's assessment of which licence is most likely to represent the post-embargo licence (if an embargo applies), or one that has subsequently come into effect. In many cases this will be reliable but in others it could be wrong, so you should guide your users accordingly. 
 
->"Licence for [metadata.article.version] version of this article starting on [metadata.license_ref.start]: [metadata.license_ref.url OR metadata.license_ref.title]; ..."
+If you make use of it to capture just one licence into your system's licence filed(s), we **strongly advise that you also capture as a text string the complete list of licences and their start dates** into a field that your users can see for manual checking purposes. This string should be constructed along the following lines:
+
+>"Licence for [metadata.article.version] version of this article starting on [metadata.license_ref.start]: [metadata.license_ref.url OR metadata.license_ref.title]; ...[[repeat for each licence]]"
 
 Example: 
 >*Licence for VoR version of this article starting on 20-06-2019: http://creativecommons.org/licenses/by-nc/3.0/*
 
-Each object in the **license_ref** array has a Boolean element named **"best"**.  At most, only one licence object in the array will have "best" set to *true*.  NB It is possible for all licence objects to have "best" set to *false* - this occurs where none of the licences has a URL.  
+#### "Best" licence indicator details
+
+Each object in the **license_ref** array has a Boolean element named ***best***.  At most, only one licence object in the array will have *best* set to *true*.  NB It is possible for all licence objects to have *best* set to *false* - this occurs where none of the licences has a URL.  
 
 **Router's assessment applies on the date that the notification is retrieved** and is determined by the following algorithm.
 
