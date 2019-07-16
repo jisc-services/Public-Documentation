@@ -255,8 +255,8 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.license_ref.best | Best licence indiator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below). | boolean |  |
-| metadata.free2read | Ali:free-to-read information | | |
+| metadata.license_ref.best | Best licence indiator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below) | boolean |  |
+| metadata.free2read | Ali:free-to-read indicator. **Do NOT rely on this** - see note below. | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
 
@@ -294,3 +294,7 @@ In all cases, **provision should be made for manual checks by the user**, along 
 
 This indicator is intended to help systems interpret the licence data; it is not meant for display to users.
 
+### ali:free2read
+The ali:free2read information, if present, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you **must not** rely upon this value.
+
+This element will be deprecated in a future version of the API.  
