@@ -266,9 +266,9 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 This field (metadata.license_ref.best) is intended to facilitate data import into systems that allow the capture of only one licence for a given version of a given article. **You should ignore it if your system has fields for multiple licences** along the lines of the NISO ALI standard (see https://www.niso.org/schemas/ali/1.0), in which case you should simply capture the complete list of the licences and their start dates.
 
-**It should be used with care**. It indicates Router’s attempt to assess which licence is most likely to represent the post-embargo licence (if an embargo applies), or one that has subsequently come into effect. In many cases this will be reliable but in others it could be wrong, so you should guide your users accordingly. 
+**It should be used with care**. It indicates Router's attempt to assess which licence is most likely to represent the post-embargo licence (if an embargo applies), or one that has subsequently come into effect. In many cases this will be reliable but in others it could be wrong, so you should guide your users accordingly. 
 
-If you make use of it to capture just one licence into your system’s licence filed(s), we **strongly advise that you also capture as a text string the complete list of licences**, together with their start dates, into a field that your users can see for manual checking purposes. This string should be constructed along the following lines:
+If you make use of it to capture just one licence into your system's licence filed(s), we **strongly advise that you also capture as a text string the complete list of licences**, together with their start dates, into a field that your users can see for manual checking purposes. This string should be constructed along the following lines:
 
 ```
 "Licence for [metadata.article.version] version of this article starting on [metadata.license_ref.start]: [etadata.license_ref.url OR metadata.license_ref.title]"
@@ -279,11 +279,11 @@ Example:
 
 Each object in the **license_ref** array has a Boolean element named **"best"**.  At most, only one licence object in the array will have "best" set to *true*.  NB It is possible for all licence objects to have "best" set to *false* - this occurs where none of the licences has a URL.  
 
-**Router’s assessment applies on the date that the notification is retrieved** and is determined by the following algorithm.
+**Router's assessment applies on the date that the notification is retrieved** and is determined by the following algorithm.
 
 Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the open license with the earliest future start date.
 
-Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in PubRouter's assessment of which is “best”. In all cases, **provision should be made for manual checks by the user**, along the lines indicated above.
+Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* license is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in PubRouter's assessment of which is *best*. In all cases, **provision should be made for manual checks by the user**, along the lines indicated above.
 
 This indicator is intended to help systems interpret the licence data; it is not meant for display to users.
 
