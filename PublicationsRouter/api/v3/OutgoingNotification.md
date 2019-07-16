@@ -262,12 +262,12 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 
 ## Notes
-###Licences
+### Licences
 
-####Systems that can handle multiple licences
+#### Systems that can handle multiple licences
 If your system system caters for multiple licences along the lines of the [NISO ALI standard](https://www.niso.org/schemas/ali/1.0) then you should capture all the licences and their start dates and display them accordingly (the *best* license indicator should be ignored).
 
-####Systems that can handle only one licence
+#### Systems that can handle only one licence
 If your system can capture only one license for a given version of an article, then the *best* license indicator (metadata.license_ref.best) may be of use, but 
 **it should be used with care**. 
 
