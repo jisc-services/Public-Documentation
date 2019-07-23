@@ -159,7 +159,7 @@ Notifications with binary content will contain contain a links section like:
         {
             "type" : "package",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/SimpleZip",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/SimpleZip.zip",
             "packaging" : "http://purl.org/net/sword/package/SimpleZip"
         }
     ]
