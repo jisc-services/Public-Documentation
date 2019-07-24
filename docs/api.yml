@@ -566,8 +566,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NoteLicenseRef'
-        free2read:
-          $ref: '#/components/schemas/NoteFree2Read'
         refereed:
           type: string
           example: true
@@ -745,15 +743,6 @@ components:
           example: 4.0
         start:
           type: string
-#     NoteFree2Read:
-#       type: object
-#       properties:
-#         start:
-#           type: string
-#           format: date
-#         end:
-#           type: string
-#           format: date
 
   responses:
     BadRequest:
