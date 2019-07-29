@@ -152,7 +152,6 @@ The JSON structure of the model is as follows:
 			"url": "<url>",
 			"version": "<version of license; for example: 4.0>" ,
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
-			"end": "<Date licence ends (YYYY-MM-DD format) OPTIONAL - only for ALI:free_to_read >"
 			}
 		]
 	}
