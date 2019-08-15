@@ -97,7 +97,7 @@ NOTES:
 | ....start | Date that embargo starts | | |
 | ....end | Date that embargo ends | | |
 | ....duration | Embargo duration in MONTHS | | |
-| metadata.license_ref | Array of license_ref objects, describing licenses associated with this article | | |
+| metadata.license_ref | Array of license_ref objects, describing licenses associated with this article | Sent to repository | Expose to users |
 | ....title | Title or name of the licence applied to the article; free-text | | |
 | ....type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | |  |
 | ....url | URL for information on the licence | | |
