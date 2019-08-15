@@ -33,6 +33,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
              }
 	], 
 ...
+
 }
 ```
 
@@ -58,4 +59,5 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | links.access | URL access type, one of: "public" - indicates the content is available from public URL for at least 3 months from *created_date*; "router" and "special" - content is in temporary PubRouter store, kept for 3 months from *created_date"; "special" indicates unpackaged content that will duplicate other content contained in a package  | unicode |  |
 | links.proxy | URL to the associated resource on provider's server, where it should be available for at least 3 months. PubRouter keeps this value secret. | unicode | URL |
 | ... | | |
+
 
