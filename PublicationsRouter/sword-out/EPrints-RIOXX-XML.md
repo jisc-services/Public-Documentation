@@ -1,6 +1,6 @@
 # PubRouter EPrints-RIOXX XML Description
 
-This document describes the RIOXXplus XML output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus plugins.
+This document describes the RIOXXplus XML (Version 2) output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus v2 plugins.
 
 Background information:
 * [eprints-rioxx.xsd](./pubrouter-xsd/eprints-rioxx.xsd) - Eprints-RIOXX schema definition
@@ -37,9 +37,8 @@ The following table lists:
 | [rioxxterms:version](http://www.rioxx.net/profiles/v2-0-final/) | article.version |  `<rioxxterms:version>[article.version]</rioxxterms:version>` | {0..1}<br>Version of article (controlled value from rioxxterms:versionList) |
 | [rioxxterms:version_of_record](http://www.rioxx.net/profiles/v2-0-final/) | article.identifier.type<br>article.identifier.id |  `<rioxxterms:version>[article.version]</rioxxterms:version>` | {0..1}<br>DOI where version is one of VoR \| CVoR \| EVoR |
 | [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | funding.name<br> project.identifier<br>funding.grant_numbers | `<rioxxterms:project funder_id=[funding.identifier.type]:[funding.identifier.id] funder_name=[funding.name]>[funding.grant_number] </rioxxterms:project>` | {0..n}<br>Note the funder_id attribute holds a compound string of general format "type:id" e.g. "FundRef:10.13039/100000002" |
-| [pr:license](./pubrouter-xsd/eprints-rioxx.xsd#L252) | license_ref.title<br>license_ref.type<br>license_ref.url<br>license_ref.version<br>license_ref.start | `<pr:license start_date=[license_ref.start] url=[license_ref.url] version=[license_ref.version]>[license_ref.title or license_ref.type]</pr:license>` | {0..n}<br>May have many licenses; start format: YYYY-MM-DD |
+| [ali:license_ref](./pubrouter-xsd/eprints-rioxx.xsd#L252) | license_ref.url<br>license_ref.start | `<ali:license_ref start_date=[license_ref.start]>[license_ref.url]</ali:license_ref>` | {0..1}<br>Date format: YYYY-MM-DD |
 | [pr:embargo](./pubrouter-xsd/eprints-rioxx.xsd#L272) | embargo.start<br> embargo.end<br>embargo.duration | `<pr:embargo start_date=[embargo.start] end_date=[embargo.end]></pr:embargo>` | {0..1}<br>At least one of attributes start \| end must be present, format: YYYY-MM-DD |
-| [ali:free_to_read](./pubrouter-xsd/eprints-rioxx.xsd#L251) | free2read.start<br>free2read.end | `<ali:free_to_read start_date=[free2read.start] end_date=[free2read.end]></ali:free_to_read>` | {0..1}<br>Both start_date and end_date are optional, format: YYYY-MM-DD |
 | [pr:start_page](./pubrouter-xsd/eprints-rioxx.xsd#L170) | article.start_page | `<pr:start_page>[article.start_page]</pr:start_page>` | {0..1} |
 | [pr:end_page](./pubrouter-xsd/eprints-rioxx.xsd#L177) | article.end_page | `<pr:end_page>[article.end_page]</pr:end_page>` | {0..1} |
 | [pr:page_range](./pubrouter-xsd/eprints-rioxx.xsd#L184) | article.page_range | `<pr:page_range>[article.page_range]</pr:page_range>` | {0..1} |
@@ -48,7 +47,7 @@ The following table lists:
 | [pr:history_date](./pubrouter-xsd/eprints-rioxx.xsd#L221) | history_date.type<br> history_date.date | `<pr:history_date type=[history_date.type]>[history_date.date]</pr:history_date>` | {0..n}<br>Any publishing event dates, YYYY-MM-DD |
 | [pr:author](./pubrouter-xsd/eprints-rioxx.xsd#L288) | author.type<br>author.name<br>author.organisation_name<br>author.identifier<br>author.email | `<pr:author>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:type>[author.type]</pr:type> `<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id>`<br>  &nbsp;&nbsp;&nbsp;&nbsp; `<pr:email>[author.email]</pr:email>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:surname>[author.name.surname]</pr:surname>`<br> &nbsp;&nbsp;&nbsp;&nbsp;  `<pr:firstnames>[author.name.firstname]</pr:firstnames>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:suffix>[author.name.suffix]</pr:suffix>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:org_name>[author.organisation_name]</pr:org_name>`<br> `</pr:author>` | {0..n}<br>Multiple authors; any author may have multiple Ids and/or Emails|
 | [pr:contributor](./pubrouter-xsd/eprints-rioxx.xsd#L30) |  contributor.type<br>contributor.name<br>contributor.organisation_name<br>contributor.identifier<br>contributor.email | `<pr:contributor>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:type>[contributor.type]</pr:type>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:id type=[author.identifier.type]>[author.identifier.id]</pr:id>`<br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:email>[contributor.email]</pr:email>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:surname>[contributor.name.surname]</pr:surname>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:firstnames>[contributor.name.firstname]</pr:firstnames>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<pr:org_name>[contributor.organisation_name]</pr:org_name>` <br> `</pr:contributor>` | {0..n} |
-| [pr:download_link](./pubrouter-xsd/eprints-rioxx.xsd#L302) | links.format<br>links.url<br>links.packaging  | `<pr:download_link url=[links.url] filename=(derived from links.url) format=[links.format] public=(true\|false) packaging=[links.packaging] primary=(true\|false)></pr:download_link>` | {0..n}<br>Links to full-text files; *public* attribute determines if displayable or not; *primary* attrib determines if version, license & embargo information is to be associated with article |
+| [pr:download_link](./pubrouter-xsd/eprints-rioxx.xsd#L302) | links.format<br>links.url<br>links.packaging  | `<pr:download_link url=[links.url] filename=(derived from links.url) format=[links.format] public=(true\|false) packaging=[links.packaging] primary=(true\|false) set_details=(true\|false) ></pr:download_link>` | {0..n}<br>Links to full-text files; *public* attribute determines if displayable or not; *primary* attribute determines listing precedence (true items are displayed first); 'set_details' attrib determines if version, license & embargo information is to be associated with file |
 
 
 ## Example XML Output
@@ -61,8 +60,8 @@ An example Entry document containing the metadata listed above is shown here.
 	<pr:download_link url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/1" format="text/html" filename="1" primary="false"/>
 	<pr:note>** Article version: VoR ** Embargo end date: 22-08-2018 ** From Publisher via Jisc Publications Router ** Licence for VoR version of this article starting on 22-08-2018: https://testing.org/licenses/by/4.0/</pr:note>
 	<pr:comment>Some text to display in Eprints privately visible Comments & Suggestions field</pr:comment>
-	<pr:relation url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf"/>
-	<pr:download_link url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/2" format="application/pdf" public="true" filename="2.pdf" primary="true"/>
+	<pr:relation url="https:/dummy.jisc.ac.uk/api/v3/notification/1e28c474a04ea8260/content/eprints-rioxx/pone.12345.pdf" format="application/pdf"/>
+	<pr:download_link url="https:/dummy.jisc.ac.uk/api/v3/notification/1e28c474a04ea8260/content/eprints-rioxx/pone.12345.pdf" filename="pone.12345.pdf" format="application/pdf" primary="true"  set_details="true"/>
 	<dcterms:format>application/pdf</dcterms:format>
 	<pr:source issue="Issue number of a journal, or in rare instances, a book" volume="Number of a journal (or other document) within a series">Journal of Important Things</pr:source>
 	<pr:source_id type="issn">1234-5678</pr:source_id>
@@ -92,7 +91,7 @@ An example Entry document containing the metadata listed above is shown here.
 	<pr:history_date type="accepted">2017-05-11</pr:history_date>
 	<pr:history_date type="published">2017-08-22</pr:history_date>
 	<rioxxterms:project funder_id="ringold:bbsrcid" funder_name="BBSRC">BB/34/juwef</rioxxterms:project>
-	<pr:license url="https://creativecommons.org/licenses/by/4.0/" start_date="2018-08-22" version="4.0">licence title</pr:license>
+	<ali:license_ref start_date="2018-08-22">https://creativecommons.org/licenses/by/4.0/</ali:license_ref>
 	<pr:embargo start_date="2017-08-22" end_date="2018-08-22"/>
 	<pr:author>
 		<pr:type>http://www.loc.gov/loc.terms/relators/AUT</pr:type>
