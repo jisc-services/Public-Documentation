@@ -57,53 +57,53 @@ NOTES:
 | metadata.article.identifier.id * | Article identfier value (e.g. DOI number) | Sent to repository | Expose to users |
 | metadata.article.subject | Subject classification(s) / keyword(s) (Array field) | Sent to repository | Expose to users   |
 | metadata.author * | Array of author objects describing authors of this article | Author name, type and identifiers are sent to repository | Expose to users | 
-| metadata.author.type | Type of author (e.g. corresponding) | |  |
-| metadata.author.name.firstname * | Author's firstname(s) | |  |
-| metadata.author.name.surname * | Author's surname (lastname) |  |  |
-| metadata.author.name.fullname | Full name - usually "Surname, Firstname(s)" |  |  |
-| metadata.author.name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) |  |  |
-| metadata.author.organisation_name | Name of organisation (seldom populated) | |  |
-| metadata.author.identifier.type * | Type of identifier (e.g. ORCID, email) |  |  |
-| metadata.author.identifier.id * | Author identfier value (e.g. ORCID number, email address) |  |  |
-| metadata.author.affiliation | Author organisational affiliation | Internal processing only | |
+| ....type | Type of author (e.g. corresponding) | |  |
+| ....name.firstname * | Author's firstname(s) | |  |
+| ....name.surname * | Author's surname (lastname) |  |  |
+| ....name.fullname | Full name - usually "Surname, Firstname(s)" |  |  |
+| ....name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) |  |  |
+| ....organisation_name | Name of organisation (seldom populated) | |  |
+| ....identifier.type * | Type of identifier (e.g. ORCID, email) |  |  |
+| ....identifier.id * | Author identfier value (e.g. ORCID number, email address) |  |  |
+| ....affiliation | Author organisational affiliation | Internal processing only | |
 | metadata.contributor | Array of contributor objects describing contributors to this article | Contributor name, type and identifiers are sent to repository | Expose to users |
-| metadata.contributor.type | Type of contributor (e.g. editor) |  |  |
-| metadata.contributor.name.firstname | Contributor's firstname(s) | |  |
-| metadata.contributor.name.surname | Contributor's surname (lastname) | |  |
-| metadata.contributor.name.fullname | Full name  | |  |
-| metadata.contributor.name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) |  |  |
-| metadata.contributor.organisation_name |Name of organisation (seldom populated) | |  |
-| metadata.contributor.identifier.type | Type of identifier (e.g. ORCID, email) |  |  |
-| metadata.contributor.identifier.id | Contributor identfier value (e.g. ORCID number, email address) | |  |
-| metadata.contributor.affiliation | Contributor organisational affiliation | Internal processing only | |
+| ....type | Type of contributor (e.g. editor) |  |  |
+| ....name.firstname | Contributor's firstname(s) | |  |
+| ....name.surname | Contributor's surname (lastname) | |  |
+| ....name.fullname | Full name  | |  |
+| ....name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) |  |  |
+| ....organisation_name |Name of organisation (seldom populated) | |  |
+| ....identifier.type | Type of identifier (e.g. ORCID, email) |  |  |
+| ....identifier.id | Contributor identfier value (e.g. ORCID number, email address) | |  |
+| ....affiliation | Contributor organisational affiliation | Internal processing only | |
 | metadata.accepted_date | Date publication accepted for publication | Sent to repository | Expose to users |
 | metadata.publication_date | Object describing date that article was published | Sent to repository | Expose to users | 
-| metadata.publication_date.publication_format | Format of publication (print, electronic) | Sent to some repositories | |
-| metadata.publication_date.date | Date of publication | | |
-| metadata.publication_date.year | Year of publication | | |
-| metadata.publication_date.month | Month of publication (where known) | | |
-| metadata.publication_date.day | Day of publication (where known) | | |
-| metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | | |
+| ....publication_format | Format of publication (print, electronic) | Sent to some repositories | |
+| ....date | Date of publication | | |
+| ....year | Year of publication | | |
+| ....month | Month of publication (where known) | | |
+| ....day | Day of publication (where known) | | |
+| ....season | Season of publication (e.g. Spring, Third quarter) | | |
 | metadata.history_date | Array of objects describing dates of this article at different stages of it's history | Sent to repository | Expose to users | 
-| metadata.history_date.date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub |  |  |
-| metadata.history_date.date | Date of particular publishing event | | |
+| ....date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub |  |  |
+| ....date | Date of particular publishing event | | |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | Sent to repository | Expose to users | 
 | metadata.funding | List of funding information associated with this article | Sent to repository | Expose to users |  
-| metadata.funding.name | Funder name |  |  |
-| metadata.funding.identifier.type | Funder identifier type (e.g "ringold")  |  |  |
-| metadata.funding.identifier.id | Funder identifier (e.g. Ringold ID) |  |  |
-| metadata.funding.grant_numbers | List of funder's grant numbers  | | |
+| ....name | Funder name |  |  |
+| ....identifier.type | Funder identifier type (e.g "ringold")  |  |  |
+| ....identifier.id | Funder identifier (e.g. Ringold ID) |  |  |
+| ....grant_numbers | List of funder's grant numbers  | | |
 | metadata.embargo | Embargo information for this article | Sent to repository | Expose to users |  
-| metadata.embargo.start | Date that embargo starts | | |
-| metadata.embargo.end | Date that embargo ends | | |
-| metadata.embargo.duration | Embargo duration in MONTHS | | |
+| ....start | Date that embargo starts | | |
+| ....end | Date that embargo ends | | |
+| ....duration | Embargo duration in MONTHS | | |
 | metadata.license_ref | Array of license_ref objects, describing licenses associated with this article | | |
-| metadata.license_ref.title | Title or name of the licence applied to the article; free-text | | |
-| metadata.license_ref.type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | |  |
-| metadata.license_ref.url | URL for information on the licence | | |
-| metadata.license_ref.version | Version of the licence | |  |
-| metadata.license_ref.start | License start date | | |
-| metadata.license_ref.best | Best license indicator, 1 license (at most) in the array will have *best* set to *true*. | |  |
-| metadata.free2read | Ali:free-to-read information | | |
-| metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | | |
-| metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | | |
+| ....title | Title or name of the licence applied to the article; free-text | | |
+| ....type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | |  |
+| ....url | URL for information on the licence | | |
+| ....version | Version of the licence | |  |
+| ....start | License start date | | |
+| ....best | Best license indicator, 1 license (at most) in the array will have *best* set to *true*. | |  |
+| metadata.free2read | Ali:free-to-read information | Not used | |
+| ....start | Ali:free-to-read Start date (may be an empty string) | Not used | |
+| ....end | Ali:free-to-read End date (may be an empty string) | Not used | |
