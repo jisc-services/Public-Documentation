@@ -137,7 +137,7 @@ The JSON structure of the model is as follows:
 				"id": "<funder identifier>"
 				}
 			],
-			"grant_numbers": "<funder's grant number>"
+			"grant_numbers":  ["<funder's grant numbers>"]
 			}
 		],
 		"embargo": {
