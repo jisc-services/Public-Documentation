@@ -137,7 +137,7 @@ The JSON structure of the model is as follows:
 				"id": "<funder identifier>"
 				}
 			],
-			"grant_number": "<funder's grant number>"
+			"grant_numbers":  ["<funder's grant numbers>"]
 			}
 		],
 		"embargo": {
@@ -222,7 +222,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.funding.name | Funder name | unicode |  |  |
 | metadata.funding.identifier.type | Funder identifier type (e.g "ringold") - no vocabulary for this field in this version of the system | unicode |  |  |
 | metadata.funding.identifier.id | Funder identifier (e.g. Ringold ID) | unicode |  |  |
-| metadata.funding.grant_number | Grant number for funding source behind this article | unicode |  |  |
+| metadata.funding.grant_numbers | Grant numbers (award identifiers) funding the work of this article | unicode |  |  |
 | metadata.embargo.start | Date that embargo starts (YYYY-MM-DD) | unicode |  |  |
 | metadata.embargo.end | Date that embargo ends (YYYY-MM-DD) | unicode |  |  |
 | metadata.embargo.duration | Embargo duration in DAYS | unicode |  |  |
