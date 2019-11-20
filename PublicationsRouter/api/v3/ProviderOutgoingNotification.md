@@ -263,7 +263,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.embargo.duration | Embargo duration in MONTHS | unicode |  |
 | metadata.license_ref | Array of license_ref objects, describing licences associated with this article | | |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |
-| metadata.license_ref.type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | unicode |  |
+| metadata.license_ref.type | Type of licence (most likely the same as the title); free-text | unicode |  |
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
