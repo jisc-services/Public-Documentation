@@ -34,7 +34,7 @@ Where Router has obtained details of licences applying to an article it will sen
 Where the *Article version* is provided (see above) then the supplied licence details will relate only to that version.   
 
 This section describes the use of each of the elements, any of which may be missing or empty.
-```json
+```
 "metadata": {
     "license_ref": [
         {
