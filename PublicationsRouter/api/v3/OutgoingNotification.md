@@ -255,7 +255,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.license_ref.best | Best licence indiator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below) | boolean |  |
+| metadata.license_ref.best | Best licence indicator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below) | boolean |  |
 | metadata.free2read | Ali:free-to-read indicator. **Do NOT rely on this** - see note below. | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
@@ -263,36 +263,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 ## Notes
 ### Licences
-
-#### Systems that can handle multiple licences
-If your system system caters for multiple licences along the lines of the [NISO ALI standard](https://www.niso.org/schemas/ali/1.0) then you should capture all the licences and their start dates and display them accordingly (the *best* licence indicator should be ignored).
-
-#### Systems that can handle only one licence
-If your system can capture only one licence for a given version of an article, then the *best* licence indicator (metadata.license_ref.best) may be of use, but 
-**it should be used with care**. 
-
-It indicates Router's assessment of which licence is most likely to represent the post-embargo licence (if an embargo applies), or one that has subsequently come into effect. In many cases this will be reliable but in others it could be wrong, so you should guide your users accordingly. 
-
-If you make use of it to capture just one licence into your system's licence field(s), we **strongly advise that you also capture as a text string the complete list of licences and their start dates** into a field that your users can see for manual checking purposes. This string should be constructed along the following lines:
-
->"Licence for [metadata.article.version] version of this article starting on [metadata.license_ref.start]: [metadata.license_ref.url OR metadata.license_ref.title]; ...[[repeat for each licence]]"
-
-Example: 
->*Licence for VoR version of this article starting on 20-06-2019: http://creativecommons.org/licenses/by-nc/3.0/*
-
-#### "Best" licence indicator detail and algorithm
-
-Each object in the **license_ref** array has a Boolean element named ***best***.  At most, only one licence object in the array will have *best* set to *true*.  NB It is possible for all licence objects to have *best* set to *false* - this occurs where there is more than one licence and none has a URL.  
-
-Router's assessment **applies on the date that the notification is retrieved** and is determined by the following algorithm:
-
-* Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the open licence with the earliest future start date.
-
-* Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* licence is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in PubRouter's assessment of which is *best*.
-
-In all cases, **provision should be made for manual checks by the user**, along the lines indicated above.
-
-This indicator is intended to help systems interpret the licence data; it is not meant for display to users.
+See [Using Router Metadata](./Using_Router_Metadata.md#licence-details)
 
 ### ali:free2read
 The ali:free2read information, if present in the **metadata.free2read element**, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you **must not** rely upon this value.
