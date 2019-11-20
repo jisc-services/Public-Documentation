@@ -9,6 +9,7 @@ Below we provide insight and guidance into the interpretation and use of the fol
 * Licences.   
 
 ## Article version ##
+JSON element: `metadata.article.version` 
 ```
 "metadata": {
     "article": {
@@ -34,6 +35,8 @@ Where Router has obtained details of licences applying to an article it will sen
 Where the *Article version* is provided (see above) then the supplied licence details will relate only to that version.   
 
 This section describes the use of each of the elements, any of which may be missing or empty.
+
+JSON element: `metadata.license_ref` 
 ```
 "metadata": {
     "license_ref": [
