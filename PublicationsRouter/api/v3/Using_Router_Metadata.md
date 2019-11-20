@@ -45,7 +45,7 @@ Alphanumeric string indicating version of the licence. For example `"v1.0"`.
 
 ### best ###
 
-This is a boolean indicator (set using a PubRouter algorithm) that is intended to guide selection of an appropriate licence where a receiving system can only handle a single license. 
+This is a boolean indicator (set using a PubRouter algorithm) that is intended to guide selection of an appropriate licence where a receiving system can only handle a single licence. 
 
 This indicator will be set to `true` for 1 licence in the array (at most).
 
