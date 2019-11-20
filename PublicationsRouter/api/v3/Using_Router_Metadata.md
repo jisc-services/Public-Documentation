@@ -19,7 +19,7 @@ Where Router has obtained details of licences applying to an article it will sen
 		],
 ```
 ### url ###
-Where present the URL should be regarded as the definitive determinant of the licence applying to the article. It will be either:
+Where present, the URL should be regarded as the definitive determinant of the licence applying to the article. It will be either:
 * a Creative Commons licence URL
 * a publisher's proprietary licence URL.
 
@@ -31,7 +31,10 @@ If no value is present then it should be assumed that the licence is already in 
 ### title ###
 A paragraph or phrase that describes the licence. For example, this could be several sentences provided by a publisher or a simple creative commons abbreviation such as `"cc by"`.
 
-Where no `url` is provided then the value of this element may be relied upon to describe the licence. 
+Where `url` is missing then the value of this element may be relied upon to describe the licence. 
+
+Where a `url` is present, then the value of this element may be used to provide a description of the licence.
+
 ### type ###
 A phrase that describes the licence type. For example it could say `"open access"` or it could be the same text supplied in the `title` element (above). 
 
