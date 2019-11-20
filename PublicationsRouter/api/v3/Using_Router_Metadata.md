@@ -1,22 +1,53 @@
 # Using Router Metadata #
 
-Jisc Publications Router provides Institutional Repositories and CRISs with article metadata (as well as associated articles).  See the [Outgoing Notification](./OutgoingNotification.md) page for a detailed description of the metadata that is provided.
+Jisc Publications Router provides Institutional Repositories and CRISs with article metadata (as well as associated articles).  The [Outgoing Notification](./OutgoingNotification.md) page provides a detailed description of the metadata.
  
-Below we provide insight and guidance into the interpretation and use of certain of the metadata values.  It should be borne in mind that Router obtains information from a wide variety of sources and as a result there tends to be significant variation in the content and completeness of the metadata. 
+It should be borne in mind that Router obtains information from a wide variety of sources and as a result there tends to be significant variation in the metadata.
+
+Below we provide insight and guidance into the interpretation and use of the following key metadata elements:
+* Article version
+* Licences.   
+
+## Article version ##
+```json
+"metadata": {
+    "article": {
+        "version": "<Article version e.g. VoR>",
+        ...
+        },
+...
+}
+```
+Where this value is provided it indicates the version of the article to which the rest of the metadata applies.  It will have one of these values:
+* AM - Accepted manuscript
+* VoR - Version of record 
+* eVoR - Enhanced version of record
+* cVoR - Corrected version of record
+* P - Proof.
+
+(For further information see the NISO working group reommendations https://groups.niso.org/publications/rp/RP-8-2008.pdf).  
+
+Note that this value is frequently missing.
 
 ## Licence details ##
-Where Router has obtained details of licences applying to an article it will send these as an array (list) in the `licence_ref` element - the full possible structure is shown below. This section describes the use of each of the elements, any of which may be missing or empty.  
+Where Router has obtained details of licences applying to an article it will send these as an array (list) in the `licence_ref` element - the full possible structure is shown below. 
+Where the *Article version* is provided (see above) then the supplied licence details will relate only to that version.   
+
+This section describes the use of each of the elements, any of which may be missing or empty.
 ```json
-		"license_ref": [
-			{
-			"url": "<url>",
-			"start": "<Date licence starts (YYYY-MM-DD format)>",
-			"title": "<name of licence>",
-			"type": "<type>", 
-			"version": "<licence version; for example: 4.0>",
-			"best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
-			}
-		],
+"metadata": {
+    "license_ref": [
+        {
+        "url": "<url>",
+        "start": "<Date licence starts (YYYY-MM-DD format)>",
+        "title": "<name of licence>",
+        "type": "<type>", 
+        "version": "<licence version; for example: 4.0>",
+        "best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
+        }
+    ],
+...
+}
 ```
 ### url ###
 Where present, the URL should be regarded as the definitive determinant of the licence applying to the article. It will be either:
@@ -39,7 +70,7 @@ Where a `url` is present, then the value of this element may be used to provide 
 A phrase that describes the licence type. For example it could say `"open access"` or it could be the same text supplied in the `title` element (above). 
 
 ### version ###
-Alphanumeric string indicating version of the licence. For example `"v1.0"`. 
+Alphanumeric string indicating version of the licence. For example `"v1.0"`. NOTE: This element has nothing to do with the *Article Version*.
 
 (This element is usually missing or empty).
 

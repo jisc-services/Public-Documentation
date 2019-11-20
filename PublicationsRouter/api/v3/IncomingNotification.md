@@ -50,7 +50,7 @@ The JSON structure of the model is as follows:
 			"title": "<Article title or book chapter title>",
 			"sub_title": [ "<Article title or book chapter Subtitle>" ],
 			"type": "<Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar')>",
-			"version": "<version of the record, e.g. AAM>",
+			"version": "<Article version e.g. VoR>",
 			"start_page": "<Page number on which a document starts>",
 			"end_page": "<Page number on which a document ends>",
 			"page_range": "<Text describing discontinuous pagination.>",
