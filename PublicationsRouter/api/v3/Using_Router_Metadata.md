@@ -31,9 +31,10 @@ Note that this value is frequently missing.
 
 ## Licence details ##
 Where Router has obtained details of licences applying to an article it will send these as an array (list) in the `licence_ref` element - the full possible structure is shown below. 
-Where the *Article version* is provided (see above) then the supplied licence details will relate only to that version.   
 
 This section describes the use of each of the elements, any of which may be missing or empty.
+
+Where the *Article version* element is provided (see previous section) then the supplied licence details will relate only to that version.   
 
 JSON element: `metadata.license_ref` 
 ```
@@ -62,17 +63,17 @@ The licence start date, format: YYYY-MM-DD.
 If no value is present then it should be assumed that the licence is already in effect.
 
 ### title ###
-A paragraph or phrase that describes the licence. For example, this could be several sentences provided by a publisher or a simple creative commons abbreviation such as `"cc by"`.
+A paragraph or phrase that describes the licence. For example, this could be several sentences provided by a publisher or a simple creative commons abbreviation such as `cc by`.
 
-Where `url` is missing then the value of this element may be relied upon to describe the licence. 
+Where ***url*** is missing then the value of this element may be relied upon to describe the licence. 
 
-Where a `url` is present, then the value of this element may be used to provide a description of the licence.
+Where a ***url*** is present, then the value of this element may be used to provide a description of the licence.
 
 ### type ###
-A phrase that describes the licence type. For example it could say `"open access"` or it could be the same text supplied in the `title` element (above). 
+A phrase that describes the licence type. For example it could say `open access` or it could be the same text supplied in the ***title*** element (above). 
 
 ### version ###
-Alphanumeric string indicating version of the licence. For example `"v1.0"`. NOTE: This element has nothing to do with the *Article Version*.
+Alphanumeric string indicating version of the licence. For example `v1.0`. NOTE: This element has nothing to do with the *Article Version*.
 
 (This element is usually missing or empty).
 
