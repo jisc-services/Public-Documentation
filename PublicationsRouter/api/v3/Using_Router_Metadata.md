@@ -23,8 +23,7 @@ Where this value is provided it indicates the version of the article to which th
 * AM - Accepted manuscript
 * VoR - Version of record 
 * eVoR - Enhanced version of record
-* cVoR - Corrected version of record
-* P - Proof.
+* cVoR - Corrected version of record.
 
 (For further information see the NISO working group reommendations https://groups.niso.org/publications/rp/RP-8-2008.pdf).  
 
