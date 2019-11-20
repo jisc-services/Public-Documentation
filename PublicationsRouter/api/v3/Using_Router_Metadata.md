@@ -9,13 +9,13 @@ Below we provide insight and guidance into the interpretation and use of the fol
 * Licences.   
 
 ## Article version ##
-```json
+```
 "metadata": {
     "article": {
         "version": "<Article version e.g. VoR>",
-        ...
+        …
         },
-...
+    …
 }
 ```
 Where this value is provided it indicates the version of the article to which the rest of the metadata applies.  It will have one of these values:
@@ -46,7 +46,7 @@ This section describes the use of each of the elements, any of which may be miss
         "best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
         }
     ],
-...
+    …
 }
 ```
 ### url ###
