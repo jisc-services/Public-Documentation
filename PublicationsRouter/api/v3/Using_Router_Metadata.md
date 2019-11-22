@@ -25,7 +25,7 @@ Where this value is provided it indicates the version of the article to which th
 * eVoR - Enhanced version of record
 * cVoR - Corrected version of record.
 
-(For further information see the NISO working group reommendations https://groups.niso.org/publications/rp/RP-8-2008.pdf).  
+(For further information see the NISO working group recommendations https://groups.niso.org/publications/rp/RP-8-2008.pdf).  
 
 Note that this value is frequently missing.
 
@@ -65,7 +65,7 @@ If no value is present then it should be assumed that the licence is already in 
 ### title ###
 A paragraph or phrase that describes the licence. For example, this could be several sentences provided by a publisher or a simple creative commons abbreviation such as `cc by`.
 
-Where ***url*** is missing then the value of this element may be relied upon to describe the licence. 
+Where ***url*** is missing then the value of this element may be relied upon to describe the licence and should therefore be displayed to the end user. 
 
 Where a ***url*** is present, then the value of this element may be used to provide a description of the licence.
 
