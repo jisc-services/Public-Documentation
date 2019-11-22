@@ -8,7 +8,7 @@ The full JSON structure of the model is shown here.
 
 IMPORTANT: the structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure. 
 
-Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-metadata) page for guidelines on using particular important data elements.
+Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-metadata) page for important guidelines on using particular data elements.
 ```json
 {
 	"id": "<string>",
@@ -264,7 +264,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 ## Notes
 ### Licences
-See [Using Router Metadata](./Using_Router_Metadata.md#licence-details)
+See [Using Router Metadata](./Using_Router_Metadata.md#licence-details) for **important** guidance on using and displaying these fields.
 
 ### ali:free2read
 The ali:free2read information, if present in the **metadata.free2read element**, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you **must not** rely upon this value.
