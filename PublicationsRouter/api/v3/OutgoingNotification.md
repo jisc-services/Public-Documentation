@@ -8,6 +8,7 @@ The full JSON structure of the model is shown here.
 
 IMPORTANT: the structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure. 
 
+Please see the [Using Router Metadata](./Using_Router_Metadata.md#licence-details) page for guidelines on using particular important data elements.
 ```json
 {
 	"id": "<string>",
