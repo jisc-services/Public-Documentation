@@ -153,8 +153,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			}
 		],
 		"embargo": {
-			"start": "<embargo start date>",
-			"end": "<embargo end date>",
+			"start": "<embargo start date, format: YYYY-MM-DD>",
+			"end": "<embargo end date, format: YYYY-MM-DD>",
 			"duration": "<embargo duration in months>"
 		},
 		"license_ref": [
