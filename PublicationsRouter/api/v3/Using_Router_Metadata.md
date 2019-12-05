@@ -58,7 +58,9 @@ Where present, the URL should be regarded as the definitive determinant of the l
 * a publisher's proprietary licence URL.
 
 ### start ###
-The licence start date, format: YYYY-MM-DD.
+The licence start date, format: YYYY-MM-DD.  
+
+This should always be shown.
 
 If no value is present then it should be assumed that the licence is already in effect.
 
