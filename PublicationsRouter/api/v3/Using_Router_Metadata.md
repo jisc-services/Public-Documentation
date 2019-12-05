@@ -60,7 +60,7 @@ Where present, the URL should be regarded as the definitive determinant of the l
 ### start ###
 The licence start date, format: YYYY-MM-DD.  
 
-This should always be shown.
+Where present this date should always be displayed to users.
 
 If no value is present then it should be assumed that the licence is already in effect.
 
