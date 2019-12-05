@@ -12,7 +12,7 @@ Below we provide insight and guidance into the interpretation and use of the fol
 ### Note on displaying Embargo and Licence details
 CRIS and repositories frequently associate and display embargo and licence details at the  file (e.g. article)  level.  
 
-However, a substantial number of notification records that PubRouter provides will be metadata only (for example thosefrom PubMed, Crossref, and Elsevier).  In these cases, where there is no associated file, it is important that any licence or embargo information is still captured and displayed, for example in a note or additional information field.   
+However, a substantial number of notification records that PubRouter provides will be metadata only (for example those from PubMed, Crossref, and Elsevier).  In these cases, where there is no associated file, it is important that any licence or embargo information is still captured and displayed, for example in a note or additional information field.   
 
 ## Article version ##
 JSON element: `metadata.article.version` 
