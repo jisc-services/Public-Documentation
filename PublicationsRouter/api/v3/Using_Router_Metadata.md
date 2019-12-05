@@ -1,12 +1,18 @@
 # Using Router Metadata #
 
-Jisc Publications Router provides Institutional Repositories and CRISs with article metadata (as well as associated articles).  The [Outgoing Notification](./OutgoingNotification.md) page provides a detailed description of the metadata.
+Jisc Publications Router provides Institutional Repositories and CRISs with article metadata (as well as associated article files).  The [Outgoing Notification](./OutgoingNotification.md) page provides a detailed description of the metadata.
  
 It should be borne in mind that Router obtains information from a wide variety of sources and as a result there tends to be significant variation in the metadata.
 
 Below we provide insight and guidance into the interpretation and use of the following key metadata elements:
 * Article version
-* Licences.   
+* Embargo  
+* Licences.
+
+### Note on displaying Embargo and Licence details
+CRIS and repositories frequently associate and display embargo and licence details at the  file (e.g. article)  level.  
+
+However, a substantial number of notification records that PubRouter provides will be metadata only (for example thosefrom PubMed, Crossref, and Elsevier).  In these cases, where there is no associated file, it is important that any licence or embargo information is still captured and displayed, for example in a note or additional information field.   
 
 ## Article version ##
 JSON element: `metadata.article.version` 
@@ -29,12 +35,36 @@ Where this value is provided it indicates the version of the article to which th
 
 Note that this value is frequently missing.
 
+## Embargo ##
+Where router has captured embargo information this will be provided in the structure shown below.  Note that fields may be missing; for example, it may contain just an `end` date, or it may contain just `start` and `duration` fields.
+
+Where `end` is absent, but `start` and `duration` are present, we recommend that you calculate the end date for display to users.
+
+Where the Article version element is provided (see above) then the embargo details will relate only to that version.
+
+JSON element: `metadata.embargo` 
+```
+		"embargo": {
+			"start": "<embargo start date, format: YYYY-MM-DD>",
+			"end": "<embargo end date, format: YYYY-MM-DD>",
+			"duration": "<embargo duration in months>"
+		},
+
+```
+
+### start ###
+The embargo start date, provided in YYYY-MM-DD format.
+### end ###
+The embargo end date, provided in YYYY-MM-DD format.
+### duration ###
+The embargo duration in months.
+
 ## Licence details ##
 Where Router has obtained details of licences applying to an article it will send these as an array (list) in the `licence_ref` element - the full possible structure is shown below. 
 
 This section describes the use of each of the elements, any of which may be missing or empty.
 
-Where the *Article version* element is provided (see previous section) then the supplied licence details will relate only to that version.   
+Where the *Article version* element is provided (see above) then the supplied licence details will relate only to that version.   
 
 JSON element: `metadata.license_ref` 
 ```
