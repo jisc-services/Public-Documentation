@@ -65,7 +65,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			"title": "<Article title or book chapter title>",
 			"sub_title": [ "<Article title or book chapter Subtitle>" ],
 			"type": "<Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar')>",
-			"version": "<version of the record, e.g. AAM>",
+			"version": "<Article version e.g. VoR>",
 			"start_page": "<Page number on which a document starts>",
 			"end_page": "<Page number on which a document ends>",
 			"page_range": "<Text describing discontinuous pagination.>",
@@ -153,8 +153,8 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 			}
 		],
 		"embargo": {
-			"start": "<embargo start date>",
-			"end": "<embargo end date>",
+			"start": "<embargo start date, format: YYYY-MM-DD>",
+			"end": "<embargo end date, format: YYYY-MM-DD>",
 			"duration": "<embargo duration in months>"
 		},
 		"license_ref": [
@@ -263,11 +263,11 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.embargo.duration | Embargo duration in MONTHS | unicode |  |
 | metadata.license_ref | Array of license_ref objects, describing licences associated with this article | | |
 | metadata.license_ref.title | Title or name of the licence applied to the article; free-text | unicode |  |
-| metadata.license_ref.type | Type of licence (most likely the same as the title or 'ali_free' if ali:free-to-read); free-text | unicode |  |
+| metadata.license_ref.type | Type of licence (most likely the same as the title); free-text | unicode |  |
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |
 | metadata.license_ref.version | Version of the licence | unicode |  |
 | metadata.license_ref.start | License start date | unicode |  |
-| metadata.license_ref.best | Best licence indiator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below) | boolean |  |
+| metadata.license_ref.best | Best licence indicator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below) | boolean |  |
 | metadata.free2read | Ali:free-to-read indicator. **Do NOT rely on this** - see note below. | | |
 | metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
 | metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |

@@ -1,6 +1,6 @@
 # PubRouter EPrints-RIOXX XML Description
 
-This document describes the RIOXXplus XML (Version 2) output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus v2 plugins.
+This document describes the RIOXXplus XML (Version 2) output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus 2 plugins.
 
 Background information:
 * [eprints-rioxx.xsd](./pubrouter-xsd/eprints-rioxx.xsd) - Eprints-RIOXX schema definition
@@ -36,7 +36,7 @@ The following table lists:
 | [rioxxterms:publication_date](http://www.rioxx.net/profiles/v2-0-final/) | publication_date | `<rioxxterms:publication_date>[publication_date]</rioxxterms:publication_date>` | {0..1}<br>Possible formats: YYYY-MM-DD \| YYYY-MM \| YYYY \| YYYY, season |
 | [rioxxterms:version](http://www.rioxx.net/profiles/v2-0-final/) | article.version |  `<rioxxterms:version>[article.version]</rioxxterms:version>` | {0..1}<br>Version of article (controlled value from rioxxterms:versionList) |
 | [rioxxterms:version_of_record](http://www.rioxx.net/profiles/v2-0-final/) | article.identifier.type<br>article.identifier.id |  `<rioxxterms:version>[article.version]</rioxxterms:version>` | {0..1}<br>DOI where version is one of VoR \| CVoR \| EVoR |
-| [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | funding.name<br> project.identifier<br>funding.grant_numbers | `<rioxxterms:project funder_id=[funding.identifier.type]:[funding.identifier.id] funder_name=[funding.name]>[funding.grant_number] </rioxxterms:project>` | {0..n}<br>Note the funder_id attribute holds a compound string of general format "type:id" e.g. "FundRef:10.13039/100000002" |
+| [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | funding.name<br> project.identifier<br>funding.grant_numbers | `<rioxxterms:project funder_id=[funding.identifier.type]:[funding.identifier.id] funder_name=[funding.name]>[funding.grant_numbers] </rioxxterms:project>` | {0..n}<br>Note the funder_id attribute holds a compound string of general format "type:id" e.g. "FundRef:10.13039/100000002" |
 | [ali:license_ref](./pubrouter-xsd/eprints-rioxx.xsd#L252) | license_ref.url<br>license_ref.start | `<ali:license_ref start_date=[license_ref.start]>[license_ref.url]</ali:license_ref>` | {0..1}<br>Date format: YYYY-MM-DD |
 | [pr:embargo](./pubrouter-xsd/eprints-rioxx.xsd#L272) | embargo.start<br> embargo.end<br>embargo.duration | `<pr:embargo start_date=[embargo.start] end_date=[embargo.end]></pr:embargo>` | {0..1}<br>At least one of attributes start \| end must be present, format: YYYY-MM-DD |
 | [pr:start_page](./pubrouter-xsd/eprints-rioxx.xsd#L170) | article.start_page | `<pr:start_page>[article.start_page]</pr:start_page>` | {0..1} |

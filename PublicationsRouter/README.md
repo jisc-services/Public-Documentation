@@ -4,4 +4,4 @@ Jisc Publications Router is one of Jisc's Open Access services.  It is concerned
 
 Further information, including technical overview, is available on the PubRouter website https://pubrouter.jisc.ac.uk/.
 
-The pages available in this repository describe the services provided by PubRouter, including its RESTful API.
+The pages available in this repository describe the services provided by PubRouter, including its [RESTful API](./api/v3/README.md).
