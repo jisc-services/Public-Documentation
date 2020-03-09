@@ -500,6 +500,18 @@ components:
     JSONNote:
       type: object
       properties:
+        id: 
+          type: string
+          example: "149f72cb93e345708cf924e432d4f996"
+        created_date:
+          type: string
+          format: date
+        analysis_date:
+          type: string
+          format: date
+        event:
+          type: string
+          example: accepted
         provider:
           $ref: '#/components/schemas/NoteProvider'
         content:
@@ -525,11 +537,20 @@ components:
     NoteLink:
       type: object
       properties:
+        type:
+          type: string
+          example: splash
         format:
           type: string
           example: application/pdf
         url:
           type: string
+        packaging:
+          type: string
+          example: "<package format identifier string>"
+        access:
+          type: string
+          example: router
     NoteMetadata:
       type: object
       properties:
@@ -566,9 +587,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NoteLicenseRef'
-        refereed:
-          type: string
-          example: true
+        free2read:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date
+            end:
+              type: string
+              format: date
     NoteIdentifier:
       type: object
       properties:
@@ -693,6 +720,9 @@ components:
         day:
           type: integer
           example: 20
+        season:
+          type: string
+          example: Spring
     NoteHistoryDate:
       type: object
       properties:
@@ -743,6 +773,9 @@ components:
           example: 4.0
         start:
           type: string
+        best:
+          type: boolean
+          value: true
 
   responses:
     BadRequest:
