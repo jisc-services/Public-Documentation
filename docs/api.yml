@@ -741,7 +741,8 @@ components:
           type: string
         date:
           type: string
-          format: date
+          example: "2020-03-01"
+          description: "A date field that accepts formats: YYYY-MM-DD, YYYY-MM, YYYY"
     NoteFunding:
       type: object
       properties:
