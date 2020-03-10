@@ -7,8 +7,19 @@ info:
      * retrieving articles (metadata and content)
      * sending articles (metadata and content).
      
-     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3). 
+     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3).
+
+     ## Metadata notes
+
+     ### Licences
+
+     See [Using Router Metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Using_Router_Metadata.md#licence-details) for important guidance on using and displaying these fields.
      
+     ### ali:free2read
+
+     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you must not rely upon this value.
+     
+     The `metadata.free2read` element may be deprecated in a future version of the API.
   version: '3'
 servers:
   - url: https://uat.pubrouter.jisc.ac.uk/api/v3
@@ -386,7 +397,7 @@ components:
           example: "(UUID)"
         created_date:
           type: string
-          format: date
+          format: date-time
         last_updated:
           type: string
           format: date
@@ -471,7 +482,7 @@ components:
       properties:
         timestamp:
           type: string
-          format: date
+          format: date-time
         page:
           type: integer
           example: 1
@@ -483,7 +494,7 @@ components:
           example: 1234
         since:
           type: string
-          format: date
+          format: date-time
         notifications:
           type: array
           items:
@@ -508,7 +519,7 @@ components:
           format: date
         analysis_date:
           type: string
-          format: date
+          format: date-time
         event:
           type: string
           example: accepted
@@ -773,6 +784,7 @@ components:
           example: 4.0
         start:
           type: string
+          format: date
         best:
           type: boolean
           value: true
