@@ -187,7 +187,8 @@ paths:
       summary: Retrieve a list of notifications routed to a specified repository.
       description: >
         This endpoint returns a list of all notifications that have been routed to the specified repository since a particular date.<br><br>
-        The {RepositoryId} is the hexadecimal repository identifier (available from the PubRouter repository account page).
+        The {RepositoryId} is the hexadecimal repository identifier (available from the PubRouter repository account page).<br><br>
+        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
           description: 200 - There were some notifications after the since date.
@@ -204,6 +205,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NotificationID'
       summary: Retrieve the metadata for a specific notification
+      description: >
+        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
           description: 200 - Notification found.
@@ -224,7 +227,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NotificationID'
       summary: Retrieve the zipped content (metadata and article text) of a notification.
-      description: If available. returns the original zip file containing notification metadata  and article text if supplied.
+      description: >
+        If available. returns the original zip file containing notification metadata  and article text if supplied.<br><br>
+        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
           description: 200 - Found notification and returned content.
@@ -269,7 +274,7 @@ components:
       required: true
       schema:
         type: string
-      description: Date from which to collect notifications. Date format is YYYY-MM-DD.
+      description: Timestamp with format `yyyy-mm-ddThh:mm:ssZ` from which to collect notifications. Accepts dates with format `yyyy-mm-dd`, where time is set to midnight UTC.
       example: "2018-08-08"
       
     RoutedPage:
