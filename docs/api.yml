@@ -513,7 +513,7 @@ components:
       properties:
         id: 
           type: string
-          example: "149f72cb93e345708cf924e432d4f996"
+          example: "ef0de02433e943feacd327917b3b3db7"
         created_date:
           type: string
           format: date
@@ -523,6 +523,7 @@ components:
         event:
           type: string
           example: accepted
+          description: "This attribute is unavailable for outgoing notifications"
         provider:
           $ref: '#/components/schemas/NoteProvider'
         content:
@@ -550,18 +551,20 @@ components:
       properties:
         type:
           type: string
-          example: splash
+          example: "package"
+          description: "type of content available at the URL, e.g. 'fulltext' or 'package' or 'splash'"
         format:
           type: string
-          example: application/pdf
+          example: "application/zip"
         url:
           type: string
         packaging:
           type: string
-          example: "<package format identifier string>"
+          example: "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         access:
           type: string
           example: router
+          description: "permitted access level, one of: public|router|special"
     NoteMetadata:
       type: object
       properties:
@@ -733,7 +736,8 @@ components:
           example: 20
         season:
           type: string
-          example: Spring
+          example: "Spring"
+          description: "Season of publication (for example, Spring, Third Quarter)"
     NoteHistoryDate:
       type: object
       properties:
@@ -741,7 +745,7 @@ components:
           type: string
         date:
           type: string
-          example: "2020-03-01"
+          example: "'2020-03-01' or '2020-11' or '2021'"
           description: "A date field that accepts formats: YYYY-MM-DD, YYYY-MM, YYYY"
     NoteFunding:
       type: object
