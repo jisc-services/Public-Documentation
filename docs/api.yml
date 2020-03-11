@@ -610,6 +610,7 @@ components:
             end:
               type: string
               format: date
+          description: "The `metadata.free2read` element may be deprecated in a future version of the API."
     NoteIdentifier:
       type: object
       properties:
