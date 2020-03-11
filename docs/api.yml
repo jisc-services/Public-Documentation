@@ -274,7 +274,7 @@ components:
       required: true
       schema:
         type: string
-      description: Timestamp with format `yyyy-mm-ddThh:mm:ssZ` from which to collect notifications. Accepts dates with format `yyyy-mm-dd`, where time is set to midnight UTC.
+      description: Timestamp with format `yyyy-mm-ddThh:mm:ssZ` from which to collect notifications. Also accepts dates of format `yyyy-mm-dd`, where the date is converted to a timestamp set to midnight UTC.
       example: "2018-08-08"
       
     RoutedPage:
