@@ -7,8 +7,19 @@ info:
      * retrieving articles (metadata and content)
      * sending articles (metadata and content).
      
-     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3). 
+     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3).
+
+     ## Metadata notes
+
+     ### Licences
+
+     See [Using Router Metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Using_Router_Metadata.md#licence-details) for important guidance on using and displaying these fields.
      
+     ### ali:free2read
+
+     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you must not rely upon this value.
+     
+     The `metadata.free2read` element may be deprecated in a future version of the API.
   version: '3'
 servers:
   - url: https://uat.pubrouter.jisc.ac.uk/api/v3
@@ -176,7 +187,8 @@ paths:
       summary: Retrieve a list of notifications routed to a specified repository.
       description: >
         This endpoint returns a list of all notifications that have been routed to the specified repository since a particular date.<br><br>
-        The {RepositoryId} is the hexadecimal repository identifier (available from the PubRouter repository account page).
+        The {RepositoryId} is the hexadecimal repository identifier (available from the PubRouter repository account page).<br><br>
+        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
           description: 200 - There were some notifications after the since date.
@@ -193,6 +205,8 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NotificationID'
       summary: Retrieve the metadata for a specific notification
+      description: >
+        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
           description: 200 - Notification found.
@@ -213,7 +227,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/NotificationID'
       summary: Retrieve the zipped content (metadata and article text) of a notification.
-      description: If available. returns the original zip file containing notification metadata  and article text if supplied.
+      description: >
+        If available. returns the original zip file containing notification metadata  and article text if supplied.<br><br>
+        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
           description: 200 - Found notification and returned content.
@@ -258,8 +274,8 @@ components:
       required: true
       schema:
         type: string
-      description: Date from which to collect notifications. Date format is YYYY-MM-DD.
-      example: "2018-08-08"
+      description: Timestamp with format `yyyy-mm-ddThh:mm:ssZ` from which to collect notifications. Also accepts dates with format `yyyy-mm-dd`, where the date is converted to a timestamp set to midnight UTC.
+      example: "2018-08-08T00:00:00Z"
       
     RoutedPage:
       in: query
@@ -386,7 +402,7 @@ components:
           example: "(UUID)"
         created_date:
           type: string
-          format: date
+          format: date-time
         last_updated:
           type: string
           format: date
@@ -471,7 +487,7 @@ components:
       properties:
         timestamp:
           type: string
-          format: date
+          format: date-time
         page:
           type: integer
           example: 1
@@ -483,7 +499,7 @@ components:
           example: 1234
         since:
           type: string
-          format: date
+          format: date-time
         notifications:
           type: array
           items:
@@ -500,6 +516,19 @@ components:
     JSONNote:
       type: object
       properties:
+        id: 
+          type: string
+          example: "ef0de02433e943feacd327917b3b3db7"
+        created_date:
+          type: string
+          format: date
+        analysis_date:
+          type: string
+          format: date-time
+        event:
+          type: string
+          example: accepted
+          description: "This attribute is unavailable for outgoing notifications"
         provider:
           $ref: '#/components/schemas/NoteProvider'
         content:
@@ -525,11 +554,22 @@ components:
     NoteLink:
       type: object
       properties:
+        type:
+          type: string
+          example: "package"
+          description: "type of content available at the URL, e.g. 'fulltext' or 'package' or 'splash'"
         format:
           type: string
-          example: application/pdf
+          example: "application/zip"
         url:
           type: string
+        packaging:
+          type: string
+          example: "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+        access:
+          type: string
+          example: router
+          description: "permitted access level, one of: public|router|special"
     NoteMetadata:
       type: object
       properties:
@@ -566,9 +606,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NoteLicenseRef'
-        refereed:
-          type: string
-          example: true
+        free2read:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date
+            end:
+              type: string
+              format: date
+          description: "The `metadata.free2read` element may be deprecated in a future version of the API."
     NoteIdentifier:
       type: object
       properties:
@@ -693,6 +740,10 @@ components:
         day:
           type: integer
           example: 20
+        season:
+          type: string
+          example: "Spring"
+          description: "Season of publication (for example, Spring, Third Quarter)"
     NoteHistoryDate:
       type: object
       properties:
@@ -700,7 +751,8 @@ components:
           type: string
         date:
           type: string
-          format: date
+          example: "'2020-03-01' or '2020-11' or '2021'"
+          description: "A date field that accepts formats: YYYY-MM-DD, YYYY-MM, YYYY"
     NoteFunding:
       type: object
       properties:
@@ -743,6 +795,10 @@ components:
           example: 4.0
         start:
           type: string
+          format: date
+        best:
+          type: boolean
+          value: true
 
   responses:
     BadRequest:
