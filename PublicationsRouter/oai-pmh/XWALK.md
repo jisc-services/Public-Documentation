@@ -1,12 +1,12 @@
-# PubRouter Notification to OAI_DC Crosswalk
+# Publications Router Notification to OAI_DC Crosswalk
 
-The table below lists the OAI_DC terms that are provided by PubRouter's implementation of OAI-PMH, and shows how PubRouter's metadata elements are mapped to these.
+The table below lists the OAI_DC terms that are provided by Publications Router's implementation of OAI-PMH, and shows how Publications Router's metadata elements are mapped to these.
 
-Note that given the simplicity of the OAI_DC format, only a subset of the PubRouter notification fields are available.
+Note that given the simplicity of the OAI_DC format, only a subset of the Publications Router notification fields are available.
 
-**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated PubRouter JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
+**NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated Publications Router JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.
 
-| oai_dc terms | PubRouter Metadata (source) | XML Format |
+| oai_dc terms | Publications Router Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dc:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dc:publisher>[journal.publisher]</dc:publisher>` |
 | [dc:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dc:source>[journal.identifier.type]: [journal.identifier.id]</dc:source>` |

@@ -1,6 +1,6 @@
 # Incoming Notification
 
-The PubRouter IncomingNotification is the structure used by a Publisher to send publication meta-data to PubRouter for routing to Repositories.
+The Publications Router IncomingNotification is the structure used by a Publisher to send publication meta-data to Publications Router for routing to Repositories.
 
 ## JSON Data Structure
 

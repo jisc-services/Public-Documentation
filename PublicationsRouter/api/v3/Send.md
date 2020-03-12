@@ -10,16 +10,16 @@ Also see the **[API Swagger documentation](https://jisc-services.github.io/Publi
 
 ### Validation and Live endpoints
 
-If you are a publisher (also referred to here as a "provider") providing content to PubRouter, you have access to 2 endpoints:
+If you are a publisher (also referred to here as a "provider") providing content to Publications Router, you have access to 2 endpoints:
 
-1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to PubRouter
+1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to Publications Router
 
-2. **Notification endpoint** - for "live" use, sending real notifications to PubRouter
+2. **Notification endpoint** - for "live" use, sending real notifications to Publications Router
 
 
 ### Sending Metadata only or Metadata plus full-text article
 
-You can create content in 2 ways in PubRouter:
+You can create content in 2 ways in Publications Router:
 
 1. As a **metadata-only notification** - which allows you to provide publication information in our native JSON format as an [Incoming Notification](./IncomingNotification.md#incoming-notification).
 
@@ -49,7 +49,7 @@ If you are applying an embargo to the content this can be indicated via the **em
 
 #### Links to your publicly hosted content
 
-If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with PubRouter, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
+If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with Publications Router, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
 
     "links" : [
         {
@@ -187,14 +187,14 @@ If you are sending a list of notifications, the request must take the form shown
          {"notification": {Incoming notification JSON object}, "id": 2},
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
-NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 	
 &nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
 
-# Notification endpoints (for sending notifications to PubRouter)
+# Notification endpoints (for sending notifications to Publications Router)
 
 The Notification API endpoints 
 * POST /notification
@@ -206,7 +206,7 @@ Again, you must have "Publisher account" to access this endpoint.
 
 The system will not attempt to aggressively validate the request, but the request must still be well-formed in order to succeed, so you may still receive a validation error.
 
-On a successful call to this endpoint, your notification will be accepted into PubRouter where it will be queued for subsequent processing and routing to matched repositories.
+On a successful call to this endpoint, your notification will be accepted into Publications Router where it will be queued for subsequent processing and routing to matched repositories.
 
 ## Single notification submission (POST /notification)
 
@@ -364,7 +364,7 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
-        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "created_ids": [ <list of Publications Router notification IDs of created notifications> ],
         "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
         "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
         "last_error": <error message describing the error which caused the last failed notification to fail>
@@ -381,7 +381,7 @@ Note these are different from the Validation endpoint.
     {
         "successful": <number of successfully processed notifications>,
         "total": <the number of items received in the list>,
-        "created_ids": [ <list of PubRouter notification IDs of created notifications> ],
+        "created_ids": [ <list of Publications Router notification IDs of created notifications> ],
         "success_ids": [ <list of IDs of successfully processed notifications> ],
         "fail_ids": [ <list of IDs of notifications that could not be processed> ],
         "last_error": "<Last error message>"
@@ -404,7 +404,7 @@ If you are sending a list of notifications, the request must take the form:
          {"notification": {Incoming notification JSON object}, "id": 2},
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
-NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by PubRouter but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 	
 &nbsp;
 &nbsp;

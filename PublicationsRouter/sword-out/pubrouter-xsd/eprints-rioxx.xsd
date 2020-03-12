@@ -307,7 +307,7 @@
                                 url - link to the item
                                 filename - Name that should be given to the file within the repository
                                 format - Item mime type
-                                public (optional) - Boolean: true: URL is public | false: URL is private (to PubRouter) and so requires API-key to be included as parameter.  NOTE: a download_link is assumed to be private unless public="true" attribute is set
+                                public (optional) - Boolean: true: URL is public | false: URL is private (to Publications Router) and so requires API-key to be included as parameter.  NOTE: a download_link is assumed to be private unless public="true" attribute is set
                                 packaging (optional) - For zip files only - packaging identifier
                                 primary - Boolean: if true the repository is expected to associate license, embargo and similar information with the file and list it ahead of any files with primary set to false.
                         </xs:documentation>

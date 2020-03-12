@@ -1,6 +1,6 @@
 # Docs folder
 
-This directory contains all the code and configuration needed to present the PubRouter API Swagger documentation via *GitHub Pages*.
+This directory contains all the code and configuration needed to present the Publications Router API Swagger documentation via *GitHub Pages*.
 
 ## api.yml
 

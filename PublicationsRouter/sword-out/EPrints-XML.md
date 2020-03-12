@@ -1,18 +1,18 @@
-# PubRouter EPrints XML Description
+# Publications Router EPrints XML Description
 
-This document describes the XML output by PubRouter for ingest into EPrints repositories via the SWORDv2 interface.
+This document describes the XML output by Publications Router for ingest into EPrints repositories via the SWORDv2 interface.
 
 For more information about the schema see: 
 * [EPrints XML](http://wiki.eprints.org/w/XML_Export_Format)
 
 The following table lists:
-* Column 1 - the XML elements output by PubRouter 
-* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
+* Column 1 - the XML elements output by Publications Router 
+* Column 2 - Publications Router internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Conditional phrases are shown within `{curly brackets}` these will be omitted if there is no data to display; within such phrases choices in data to display are indicated by `|` character, the first non-blank data item is displayed. Any other text is output as it appears in the format.
 
-| Eprint element terms | PubRouter Metadata | XML Format |
+| Eprint element terms | Publications Router Metadata | XML Format |
 |-----------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | publication |  journal.title | `<publication>[journal.title]</publication>` |
 | volume | journal.volume | `<volume>[journal.volume]</volume>` |

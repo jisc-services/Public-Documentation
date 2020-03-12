@@ -1,5 +1,5 @@
 # Matching Parameters
-The main purpose of PubRouter is to forward relevant articles to institutional repositories or CRISs. Each institution defines a set of ***Matching Parameters*** which are used by PubRouter during its analysis of article metadata (author affiliations and grant information) to decide whether an article is relevant to a particular insitution.  
+The main purpose of Publications Router is to forward relevant articles to institutional repositories or CRISs. Each institution defines a set of ***Matching Parameters*** which are used by Publications Router during its analysis of article metadata (author affiliations and grant information) to decide whether an article is relevant to a particular insitution.  
 
 # Matching Parameter Structure
 The JSON structures used with the GET and POST `/config` API endpoints are described below.
