@@ -442,11 +442,11 @@ components:
       items:
         type: object
         properties:
-          notification:
-            $ref: '#/components/schemas/PostNote'
           id:
             type: string
             example: "publisher-unique-id"
+          notification:
+            $ref: '#/components/schemas/PostNote'
 
     PostNote:
       type: object
