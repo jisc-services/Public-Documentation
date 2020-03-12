@@ -1,13 +1,15 @@
 openapi: 3.0.1
 info:
-  title: PubRouter API
+  title: Publications Router API
   description: >
+    ## Overview
+
     Jisc [Publications Router](https://pubrouter.jisc.ac.uk/) exposes an API which may be used to interact with it for the purpose of:
-     * editing repository account matching configuration
-     * retrieving articles (metadata and content)
-     * sending articles (metadata and content).
-     
-     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3).
+     * Retrieving articles (metadata and content) - for use by institutions for populating a repository or CRIS
+     * Sending articles (metadata and content) - for use by publishers, sending articles to Publications Router
+     * Modifying repository matching parameters configuration - for use by institutions (particularly CRIS).
+
+     See [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3) for a full description of the API.
 
      ## Metadata notes
 
@@ -17,9 +19,21 @@ info:
      
      ### ali:free2read
 
-     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you must not rely upon this value.
-     
-     The `metadata.free2read` element may be deprecated in a future version of the API.
+     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository so **you must not rely upon this value**.  This element may be deprecated in a future version of the API.
+
+    ## Using this swagger interface
+
+    You can use this page in two ways:
+     * As a simple source of information on available endpoints, parameters and data models (i.e. JSON data stuctures) - though note that a fuller description is available [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3)
+     * An interactive facility for interacting with the API.
+
+    ### Interactive mode
+
+    For full interactive use you will need to do the following:
+     * Authorize, using your API key (available on your Publications Router account page)
+     * Select the server to interrogate (Live or UAT) corresponding to your credentials
+     * Depending on the API request, supply further parameters, such as your Publications Router account ID.
+
   version: '3'
 servers:
   - url: https://uat.pubrouter.jisc.ac.uk/api/v3
@@ -39,6 +53,7 @@ tags:
     url: https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md
 security:
   - ApiKeyAuth: []
+
 paths:
   /config:
     get:
@@ -90,13 +105,14 @@ paths:
                 $ref: '#/components/schemas/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+
   /validate:
     post:
       tags:
         - Publisher
       summary: Validate an article submission.
       description: >
-        Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br> 
+        Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br>
         You can submit just article metadata as a JSON package (with a request content-type of 'application/json').<br><br>
         Alternatively if you have both metadata and the article text you will need to make a multipart deposit (with a content-type of 'multipart/related').  NOTE that Swagger does not currently support this content-type, so we have used "multipart/form-data" so you can see the multipart format and test it (but for live submissions you would need to specify 'multipart/related').<br><br>
         [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
@@ -109,6 +125,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+
   /validate/list:
     post:
       tags:
@@ -127,6 +144,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+
   /notification:
     post:
       tags:
@@ -148,6 +166,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+
   /notification/list:
     post:
       tags:
@@ -175,6 +194,7 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+
   /routed/{repositoryId}:
     get:
       tags:
@@ -198,6 +218,7 @@ paths:
                 $ref: '#/components/schemas/RoutedSuccess'
         '400':
           $ref: '#/components/responses/BadRequest'
+
   /notification/{notificationId}:
     get:
       tags:
@@ -213,13 +234,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/JSONNote'
+                $ref: '#/components/schemas/Notification'
         '404':
           description: 404 - No notification found.
           content:
             application/json:
-              schema: 
+              schema:
                 $ref: '#/components/schemas/BadRequest'
+
   /notification/{notificationId}/content:
     get:
       tags:
@@ -250,7 +272,7 @@ components:
       name: api_key
 
   parameters:
-    RepositoryID: 
+    RepositoryID:
       in: path
       name: repositoryId
       required: true
@@ -259,7 +281,7 @@ components:
       description: Repository ID - a hexadecimal string, like e6f073baa57b46b2b6ac621e7f02583a.
       example: e6f073baa57b46b2b6ac621e7f02583a
 
-    NotificationID: 
+    NotificationID:
       in: path
       name: notificationId
       required: true
@@ -267,7 +289,7 @@ components:
         type: string
       description: Notification ID - a hexadecimal string, like 149f72cb93e345708cf924e432d4f996.
       example: 149f72cb93e345708cf924e432d4f996
-      
+
     RoutedSince:
       in: query
       name: since
@@ -276,7 +298,7 @@ components:
         type: string
       description: Timestamp with format `yyyy-mm-ddThh:mm:ssZ` from which to collect notifications. Also accepts dates with format `yyyy-mm-dd`, where the date is converted to a timestamp set to midnight UTC.
       example: "2018-08-08T00:00:00Z"
-      
+
     RoutedPage:
       in: query
       name: page
@@ -284,7 +306,7 @@ components:
         type: string
       description: Page number to retrieve when more than one page of results is returned.<br> [OPTIONAL, defaults to 1].
       example: 1
-    
+
     RoutedPageSize:
       in: query
       name: pageSize
@@ -313,7 +335,7 @@ components:
               contentType: application/zip
         application/json:
           schema:
-            $ref: '#/components/schemas/JSONNote'
+            $ref: '#/components/schemas/PostNote'
     SingleNotification:
       content:
         multipart/related:
@@ -321,7 +343,7 @@ components:
             type: object
             properties:
               metadata:
-                $ref: '#/components/schemas/JSONNote'
+                $ref: '#/components/schemas/PostNote'
               content:
                 type: string
                 format: binary
@@ -332,12 +354,12 @@ components:
               contentType: application/zip
         application/json:
           schema:
-            $ref: '#/components/schemas/JSONNote'
+            $ref: '#/components/schemas/PostNote'
     ListNotification:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/JSONNoteList'
+            $ref: '#/components/schemas/PostNoteList'
 
   schemas:
     MatchingParameters:
@@ -367,6 +389,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NoteIdentifier"
+
     MatchingParametersSuccess:
       type: object
       properties:
@@ -406,12 +429,64 @@ components:
         last_updated:
           type: string
           format: date
+
     BadRequest:
       type: object
       properties:
         error:
           type: string
           example: "Your request contained an error."
+
+    PostNoteList:
+      type: array
+      items:
+        type: object
+        properties:
+          notification:
+            $ref: '#/components/schemas/PostNote'
+          id:
+            type: string
+            example: "publisher-unique-id"
+
+    PostNote:
+      type: object
+      properties:
+        event:
+          type: string
+          example: accepted
+        provider:
+          type: object
+          properties:
+            agent:
+              type: string
+              example: Elsevier
+            ref:
+              type: string
+              example: elsevier-unique-id
+        content:
+          type: object
+          properties:
+            packaging_format:
+              type: string
+              example: https://purl.org/net/SimpleZip
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: "package"
+                description: "type of content available at the URL, e.g. 'fulltext' or 'package' or 'splash'"
+              format:
+                type: string
+                example: "application/pdf"
+              url:
+                type: string
+                example: "https://publisher.com/fulltext-article.pdf"
+        metadata:
+          $ref: '#/components/schemas/NoteMetadata'
+
     NotificationSuccess:
       type: object
       properties:
@@ -421,6 +496,7 @@ components:
         location:
           type: string
           example: "/notification/149f72cb93e345708cf924e432d4f996"
+
     NotificationListCreated:
       type: object
       properties:
@@ -435,8 +511,8 @@ components:
           items:
             type: string
           example:
-            - "1"
-            - "2"
+            - "publisher-id-1"
+            - "publisher-id-2"
         fail_ids:
           type: array
           items:
@@ -447,11 +523,11 @@ components:
           items:
             type: string
           example:
-            - "149f72cb93e345708cf924e432d4f996"
-            - "278f72cb93e345708cf924e432d4f996"
+            - afe8bc55839d4b368f51304aae5fdcc6
+            - cff2aa5da79447f6a9b9fa6dc849e208
         last_error:
           type: string
-          example: ""
+
     NotificationListAccepted:
       type: object
       properties:
@@ -466,22 +542,23 @@ components:
           items:
             type: string
           example:
-            - "1"
+            - "publisher-id-1"
         fail_ids:
           type: array
           items:
             type: string
           example:
-            - "2"
+            - "publisher-id-2"
         created_ids:
           type: array
           items:
             type: string
-          example: 
+          example:
             - "149f72cb93e345708cf924e432d4f996"
         last_error:
           type: string
-          example: "Notification with ID '2' failed: metadata was not a valid notification"
+          example: "Notification with ID 'publisher-id-2' failed: metadata was not a valid notification"
+
     RoutedSuccess:
       type: object
       properties:
@@ -503,20 +580,12 @@ components:
         notifications:
           type: array
           items:
-            $ref: '#/components/schemas/JSONNote' 
-    JSONNoteList:
-      type: array
-      items:
-        type: object
-        properties:
-          notification:
-            $ref: '#/components/schemas/JSONNote'
-          id:
-            type: string
-    JSONNote:
+            $ref: '#/components/schemas/Notification'
+
+    Notification:
       type: object
       properties:
-        id: 
+        id:
           type: string
           example: "ef0de02433e943feacd327917b3b3db7"
         created_date:
@@ -530,46 +599,41 @@ components:
           example: accepted
           description: "This attribute is unavailable for outgoing notifications"
         provider:
-          $ref: '#/components/schemas/NoteProvider'
+          type: object
+          properties:
+            agent:
+              type: string
+              example: Elsevier
         content:
-          $ref: '#/components/schemas/NoteContent'
+          type: object
+          properties:
+            packaging_format:
+              type: string
+              example: https://purl.org/net/SimpleZip
         links:
           type: array
           items:
-            $ref: '#/components/schemas/NoteLink'
+            type: object
+            properties:
+              type:
+                type: string
+                example: "package"
+                description: "type of content available at the URL, e.g. 'fulltext' or 'package' or 'splash'"
+              format:
+                type: string
+                example: "application/zip"
+              url:
+                type: string
+              packaging:
+                type: string
+                example: "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+              access:
+                type: string
+                example: router
+                description: "permitted access level, one of: public|router|special"
         metadata:
           $ref: '#/components/schemas/NoteMetadata'
-    NoteProvider:
-      type: object
-      properties:
-        agent:
-          type: string
-          example: Elsevier
-    NoteContent:
-      type: object
-      properties:
-        packaging_format:
-          type: string
-          example: https://purl.org/net/SimpleZip
-    NoteLink:
-      type: object
-      properties:
-        type:
-          type: string
-          example: "package"
-          description: "type of content available at the URL, e.g. 'fulltext' or 'package' or 'splash'"
-        format:
-          type: string
-          example: "application/zip"
-        url:
-          type: string
-        packaging:
-          type: string
-          example: "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-        access:
-          type: string
-          example: router
-          description: "permitted access level, one of: public|router|special"
+
     NoteMetadata:
       type: object
       properties:
@@ -616,6 +680,7 @@ components:
               type: string
               format: date
           description: "The `metadata.free2read` element may be deprecated in a future version of the API."
+
     NoteIdentifier:
       type: object
       properties:
@@ -623,6 +688,7 @@ components:
           type: string
         id:
           type: string
+
     NoteJournal:
       type: object
       properties:
@@ -647,6 +713,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NoteIdentifier'
+
     NoteArticle:
       type: object
       properties:
@@ -690,6 +757,7 @@ components:
           items:
             type: string
             example: Article subject
+
     NoteContributor:
       type: object
       properties:
@@ -708,6 +776,7 @@ components:
         affiliation:
           type: string
           example: Jisc United Kingdom
+
     NoteContributorName:
       type: object
       properties:
@@ -723,6 +792,7 @@ components:
         suffix:
           type: string
           example: Sr.
+
     NotePublicationDate:
       type: object
       properties:
@@ -743,7 +813,7 @@ components:
         season:
           type: string
           example: "Spring"
-          description: "Season of publication (for example, Spring, Third Quarter)"
+
     NoteHistoryDate:
       type: object
       properties:
@@ -753,12 +823,13 @@ components:
           type: string
           example: "'2020-03-01' or '2020-11' or '2021'"
           description: "A date field that accepts formats: YYYY-MM-DD, YYYY-MM, YYYY"
+
     NoteFunding:
       type: object
       properties:
         name:
           type: string
-          example: Funder
+          example: Welcome Foundation
         identifier:
           type: array
           items:
@@ -767,6 +838,7 @@ components:
           type: array
           items:
             type: string
+
     NoteEmbargo:
       type: object
       properties:
@@ -779,26 +851,27 @@ components:
         duration:
           type: integer
           example: 12
+
     NoteLicenseRef:
       type: object
       properties:
         title:
           type: string
-          example: CC-By
-        'type':
+          example: cc-by
+        type:
           type: string
+          example: Open licence
         url:
           type: string
           example: https://creativecommons.org/licenses/by-nc-sa/4.0/
         version:
           type: string
-          example: 4.0
+          example: "4.0"
         start:
           type: string
           format: date
         best:
           type: boolean
-          value: true
 
   responses:
     BadRequest:
@@ -807,8 +880,10 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/BadRequest'
+
     NoContent:
       description: 204 - No Content. Valid request
+
     BadApiKey:
       description: 401 - Unauthenticated. Missing/incorrect API key, or incorrect user type.
       content:
