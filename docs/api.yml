@@ -1,13 +1,15 @@
 openapi: 3.0.1
 info:
-  title: PubRouter API
+  title: Publications Router API
   description: >
+    ## Overview
+
     Jisc [Publications Router](https://pubrouter.jisc.ac.uk/) exposes an API which may be used to interact with it for the purpose of:
-     * editing repository account matching configuration
-     * retrieving articles (metadata and content)
-     * sending articles (metadata and content).
-     
-     Find additional description of the API [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3).
+     * Retrieving articles (metadata and content) - for use by institutions for populating a repository or CRIS
+     * Sending articles (metadata and content) - for use by publishers, sending articles to Publications Router
+     * Modifying repository matching parameters configuration - for use by institutions (particularly CRIS).
+
+     See [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3) for a full description of the API.
 
      ## Metadata notes
 
@@ -17,9 +19,21 @@ info:
      
      ### ali:free2read
 
-     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you must not rely upon this value.
-     
-     The `metadata.free2read` element may be deprecated in a future version of the API.
+     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository so **you must not rely upon this value**.  This element may be deprecated in a future version of the API.
+
+    ## Using this swagger interface
+
+    You can use this page in two ways:
+     * As a simple source of information on available endpoints, parameters and data models (i.e. JSON data stuctures) - though note that a fuller description is available [here](https://github.com/jisc-services/Public-Documentation/tree/master/PublicationsRouter/api/v3)
+     * An interactive facility for interacting with the API.
+
+    ### Interactive mode
+
+    For full interactive use you will need to do the following:
+     * Authorize, using your API key (available on your Publications Router account page)
+     * Select the server to interrogate (Live or UAT) corresponding to your credentials
+     * Depending on the API request, supply further parameters, such as your Publications Router account ID.
+
   version: '3'
 servers:
   - url: https://uat.pubrouter.jisc.ac.uk/api/v3
@@ -96,7 +110,7 @@ paths:
         - Publisher
       summary: Validate an article submission.
       description: >
-        Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br> 
+        Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br>
         You can submit just article metadata as a JSON package (with a request content-type of 'application/json').<br><br>
         Alternatively if you have both metadata and the article text you will need to make a multipart deposit (with a content-type of 'multipart/related').  NOTE that Swagger does not currently support this content-type, so we have used "multipart/form-data" so you can see the multipart format and test it (but for live submissions you would need to specify 'multipart/related').<br><br>
         [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
@@ -218,7 +232,7 @@ paths:
           description: 404 - No notification found.
           content:
             application/json:
-              schema: 
+              schema:
                 $ref: '#/components/schemas/BadRequest'
   /notification/{notificationId}/content:
     get:
@@ -250,7 +264,7 @@ components:
       name: api_key
 
   parameters:
-    RepositoryID: 
+    RepositoryID:
       in: path
       name: repositoryId
       required: true
@@ -259,7 +273,7 @@ components:
       description: Repository ID - a hexadecimal string, like e6f073baa57b46b2b6ac621e7f02583a.
       example: e6f073baa57b46b2b6ac621e7f02583a
 
-    NotificationID: 
+    NotificationID:
       in: path
       name: notificationId
       required: true
@@ -267,7 +281,7 @@ components:
         type: string
       description: Notification ID - a hexadecimal string, like 149f72cb93e345708cf924e432d4f996.
       example: 149f72cb93e345708cf924e432d4f996
-      
+
     RoutedSince:
       in: query
       name: since
@@ -276,7 +290,7 @@ components:
         type: string
       description: Timestamp with format `yyyy-mm-ddThh:mm:ssZ` from which to collect notifications. Also accepts dates with format `yyyy-mm-dd`, where the date is converted to a timestamp set to midnight UTC.
       example: "2018-08-08T00:00:00Z"
-      
+
     RoutedPage:
       in: query
       name: page
@@ -284,7 +298,7 @@ components:
         type: string
       description: Page number to retrieve when more than one page of results is returned.<br> [OPTIONAL, defaults to 1].
       example: 1
-    
+
     RoutedPageSize:
       in: query
       name: pageSize
@@ -477,7 +491,7 @@ components:
           type: array
           items:
             type: string
-          example: 
+          example:
             - "149f72cb93e345708cf924e432d4f996"
         last_error:
           type: string
@@ -503,7 +517,7 @@ components:
         notifications:
           type: array
           items:
-            $ref: '#/components/schemas/JSONNote' 
+            $ref: '#/components/schemas/JSONNote'
     JSONNoteList:
       type: array
       items:
@@ -516,7 +530,7 @@ components:
     JSONNote:
       type: object
       properties:
-        id: 
+        id:
           type: string
           example: "ef0de02433e943feacd327917b3b3db7"
         created_date:
@@ -743,7 +757,6 @@ components:
         season:
           type: string
           example: "Spring"
-          description: "Season of publication (for example, Spring, Third Quarter)"
     NoteHistoryDate:
       type: object
       properties:
@@ -758,7 +771,7 @@ components:
       properties:
         name:
           type: string
-          example: Funder
+          example: Welcome Foundation
         identifier:
           type: array
           items:
@@ -784,22 +797,21 @@ components:
       properties:
         title:
           type: string
-          example: CC-By
-        'type':
+          example: cc-by
+        type:
           type: string
+          example: Open licence
         url:
           type: string
           example: https://creativecommons.org/licenses/by-nc-sa/4.0/
         version:
           type: string
-          example: 4.0
+          example: "4.0"
         start:
           type: string
           format: date
         best:
           type: boolean
-          value: true
-
   responses:
     BadRequest:
       description: 400 - Bad request. Invalid submission
