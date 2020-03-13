@@ -1,6 +1,6 @@
-# OAI-PMH Verbs implemented by PubRouter
+# OAI-PMH Verbs implemented by Publications Router
 
-This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their interpretation by PubRouter:
+This document describes the various [OAI-PMH](http://www.openarchives.org/OAI/openarchivesprotocol.html) verbs and their interpretation by Publications Router:
 * [Identify](#identify)
 * [ListMetadataFormats](#listmetadataformats)
 * [ListIdentifiers](#listidentifiers)
@@ -13,7 +13,7 @@ The OAI-PMH endpoint must be targetted at a specific institution's dataset, like
 
 * `https://pubrouter.jisc.ac.uk/oaipmh/repo/<institution_id>` where *<institution_id>* is the account identifier of the institution.
 
-Note that OAI-PMH sets are not supported by PubRouter.
+Note that OAI-PMH sets are not supported by Publications Router.
 
 ## Identify
 
@@ -229,7 +229,7 @@ Example response:
 
 ## ListSets (unsupported)
 
-This verb requests the OAI-PMH server to list the sets that are available to the client. Note that sets are not supported by PubRouter, so use of this verb will result in an empty list response.
+This verb requests the OAI-PMH server to list the sets that are available to the client. Note that sets are not supported by Publications Router, so use of this verb will result in an empty list response.
 
 Incoming parameters:
 
@@ -237,4 +237,4 @@ Incoming parameters:
 
 Returned information
 
-* An empty list - sets are not supported by PubRouter
+* An empty list - sets are not supported by Publications Router

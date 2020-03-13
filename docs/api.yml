@@ -37,13 +37,13 @@ info:
   version: '3'
 servers:
   - url: https://uat.pubrouter.jisc.ac.uk/api/v3
-    description: PubRouter UAT
+    description: Publications Router UAT
   - url: https://pubrouter.jisc.ac.uk/api/v3
-    description: PubRouter LIVE
+    description: Publications Router LIVE
 tags:
 - name: Institution Matching Parameters
 - name: Publisher
-  description: Used by publishers to submit articles to PubRouter
+  description: Used by publishers to submit articles to Publications Router
   externalDocs:
     description: Find out more
     url: https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md
@@ -60,7 +60,7 @@ paths:
       tags:
         - Institution Matching Parameters
       summary: Retrieve the matching parameter configuration associated with the supplied API key.
-      description: The matching parameters which are used by PubRouter to determine if an article is relevant to an institution are returned as a JSON object. [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md)  for more information.
+      description: The matching parameters which are used by Publications Router to determine if an article is relevant to an institution are returned as a JSON object. [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/MatchingConfig.md)  for more information.
       responses:
         '200':
           description: 200 OK - Success
@@ -112,7 +112,7 @@ paths:
         - Publisher
       summary: Validate an article submission.
       description: >
-        Use this endpoint to test your intended submission to PubRouter. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems.<br><br>
+        Use this endpoint to test your intended submission to Publications Router. It does not update Publications Router, but validates the structure of your POST request, returning details of any problems.<br><br>
         You can submit just article metadata as a JSON package (with a request content-type of 'application/json').<br><br>
         Alternatively if you have both metadata and the article text you will need to make a multipart deposit (with a content-type of 'multipart/related').  NOTE that Swagger does not currently support this content-type, so we have used "multipart/form-data" so you can see the multipart format and test it (but for live submissions you would need to specify 'multipart/related').<br><br>
         [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
@@ -132,7 +132,7 @@ paths:
         - Publisher
       summary: Validate multiple metadata-only articles submitted as a list
       description: >
-        Use this endpoint to test your intended submission to PubRouter of metadata for multiple articles. It does not update PubRouter, but validates the structure of your POST request, returning details of any problems. <br><br>
+        Use this endpoint to test your intended submission to Publications Router of metadata for multiple articles. It does not update Publications Router, but validates the structure of your POST request, returning details of any problems. <br><br>
         You can submit only article metadata  as a list of JSON objects.<br><br>
         [See here](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) for further information on the JSON metadata structure.
       requestBody:
@@ -149,9 +149,9 @@ paths:
     post:
       tags:
         - Publisher
-      summary: Send an article notification to PubRouter
+      summary: Send an article notification to Publications Router
       description: >
-        Send an article notification to PubRouter either as a JSON object (for metadata only notification) or as a multipart request (with a content-type of 'multipart/related').  NOTE that the current version of swagger does not support this so it is not possible to test it here.<br><br>
+        Send an article notification to Publications Router either as a JSON object (for metadata only notification) or as a multipart request (with a content-type of 'multipart/related').  NOTE that the current version of swagger does not support this so it is not possible to test it here.<br><br>
         Further information: [JSON metadata structure](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) and [Notification endpoint](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#single-notification-submission-post-notification).
       requestBody:
         $ref: '#/components/requestBodies/SingleNotification'
@@ -171,7 +171,7 @@ paths:
     post:
       tags:
         - Publisher
-      summary: Send a list of metadata only notifications to PubRouter
+      summary: Send a list of metadata only notifications to Publications Router
       description: >
         Send multiple article notifications as a list of JSON objects.<br><br>
         Further information: [JSON metadata structure](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/IncomingNotification.md#json-data-structure) and [Notification list endpoint](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Send.md#multiple-metadata-only-notifications-submission-post-notificationlist).
@@ -207,7 +207,7 @@ paths:
       summary: Retrieve a list of notifications routed to a specified repository.
       description: >
         This endpoint returns a list of all notifications that have been routed to the specified repository since a particular date.<br><br>
-        The {RepositoryId} is the hexadecimal repository identifier (available from the PubRouter repository account page).<br><br>
+        The {RepositoryId} is the hexadecimal repository identifier (available from the Publications Router repository account page).<br><br>
         The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
       responses:
         '200':
