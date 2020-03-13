@@ -1,6 +1,6 @@
-# PubRouter EPrints-RIOXX XML Description
+# Publications Router EPrints-RIOXX XML Description
 
-This document describes the RIOXXplus XML (Version 2) output by PubRouter for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus 2 plugins.
+This document describes the RIOXXplus XML (Version 2) output by Publications Router for ingestion via the SWORDv2 interface into Eprints repositories configured with RIOXX and RIOXXplus 2 plugins.
 
 Background information:
 * [eprints-rioxx.xsd](./pubrouter-xsd/eprints-rioxx.xsd) - Eprints-RIOXX schema definition
@@ -8,15 +8,15 @@ Background information:
 * [RIOXX XML profile](http://rioxx.net/v2-0-final/)
 
 The following table lists:
-* Column 1 - the XML elements output by PubRouter
-* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
+* Column 1 - the XML elements output by Publications Router
+* Column 2 - Publications Router internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note
 * Column 4 - cardinality (number of elements permitted) and notes.
 
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Any other text is output as it appears in the format.  Text derived through processing is indicated in `( parentheses )`.
 
 
-| XML Element Terms | PubRouter Metadata | XML Format | Cardinality & Notes |
+| XML Element Terms | Publications Router Metadata | XML Format | Cardinality & Notes |
 |:-----------------------------|:-----------------------|:------------------------------------------------------------------------------|:----------------------------------|
 | [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L96) | Information to be displayed in Eprints Additional Information public field | `<pr:note>[text to display]</pr:note>` | {0..n} |
 | [pr:comment](./pubrouter-xsd/eprints-rioxx.xsd#L103) | Information to be displayed in Eprints Comments & Suggestions private field | `<pr:comment>[text to display]</pr:comment>` | {0..1} |

@@ -1,6 +1,6 @@
-# PubRouter DSpace-RIOXX XML Description
+# Publications Router DSpace-RIOXX XML Description
 
-This page describes the Dspace-RIOXX XML output by PubRouter for ingest via the SWORDv2 interface into DSpace repositories with the [RIOXX patch](https://github.com/atmire/RIOXX) installed. (Note that PubRouter can output a completely different XML document for "vanilla" DSpace repositories that do not use the RIOXX patch.)
+This page describes the Dspace-RIOXX XML output by Publications Router for ingest via the SWORDv2 interface into DSpace repositories with the [RIOXX patch](https://github.com/atmire/RIOXX) installed. (Note that Publications Router can output a completely different XML document for "vanilla" DSpace repositories that do not use the RIOXX patch.)
  
 For background information related to the schema see:
 
@@ -17,22 +17,22 @@ The DSpace-RIOXX XML uses 4 namespaces:
 | ali        | http://www.niso.org/schemas/ali/1.0/ | National Information Standards Organisation's Access and License Information schema  |
 | dcterms    | http://purl.org/dc/terms/ | DublinCore (extended) terms schema |
 | rioxxterms | http://www.rioxx.net/schema/v2.0/rioxx/ | RIOXX schema |
-| pubr       | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc PubRouter-DSpace schema |
+| pubr       | http://pubrouter.jisc.ac.uk/dspacerioxx/ | Jisc Publications Router DSpace schema |
 
 ## XML Elements ##
 
 The table below lists:
-* Column 1 - the XML elements output by PubRouter and cardinality:
+* Column 1 - the XML elements output by Publications Router and cardinality:
 	* {0..1} – zero or one
 	* {0..n} – zero or more
 	* {1..1} – exactly one (i.e. a mandatory element)
 	* {1..n} – one or more (i.e. a mandatory element)
-* Column 2 - PubRouter internal metadata JSON fields from which the output is derived
+* Column 2 - Publications Router internal metadata JSON fields from which the output is derived
 * Column 3 - the output XML element construction (format) - see note. 
 
 **NOTE: XML Format column** - Field holders are shown in `[square brackets]`, in the output XML these field holders are replaced by data from the indicated JSON metadata fields.  For example, `[journal.title]` would be replaced by the actual title of the journal.  Conditional phrases are shown within `{curly brackets}` these will be omitted if there is no data to display; within such phrases choices in data to display are indicated by `|` character, the first non-blank data item is displayed. Any other text is output as it appears in the format.
 
-| XML element and {Cardinality} | PubRouter Metadata (source) | XML Format |
+| XML element and {Cardinality} | Publications Router Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
 | [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation)<br>{0..1} | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range] </dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) <br>{0..1}| journal.publisher | `<dcterms:publisher>[journal.publisher] </dcterms:publisher>` |
@@ -59,9 +59,9 @@ The table below lists:
 
 
 
-## Example PubRouter DSpace-RIOXX XML ##
+## Example Publications Router DSpace-RIOXX XML ##
 
-This is an example Dspace-RIOXX Entry XML document output by PubRouter that contains the metadata elements listed above.
+This is an example Dspace-RIOXX Entry XML document output by Publications Router that contains the metadata elements listed above.
 
 ```xml
 

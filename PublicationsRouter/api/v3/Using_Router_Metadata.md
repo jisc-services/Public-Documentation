@@ -12,7 +12,7 @@ Below we provide insight and guidance into the interpretation and use of the fol
 ### Note on displaying Embargo and Licence details
 CRIS and repositories frequently associate and display embargo and licence details at the  file (e.g. article)  level.  
 
-However, a substantial number of notification records that PubRouter provides will be metadata only (for example those from PubMed, Crossref, and Elsevier).  In these cases, where there is no associated file, it is important that any licence or embargo information is still captured and displayed, for example in a note or additional information field.   
+However, a substantial number of notification records that Publications Router provides will be metadata only (for example those from PubMed, Crossref, and Elsevier).  In these cases, where there is no associated file, it is important that any licence or embargo information is still captured and displayed, for example in a note or additional information field.   
 
 ## Article version ##
 JSON element: `metadata.article.version` 
@@ -111,7 +111,7 @@ Alphanumeric string indicating version of the licence. For example `v1.0`. NOTE:
 
 ### best ###
 
-This is a boolean indicator (set using a PubRouter algorithm) that is intended to guide selection of an appropriate licence where a receiving system can only handle a single licence. 
+This is a boolean indicator (set using a Publications Router algorithm) that is intended to guide selection of an appropriate licence where a receiving system can only handle a single licence. 
 
 This indicator will be set to `true` for 1 licence in the array (at most).
 
@@ -141,9 +141,9 @@ Each object in the **license_ref** array has a Boolean element named ***best***.
 
 Router's assessment **applies on the date that the notification is retrieved** and is determined by the following algorithm:
 
-* Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that PubRouter recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the open licence with the earliest future start date.
+* Where any of the licences has a URL that corresponds to an open licence (either Creative Commons, or a publisher's proprietary open licence that Publications Router recognises as such) then the *best* licence is assessed as being the most recent active licence (i.e. no start date, or start date not in the future), or if none yet active then the open licence with the earliest future start date.
 
-* Where none of the licence URLs is recognised as "open" by PubRouter, then the *best* licence is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in PubRouter's assessment of which is *best*.
+* Where none of the licence URLs is recognised as "open" by Publications Router, then the *best* licence is chosen from these using the same start date considerations as for open licences (see preceding paragraph).  In this circumstance, where there is more than one licence, then systems should place a relatively low level of confidence in Publications Router's assessment of which is *best*.
 
 In all cases, **provision should be made for manual checks by the user**, along the lines indicated above.
 

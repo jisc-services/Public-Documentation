@@ -1,12 +1,12 @@
-# PubRouter SWORDv2 Deposit Endpoint
+# Publications Router SWORDv2 Deposit Endpoint
 
-PubRouter provides a SWORD2 interface that enables publishers to deposit article metadata and content into PubRouter using a SWORD client (as an alternative to the PubRouter REST API or FTP).
+Publications Router provides a SWORD2 interface that enables publishers to deposit article metadata and content into Publications Router using a SWORD client (as an alternative to the Publications Router REST API or FTP).
 
-This page tells you all you need to know to get connected to PubRouter using this approach.
+This page tells you all you need to know to get connected to Publications Router using this approach.
 
 The interface is built on the SWORDv2 specification, which you can [read about here](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html)
 
-The PubRouter SWORD2 service endpoint is:
+The Publications Router SWORD2 service endpoint is:
 
     https://pubrouter.jisc.ac.uk/sword
     
@@ -21,13 +21,13 @@ but you won't need it much after that.
 The Service Document lists the collections that you can send your notifications to, the mimetypes and the packaging formats
 that are supported.
 
-You will have access to a single collection, with your PubRouter Account ID as its name.
+You will have access to a single collection, with your Publications Router Account ID as its name.
 
 You can get the URL for your collection by retrieving the service document, which you can do like this:
 
     GET /
 
-This will require you to provide your PubRouter credentials (email and password) via HTTP Basic Authentication.
+This will require you to provide your Publications Router credentials (email and password) via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
@@ -45,7 +45,7 @@ Get the URL of the collection from the Service Document (see above), and then do
     
     [binary content]
 
-This will require you to provide your PubRouter credentials (email and password) via HTTP Basic Authentication.
+This will require you to provide your Publications Router credentials (email and password) via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 
@@ -115,7 +115,7 @@ This is the "Edit Media IRI" (EM-IRI), and you can do:
 
     GET EM-IRI
     
-This will require you to provide your PubRouter credentials (email and password) via HTTP Basic Authentication.
+This will require you to provide your Publications Router credentials (email and password) via HTTP Basic Authentication.
 
 For example, using curl, you might do the following:
 

@@ -1,6 +1,6 @@
-# PubRouter SWORDv2 Protocol Operations
+# Publications Router SWORDv2 Protocol Operations
 
-This document describes the process of carrying out SWORD deposits against repositories subscribed to the PubRouter
+This document describes the process of carrying out SWORD deposits against repositories subscribed to the Publications Router
 service.
 
 Section numbers referenced here are as per the [SWORDv2 profile](http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html):

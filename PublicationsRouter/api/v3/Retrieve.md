@@ -6,7 +6,7 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths provided in this document will extend from this base url.
 
-If you are a repository or CRIS, consuming notifications from PubRouter, you have access to 2 endpoints:
+If you are a repository or CRIS, consuming notifications from Publications Router, you have access to 2 endpoints:
 
 1. The **[notification list feed](#notification-list-feed-endpoint)** endpoint - which allows you to list all notifications routed to your repository and page through them in date order.
 2. The **[notification](#individual-notification-endpoint)** endpoint - allows retrieval of an individual notification and any binary/packaged content associated with it
@@ -57,7 +57,7 @@ See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification)
 ---
 ## Notification List Feed Endpoint
 
-This endpoint lists routed notifications in "analysis_date" order (the date PubRouter analysed the content to determine its routing to your repository), oldest first.
+This endpoint lists routed notifications in "analysis_date" order (the date Publications Router analysed the content to determine its routing to your repository), oldest first.
 
 You may list the notifications routed to just your repository or, alternatively, all notifications that were routed to any repository.
 
@@ -78,7 +78,7 @@ This endpoint lists all notifications routed to your repository.
 
     GET /routed/<repo_id>[?<parameter list>]
 
-Here, **repo_id** is your PubRouter *Account ID*, which may be obtained from the *Account details* panel at the top of your PubRouter account page.
+Here, **repo_id** is your Publications Router *Account ID*, which may be obtained from the *Account details* panel at the top of your Publications Router account page.
 
 You will not be able to tell from this endpoint which other repositories have been identified as targets for this notification.
 
@@ -114,7 +114,7 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more info.
 
-Some notifications may contain one or more **links** elements. This means that there is binary content associated with the notification available for download.  The link will either be pointing at packaged binary content held by PubRouter on behalf of the publisher, or a link pointing at an external resource (likely the full text). 
+Some notifications may contain one or more **links** elements. This means that there is binary content associated with the notification available for download.  The link will either be pointing at packaged binary content held by Publications Router on behalf of the publisher, or a link pointing at an external resource (likely the full text). 
 
 You can issue a GET request on the URL contained within a link element to receive the content.
 
@@ -145,7 +145,7 @@ appearing in the [Outgoing Notification](./OutgoingNotification.md#outgoing-noti
 
 Router stores full-text content for a temporary period (currently 90 days, subject to review) from the date of receipt from publisher and so it must be retrieved by a repository within this timescale.
 
-You need to have a PubRouter account (either Repository or Publisher) to access this endpoint.
+You need to have a Publications Router account (either Repository or Publisher) to access this endpoint.
 
 Notifications with binary content will contain contain a links section like:
 
@@ -164,11 +164,11 @@ Notifications with binary content will contain contain a links section like:
         }
     ]
 
-In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format that the publisher originally provided to PubRouter, and the other is in the "SimpleZip" format to which PubRouter has converted the incoming package.
+In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format that the publisher originally provided to Publications Router, and the other is in the "SimpleZip" format to which Publications Router has converted the incoming package.
 
 See the documentation on [Packaging Formats](./Packaging.md#packaging) to understand what each of the formats looks like.
 
-You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional image files) as a single zip file.  To request it, you will also need to provide your API key (shown on your PubRouter account page):
+You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional image files) as a single zip file.  To request it, you will also need to provide your API key (shown on your Publications Router account page):
 
     GET <package url>?api_key=<api_key>
 
@@ -186,4 +186,4 @@ If the notification content is found and authentication succeeds you will receiv
 
     Binary Package
 
-Note that a successful access by a Repository account user will log a successful delivery of content notification into PubRouter (used for reporting on PubRouter's ability to support REF compliance).
+Note that a successful access by a Repository account user will log a successful delivery of content notification into Publications Router (used for reporting on Publications Router's ability to support REF compliance).

@@ -1,4 +1,4 @@
-# Jisc Publications Router API (PubRouter API)
+# Jisc Publications Router API (Publications Router API)
 
 Jisc Publications Router exposes an REST API that may be used to submit and/or retrieve publication notifications. These pages document the API interfaces and data formats.
 
@@ -8,7 +8,7 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths in this documentation will extend from this base url.
 
-In many cases you will need an API key to access the API.  This can be obtained from your PubRouter account page.
+In many cases you will need an API key to access the API.  This can be obtained from your Publications Router account page.
 
 **[Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API) is available.
 
@@ -20,6 +20,6 @@ In many cases you will need an API key to access the API.  This can be obtained 
 
 ### Alternatives to REST API ###
 
-These pages describe PubRouter's REST API, however there are other means by which Publishers may send information to PubRouter (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  PubRouter website [introduction](https://pubrouter.jisc.ac.uk/about/) and [technical overview](https://pubrouter.jisc.ac.uk/about/resources/).
+These pages describe Publications Router's REST API, however there are other means by which Publishers may send information to Publications Router (SWORD2 or FTP); and by which Repositories may receive information (OAI-PMH and SWORD2).  More information on these is available on the  Publications Router website [introduction](https://pubrouter.jisc.ac.uk/about/) and [technical overview](https://pubrouter.jisc.ac.uk/about/resources/).
 
 ---
