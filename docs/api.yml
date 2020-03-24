@@ -728,6 +728,9 @@ components:
         'type':
           type: string
           example: Review
+        'version':
+          type: string
+          example: VoR
         start_page:
           type: string
           example: 1
