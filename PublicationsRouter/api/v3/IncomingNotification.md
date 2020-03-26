@@ -231,4 +231,3 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |  |
 | metadata.license_ref.version | Version of the licence | unicode |  |  |
 | metadata.license_ref.start | License start date | unicode |  |  |
-| metadata.license_ref.end | License end date (optional) | unicode |  |  |
