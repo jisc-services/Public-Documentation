@@ -74,7 +74,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		},
 		"author": [
 			{
-			"type": "<Type of contribution author>",
+			"type": "<Type of author e.g. 'author' or 'corresp'>",
 			"name": {
 				"firstname": "<author first name>",
 				"surname": "<author surname>",
@@ -96,7 +96,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		],
 		"contributor": [
 			{
-			"type": "<Type of contribution author>",
+			"type": "<Type of contributor e.g. 'editor'>",
 			"name": {
 				"firstname": "<author first name>",
 				"surname": "<author surname>",
@@ -210,7 +210,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.article.identifier.id * | Article identfier value (e.g. DOI number) | unicode |  |
 | metadata.article.subject | Subject classification(s) / keyword(s) (Array field) | unicode |  |
 | metadata.author * | Array of author objects describing authors of this article | array | | 
-| metadata.author.type | Type of author (e.g. corresponding) | unicode |  |
+| metadata.author.type | Type of author, typically "author" or "corresp" (for corresponding author) | unicode |  |  |
 | metadata.author.name.firstname * | Author's firstname(s) - space separated if more than one | unicode |  |
 | metadata.author.name.surname * | Author's surname (lastname) | unicode |  |
 | metadata.author.name.fullname | Full name - preferably expressed as "Surname, Firstname(s)" | unicode |  |
