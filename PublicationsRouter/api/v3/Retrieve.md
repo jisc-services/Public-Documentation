@@ -114,11 +114,20 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for details.
 
-Some notifications may contain one or more **links** elements. This means that there is content associated with the notification available for download.  The link will either be pointing at packaged binary content (sometimes also unpacked content) held by Publications Router on behalf of the publisher, or a link pointing at an external resource (likely the full text). 
+### Retrieving notification content
+
+Notifications may have content, e.g. article PDF, associated with them.  This may either exist on Publications Router (where it has been supplied by a publisher) or at an external location, such as a publisher's website.
+
+This is indicated by the presence of the **links** array, containing a JSON object for each item available for download. 
+ 
+The link will either be pointing at packaged binary content (sometimes also unpacked content) stored (for 90 days) by Publications Router on behalf of the publisher, or a link pointing at an external resource (likely the full text). 
 
 You can issue a GET request on the URL contained within a link element to receive the content.
 
-Links will look like one of the following:
+The **links array** may contain objects like those shown below.  It is IMPORTANT to analyse the links, by examining the values of `type`, `access` and `format`, to select the optimum `url` to use to retrieve the content you are interested in.  Note that URLs to Publications Router will require a valid API key to be provided in order to successfully retrieve the content. 
+
+#### Example links array 
+A description of each different type of link object is provided below the data structure.
 
     "links" : [
         {
