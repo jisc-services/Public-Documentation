@@ -11,23 +11,23 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-metadata) page for important guidelines on using particular data elements.
 ```json
 {
-	"id": "<string>",
-	"created_date": "<date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
-	"analysis_date": "<date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z>",
-	"event": "<keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
+	"id": "<String>",
+	"created_date": "<Date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
+	"analysis_date": "<Date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z>",
+	"event": "<Keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
 	"provider": {
-		"agent": "<string defining the software/process which put the content here, provided by provider>"
+		"agent": "<String defining the software/process which put the content here, provided by provider>"
 	},
 	"content": {
-   		"packaging_format": "<identifier for packaging format used>"
+   		"packaging_format": "<Identifier for packaging format used>"
 	}, 
 	"links": [
 	    	{
-		"type": "<link type: splash|fulltext>",
+		"type": "<Link type: package|unpackaged|splash|fulltext>",
 		"format": "<text/html|application/pdf|application/xml|application/zip|...>",
-		"url": "<provider's splash, fulltext or machine readable page>",
-	        "packaging": "<package format identifier string>",
-		"access":"<permitted access level, one of: public|router|special >"
+		"url": "<Provider's splash, fulltext or machine readable page>",
+		"packaging": "<Package format identifier string (may be absent)>",
+		"access":"<Permitted access level, one of: public|router|special >"
         	}
 	], 
 	"metadata": {
@@ -66,102 +66,102 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 			"abstract": "<Abstract of the work >",
 			"identifier": [
 				{
-				"type": "doi",
-				"id": "<doi for the record>"
+				"type": "<Type of identifier, such as 'doi'>",
+				"id": "<Article identifier value>"
 				}
 			],
-			"subject": [ "<subject keywords/classifications>" ]
+			"subject": [ "<Subject keywords/classifications>" ]
 		},
 		"author": [
 			{
 			"type": "<Type of author e.g. 'author' or 'corresp'>",
 			"name": {
-				"firstname": "<author first name>",
-				"surname": "<author surname>",
-				"fullname": "<author name>",
+				"firstname": "<Author first name>",
+				"surname": "<Author surname>",
+				"fullname": "<Author name>",
 				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
 			"organisation_name": "<Name of organisation if author is an organisation >",
 			"identifier": [
 			    {
 				"type": "orcid",
-				"id": "<author's orcid>"
+				"id": "<Author's orcid>"
 			    }, {
 				"type": "email",
-				"id": "<author's email address>"
+				"id": "<Author's email address>"
 			    }
 			],
-			"affiliation": "<author affiliation>"
+			"affiliation": "<Author affiliation>"
 			}
 		],
 		"contributor": [
 			{
 			"type": "<Type of contributor e.g. 'editor'>",
 			"name": {
-				"firstname": "<author first name>",
-				"surname": "<author surname>",
-				"fullname": "<author name>",
+				"firstname": "<Contributor first name>",
+				"surname": "<Contributor surname>",
+				"fullname": "<Contributor name>",
 				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
 				},
 			"organisation_name": "<Name of organisation if author is an organisation >",
 			"identifier": [
 			    {
 				"type": "orcid",
-				"id": "<author's orcid>"
+				"id": "<Contributor's orcid>"
 			    }, {
 				"type": "email",
-				"id": "<author's email address>"
+				"id": "<Contributor's email address>"
 			    }
 			],
-			"affiliation": "<author affiliation>"
+			"affiliation": "<Author affiliation>"
 			}
 		],
-		"accepted_date": "<date YYYY-MM-DD format>",
+		"accepted_date": "<Date YYYY-MM-DD format>",
 		"publication_date": {
 			"publication_format": "<Format of publication (print, electronic)>",
-			"date": "<date YYYY-MM-DD format>",
-			"year": "<year YYYY format>",
-			"month": "<month MM format>",
-			"day": "<day DD format>",
+			"date": "<Date YYYY-MM-DD format>",
+			"year": "<Year YYYY format>",
+			"month": "<Month MM format>",
+			"day": "<Day DD format>",
 			"season": "<Season of publication (for example, Spring, Third Quarter).>"
 		},
 		"history_date": [
 			{
 			"date_type": "<Type of date: received, accepted...>",
-			"date": "<date>"
+			"date": "<Date>"
 			}
 		],
 		"publication_status": "<Published, accepted or blank>",
 		"funding": [
 		 	{
-			"name": "<name of funder>",
+			"name": "<Name of funder>",
 			"identifier": [
 		    	 	{
-				"type": "<identifier type>",
-				"id": "<funder identifier>"
+				"type": "<Identifier type>",
+				"id": "<Funder identifier>"
 				}
 			],
-			"grant_numbers": ["<list of grant numbers associated with this funder>"]
+			"grant_numbers": ["<List of grant numbers associated with this funder>"]
 			}
 		],
 		"embargo": {
-			"start": "<embargo start date, format: YYYY-MM-DD>",
-			"end": "<embargo end date, format: YYYY-MM-DD>",
-			"duration": "<embargo duration in months>"
+			"start": "<Embargo start date, format: YYYY-MM-DD>",
+			"end": "<Embargo end date, format: YYYY-MM-DD>",
+			"duration": "<Embargo duration in months>"
 		},
 		"license_ref": [
 			{
-			"title": "<name of licence>",
-			"type": "<type>", 
-			"url": "<url>",
-			"version": "<licence version; for example: 4.0>",
+			"title": "<Name of licence>",
+			"type": "<Type>", 
+			"url": "<URI of licence>",
+			"version": "<Licence version; for example: 4.0>",
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
 			"best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
 			}
 		],
 		"free2read": {
-			"start": "<start date of ali:free-to-read, YYYY-MM-DD format (or empty string)>",
-			"end": "<end date of ali:free-to-read, YYYY-MM-DD format (or empty string)>"
+			"start": "<Start date of ali:free-to-read, YYYY-MM-DD format (or empty string)>",
+			"end": "<End date of ali:free-to-read, YYYY-MM-DD format (or empty string)>"
 		}
 	}
 }
@@ -182,11 +182,11 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | provider * | Object describing the source of this notification | object | | 
 | provider.agent * | Free-text field for identifying the API client used to create the notification | unicode | free text |
 | content.packaging_format | Package format identifier for the associated binary content (example: "https://pubrouter.jisc.ac.uk/FilesAndJATS") | unicode | URL |
-| links.type | Keyword for type of resource (e.g. splash, fulltext) - no restrictions on use in this version of the system | unicode | |
-| links.format | The mimetype of the resource available at the URL (e.g. text/html) | unicode | |
+| links.type | Keyword for type of resource (e.g. "package", "unpackaged", "splash", "fulltext") - no restrictions on use in this version of the system | unicode | |
+| links.format | The mimetype of the resource available at the URL (e.g. "application/pdf", application/zip) | unicode | |
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
-| links.packaging | Package format identifier for the resource available at the URL, one of "https://pubrouter.jisc.ac.uk/FilesAndJATS" or "http://purl.org/net/sword/package/SimpleZip" | unicode | |
-| links.access | URL access type, one of: "public" - indicates the content is available from public URL; "router" - content is in temporary Publications Router store (kept for 3 months); "special" - unpackaged content in temporary Publications Router store (this will duplicate content contained in a package with access-type "router")  | unicode | |
+| links.packaging | Package format identifier for the resource available at the URL, one of "https://pubrouter.jisc.ac.uk/FilesAndJATS" or "http://purl.org/net/sword/package/SimpleZip".  This element will be present only for Router packaged content. | unicode | |
+| links.access | URL access type, one of: **"public"** - indicates the content is available from public URL; **"router"** - content is in temporary Publications Router store (kept for 3 months); **"special"** - unpackaged content in temporary Publications Router store (this will duplicate content contained in a package with access-type "router")  | unicode | |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode | |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode | |
