@@ -256,7 +256,7 @@ paths:
       description: >
         Returns a zip file containing notification metadata and article text if supplied by a publisher to Publications Router.<br><br>
 
-        <b>IMPORTANT</b>: When retrieving content you should use the information supplied in a notification `links` array, particularly that in  the `access`, `type` and `format` elements within each link object, to decide which `url` to use. For further information see Router's public documentation [Retrieving notification content](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md#retrieving-notification-content).
+        <b>IMPORTANT</b>: When retrieving content you should use the information supplied in a notification `links` array, particularly values of the `access`, `type` and `format` elements within each link object, to decide which `url` to use. For further information see Router's public documentation [Retrieving notification content](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md#retrieving-notification-content).
 
       responses:
         '200':
