@@ -157,7 +157,7 @@ A description of each different type of link object is provided below the data s
         }
     ]
     
-The first link is a packaged binary link, and includes the packaging type used to package the binary. Packaging types are explained in further detail in the next section.  The `"access": "router"` element indicates that the content is stored by Publications Router (as the URL attests). Note that the content may only be downloaded if a valid API key is provided.
+The first link is a packaged binary link, and includes the packaging type used to package the binary. Packaging types are explained in further detail in the next section.  The `"access": "router"` and `"type": "package"` elements indicate that the content is stored by Publications Router (as the URL attests). Note that the content may only be downloaded if a valid API key is provided.
 
 The second link is to an external site, this will not have a packaging type. The `type` element describes the type of content (likely _fulltext_), and `format` describes the content's format (likely _application/pdf_, or _text/html_).  The `"access": "public"` element indicates that the content is located on a publicly accessible third party site.
 
