@@ -68,7 +68,7 @@ The JSON structure of the model is as follows:
 		},
 		"author": [
 			{
-			"type": "<Type of contribution author>",
+			"type": "<Type of author e.g. 'author' or 'corresp'>",
 			"name": {
 				"firstname": "<author first name>",
 				"surname": "<author surname>",
@@ -91,7 +91,7 @@ The JSON structure of the model is as follows:
 		],
 		"contributor": [
 			{
-			"type": "<Type of contribution like editor..>",
+			"type": "<Type of contributor e.g. 'editor'>",
 			"name": {
 				"firstname": "<contributor first name>",
 				"surname": "<contributor surname>",
@@ -191,7 +191,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.article.identifier.type * | Type of identifier (e.g. DOI) | unicode |  |  |
 | metadata.article.identifier.id * | Article identfier value (e.g. DOI number) | unicode |  |  |
 | metadata.article.subject | Subject classification(s) / keyword(s) (Array field) | unicode |  |  |
-| metadata.author.type | Type of author (e.g. corresponding) | unicode |  |  |
+| metadata.author.type | Type of author, typically "author" or "corresp" (for corresponding author) | unicode |  |  |
 | metadata.author.name.firstname * | Author's firstname(s) - space separated if more than one | unicode |  |  |
 | metadata.author.name.surname * | Author's surname (lastname) | unicode |  |  |
 | metadata.author.name.fullname | Full name - preferably expressed as "Surname, Firstname(s)" | unicode |  |  |

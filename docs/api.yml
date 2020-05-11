@@ -766,7 +766,7 @@ components:
       properties:
         'type':
           type: string
-          example: Author type
+          example: author
         name:
           $ref: '#/components/schemas/NoteContributorName'
         organisation_name:
