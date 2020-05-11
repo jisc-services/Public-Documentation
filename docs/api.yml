@@ -16,10 +16,14 @@ info:
      ### Licences
 
      See [Using Router Metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Using_Router_Metadata.md#licence-details) for important guidance on using and displaying these fields.
-     
+
      ### ali:free2read
 
      The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository so **you must not rely upon this value**.  This element may be deprecated in a future version of the API.
+
+    ## Retrieving article content
+
+    If content (e.g. article PDF) is available for a notification this will be indicated by the presence of the `links` array in the notification metadata. Examination of link objects within the links array will enable you to  select the optimum link for your purpose. The following
 
     ## Using this swagger interface
 
@@ -250,8 +254,10 @@ paths:
         - $ref: '#/components/parameters/NotificationID'
       summary: Retrieve the zipped content (metadata and article text) of a notification.
       description: >
-        If available. returns the original zip file containing notification metadata  and article text if supplied.<br><br>
-        The notification metadata structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure.
+        Returns a zip file containing notification metadata and article text if supplied by a publisher to Publications Router.<br><br>
+
+        <b>IMPORTANT</b>: When retrieving content you should use the information supplied in a notification `links` array, particularly that in  the `access`, `type` and `format` elements within each object, to decide which `url` to use. For further information see Router's public documentation [Retrieving notification content](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md#retrieving-notification-content).
+
       responses:
         '200':
           description: 200 - Found notification and returned content.
@@ -618,19 +624,21 @@ components:
               type:
                 type: string
                 example: "package"
-                description: "type of content available at the URL, e.g. 'fulltext' or 'package' or 'splash'"
+                description: Type of content available at the URL, e.g. "package" or "unpackaged" or "fulltext" or "splash"
               format:
                 type: string
                 example: "application/zip"
+                description: The format of the content, for example "application/zip" or "application/pdf".
               url:
                 type: string
               packaging:
                 type: string
                 example: "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+                description: This element which indicates the package-format is ONLY present where the content is a package stored on Router.
               access:
                 type: string
                 example: router
-                description: "permitted access level, one of: public|router|special"
+                description: Permitted access level, one of:<br><ul><li>"public" - content is at a 3rd party location</li><li>"router" - content is stored on Router</li><li>"special" - unpacked content is on Router.</li></ul><br> Content on Router is accessible only if a valid API-key is provided.
         metadata:
           $ref: '#/components/schemas/NoteMetadata'
 
