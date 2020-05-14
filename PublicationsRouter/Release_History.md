@@ -1,5 +1,5 @@
-#Release History
-##Release 9.16
+# Release History
+## Release 9.16
 This release includes the following changes:
 * Fix API issue whereby an inappropriate error was being raised when attempting to retrieve content for notifications which had none
 * Flag corresponding author by setting `"type": "corresp"`
