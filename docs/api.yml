@@ -728,7 +728,7 @@ components:
         title:
           type: string
           example: Article title
-        sub_title:
+        subtitle:
           type: array
           items:
             type: string

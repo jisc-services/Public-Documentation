@@ -48,7 +48,7 @@ The JSON structure of the model is as follows:
 		},
 		"article": {
 			"title": "<Article title or book chapter title>",
-			"sub_title": [ "<Article title or book chapter Subtitle>" ],
+			"subtitle": [ "<Article title or book chapter Subtitle>" ],
 			"type": "<Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar')>",
 			"version": "<Article version e.g. VoR>",
 			"start_page": "<Page number on which a document starts>",
@@ -179,7 +179,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.journal.identifier.type * |  Identifier type (e.g. "issn", "eissn", "pissn", "doi") - no vocabulary for this field in this version of the system | unicode |  |  |
 | metadata.journal.identifier.id * | Identifier of the journal / publication (e.g. the ISSN number) | unicode |  |  |
 | metadata.article.title * | Title of the Article| unicode |  |  |
-| metadata.article.sub_title | Sub-title (if any) of the Article | unicode |  |  |
+| metadata.article.subtitle | Subtitle (if any) of the Article | unicode |  |  |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode |  |  |
 | metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode |  |  |
 | metadata.article.start_page | Article start page  | unicode |  |  |
