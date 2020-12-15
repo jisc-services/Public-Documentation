@@ -30,6 +30,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 
 ## Mapping to Router's data model from JATS ##
 
+IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<J-M>` and `<article-meta>` by `<A-M>`
 | Router Field | JATS Source | Notes |
 | ----------- | ----------- | ------|
 | event | - | Populated via API |
@@ -39,13 +40,13 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | links.type | - | ditto |
 | links.format | - | ditto |
 | links.url | - | ditto |
-| metadata.journal.title | `<journal-meta><journal-title-group><journal-title>` |  |
-| metadata.journal.abbrev_title | `<journal-meta><journal-title-group><abbrev-journal-title>` |  |
-| metadata.journal.volume | `<article-meta><volume>` |  |
-| metadata.journal.issue | `<article-meta><issue>` |  |
-| metadata.journal.publisher | `<journal-meta><publisher><pubisher-name>` |  |
-| metadata.journal.identifier.type | `<journal-meta><issn pubication-format="…">`<br><br>or `<journal-meta><issn pub-type="…">`  | Type will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub" |
-| metadata.journal.identifier.id | `<journal-meta><issn>` |  |
+| metadata.journal.title | `<J-M><journal-title-group><journal-title>` |  |
+| metadata.journal.abbrev_title | `<J-M><journal-title-group><abbrev-journal-title>` |  |
+| metadata.journal.volume | `<A-M><volume>` |  |
+| metadata.journal.issue | `<A-M><issue>` |  |
+| metadata.journal.publisher | `<J-M><publisher><pubisher-name>` |  |
+| metadata.journal.identifier.type | `<J-M><issn pubication-format="…">`<br>or<br>`<J-M><issn pub-type="…">`  | Type will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub" |
+| metadata.journal.identifier.id | `<J-M><issn>` |  |
 | metadata.article.title |  |  |
 | metadata.article.subtitle |  |  |
 | metadata.article.type |  |  |
