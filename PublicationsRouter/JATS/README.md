@@ -6,7 +6,27 @@ Currently Router works specifically with JATS v1.1, but is flexible enough to wo
 
 Router analyses the the JATS XML and transforms it into its own [internal metadata representation](./api/v3/IncomingNotification.md) which is a JSON data structure.
 
-Below are general rules which govern how JATS metadata is mapped to Router's internal representation.  Certain fields in Router's structure do NOT derive from JATS, these are briefly noted too.
+Below are general rules which govern how JATS metadata is mapped to Router's internal representation.  Certain fields in Router's structure do NOT derive from JATS, these are briefly noted too.  
+
+Router only extracts metadata from JATS `<article><front>` section, which contains within it the `<journal-meta>` and `<article-meta>` sections. (Router does NOT use either the `<article><body>` or `<article><back>` sections.)
+
+In summary, Router will extract metadata from sub-elements within these top level JATS elements:
+```
+<article>
+    <front>
+        <journal-meta>
+            … source of Journal metadata …
+        </journal-meta>
+        
+        <article-meta>
+            … source of Article metadata …
+        </article-meta>
+    </front>
+    …
+<\article>
+```
+
+NISO provide comprehensive documentation of the [Journal Publishing Tag Library](https://jats.nlm.nih.gov/publishing/tag-library/1.1/).
 
 ## Mapping to Router's data model from JATS ##
 
@@ -19,13 +39,13 @@ Below are general rules which govern how JATS metadata is mapped to Router's int
 | links.type | - | ditto |
 | links.format | - | ditto |
 | links.url | - | ditto |
-| metadata.journal.title |  |  |
-| metadata.journal.abbrev_title |  |  |
-| metadata.journal.volume |  |  |
-| metadata.journal.issue |  |  |
-| metadata.journal.publisher |  |  |
-| metadata.journal.identifier.type |  |  |
-| metadata.journal.identifier.id |  |  |
+| metadata.journal.title | `<journal-meta><journal-title-group><journal-title>` |  |
+| metadata.journal.abbrev_title | `<journal-meta><journal-title-group><abbrev-journal-title>` |  |
+| metadata.journal.volume | `<article-meta><volume>` |  |
+| metadata.journal.issue | `<article-meta><issue>` |  |
+| metadata.journal.publisher | `<journal-meta><publisher><pubisher-name>` |  |
+| metadata.journal.identifier.type | `<journal-meta><issn pubication-format="…">`<br><br>or `<journal-meta><issn pub-type="…">`  | Type will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub" |
+| metadata.journal.identifier.id | `<journal-meta><issn>` |  |
 | metadata.article.title |  |  |
 | metadata.article.subtitle |  |  |
 | metadata.article.type |  |  |
