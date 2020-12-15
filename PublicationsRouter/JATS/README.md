@@ -32,7 +32,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 
 IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<J-M>` and `<article-meta>` by `<A-M>`
 | Router Field | JATS Source | Notes |
-| ----------- | ----------- | ------|
+| ----------- | --------------- | ------|
 | event | - | Populated via API |
 | provider.agent | - | Populated via API or internal processing |
 | provider.ref | - | ditto |
