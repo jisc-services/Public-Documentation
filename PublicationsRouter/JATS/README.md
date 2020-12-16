@@ -76,7 +76,7 @@ IMPORTANT: For brevity, in column 2 below, `<article><front><journal-meta>` is r
 | metadata.contributor.name.surname |  |  |
 | metadata.contributor.name.fullname |  |  |
 | metadata.contributor.name.suffix |  |  |
-| metadata.contributor.organisation_name |  |  |
+| metadata.contributor. organisation_name |  |  |
 | metadata.contributor.identifier.type |  |  |
 | metadata.contributor.identifier.id |  |  |
 | metadata.contributor.affiliation |  |  |
