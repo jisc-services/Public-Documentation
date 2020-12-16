@@ -45,10 +45,9 @@ IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<
 | metadata.journal.volume | `<A-M><volume>` |  |
 | metadata.journal.issue | `<A-M><issue>` |  |
 | metadata.journal.publisher | `<J-M><publisher><pubisher-name>` |  |
-| metadata.journal.identifier.type | `<J-M><issn pubication-format="…">`<br>or<br>`<J-M><issn pub-type="…">`  | Type will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub" |
-| metadata.journal.identifier.id | `<J-M><issn>` |  |
-| metadata.article.title |  |  |
-| metadata.article.subtitle |  |  |
+| metadata.journal.identifier.type<br>metadata.journal.identifier.id | `<J-M><issn pubication-format="…">`<br>or<br>`<J-M><issn pub-type="…">`  | `type` will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub". `id` is set to the value of the `<issn>` element. |
+| metadata.article.title | `<A-M><title-group><article-title>` |  |
+| metadata.article.subtitle | `<A-M><title-group><subtitle>` |  |
 | metadata.article.type |  |  |
 | metadata.article.version |  |  |
 | metadata.article.start_page |  |  |
@@ -56,7 +55,7 @@ IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<
 | metadata.article.page_range |  |  |
 | metadata.article.num_pages |  |  |
 | metadata.article.language |  |  |
-| metadata.article.abstract |  |  |
+| metadata.article.abstract | `<A-M><abstract>` | `<abstract>` elements may have an `abstract-type` attribute indicating its type, Router attempts to choose an abstract without a type, otherwise it uses the first of these types that it finds 'summary', 'web-summary', 'executive-summary' |
 | metadata.article.identifier.type |  |  |
 | metadata.article.identifier.id |  |  |
 | metadata.article.subject |  |  |
@@ -79,7 +78,7 @@ IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<
 | metadata.contributor.identifier.id |  |  |
 | metadata.contributor.affiliation |  |  |
 | metadata.accepted_date |  |  |
-| metadata.publication_date.publication_format |  |  |
+| metadata.publication_date. publication_format |  |  |
 | metadata.publication_date.date |  |  |
 | metadata.publication_date.year |  |  |
 | metadata.publication_date.month |  |  |
@@ -100,3 +99,4 @@ IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<
 | metadata.license_ref.url |  |  |
 | metadata.license_ref.version |  |  |
 | metadata.license_ref.start |  |  |
+| | column.spacer.column.spacer.column.spacer.column | |
