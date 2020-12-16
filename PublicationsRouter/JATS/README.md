@@ -56,7 +56,7 @@ IMPORTANT: For brevity, in column 2 below, `<article><front><journal-meta>` is r
 | metadata.article.version | `<A-M><permissions><license specific-use="…">` | Article version is derived from the `specific-use` attribute of most appropriate licence found (usually open-licence).<br> (NOTE: when Router is modified to support JATS v1.2 it will use `<A-M><article-version>` element.)  |
 | metadata.article.start_page | `<A-M><fpage>` |  |
 | metadata.article.end_page | `<A-M><lpage>` |  |
-| metadata.article.page_range | `<A-M><page-range>`<br>or<br>`<A-M><elocation-id>` | `<page-range>` takes priority, if not found then `<elocation-id>` is tried. |
+| metadata.article.page_range | `<A-M><page-range>`<br>or<br>`<A-M><elocation-id>` | `<page-range>` takes priority, if not found then `<elocation-id>` is tried; failing that it will be determined from start_page and end_page if they are provided. |
 | metadata.article.num_pages | - | Derived value: (end_page - start_page + 1) |
 | metadata.article.language | `<article xml:lang="…">` | From the `<article>` element `xml:lang` attribute if present, otherwise defaults to 'en'. |
 | metadata.article.abstract | `<A-M><abstract>` | `<abstract abstract-type="…">` elements may have an `abstract-type` attribute indicating its type, Router attempts to choose an abstract without a type, otherwise it uses the first of these types that it finds 'summary', 'web-summary', 'executive-summary' |
