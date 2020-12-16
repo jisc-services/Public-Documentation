@@ -1,5 +1,7 @@
 # JATS Metadata #
 
+## *** Page under development *** ##
+
 Publishers that submit their articles directly to Publications Router using SFTP send article metadata as JATS Publishing XML https://jats.nlm.nih.gov/publishing/ and article PDFs (and possibly other files) all zipped into a single package.
 
 Currently Router works specifically with JATS v1.1, but is flexible enough to work with older versions of JATS and also more recent versions of the standard.
@@ -22,7 +24,9 @@ In summary, Router will extract metadata from sub-elements within these top leve
             … source of Article metadata …
         </article-meta>
     </front>
-    …
+    
+    <body>… NOT USED …</body>
+    <back>… NOT USED …</back>
 <\article>
 ```
 
@@ -30,7 +34,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 
 ## Mapping to Router's data model from JATS ##
 
-IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<J-M>` and `<article-meta>` by `<A-M>`
+IMPORTANT: For brevity, in column 2 below, `<article><front><journal-meta>` is represented by `<J-M>` and `<article><front><article-meta>` by `<A-M>`
 | Router Field | JATS Source | Notes |
 | ----------- | --------------- | ------|
 | event | - | Populated via API |
@@ -48,17 +52,16 @@ IMPORTANT: For brevity, in column 2 below, `<journal-meta>` is represented by `<
 | metadata.journal.identifier.type<br>metadata.journal.identifier.id | `<J-M><issn pubication-format="…">`<br>or<br>`<J-M><issn pub-type="…">`  | `type` will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub". `id` is set to the value of the `<issn>` element. |
 | metadata.article.title | `<A-M><title-group><article-title>` |  |
 | metadata.article.subtitle | `<A-M><title-group><subtitle>` |  |
-| metadata.article.type |  |  |
-| metadata.article.version |  |  |
-| metadata.article.start_page |  |  |
-| metadata.article.end_page |  |  |
-| metadata.article.page_range |  |  |
-| metadata.article.num_pages |  |  |
-| metadata.article.language |  |  |
-| metadata.article.abstract | `<A-M><abstract>` | `<abstract>` elements may have an `abstract-type` attribute indicating its type, Router attempts to choose an abstract without a type, otherwise it uses the first of these types that it finds 'summary', 'web-summary', 'executive-summary' |
-| metadata.article.identifier.type |  |  |
-| metadata.article.identifier.id |  |  |
-| metadata.article.subject |  |  |
+| metadata.article.type | `<article article-type="……" | The `article-type` attribute of the root `<article>` element is the source. |
+| metadata.article.version | `<A-M><permissions><license specific-use="……">` | Article version is derived from the `specific-use` attribute of most appropriate licence found (usually open-licence).<br> (NOTE: when Router is modified to support JATS v1.2 it will use `<A-M><article-version>` element.)  |
+| metadata.article.start_page | `<A-M><fpage>` |  |
+| metadata.article.end_page | `<A-M><lpage>` |  |
+| metadata.article.page_range | `<A-M><page-range>` |  |
+| metadata.article.num_pages | - | Derived value: (end_page - start_page + 1) |
+| metadata.article.language | `<article xml:lang="……">` | From the `<article>` element `xml:lang` attribute if present, otherwise defaults to 'en'. |
+| metadata.article.abstract | `<A-M><abstract>` | `<abstract abstract-type="……">` elements may have an `abstract-type` attribute indicating its type, Router attempts to choose an abstract without a type, otherwise it uses the first of these types that it finds 'summary', 'web-summary', 'executive-summary' |
+| metadata.article.identifier.type<br>metadata.article.identifier.id | `<A-M><article-id pub-id-type="……">` | `type` is derived from `pub-id-type` attribute; `id` is set to the element value. |
+| metadata.article.subject | `<A-M><article-categories><subj-group><subject>`<br>and<br>`<A-M><kwd-group><kwd>` | Both sources of data are used. |
 | metadata.author.type |  |  |
 | metadata.author.name.firstname |  |  |
 | metadata.author.name.surname |  |  |
