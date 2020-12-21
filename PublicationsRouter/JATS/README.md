@@ -6,7 +6,7 @@ Publishers that submit their articles directly to Publications Router using SFTP
 
 Currently Router works specifically with JATS v1.1, but is flexible enough to work with older versions of JATS and also more recent versions of the standard.
 
-Router analyses the the JATS XML and transforms it into its own [internal metadata representation](./api/v3/IncomingNotification.md) which is a JSON data structure.
+Router analyses the the JATS XML and transforms it into its own [internal metadata representation](../api/v3/IncomingNotification.md) which is a JSON data structure.
 
 Below are general rules which govern how JATS metadata is mapped to Router's internal representation.  Certain fields in Router's structure do NOT derive from JATS, these are briefly noted too.  
 
