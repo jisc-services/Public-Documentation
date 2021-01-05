@@ -44,24 +44,24 @@ IMPORTANT: For brevity, in column 2 below, `<article><front><journal-meta>` is r
 | links.type | - | ditto |
 | links.format | - | ditto |
 | links.url | - | ditto |
-| metadata.journal.title | `<J-M><journal-title-group><journal-title>` |  |
-| metadata.journal.abbrev_title | `<J-M><journal-title-group><abbrev-journal-title>` |  |
-| metadata.journal.volume | `<A-M><volume>` |  |
-| metadata.journal.issue | `<A-M><issue>` |  |
-| metadata.journal.publisher | `<J-M><publisher><pubisher-name>` |  |
-| metadata.journal.identifier.type<br>metadata.journal.identifier.id | `<J-M><issn pubication-format="…">`<br>or<br>`<J-M><issn pub-type="…">`  | `type` will be set to one of "issn", "eissn", "pissn" depending on the value found in `publication-format` or `pub-type` attribute of `<issn>` element, which may be one of "electronic", "online-only", "print", "epub", "ppub". `id` is set to the value of the `<issn>` element. |
-| metadata.article.title | `<A-M><title-group><article-title>` |  |
-| metadata.article.subtitle | `<A-M><title-group><subtitle>` |  |
-| metadata.article.type | `<article article-type="…">` | The `article-type` attribute of the root `<article>` element is the source. |
-| metadata.article.version | `<A-M><permissions><license specific-use="…">` | Article version is derived from the `specific-use` attribute of most appropriate licence found (usually open-licence).<br> (NOTE: when Router is modified to support JATS v1.2 it will use `<A-M><article-version>` element.)  |
-| metadata.article.start_page | `<A-M><fpage>` |  |
-| metadata.article.end_page | `<A-M><lpage>` |  |
-| metadata.article.page_range | `<A-M><page-range>`<br>or<br>`<A-M><elocation-id>` | `<page-range>` takes priority, if not found then `<elocation-id>` is tried; failing that it will be determined from start_page and end_page if they are provided. |
-| metadata.article.num_pages | - | Derived value: (end_page - start_page + 1) |
-| metadata.article.language | `<article xml:lang="…">` | From the `<article>` element `xml:lang` attribute if present, otherwise defaults to 'en'. |
-| metadata.article.abstract | `<A-M><abstract>` | `<abstract abstract-type="…">` elements may have an `abstract-type` attribute indicating its type, Router attempts to choose an abstract without a type, otherwise it uses the first of these types that it finds 'summary', 'web-summary', 'executive-summary' |
-| metadata.article.identifier.type<br>metadata.article.identifier.id | `<A-M><article-id pub-id-type="…">` | `type` is derived from `pub-id-type` attribute; `id` is set to the element value. |
-| metadata.article.subject | `<A-M><article-categories><subj-group><subject>`<br>and<br>`<A-M><kwd-group><kwd>` | Both sources of data are used. |
+| metadata.journal.title |  |  |
+| metadata.journal.abbrev_title |  |  |
+| metadata.journal.volume |  |  |
+| metadata.journal.issue |  |  |
+| metadata.journal.publisher |  |  |
+| metadata.journal.identifier.type<br>metadata.journal.identifier.id |  |  |
+| metadata.article.title |  |  |
+| metadata.article.subtitle |  |  |
+| metadata.article.type |  |  |
+| metadata.article.version |  |  |
+| metadata.article.start_page |  |  |
+| metadata.article.end_page |  |  |
+| metadata.article.page_range |  |  |
+| metadata.article.num_pages |  |  |
+| metadata.article.language |  |  |
+| metadata.article.abstract|  |  |
+| metadata.article.identifier.type<br>metadata.article.identifier.id|  |  |
+| metadata.article.subject |  |  |
 | metadata.author.type |  |  |
 | metadata.author.name.firstname |  |  |
 | metadata.author.name.surname |  |  |
