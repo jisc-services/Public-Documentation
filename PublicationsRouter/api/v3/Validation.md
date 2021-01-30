@@ -16,7 +16,7 @@ Users of the API Validation service will get the validation results as a JSON ob
 ## Error and issue messages
 Error and issue messages will frequently specify data fields using a dot notation, such as: `«metadata.journal.identifier»` which reference the [Incoming Notification JSON data structure](./IncomingNotification.md#json-data-structure).  
 
-For interpreting validation messages in the context of SFTP submission of JATS metadata it may be useful to refer to our [JATS metadata](../../JATS/readme.md) page.
+For interpreting validation messages in the context of SFTP submission of JATS metadata it may be useful to refer to our [JATS metadata](../../JATS) page.
 
 In the majority of cases the messages are self-explanatory, but there are some for which further explanation is provided in the table below.
 
