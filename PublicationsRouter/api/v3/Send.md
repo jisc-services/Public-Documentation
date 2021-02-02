@@ -14,7 +14,7 @@ If you are a publisher (also referred to here as a "provider") providing content
 
 1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to Publications Router
 
-2. **Notification endpoint** - for "live" use, sending real notifications to Publications Router
+2. **Notification endpoint** - for "live" use, sending real notifications to Publications Router.
 
 
 ### Sending Metadata only or Metadata plus full-text article
@@ -51,61 +51,84 @@ If you are applying an embargo to the content this can be indicated via the **em
 
 If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with Publications Router, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
 
-    "links" : [
-        {
-            "type" : "splash",
-            "format" : "text/html",
-            "url" : "http://example.com/article1/index.html",
-        },
-        {
-            "type" : "fulltext",
-            "format" : "text/html",
-            "url" : "http://example.com/article1/fulltext.html",
-        },
-        {
-            "type" : "fulltext",
-            "format" : "application/pdf",
-            "url" : "http://example.com/article1/fulltext.pdf",
-        }
-    ]
-	
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+```JSON
 
-# Validation endpoints
-
-You must have **Publisher account** to access this endpoint. The Validation API allows you to test that your data feed to the system will be successful.
-
-### Possible HTTP responses
-
-Any of the validation endpoints listed below will return one of these responses.
-
-- On **authentication failure** (e.g. invalid api_key, incorrect user role) the API will respond with a **401 (Unauthorised)** and no response body.
+"links" : [
+   {
+      "type" : "splash",
+      "format" : "text/html",
+      "url" : "http://example.com/article1/index.html",
+   },
+   {
+      "type" : "fulltext",
+      "format" : "text/html",
+      "url" : "http://example.com/article1/fulltext.html",
+   },
+   {
+      "type" : "fulltext",
+      "format" : "application/pdf",
+      "url" : "http://example.com/article1/fulltext.pdf",
+   }
+]
 ```
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+# Validation POST endpoints
+
+The Validation API allows you to test that your data feed to the system will be successful.  You must have a **Publisher account** to access either of these endpoints:
+* **POST /validate** - to validate submission of a single notification (which may be metadata only or metadata plus file(s))
+* **POST /validate/list** - to validate submission of a list of metadata only notifications
+
+### Possible HTTP responses to `POST /validate` or `POST /validate/list`
+
+Either of the validation endpoints will return one of these responses.
+
+- On **authentication failure** (e.g. invalid api_key) the API will respond with a **401 (Unauthorised)**:
+```JSON
     HTTP 1.1  401 Unauthorized
 ```
-
-- On **validation failure** the system will respond with a **400 (Bad request)** and the JSON body shown:
-```
+&nbsp;
+- On **validation failure** the system will respond with a **400 (Bad request)** and the JSON body below. See the [Validation](./Validation.md) page for help with error/issue messages.
+```JSON
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
-
     {
-        "error" : "human readable error message"
+       "status" : "error",
+       "summary" : "Validation failed with N errors and M issues",  (where N and M are integer counts)
+       "errors" : ["List of human readable error messages"],
+       "issues" :  ["List of human readable warning messages"]
     }
 ```
-
-
-- On **validation success** the system will respond with **204 (No Content)** and no response body.
+&nbsp;
+- If Account **is not permitted** to use the endpoint (e.g. has wrong user role, or is turned off), the API will respond with a **403 (Forbidden)** and a JSON error body:
+```JSON
+    HTTP 1.1  403 Forbidden
+    Content-Type: application/json
+    {
+        "error" : "Your account does not have permission to perform this function."
+    }
 ```
-    HTTP 1.1  204 No Content
+&nbsp;
+
+- On **validation success** the system will respond with **200 (Success)** and the response body shown below. Note that there will never be any errors, but there may be issues. 
+```JSON
+    HTTP 1.1  200 OK
+    Content-Type: application/json
+    {
+       "errors" : [],
+       "issues" : ["List of human readable warning messages"],
+       "status" : "ok",
+       "summary" : "Validated OK"
+    }
 ```
 
 NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
 
-## Single notification validation (POST /validate)
+## Single notification validation - `POST /validate`
 
 
 
@@ -160,7 +183,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         Content-Type: application/json
         
         {
-            "content": {
+            "content" : {
                 "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
             }
         }
@@ -174,7 +197,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         --------------------------586e648803c83e39---
     
 
-## List of Metadata-only notifications validation (POST /validate/list)
+## List of Metadata-only notifications validation - `POST /validate/list`
 
 If you are sending a list of notifications, the request must take the form shown below.  Note that only metadata can be sent in this way (binary content is not supported):
 
@@ -183,9 +206,9 @@ If you are sending a list of notifications, the request must take the form shown
         Content-Type: application/json
     Body:
         # List of Incoming Notification JSON
-        [{"notification": {Incoming notification JSON object}, "id": 1},
-         {"notification": {Incoming notification JSON object}, "id": 2},
-         {"notification": {Incoming notification JSON object}, "id": 3} ... ]
+        [{"notification" : {Incoming notification JSON object}, "id": 1},
+         {"notification" : {Incoming notification JSON object}, "id": 2},
+         {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 	
@@ -196,58 +219,59 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 
 # Notification endpoints (for sending notifications to Publications Router)
 
-The Notification API endpoints 
-* POST /notification
-* POST /notification/list
+The Notification API endpoints:
+* **POST /notification** - to create a single notification (metadata only or metadata plus files)
+* **POST /notification/list** - to create multiple metadata only notifications.
 
-take an identical request (header and body) to the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
+These take the same request header and body as the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
 
-Again, you must have "Publisher account" to access this endpoint.
+Again, you must have "Publisher account" to access these endpoints.
 
-The system will not attempt to aggressively validate the request, but the request must still be well-formed in order to succeed, so you may still receive a validation error.
+The system will not attempt to aggressively validate the request, but the request must still be well-formed in order to succeed, so you may still receive a (single) validation error.
 
 On a successful call to this endpoint, your notification will be accepted into Publications Router where it will be queued for subsequent processing and routing to matched repositories.
 
-## Single notification submission (POST /notification)
+## Single notification submission - `POST /notification`
 
-### Responses
+### Responses to `POST /notification` endpoint
 
-The `POST /notification` endpoint will return one of these responses.
-
-Note these are different from the Validation endpoint.
-	
-* **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and no response body.
-
-```
-    HTTP 1.1  401 Unauthorized
-```
-	
+Note some of these are different from the Validation endpoint.
 &nbsp;
-* **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
+* **201 - Success**: if the request is successful then a HTTP **201 (Created)** code is provided with the JSON response body shown:
 
-```
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
-
-    {
-        "error" : "human readable error message"
-    }
-```
-	
-&nbsp;
-* **201 - Success**: if the request is successful then an HTTP **201 (Created)** code is provided with the JSON response body shown:
-
-```
+```JSON
     HTTP 1.1  201 Created
     Content-Type: application/json
-    Location: <url for api endpoint for accepted notification>
-
     {
         "id" : "<unique identifier for the notification>",
         "location" : "<url path for api endpoint for newly created notification>"
     }
 ```
-	
+&nbsp;
+* **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and nothing else.
+```JSON
+    HTTP 1.1  401 Unauthorized
+```
+&nbsp;
+* **400 - malformed request**: where the request is malformed in some way the system will return a HTTP **400 (Bad Request)** and the JSON response body shown:
+
+```JSON
+    HTTP 1.1  400 Bad Request
+    Content-Type: application/json
+    {
+        "error" : "human readable error message"
+    }
+```
+&nbsp;
+* **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
+
+```JSON
+    HTTP 1.1  403 Forbidden
+    Content-Type: application/json
+    {
+        "error" : "Only an admin or publisher user can access this endpoint."
+    }
+```
 &nbsp;
 &nbsp;
 
@@ -326,68 +350,66 @@ For example:
 &nbsp;
 &nbsp;
 
-## Multiple Metadata-only notifications submission (POST /notification/list)
+## Multiple Metadata-only notifications submission - `POST /notification/list`
 
-### Responses
+### Responses to `POST /notification/list`
 
-The `POST /notification/list` endpoint will return one of these responses.
-
-Note these are different from the Validation endpoint.
-	
+Note some of these are different from the Validation endpoint.
 &nbsp;
+* **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
 
-* **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and no response body.
-
+```JSON
+    HTTP 1.1  202 Accepted
+    Content-Type: application/json
+    {
+        "successful" : <number of successfully processed notifications>,
+        "total" : <the number of items received in the list>,
+        "created_ids" : [ <list of Publications Router notification IDs of created notifications> ],
+        "success_ids" : [ <list of submitted IDs of successfully processed notifications> ],
+        "fail_ids" : [ <list of submitted IDs of notifications that could not be processed> ],
+        "last_error" : <error message describing the error which caused the last failed notification to fail>
+    }
 ```
+&nbsp;
+* **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
+
+```JSON
+    HTTP 1.1  201 Created
+    Content-Type: application/json
+    {
+        "successful" : <number of successfully processed notifications>,
+        "total" : <the number of items received in the list>,
+        "created_ids" : [ <list of Publications Router notification IDs of created notifications> ],
+        "success_ids" : [ <list of IDs of successfully processed notifications> ],
+        "fail_ids" : [ <list of IDs of notifications that could not be processed> ],
+        "last_error" : "<Last error message>"
+    }
+```
+&nbsp;
+* **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and nothing else.
+```JSON
     HTTP 1.1  401 Unauthorized
 ```
-	
 &nbsp;
 * **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
 
-```
+```JSON
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
-
     {
         "error" : "human readable error message"
     }
 ```
-	
 &nbsp;
-* **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
+* **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
-```
-    HTTP 1.1  202 Accepted
+```JSON
+    HTTP 1.1  403 Forbidden
     Content-Type: application/json
-
     {
-        "successful": <number of successfully processed notifications>,
-        "total": <the number of items received in the list>,
-        "created_ids": [ <list of Publications Router notification IDs of created notifications> ],
-        "success_ids": [ <list of submitted IDs of successfully processed notifications> ],
-        "fail_ids": [ <list of submitted IDs of notifications that could not be processed> ],
-        "last_error": <error message describing the error which caused the last failed notification to fail>
+        "error" : "Only an admin or publisher user can access this endpoint."
     }
 ```
-	
-&nbsp;
-* **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
-
-```
-    HTTP 1.1  201 Created
-    Content-Type: application/json
-
-    {
-        "successful": <number of successfully processed notifications>,
-        "total": <the number of items received in the list>,
-        "created_ids": [ <list of Publications Router notification IDs of created notifications> ],
-        "success_ids": [ <list of IDs of successfully processed notifications> ],
-        "fail_ids": [ <list of IDs of notifications that could not be processed> ],
-        "last_error": "<Last error message>"
-    }
-```
-	
 &nbsp;
 &nbsp;
 

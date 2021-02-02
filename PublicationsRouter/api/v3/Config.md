@@ -53,7 +53,7 @@ To submit JSON, make a POST request against the endpoint, with your api key and 
 Possible response codes:
 * 204 - successfully changed matching parameters (no content is returned)
 * 400 - invalid content (an error string will be returned)
-* 401 - unauthenticated (an error string will be returned)
+* 401 - unauthenticated (nothing returned)
 
 ### CSV Submission
 
