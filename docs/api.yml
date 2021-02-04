@@ -74,6 +74,8 @@ paths:
                 $ref: '#/components/schemas/MatchingParametersSuccess'
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
     post:
       tags:
         - Institution Matching Parameters
@@ -109,6 +111,8 @@ paths:
                 $ref: '#/components/schemas/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 
   /validate:
     post:
@@ -123,12 +127,14 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/SingleNotificationValidate'
       responses:
-        '204':
-          $ref: '#/components/responses/NoContent'
+        '200':
+          $ref: '#/components/responses/ValidateOK'
         '400':
-          $ref: '#/components/responses/BadRequest'
+          $ref: '#/components/responses/ValidateFail'
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 
   /validate/list:
     post:
@@ -142,12 +148,14 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/ListNotification'
       responses:
-        '204':
-          $ref: '#/components/responses/NoContent'
+        '200':
+          $ref: '#/components/responses/ValidateOK'
         '400':
-          $ref: '#/components/responses/BadRequest'
+          $ref: '#/components/responses/ValidateFail'
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 
   /notification:
     post:
@@ -170,6 +178,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 
   /notification/list:
     post:
@@ -198,6 +208,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 
   /routed/{repositoryId}:
     get:
@@ -269,6 +281,8 @@ paths:
                 example: <zip content>
         '401':
           $ref: '#/components/responses/BadApiKey'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 
 components:
   securitySchemes:
@@ -442,6 +456,25 @@ components:
         error:
           type: string
           example: "Your request contained an error."
+
+    ValidateResponse:
+      type: object
+      properties:
+        status:
+          type: string
+
+        summary:
+          type: string
+
+        errors:
+          type: array
+          items:
+            type: string
+
+        issues:
+          type: array
+          items:
+            type: string
 
     PostNoteList:
       type: array
@@ -885,6 +918,48 @@ components:
           type: boolean
 
   responses:
+    ValidateOK:
+      description: 200 - OK. Validated without errors (but there may be issues)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidateResponse'
+          examples:
+            "No errors or issues":
+              value:
+                {
+                  "status": "ok",
+                  "summary": "Validated OK",
+                  "errors": [],
+                  "issues": []
+                }
+            "No errors some issues":
+              value:
+                {
+                  "status": "ok",
+                  "summary": "2 issues were found (these would not affect processing)",
+                  "errors": [],
+                  "issues": ["In «metadata.license_ref» a non-creativecommons licence URL 'http://some-licence' appears - may be OK if intentional", "«metadata.license_ref» has missing desirable field: «start» among the array elements"]
+                }
+
+    ValidateFail:
+      description: 400 - Bad request. Invalid submission
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidateResponse'
+          example:
+            value:
+              {
+                "status": "error",
+                "summary": "Validation failed with 2 errors and 1 issues",
+                "errors": ["«metadata.article.title» is empty", "1 of the 2 supplied «links» had no URL"],
+                "issues": ["«metadata.author» has missing desirable field: «identifier» among the array elements"]
+              }
+
+    NoContent:
+      description: 204 - No Content. Valid request
+
     BadRequest:
       description: 400 - Bad request. Invalid submission
       content:
@@ -892,16 +967,16 @@ components:
           schema:
             $ref: '#/components/schemas/BadRequest'
 
-    NoContent:
-      description: 204 - No Content. Valid request
-
     BadApiKey:
       description: 401 - Unauthenticated. Missing/incorrect API key, or incorrect user type.
+
+    Forbidden:
+      description: 403 - Forbidden. Wrong user type.
       content:
         application/json:
           examples:
-            '0':
-              value: |
+            "Forbidden":
+              value:
                 {
-                  "error": "A valid API key is required."
+                  "error": "Your account does not have permission to perform this function."
                 }
