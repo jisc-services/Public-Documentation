@@ -20,10 +20,10 @@ For interpreting validation messages in the context of SFTP submission of JATS m
 
 In the majority of cases the messages are self-explanatory, but there are some for which further explanation is provided in the table below.
 
-### Message further information
+### Explanation of particular messages
 
 | Message | Explanation |
 |---------|-------------|
-|Unable to parse XML file '...' on 1st attempt, succeeded after 2nd. Syntax Error: ...|There are problems with the JATS XML which resulted in initial processing failure. However, it was processed at a second attempt using more permissive rules, but this could have resulted in data loss. <br><br>You can (probably) gain further insight into the problem by using a (free) online XML checker, such as: https://www.liquid-technologies.com/online-xml-validator. |
-|Found no actionable routing metadata in notification...|Router works by attempting to match reference information supplied by institutions, such as:<br>- Institution name(s)<br>- Postcodes<br>- Researcher ORCIDs<br>- Domain names<br>- Grant numbers<br><br> to particular article metadata: <br>- Author affiliations<br>- Author ORCIDS<br>- Author email domains<br>- Project funding identifiers (grant numbers).<br><br>This error message occurs where none of this article metadata exists.|
+|Unable to parse XML file '...' on 1st attempt, succeeded after 2nd. Syntax Error: ...|<br>There are problems with the JATS XML which resulted in initial processing failure. However, it was processed at a second attempt using more permissive rules, but this could have resulted in data loss. <br><br>You can (probably) gain further insight into the problem by using a (free) online XML validator, such as: https://www.liquid-technologies.com/online-xml-validator, to check your JATS XML.<br><br> |
+|Found no actionable routing metadata in notification...|<br>Router works by attempting to match reference information supplied by institutions, such as:<br>- Institution name(s)<br>- Postcodes<br>- Researcher ORCIDs<br>- Domain names<br>- Grant numbers<br><br> to particular article metadata: <br>- Author affiliations<br>- Author ORCIDS<br>- Author email domains<br>- Project funding identifiers (grant numbers).<br><br>This error message occurs where none of this article metadata exists.<br><br>|
 
