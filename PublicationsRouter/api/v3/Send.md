@@ -93,7 +93,7 @@ Either of the validation endpoints will return one of these responses.
 ```
 &nbsp;
 - On **validation failure** the system will respond with a **400 (Bad request)** and the JSON body below. See the [Validation](./Validation.md) page for help with error/issue messages.
-```JSON
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     {
@@ -105,7 +105,7 @@ Either of the validation endpoints will return one of these responses.
 ```
 &nbsp;
 - If Account **is not permitted** to use the endpoint (e.g. has wrong user role, or is turned off), the API will respond with a **403 (Forbidden)** and a JSON error body:
-```JSON
+```
     HTTP 1.1  403 Forbidden
     Content-Type: application/json
     {
@@ -115,7 +115,7 @@ Either of the validation endpoints will return one of these responses.
 &nbsp;
 
 - On **validation success** the system will respond with **200 (Success)** and the response body shown below. Note that there will never be any errors, but there may be issues. 
-```JSON
+```
     HTTP 1.1  200 OK
     Content-Type: application/json
     {
@@ -239,7 +239,7 @@ Note some of these are different from the Validation endpoint.
 &nbsp;
 * **201 - Success**: if the request is successful then a HTTP **201 (Created)** code is provided with the JSON response body shown:
 
-```JSON
+```
     HTTP 1.1  201 Created
     Content-Type: application/json
     {
@@ -249,13 +249,13 @@ Note some of these are different from the Validation endpoint.
 ```
 &nbsp;
 * **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and nothing else.
-```JSON
+```
     HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: where the request is malformed in some way the system will return a HTTP **400 (Bad Request)** and the JSON response body shown:
 
-```JSON
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     {
@@ -265,7 +265,7 @@ Note some of these are different from the Validation endpoint.
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
-```JSON
+```
     HTTP 1.1  403 Forbidden
     Content-Type: application/json
     {
@@ -358,7 +358,7 @@ Note some of these are different from the Validation endpoint.
 &nbsp;
 * **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
 
-```JSON
+```
     HTTP 1.1  202 Accepted
     Content-Type: application/json
     {
@@ -373,7 +373,7 @@ Note some of these are different from the Validation endpoint.
 &nbsp;
 * **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
 
-```JSON
+```
     HTTP 1.1  201 Created
     Content-Type: application/json
     {
@@ -387,13 +387,13 @@ Note some of these are different from the Validation endpoint.
 ```
 &nbsp;
 * **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and nothing else.
-```JSON
+```
     HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
 
-```JSON
+```
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     {
@@ -403,7 +403,7 @@ Note some of these are different from the Validation endpoint.
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
-```JSON
+```
     HTTP 1.1  403 Forbidden
     Content-Type: application/json
     {
