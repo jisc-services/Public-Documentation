@@ -158,11 +158,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
 			"best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
 			}
-		],
-		"free2read": {
-			"start": "<Start date of ali:free-to-read, YYYY-MM-DD format (or empty string)>",
-			"end": "<End date of ali:free-to-read, YYYY-MM-DD format (or empty string)>"
-		}
+		]
 	}
 }
 ```
@@ -199,7 +195,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.article.title * | Title of the Article| unicode | |
 | metadata.article.subtitle | Subtitle (if any) of the Article | unicode | |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode | |
-| metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR)   | unicode | |
+| metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR, C/EVoR)   | unicode | |
 | metadata.article.start_page | Article start page  | unicode | |
 | metadata.article.end_page | Article end page| unicode | |
 | metadata.article.page_range | Text describing discontinuous pagination | unicode | |
@@ -257,16 +253,8 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.license_ref.version | Version of the licence | unicode | |
 | metadata.license_ref.start | License start date | unicode | |
 | metadata.license_ref.best | Best licence indicator, 1 licence (at most) in the array will have *best* set to *true*. (IMPORTANT: see note below) | boolean | |
-| metadata.free2read | Ali:free-to-read indicator. **Do NOT rely on this** - see note below. | | |
-| metadata.free2read.start | Ali:free-to-read Start date (may be an empty string) | unicode | YYYY-MM-DD |
-| metadata.free2read.end | Ali:free-to-read End date (may be an empty string) | unicode | YYYY-MM-DD |
-
 
 ## Notes
 ### Licences
 See [Using Router Metadata](./Using_Router_Metadata.md#licence-details) for **important** guidance on using and displaying these fields.
 
-### ali:free2read
-The ali:free2read information, if present in the **metadata.free2read element**, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository and you **must not** rely upon this value.
-
-The metadata.free2read element may be deprecated in a future version of the API.  

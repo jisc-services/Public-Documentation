@@ -17,10 +17,6 @@ info:
 
      See [Using Router Metadata](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Using_Router_Metadata.md#licence-details) for important guidance on using and displaying these fields.
 
-     ### ali:free2read
-
-     The ali:free2read information, if present in the `metadata.free2read` element, relates to the article on the publisher's own website. It does not necessarily apply to the article stored in a repository so **you must not rely upon this value**.  This element may be deprecated in a future version of the API.
-
     ## Retrieving article content
 
     If content (e.g. article PDF) is available for a notification this will be indicated by the presence of the `links` array in the notification metadata. Examination of link objects within the links array will enable you to select the optimum link for your purpose - **see [Retrieving notification content](https://github.com/jisc-services/Public-Documentation/blob/master/PublicationsRouter/api/v3/Retrieve.md#retrieving-notification-content)** in Router's public documentation.
@@ -234,6 +230,8 @@ paths:
                 $ref: '#/components/schemas/RoutedSuccess'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
 
   /notification/{notificationId}:
     get:
@@ -251,6 +249,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Notification'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
         '404':
           description: 404 - No notification found.
           content:
@@ -711,16 +711,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NoteLicenseRef'
-        free2read:
-          type: object
-          properties:
-            start:
-              type: string
-              format: date
-            end:
-              type: string
-              format: date
-          description: "The `metadata.free2read` element may be deprecated in a future version of the API."
 
     NoteIdentifier:
       type: object

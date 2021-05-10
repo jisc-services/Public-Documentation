@@ -52,7 +52,7 @@ IMPORTANT: For brevity, in column 2 below, `<article><front><journal-meta>` is r
 | metadata.article.title | `<A-M><title-group><article-title>` |  |
 | metadata.article.subtitle | `<A-M><title-group><subtitle>` |  |
 | metadata.article.type | `<article article-type="…">` | The `article-type` attribute of the root `<article>` element is the source. |
-| metadata.article.version | `<A-M><permissions><license specific-use="…">`<br>or<br>`<A-M><permissions><ali:license_ref specific-use="…">` | Article version is derived from the `specific-use` attribute of most appropriate licence found (usually open-licence).<br> (NOTE: when Router is modified to support JATS v1.2 it will use `<A-M><article-version>` element).  |
+| metadata.article.version | `<A-M><article-version>`<br>or<br>`<article specific-use="…">`<br>or<br>`<A-M><permissions><license specific-use="…">`<br>or<br>`<A-M><permissions><ali:license_ref specific-use="…">` | Article version is preferably obtained from the `<A-M><article-version>` element (available since JATS v1.2), or failing that from `article specific-use` attribute, or otherwise from the `specific-use` attribute of most appropriate licence found (usually open-licence).|
 | metadata.article.start_page | `<A-M><fpage>` |  |
 | metadata.article.end_page | `<A-M><lpage>` |  |
 | metadata.article.page_range | `<A-M><page-range>`<br>or<br>`<A-M><elocation-id>` | `<page-range>` takes priority, if not found then `<elocation-id>` is tried; failing that it will be determined from start_page and end_page if they are provided. |

@@ -28,8 +28,9 @@ JSON element: `metadata.article.version`
 Where this value is provided it indicates the version of the article to which the rest of the metadata applies.  It will have one of these values:
 * AM - Accepted manuscript
 * VoR - Version of record 
-* eVoR - Enhanced version of record
-* cVoR - Corrected version of record.
+* CVoR - Corrected version of record
+* EVoR - Enhanced version of record
+* C/EVoR - Corrected or enhanced version of record.
 
 (For further information see the NISO working group recommendations https://groups.niso.org/publications/rp/RP-8-2008.pdf).  
 
