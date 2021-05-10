@@ -234,6 +234,8 @@ paths:
                 $ref: '#/components/schemas/RoutedSuccess'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
 
   /notification/{notificationId}:
     get:
@@ -251,6 +253,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Notification'
+        '401':
+          $ref: '#/components/responses/BadApiKey'
         '404':
           description: 404 - No notification found.
           content:

@@ -6,10 +6,13 @@ The current version of the API is v3, and is accessed at:
 
 **All URL paths provided in this document extend from this base url.**
 
-A repository or CRIS, consuming notifications from Publications Router, has access to 2 endpoints:
+A repository or CRIS, consuming notifications from Publications Router, has access to 3 endpoints:
 
 1. **[notification list feed](#notification-list-feed-endpoint)** - which lists all notifications routed to a repository in date order, with pagination.
-2. **[notification](#individual-notification-endpoint)** - retrieves an individual notification and any binary/packaged content associated with it.
+2. **[notification](#individual-notification-endpoint)** - retrieves an individual notification.
+2. **[notification content](#packaged-content-endpoint)** - retrieves packaged zip content associated with an individual notification.
+
+**A valid API-Key is required to access all endpoints**
 
 Notifications are represented in Router's native JSON format as an [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) (or a [Provider's Outgoing Notification](./ProviderOutgoingNotification.md#provider-outgoing-notification) if you are the publisher who created it).
 
@@ -21,22 +24,56 @@ Also see the **[API Swagger documentation](https://jisc-services.github.io/Publi
 
 ### Possible API Responses
 
-- In the event of a **malformed HTTP request**, you will receive a 400 (Bad Request) and an error
-message in the body:
+* **401 - authentication failure**: For invalid api_key or other problems authenticating.
+
+```JSON
+    HTTP 1.1  401 Unauthorized
 ```
+
+* **400 - Bad Request**: In the event of a malformed HTTP request.
+```JSON
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
-
     {
         "error" : "human readable error message"
     }
 ```
 
-- On **successful** request, the response will be a 200 OK, with the following body
-```
+- **200 - OK**: for successful requests.
+```JSON
     HTTP 1.1  200 OK
     Content-Type: application/json
+    {
+        Body depends on endpoint
+    }
+```
 
+---
+## Notification List Feed Endpoint
+
+This endpoint lists routed notifications in "analysis_date" order (the date Publications Router analysed the content to determine its routing to your repository), oldest first.
+
+Note that as notifications are never updated (only created and, after 3 months, deleted), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysis_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
+
+    GET /routed/<repo_id>?<parameter list>
+
+Here, **repo_id** is the Publications Router *Account ID*, which may be obtained from the *Account details* panel at the top of your Publications Router account page.
+
+### Parameter list
+
+Required parameters:
+* **api_key** - [required] - May be used for tracking API usage, but no authentication is required for this endpoint
+* **since** - [required] - Time-stamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC time zone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z.  The response will include all records with an `analysis_date` greater than or equal to the `since` date
+
+Optional parameters:
+* **page** - [optional] - Page number of results to return, defaults to 1. Where the number of results exceeds the `pageSize` it will be necessary to make successive requests, incrementing the `page` value each time
+* **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
+
+### Successful Response
+- **200 - OK**: for successful requests.
+```JSON
+    HTTP 1.1  200 OK
+    Content-Type: application/json
     {
         "since" : "date from which results start in the form YYYY-MM-DDThh:mm:ssZ",
         "page" : "page number of results",
@@ -44,74 +81,40 @@ message in the body:
         "timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
         "total" : "total number of results at this time",
         "notifications" : [
-            "ordered list of 'Outgoing Notification' JSON objects"
+            Ordered list of 'Outgoing Notification' JSON objects 
         ]
     }
 ```
 NOTES:
-* the "total" may increase between requests, as new notifications are added to the end of the list
-* the ordering of the JSON elements may vary (for example notifications may appear first).
-
-See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more information.
-
----
-## Notification List Feed Endpoint
-
-This endpoint lists routed notifications in "analysis_date" order (the date Publications Router analysed the content to determine its routing to your repository), oldest first.
-
-You may list the notifications routed to just your repository or, alternatively, all notifications that were routed to any repository.
-
-Note that as notifications are never updated (only created and, after 3 months, deleted), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysis_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
-
-### Request parameters
-
-The REST call **must** include the `since` parameter and may include additional parameters:
-
-* **since** - [required] - Time-stamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC time zone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z.  The response will include all records with an `analysis_date` greater than or equal to the `since` date
-* **api_key** - [optional] - May be used for tracking API usage, but no authentication is required for this endpoint
-* **page** - [optional] - Page number of results to return, defaults to 1. Where the number of results exceeds the `pageSize` it will be necessary to make successive requests, incrementing the `page` value each time
-* **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
-
-### 1. Repository routed notifications
-
-This endpoint lists all notifications routed to a repository.
-
-    GET /routed/<repo_id>[?<parameter list>]
-
-Here, **repo_id** is the Publications Router *Account ID*, which may be obtained from the *Account details* panel at the top of your Publications Router account page.
-
-You will not be able to tell from this endpoint which other repositories have been identified as targets for this notification.
-
-### 2. All routed notifications
-
-This endpoint lists all routed notifications irrespective of the repositories they were routed to (it excludes notifications which were not matched to any repository).
-
-    GET /routed[?<parameter list>]
-
-You will not be able to tell from this endpoint which repositories have been identified as targets for this notification.
+* The "total" value may increase between requests, as new notifications are added to the end of the list
+* The ordering of the JSON elements may vary (for example notifications may appear first)
+* See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more information on notification data structure.
 
 ---
 ## Individual Notification Endpoint
 
 This endpoint will return the JSON record for an individual notification.
 
-The JSON metadata associated with a notification is publicly accessible, so anyone can access this endpoint.
-
-    GET /notification/<notification_id>
+    GET /notification/<notification_id>?api_key=...
 
 Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](#notification-list-feed-endpoint)**.
 
-If the notification does not exist, you will receive a 404 (Not Found), and a JSON error document response body.
+Parameter **api_key** is required.
 
-If the you are not authenticated as the original publisher of the notification, and the notification has not yet been routed, you will also receive a 404 (Not Found) and html error page in the body.
+If the api_key is not supplied or is not valid you will receive a 401 (Unauthorized) response.
+
+If the notification does not exist, you will receive a 404 (Not Found) with a JSON error document response body.
 
 If the notification is found and has been routed, you will receive a 200 (OK) and the following response body:
 
+- **200 - OK**: for successful requests.
+```JSON
     HTTP 1.1  200 OK
     Content-Type: application/json
-
-    { ...Outgoing Notification JSON... }
-
+    { 
+      ...Outgoing Notification JSON... 
+    }
+```
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for details.
 
 ## Retrieving notification content
@@ -175,8 +178,6 @@ For notifications which have binary content stored by Publications Router this c
 
 IMPORTANT: Router stores full-text content for a temporary period (currently 90 days, subject to review) from the date of receipt from publisher and so it must be retrieved by a repository within this timescale.
 
-You **must** have a Publications Router account (either Repository or Publisher) to access this endpoint.
-
 Notifications with binary content will contain contain a links section like:
 
     "links" : [
@@ -202,7 +203,7 @@ See the documentation on [Packaging Formats](./Packaging.md#packaging) to unders
 
 You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional image files) as a single zip file.  To request it, you will also need to provide your API key (shown on your Publications Router account page):
 
-    GET <package url>?api_key=<api_key>
+    GET <package url>?api_key=<API-key>
 
 &nbsp;
 #### Possible HTTP responses to `GET /notification/<notification-id>/content` endpoint

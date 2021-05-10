@@ -8,7 +8,7 @@ The current version of the API is v3, and it can be accessed at
 
 All URL paths in this documentation will extend from this base url.
 
-In many cases you will need an API key to access the API.  This can be obtained from your Publications Router account page.
+In all cases you will need an API key to access the API.  This can be obtained from your Publications Router account page.
 
 **[Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API) is available.
 
