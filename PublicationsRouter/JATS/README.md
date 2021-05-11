@@ -32,7 +32,9 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 
 ## Mapping to Router's data model from JATS ##
 
-IMPORTANT: For brevity, in column 2 below, `<article><front><journal-meta>` is represented by `<J-M>` and `<article><front><article-meta>` by `<A-M>`.
+**IMPORTANT**: In column 2 below, for brevity:
+* **`<J-M>`** means `<article><front><journal-meta>`
+* **`<A-M>`** means `<article><front><article-meta>`.
 
 | Router Field | JATS Source | Notes |
 | ----------- | --------------- | ------|
