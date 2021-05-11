@@ -1,6 +1,30 @@
 # Release History
 
-## Release 10.0 - January 2021
+## PLANNED Release 10.3 - May 2021
+Substantial new capability:
+* Strengthen Router API security - all endpoints now require API Key
+* Support JATS v1.2, in particular capture article version when set in the new <article-version> element
+* Publisher autotesting - check for presence of PDF file, validate supplied article-version values.
+
+Minor enhancements, including:
+* Remove free2read metadata field
+* Minor GUI changes.
+
+## Release 10.2 - 29 March 2021
+Minor enhancements, including:
+* Store and display Repository or CRIS type
+* Minor GUI changes.
+
+## Release 10.1 - 25 February 2021
+Substantial new capability:
+* Increase capability of automated testing: capture metadata for display
+* Make Crossref harvester more resilient to failure of Crossref API feed.
+
+Minor enhancements, including:
+* Bug fix - correctly handle "corporate authors" (as opposed to individual authors)
+* Bug fix - make API HTTP request responses consistent with pubic documentation.
+
+## Release 10.0 - 15 January 2021
 Substantial new capability:
 * Automated testing (including metadata validation) of article submissions for new publishers, with immediate feedback
 * Processing and database storage efficiency improvements.
