@@ -405,10 +405,16 @@ components:
           items:
             type: string
             example: "0000-5555"
-        author_ids:
+        orcids:
           type: array
           items:
-            $ref: "#/components/schemas/NoteIdentifier"
+            type: string
+            example: "0000-0002-6209-0262"
+        emails:
+          type: array
+          items:
+            type: string
+            example: "thingumy.bob@gmail.com"
 
     MatchingParametersSuccess:
       type: object
@@ -433,10 +439,16 @@ components:
           items:
             type: string
             example: "0000-5555"
-        author_ids:
+        orcids:
           type: array
           items:
-            $ref: "#/components/schemas/NoteIdentifier"
+            type: string
+            example: "0000-0002-6209-0262"
+        emails:
+          type: array
+          items:
+            type: string
+            example: "thingumy.bob@gmail.com"
         id:
           type: string
           example: "(UUID)"
