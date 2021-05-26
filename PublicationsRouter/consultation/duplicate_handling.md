@@ -1,9 +1,9 @@
 # Duplicate handling consultation
 
-Following Router's introduction of basic duplicate handling options (in June 2021) we are considering adding additional functionality:
+Following Router's introduction of basic duplicate handling options (in June 2021) we are considering additional features:
 
-1. Sending duplicate notifications by email (instead of into your repository) if you provide one (or more) email addresses for that purpose (there would be a new *Duplicates by Email* field on your Router account page)
-2. More sophisticated duplicates filter mechanism which would provide additional options listed below.
+1. Sending duplicate notifications by email (instead of into your repository) if you provide one or more email addresses for that purpose (there would be a new *Duplicates by Email* field on your Router account page)
+2. Additional duplicate filter options, as listed below.
 
 ### Current duplicate filter options:
 1. No duplicates from secondary sources (Crossref, PubMed, EMPC)
