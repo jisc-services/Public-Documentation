@@ -1,18 +1,21 @@
 # Duplicate handling consultation
 
-Following Router's introduction of basic duplicate handling options (in May 2021) we are considering adding a more sophisticated filter mechanism which provides additional options.
+Following Router's introduction of basic duplicate handling options (in May 2021) we are considering adding additional functionality:
 
-### Current options:
+1. Sending duplicate notifications by email (instead of into your repository) if you provide one (or more) email addresses for that purpose (there would be a new *Duplicates by Email* field on your Router account page)
+2. More sophisticated duplicates filter mechanism which would provide additional options listed below.
+
+### Current duplicate filter options:
 1. No duplicates from secondary sources (Crossref, PubMed, EMPC)
 2. Secondary source duplicates only if they contain additional metadata 
 3. All duplicates)
 
 (Currently duplicates direct from publishers will always be sent).
 
-### Proposed options
+### Proposed duplicate filter options
 0. No duplicates from any source (including publishers)
 1. Duplicates direct from Publisher (none from secondary sources)
-2. As (1) or where notification has an increased number of any of the following (Authors, Author-ORCIDS, Funders, Funder-IDs, Grant-numbers, Licences) 
+2. As (1) or where notification has an increased number of any of the following metadata (Authors, Author-ORCIDS, Funders, Funder-IDs, Grant-numbers, Licences) 
 3. As (2) or with additional **high** ranked metadata fields or a PDF article (where none previously supplied)
 4. As (3) or with additional **medium** ranked metadata fields
 5. As (4) or with additional **low** ranked metadata fields
@@ -22,14 +25,15 @@ Following Router's introduction of basic duplicate handling options (in May 2021
 
 * Options from 1 onwards are all *additive*: they include the criteria of all preceding options in addition to those described 
 * Options 2 to 6 effectively apply only to secondary sources, because they inherit option 1, which is passing ALL duplicates direct from a publisher. 
-* For options 3 to 5, we only consider presence of new metadata fields, we do NOT analyse for changes in existing metadata fields. E.g. if an Abstract had previously been supplied, and in a later notification it is revised, this would not be noticed.
+* For options 3 to 5, we only consider the presence of new metadata fields, we do NOT analyse for changes in existing metadata fields. E.g. if an Abstract had previously been supplied, and in a later notification it is revised, this would not be noticed.
 
 ### Comparison of current and proposed options
-Current option 1 corresponds to proposed option 1.
+Proposed options 0, 2, 3 and 4 would be new.
 
-Current option 2 corresponds to proposed option 5.
-
-Current option 3 corresponds to proposed option 6.
+Proposed options 1, 5 and 6 correspond to existing options: 
+* Proposed option 1 <=> Current option 1
+* Proposed option 5 <=> Current option 2
+* Proposed option 6 <=> Current option 3.
 
 
 ## Ranking of metadata fields
@@ -37,7 +41,7 @@ The proposed options introduce the concept of **metadata rank**, which is intend
 
 **This is a key area for consultation with you.**
 
-Below is our "straw-man" draft which we would like you to comment on and propose changes.
+Below is our *straw-man* draft which we would like you to comment on and propose changes.
 
 | Metadata Field | Proposed Rank | Notes |
 | ----- | ----------- | -------- |
@@ -69,8 +73,9 @@ Below is our "straw-man" draft which we would like you to comment on and propose
 | Licence | High |  |
 
 ## Consultation Feedback
-We would welcome any comments on the following topics:
-* Proposed options - are they useful? what alternatives would you prefer?
-* Proposed rank - how would you rank the metadata fields?
+We would welcome your comments on the following topics:
+* Receiving duplicates by email (instead of into your repository)
+* Proposed duplicate filter options - are they useful? what alternatives would you prefer?
+* Proposed rank - Do you agree with the suggesed ranking? How would you rank the metadata fields differently?
 
-We would prefer you to provide feedback by adding a new Issue on this page: https://github.com/jisc-services/Public-Documentation/issues as this will then be visible to all interested parties.  Note that you will need to create a GitHub account to do this.
+We would prefer you to provide feedback by adding a new Issue or by commenting on or reacting to an existing issue on this page: **https://github.com/jisc-services/Public-Documentation/issues** as this will then be visible to all interested parties, who can also comment or "vote" by clicking a reaction icon.   You will need to create a GitHub account to do this.
