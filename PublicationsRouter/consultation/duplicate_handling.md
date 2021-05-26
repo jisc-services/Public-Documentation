@@ -1,6 +1,6 @@
 # Duplicate handling consultation
 
-Following Router's introduction of basic duplicate handling options (in May 2021) we are considering adding a more sophisticated filter mechanism which provides additional granularity.
+Following Router's introduction of basic duplicate handling options (in May 2021) we are considering adding a more sophisticated filter mechanism which provides additional options.
 
 ### Current options:
 1. No duplicates from secondary sources (Crossref, PubMed, EMPC)
