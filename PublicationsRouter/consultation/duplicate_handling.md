@@ -3,7 +3,7 @@
 Following Router's introduction of basic duplicate handling options (in June 2021) we are considering additional features:
 
 1. Sending duplicate notifications by email
-2. Additional duplicate filter options or a checkbox menu approach, as described below 
+2. Additional duplicate filter options or a checkbox menu approach, as described below.
 
 We would welcome your feedback on these using the mechanism described at the bottom of this page. 
 ## Duplicates by email
