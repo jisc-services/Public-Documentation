@@ -9,35 +9,38 @@ We would welcome your feedback on these using the mechanism described at the bot
 ## Duplicates by email
 You would have the option of providing one or more email addresses to which duplicate notifications would be sent *instead* of depositing them directly into your repository.  
 
-There would be a new *Duplicates by Email* field on your Router account page for this purpose.
+There would be a new *Duplicates by Email* field on your Router account page (in the *Manage duplicates* panel) for this purpose.
 
-The email would contain:
-* a description of the differences between the duplicate notification and
-  * the original notification
-  * a cumulative  view of all previous notifications (where this is not the first duplicate)
-* all the metadata (with additional metadata highlighted)
-* a download link (valid for 90 days) if an article PDF is available
-* for SWORD users, it would also include the URL of the original deposit in your repository.
+You would receive an email for each duplicate notification that is matched to your account. This would contain:
+* A description of the differences between the duplicate notification and
+  * The original notification
+  * A cumulative  view of all previous notifications (where this is not the first duplicate)
+* All the metadata (with additional metadata highlighted)
+* A download link (valid for 90 days) if an article PDF is available
+* For SWORD users, it would also include the URL of the original deposit in your repository.
 
-You would need to use the information supplied in the email to update your repository entry manually.  
+You would need to use the information supplied in the email to update your repository record manually.  
 
 This option avoids you having to de-duplicate deposits which Router would otherwise make into your repository.
 
 ## Filter options
+
+Filter options allow you to select the kinds of duplicates you will receive.
+
 ### Current duplicate filter options:
 
 The current options are presented as a drop-down list:
 1. No duplicates from secondary sources (Crossref, PubMed, EMPC)
 2. Secondary source duplicates only if they contain additional metadata 
-3. All duplicates)
+3. All duplicates.
 
-(Currently duplicates direct from publishers will always be sent).
+(Currently, duplicates direct from publishers are always sent).
 
 ### Proposed duplicate filter options
-These would be presented as a drop-down list, from which you would choose one to apply to your account.
+These would be presented as a drop-down list - you would choose one to apply to your account.
 
 0. No duplicates from any source (including publishers)
-1. Duplicates direct from Publisher (none from secondary sources)
+1. All duplicates direct from Publisher (none from secondary sources)
 2. As (1) or where notification has an increased number of any of the following metadata (Authors, Author-ORCIDS, Funders, Funder-IDs, Grant-numbers, Licences) 
 3. As (2) or with additional **high** ranked metadata fields or a PDF article (where none previously supplied)
 4. As (3) or with additional **medium** ranked metadata fields
