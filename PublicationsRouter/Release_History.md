@@ -1,6 +1,16 @@
 # Release History
 
-## PLANNED Release 10.3 - May 2021
+## Release 11.0 - June 2021
+Substantial new capability:
+* Duplicate filtering
+* Improved GUI for entering repository connection details (SWORD etc)
+
+Minor enhancements, including:
+* Capture Elsevier corresponding author attribute
+* Modify Dspace wording on "How to start using service" page to mention 4Science
+* Simplify storage of ORCID and email matching parameters
+
+## Release 10.3 - May 2021
 Substantial new capability:
 * Strengthen Router API security - all endpoints now require API Key
 * Support JATS v1.2, in particular capture article version when set in the new <article-version> element
