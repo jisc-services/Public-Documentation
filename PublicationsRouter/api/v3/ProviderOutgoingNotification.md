@@ -46,7 +46,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 		"old_bits": <Long integer: Bit mask which summarises analysis of original notification's metadata e.g 144513149944>,
 		// The following elements (n_…) are signed integer variations between counts of particular sets of metadata
 		// They indicate whether the current notification has more/fewer/identical numbers compared to the original notification
-		"n_auth": <Integer: Difference (+/-) in number of Authors between current and original notification e.g. 1>
+		"n_auth": <Integer: Difference (+/-) in number of Authors between current and original notification e.g. 1>,
 		"n_orcid": <Integer: Difference (+/-) in number of authors with ORCIDs between current and original notification e.g. 2>,
 		"n_fund": <Integer: Difference (+/-) in number of Funding elements between current and original notification e.g. 3>,
 		"n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and original notification e.g. 0>,
@@ -62,7 +62,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
 		// They indicate whether the current notification has identical/more/fewer count of an entity compared to the maximum count seen any previous notification
 		// A POSITIVE number indicates that the current notification has MORE of the particular entity than any notification previously seen
 		// A NEGATIVE number indicates that the current notification has FEWER of the particular entity than seen in at least one previous notification
-		"n_auth": <Integer: Difference (+/-) in number of Authors between current and maximum number of Authors found in previous notifications e.g. 0>
+		"n_auth": <Integer: Difference (+/-) in number of Authors between current and maximum number of Authors found in previous notifications e.g. 0>,
 		"n_orcid": <Integer: Difference (+/-) in number of author ORCIDs between current and maximum number of ORCIDs found in previous notifications e.g. 1>,
 		"n_fund": <Integer: Difference (+/-) in number of Funding elements between current and maximum number found in previous notifications e.g. 0>,
 		"n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and maximum number found in previous notifications e.g. 0>,
@@ -228,8 +228,8 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | links.access | URL access type, one of: **"public"** - indicates the content is available from public URL; **"router"** - content is in temporary Publications Router store (kept for 3 months); **"special"** - unpackaged content in temporary Publications Router store (this will duplicate content contained in a package with access-type "router")  | unicode | |
 | dup_diffs | Array of duplicate-differences objects (either 1 or 2 elements). `dup_diffs` will be present ONLY if the notification is a duplicate.<br>The first duplicate notification will have a single difference object, subsequen duplicate notifications will all have 2 difference objects. |  |  |
 | dup_diffs.old_date | created_date timestamp of the notification these differences relate to   | Unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
-| dup_diffs.curr_bits | Bit mask summarises an analysis of the current notification's metadata | Integer |  |
-| dup_diffs.old_bits |  Bit mask summarises an analysis of the comparison notification's (original notification or accumulated notifications ) metadata | Integer |  |
+| dup_diffs.curr_bits | Bit mask summarises an analysis of the current notification's metadata.<br><br>See [Duplicate Differences Bit Mask](./DupDiffs.md) page for details. | Integer |  |
+| dup_diffs.old_bits |  Bit mask summarises an analysis of the comparison notification's (original notification or accumulated notifications ) metadata.<br><br>See [Duplicate Differences Bit Mask](./DupDiffs.md) page for details. | Integer |  |
 | dup_diffs.n_auth | Difference (+/-) in the Author count between current and original or accumulated notifications | Integer |  |
 | dup_diffs.n_orcid | Difference (+/-) in the Author ORCID count between current and original or accumulated notifications  | Integer |  |
 | dup_diffs.n_fund |  Difference (+/-) in the Funder count between current and original or accumulated notifications | Integer |  |
