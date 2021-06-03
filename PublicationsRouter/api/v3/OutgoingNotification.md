@@ -33,7 +33,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 	],
 	// dup_diffs will be present ONLY FOR DUPLICATE notifications - hence it's presence/absence will indicate if notification is a duplicate or not  
 	"dup_diffs": [
-	{ // First array element is a comparison of the current notification with the original notification (the first with this DOI)
+	    { // First array element is a comparison of the current notification with the original notification (the first with this DOI)
 		"old_date": "<The created_date of the original notification  e.g. 2021-06-02T15:58:58Z>",
 		"curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata e.g 205084675068>,
 		"old_bits": <Long integer: Bit mask which summarises analysis of original notification's metadata e.g 144513149944>,
@@ -45,8 +45,8 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		"n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and original notification e.g. 0>,
 		"n_grant": <Integer: Difference (+/-) in number of Grant numbers between current and original notification e.g. 4>,
 		"n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and original notification e.g. 0>,
-	},
-	{ // Second array element will be present ONLY for 2nd duplicate onwards.
+	    },
+	    { // Second array element will be present ONLY for 2nd duplicate onwards.
 	  // It compares the current notification with an accumulated view of all previous notifications
 		"old_date": "<The created_date of the last duplicate notification e.g. 2021-06-04T06:22:51Z>",
 		"curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata e.g 205084675068>,
@@ -61,7 +61,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		"n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and maximum number found in previous notifications e.g. 0>,
 		"n_grant": <Integer: Difference (+/-) in number of Grant numbers between current and maximum number found in previous notifications e.g. 0>,
 		"n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and maximum number found in previous notifications e.g. 0>,
-	}
+	    }
 	],
 	"metadata": {
 		"journal": {
