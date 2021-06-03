@@ -54,7 +54,7 @@ IMPORTANT: the structure returned by an API request will only have elements for 
         "n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and original notification e.g. 0>,
         },
         { // Second array element will be present ONLY for 2nd duplicate onwards.
-      // It compares the current notification with an accumulated view of all previous notifications
+          // It compares the current notification with an accumulated view of all previous notifications
         "old_date": "<The created_date of the last duplicate notification e.g. 2021-06-04T06:22:51Z>",
         "curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata e.g 205084675068>,
         "old_bits": <Long integer: Bit mask which summarises cumulative analysis of all previous notifications' metadata e.g 204513149944>,
