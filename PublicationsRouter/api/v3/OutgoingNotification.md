@@ -9,7 +9,8 @@ The full JSON structure of the model is shown here.
 IMPORTANT: the structure returned by an API request will only have elements for which data exists; where no data is available the element will be omitted from the structure. 
 
 Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-metadata) page for important guidelines on using particular data elements.
-```json
+
+```
 {
 	"id": "<String>",
 	"created_date": "<Date/time in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
@@ -19,8 +20,8 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		"agent": "<String defining the software/process which put the content here, provided by provider>"
 	},
 	"content": {
-   		"packaging_format": "<Identifier for packaging format used>"
-	}, 
+		"packaging_format": "<Identifier for packaging format used>"
+	},
 	"links": [
 	    	{
 		"type": "<Link type: package|unpackaged|splash|fulltext>",
@@ -28,8 +29,40 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		"url": "<Provider's splash, fulltext or machine readable page>",
 		"packaging": "<Package format identifier string (may be absent)>",
 		"access":"<Permitted access level, one of: public|router|special >"
-        	}
-	], 
+			}
+	],
+	// dup_diffs will be present ONLY FOR DUPLICATE notifications - hence it's presence/absence will indicate if notification is a duplicate or not  
+	"dup_diffs": [
+	{ // First array element is a comparison of the current notification with the original notification (the first with this DOI)
+		"old_date": "<The created_date of the original notification  e.g. 2021-06-02T15:58:58Z>",
+		"curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata e.g 205084675068>,
+		"old_bits": <Long integer: Bit mask which summarises analysis of original notification's metadata e.g 144513149944>,
+		// The following elements (n_…) are signed integer variations between counts of particular sets of metadata
+		// They indicate whether the current notification has more/fewer/identical numbers compared to the original notification
+		"n_auth": <Integer: Difference (+/-) in number of Authors between current and original notification e.g. 1>
+		"n_orcid": <Integer: Difference (+/-) in number of authors with ORCIDs between current and original notification e.g. 2>,
+		"n_fund": <Integer: Difference (+/-) in number of Funding elements between current and original notification e.g. 3>,
+		"n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and original notification e.g. 0>,
+		"n_grant": <Integer: Difference (+/-) in number of Grant numbers between current and original notification e.g. 4>,
+		"n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and original notification e.g. 0>,
+	},
+	{ // Second array element will be present ONLY for 2nd duplicate onwards.
+	  // It compares the current notification with an accumulated view of all previous notifications
+		"old_date": "<The created_date of the last duplicate notification e.g. 2021-06-04T06:22:51Z>",
+		"curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata e.g 205084675068>,
+		"old_bits": <Long integer: Bit mask which summarises cumulative analysis of all previous notifications' metadata e.g 204513149944>,
+		// The following elements (n_…) are signed integer variations between counts of particular sets of metadata
+		// They indicate whether the current notification has identical/more/fewer count of an entity compared to the maximum count seen any previous notification
+		// A POSITIVE number indicates that the current notification has MORE of the particular entity than any notification previously seen
+		// A NEGATIVE number indicates that the current notification has FEWER of the particular entity than seen in at least one previous notification
+		"n_auth": <Integer: Difference (+/-) in number of Authors between current and maximum number of Authors found in previous notifications e.g. 0>
+		"n_orcid": <Integer: Difference (+/-) in number of author ORCIDs between current and maximum number of ORCIDs found in previous notifications e.g. 1>,
+		"n_fund": <Integer: Difference (+/-) in number of Funding elements between current and maximum number found in previous notifications e.g. 0>,
+		"n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and maximum number found in previous notifications e.g. 0>,
+		"n_grant": <Integer: Difference (+/-) in number of Grant numbers between current and maximum number found in previous notifications e.g. 0>,
+		"n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and maximum number found in previous notifications e.g. 0>,
+	}
+	],
 	"metadata": {
 		"journal": {
 			"title": "<Journal / publication title>",
@@ -152,7 +185,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 		"license_ref": [
 			{
 			"title": "<Name of licence>",
-			"type": "<Type>", 
+			"type": "<Type>",
 			"url": "<URI of licence>",
 			"version": "<Licence version; for example: 4.0>",
 			"start": "<Date licence starts (YYYY-MM-DD format)>",
@@ -183,6 +216,16 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | links.url | URL to the associated resource.  All URLs provided by publishers should be publicly accessible for a minimum of 3 months | unicode | URL |
 | links.packaging | Package format identifier for the resource available at the URL, one of "https://pubrouter.jisc.ac.uk/FilesAndJATS" or "http://purl.org/net/sword/package/SimpleZip".  This element will be present only for Router packaged content. | unicode | |
 | links.access | URL access type, one of: **"public"** - indicates the content is available from public URL; **"router"** - content is in temporary Publications Router store (kept for 3 months); **"special"** - unpackaged content in temporary Publications Router store (this will duplicate content contained in a package with access-type "router")  | unicode | |
+| dup_diffs | Array of duplicate-differences objects (either 1 or 2 elements). `dup_diffs` will be present ONLY if the notification is a duplicate.<br>The first duplicate notification will have a single difference object, subsequen duplicate notifications will all have 2 difference objects. |  |  |
+| dup_diffs.old_date | created_date timestamp of the notification these differences relate to   | Unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
+| dup_diffs.curr_bits | Bit mask summarises an analysis of the current notification's metadata | Integer |  |
+| dup_diffs.old_bits |  Bit mask summarises an analysis of the comparison notification's (original notification or accumulated notifications ) metadata | Integer |  |
+| dup_diffs.n_auth | Difference (+/-) in the Author count between current and original or accumulated notifications | Integer |  |
+| dup_diffs.n_orcid | Difference (+/-) in the Author ORCID count between current and original or accumulated notifications  | Integer |  |
+| dup_diffs.n_fund |  Difference (+/-) in the Funder count between current and original or accumulated notifications | Integer |  |
+| dup_diffs.n_fund_id | Difference (+/-) in the Funder ID count between current and original or accumulated notifications  |Integer  |  |
+| dup_diffs.n_grant | Difference (+/-) in the Grant count between current and original or accumulated notifications  | Integer |  |
+| dup_diffs.n_lic | Difference (+/-) in the Licence count between current and original or accumulated notifications  | Integer |  |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode | |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode | |
