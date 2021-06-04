@@ -12,7 +12,7 @@ You would have the option of providing one or more email addresses to which dupl
 There would be a new *Duplicates by Email* field on your Router account page (in the *Manage duplicates* panel) for this purpose.
 
 You would receive an email for each duplicate notification that is matched to your account. This would contain:
-* A description of the differences between the duplicate notification and
+* A brief summary of the differences between the duplicate notification and
   * The original notification
   * A cumulative  view of all previous notifications (where this is not the first duplicate)
 * All the metadata (with additional metadata highlighted)
