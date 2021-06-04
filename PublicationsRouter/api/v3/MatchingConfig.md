@@ -24,12 +24,8 @@ The `GET /config` endpoint will return one of these responses.
     "postcodes" : [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of email or website domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution" ],
-    "author_ids": [ // list of identifier objects of format
-        {
-        'type': 'the type of identifier, either email or ORCID', 
-        'id': 'the value, so either the email address or the ORCID'
-        }
-    ],
+    "orcids": [ "list of ORCIDs affiliated with the institution" ],
+    "emails": [ "list of affiliated researchers private emails (not using institution domain)"],
     "id": "the id of this repository configuration object (used internally, not of use externally)",
     "repository": "id of the repository retrieved",
     "created_date": "date this repository configuration object was created",
@@ -44,16 +40,8 @@ Successful response example:
     "postcodes": ["BS1 1SB", "LS2 2SL"],
     "domains": ["ox.ac.uk"],
     "grants": ["yyybbb-123", "abcde-321"],
-    "author_ids": [
-        {
-            "type": "email",
-            "id": "some.one@gmail.com"
-        },
-        {
-            "type": "orcid",
-            "id": "0000-0001-2345-6789"
-        }
-    ],
+    "orcids": ["0000-0001-2345-6789"],
+    "emails": ["some.one@gmail.com"],
     "id": "123456789",
     "repository": "987654321",
     "created_date": "2016-11-23T14:57:00Z",
@@ -100,12 +88,8 @@ The matching parameters to set are sent using POST either as a JSON data package
     "postcodes": [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution"] ,
-    "author_ids": [ // list of identifier objects of format
-        {
-        'type': 'the type of identifier, either email or ORCID', 
-        'id': 'the value, so either the email address or the ORCID'
-        }
-    ]
+    "orcids": [ "list of ORCIDs affiliated with the institution" ],
+    "emails": [ "list of affiliated researchers private emails (not using institution domain)"],
 }
 ```  
 See the GET example above. 
