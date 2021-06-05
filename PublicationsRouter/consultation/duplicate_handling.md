@@ -1,6 +1,6 @@
 # Duplicate handling consultation
 
-Following Router's introduction of basic duplicate handling options (in June 2021) we are considering additional features:
+Following Router's introduction of basic duplicate filtering options (in June 2021) we are considering additional features:
 
 1. Sending duplicate notifications by email
 2. Additional duplicate filter options or a checkbox menu approach, as described below.
@@ -30,36 +30,38 @@ Filter options allow you to select the kinds of duplicates you will receive.
 ### Current duplicate filter options:
 
 The current options are presented as a drop-down list:
-1. No duplicates from secondary sources (Crossref, PubMed, EMPC)
-2. Secondary source duplicates only if they contain additional metadata 
-3. All duplicates.
-
-(Currently, duplicates direct from publishers are always sent).
+```
+A. No duplicates from secondary sources (Crossref, PubMed, EMPC)
+B. Secondary source duplicates only if they contain additional metadata 
+C. All duplicates.
+```
+(Duplicates direct from publishers are always sent).
 
 ### Proposed duplicate filter options
 These would be presented as a drop-down list - you would choose one to apply to your account.
-
+```
 0. No duplicates from any source (including publishers)
 1. All duplicates direct from Publisher (none from secondary sources)
-2. As (1) or where notification has an increased number of any of the following metadata (Authors, Author-ORCIDS, Funders, Funder-IDs, Grant-numbers, Licences) 
-3. As (2) or with additional **high** ranked metadata fields or a PDF article (where none previously supplied)
-4. As (3) or with additional **medium** ranked metadata fields
-5. As (4) or with additional **low** ranked metadata fields
+2. As (1) or where notification has an increased number of any of these: Authors, Author-ORCIDS, Funders, Funder-IDs, Grant-numbers, Licences
+3. As (2) or with additional HIGH rank metadata fields or a PDF article (where none previously supplied)
+4. As (3) or with additional MEDIUM rank metadata fields
+5. As (4) or with additional LOW rank metadata fields
 6. All duplicates.
-
+```
 **Notes:**
 
 * Options from 1 onwards are all *additive*: they include the criteria of all preceding options in addition to those described (so, for example, option 3 includes options 1 & 2)
 * Options 2 to 6 effectively apply only to secondary sources, because they inherit option 1, which is passing ALL duplicates direct from a publisher. 
 * For options 3 to 5, we only consider the presence of new metadata fields, we do NOT analyse for changes in existing metadata fields. E.g. if an Abstract had previously been supplied, and in a later notification it is revised, this would not be noticed.
+* Comparison of current and proposed options:
+  * A <=> 1
+  * B <=> 5
+  * C <=> 6
 
-### Comparison of current and proposed options
-Proposed options 0, 2, 3 and 4 would be new.
-
-Proposed options 1, 5 and 6 correspond to existing options: 
-* Proposed option 1 <=> Current option 1
-* Proposed option 5 <=> Current option 2
-* Proposed option 6 <=> Current option 3.
+### Consultation questions
+* Do the proposed options provide additional benefits over the current options?
+* Do they offer enough granularity?
+* Should option 1 be excluded so that Publisher and Secondary sources are treated equally? (This raises the possibility of you not receiving a publisher notification that arrives after an EPMC notification and has no additional metadata). Or should we offer 2 drop-downs (each with options 0, 2-6) one applying to notifications from publishers the other to notifications from secondary sources.
 
 
 ## Ranking of metadata fields
@@ -98,17 +100,18 @@ Below is our *straw-man* draft which we would like you to comment on - either ag
 | Embargo | High |  |
 | Licence | High |  |
 
-## Checkbox alternative to duplicate filter options and rankings
+
+## Checkbox alternative to drop-down filter options and rankings
 If the proposed duplicate filter options do not meet your needs or consensus cannot be reached on rankings, then another approach would be to offer a "menu" approach. 
 
 This would be presented as a set of ~35 checkboxes:
 * one checkbox for each of the 26 metadata fields listed in the table above
-* 6 checkboxes corresponding to increases in the number of Authors, Author-ORCIDS, Funders, Funder-IDs, Grant-numbers, Licences 
-* a few additional checkboxes related to other attributes, such as notification source.      
+* 6 checkboxes corresponding to increases in the number of Authors, Author-ORCIDs, Funders, Funder-IDs, Grant-numbers, Licences 
+* additional checkboxes for other attributes such as: Article PDF available; All duplicates from publishers; None from secondary source.
+
 
 Your selections would then determine which duplicates you receive - for example, if you ticked checkboxes for just "Publication date" and "Funder count" and "Grant-number count", then you would only receive duplicates which have a publication date (where one had not been provided before) or where the number of funders or grant-numbers has increased (compared to the maximum values seen in all prior notifications).        
 
-(Although this alternative offers maximum flexibility it is more costly and would take longer to implement.)
 
 ## Consultation Feedback
 We would welcome your comments on the following topics:
