@@ -61,7 +61,8 @@ These would be presented as a drop-down list - you would choose one to apply to 
 ### Consultation questions
 * Do the proposed options provide additional benefits over the current options?
 * Do they offer enough granularity?
-* Should option 1 be excluded so that Publisher and Secondary sources are treated equally? (This raises the possibility of you not receiving a publisher notification that arrives after an EPMC notification and has no additional metadata). Or should we offer 2 drop-downs (each with options 0, 2-6) one applying to notifications from publishers the other to notifications from secondary sources.
+* Should option 1 be excluded so that Publisher and Secondary sources are treated equally? (This raises the possibility of you not receiving a publisher notification that arrives after an EPMC notification and has no additional metadata). 
+* Or should we offer 2 drop-downs (each with options 0, 2-6) one applying to notifications from publishers the other to notifications from secondary sources.
 
 
 ## Ranking of metadata fields
@@ -116,7 +117,7 @@ Your selections would then determine which duplicates you receive - for example,
 ## Consultation Feedback
 We would welcome your comments on the following topics:
 * Receiving duplicates by email (instead of into your repository)
-* Proposed duplicate filter options - are they useful? what alternatives would you prefer?
+* Proposed additional duplicate filter options (7 options numbered 0 to 6) - are they useful? What alternatives would you prefer (see the Consultation questions in the filter options section above)?
 * Proposed rank - Do you agree with the suggesed ranking? How would you rank the metadata fields differently?
 * Does the checkbox alternative better meet your needs or would the filter option drop-down list be sufficient?
 
