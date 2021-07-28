@@ -27,6 +27,7 @@ JSON element: `metadata.article.version`
 ```
 Where this value is provided it indicates the version of the article to which the rest of the metadata applies.  It will have one of these values:
 * AM - Accepted manuscript
+* P - Proof
 * VoR - Version of record 
 * CVoR - Corrected version of record
 * EVoR - Enhanced version of record
