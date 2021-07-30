@@ -1,5 +1,11 @@
 # Release History
 
+## Release 11.1 - July 2021
+Minor enhancements, including:
+* Publisher automated testing will no longer report an error if &lt;elocation-id&gt; is provided in place of article first page, last page or page-range values
+* Rewording of error messages related to article-version
+* New version of *Publisher protocol for FTP deposits* document.
+
 ## Release 11.0 - June 2021
 Substantial new capability:
 * Duplicate filtering
