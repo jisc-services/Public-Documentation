@@ -1,5 +1,11 @@
 # Release History
 
+## Release 11.2 - August 2021
+Minor enhancements, including:
+* Modify EPMC harvesting to accomodate changes to EPMC API performance
+* Bug fix in JATS parsing so Author Names presented within &lt;name-alternatives&gt; elements are captured
+* In publisher testing impove Creative Commons licence checker.
+
 ## Release 11.1 - July 2021
 Minor enhancements, including:
 * Publisher automated testing will no longer report an error if &lt;elocation-id&gt; is provided in place of article first page, last page or page-range values
