@@ -28,7 +28,7 @@ In summary, Router will extract metadata from sub-elements within these top leve
 <\article>
 ```
 
-NISO provide comprehensive documentation of the [Journal Publishing Tag Library](https://jats.nlm.nih.gov/publishing/tag-library/1.1/).
+NISO provide comprehensive documentation of the [Journal Publishing Tag Library](https://jats.nlm.nih.gov/publishing/tag-library/1.2).
 
 ## Mapping to Router's data model from JATS ##
 
