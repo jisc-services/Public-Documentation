@@ -1,5 +1,9 @@
 # Release History
 
+## Release 11.3 - October 2021
+Minor enhancement, including:
+* Inclusion of publisher PNAS (National Academy of Sciences).
+
 ## Release 11.2 - August 2021
 Minor enhancements, including:
 * Modify EPMC harvesting to accomodate changes to EPMC API performance
