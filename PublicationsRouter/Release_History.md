@@ -1,5 +1,12 @@
 # Release History
 
+## Release 12.0 - February 2022
+Major release, including:
+* Migration to new relational database platform
+* Fix bug in domain-name matching algorithm: now problems like "chester.ac.uk" matching "manchester.ac.uk" no longer occur
+* Addition of new open licences: "https://creativecommons.org/publicdomain/zero/1.0/" and "https://www.nationalarchives.gov.uk/doc/open-government-licence"
+* Fixed password reset problem where reset link supplied by email wasn't working.
+
 ## Release 11.3 - October 2021
 Minor enhancement, including:
 * Inclusion of publisher PNAS (National Academy of Sciences).
