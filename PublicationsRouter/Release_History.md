@@ -1,5 +1,16 @@
 # Release History
 
+## Release 12.2 - March 2022
+Minor release, including:
+* Remedy for password reset problem experienced by some users (cause attributed to an Outlook plugin altering reset URL)
+* Fix bug where a publisher's default open licence was not being applied if the default embargo duration was set to 0 (i.e. licence effective immediately)
+* Supported a specific JATS XML affiliation encoding permutation that was previously ignored by Router
+* Improve resilience to database connection timeout exceptions.
+
+## Release 12.1 - February 2022
+Minor release, including:
+* Resolved issue with release 12.0
+
 ## Release 12.0 - February 2022
 Major release, including:
 * Migration to new relational database platform
