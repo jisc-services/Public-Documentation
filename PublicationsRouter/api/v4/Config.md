@@ -1,5 +1,15 @@
 # API for retrieving/updating matching configuration
 
+The current version of the API is v4, and it can be accessed at
+
+    https://pubrouter.jisc.ac.uk/api/v4
+
+All URL paths provided in this document will extend from this base url.
+
+If you have an Institution account (i.e. you are populating a repository or CRIS) you have access to the endpoint `/config` which allows you to retrieve and/or replace your current matching configuration. This endpoint requires authentication using an api key.
+
+Also see the **[API Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API).
+
 ## Retrieving Matching Configuration
 
 To retrieve your current matching configuration from this endpoint, simply make a GET request against the endpoint with your API key.

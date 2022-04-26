@@ -1,10 +1,12 @@
 # API for sending notifications (Publishers)
 
-**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
+The current version of the API is v4, and it can be accessed at
 
-    https://pubrouter.jisc.ac.uk/api/v3
+    https://pubrouter.jisc.ac.uk/api/v4
 
 All URL paths provided in this document will extend from this base url.
+
+Also see the **[API Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API).
 
 ### Validation and Live endpoints
 
@@ -444,7 +446,7 @@ Note in the following examples you would need to replace `<my_api_key>` by your 
 curl -XPOST -H 'Content-Type: multipart/related' \
 -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \ 
 -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
-https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
+https://pubrouter.jisc.ac.uk/api/v4/validate?api_key=<my_api_key>
 
 ```
 
@@ -456,5 +458,5 @@ https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
 curl -XPOST -H 'Content-Type: multipart/related' \
 -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \
 -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
-https://pubrouter.jisc.ac.uk/api/v3/notification?api_key=<my_api_key>
+https://pubrouter.jisc.ac.uk/api/v4/notification?api_key=<my_api_key>
 ```

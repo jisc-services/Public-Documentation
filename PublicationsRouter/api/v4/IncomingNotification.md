@@ -1,7 +1,5 @@
 # Incoming Notification
 
-**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
-
 The Publications Router IncomingNotification is the structure used by a Publisher to send publication meta-data to Publications Router for routing to Repositories.
 
 ## JSON Data Structure
@@ -56,6 +54,7 @@ The JSON structure of the model is as follows:
 			"start_page": "<Page number on which a document starts>",
 			"end_page": "<Page number on which a document ends>",
 			"page_range": "<Text describing discontinuous pagination.>",
+            "e_num": "<Electronic article number - an alternative to page_range / start_page / end_page>",
 			"num_pages": "<Total number of pages >",
 			"language": [ "<languages >" ],
 			"abstract": "<Abstract of the work >",
@@ -88,7 +87,23 @@ The JSON structure of the model is as follows:
 			    }, {
 			    }
 			],
-			"affiliation": "<author affiliation>"
+			"affiliations": [
+              {
+                "identifier": [
+                  {"type": "<Identifier type e.g. 'GRID' or 'ROR'>",
+                    "id": "<Identifier value>"}
+                ],
+                "org": "<Organisation name (may include Department name)>",
+                "dept": "<Department name>",
+                "street": "<Street name>",
+                "city": "<City>",
+                "state": "<State or County>",
+                "postcode": "<Postal code>",
+                "country": "<Country name>",
+                "country_code": "<ISO 3166 country code - 2 character>",
+                "raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
+              }
+            ]
 			}
 		],
 		"contributor": [
@@ -111,8 +126,23 @@ The JSON structure of the model is as follows:
 			    }, {
 			    }
 			],
-			"affiliation": "<contributor affiliation>"
-			}
+			"affiliations": [
+              {
+                "identifier": [
+                  {"type": "<Identifier type e.g. 'GRID' or 'ROR'>",
+                    "id": "<Identifier value>"}
+                ],
+                "org": "<Organisation name (may include Department name)>",
+                "dept": "<Department name>",
+                "street": "<Street name>",
+                "city": "<City>",
+                "state": "<State or County>",
+                "postcode": "<Postal code>",
+                "country": "<Country name>",
+                "country_code": "<ISO 3166 country code - 2 character>",
+                "raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
+              }
+            ]			}
 		],
 		"accepted_date": "<date YYYY-MM-DD format>",
 		"publication_date": {
@@ -153,9 +183,11 @@ The JSON structure of the model is as follows:
 			"type": "<type>",
 			"url": "<url>",
 			"version": "<version of license; for example: 4.0>" ,
-			"start": "<Date licence starts (YYYY-MM-DD format)>",
+			"start": "<Date licence starts (YYYY-MM-DD format)>"
 			}
-		]
+		],
+       "peer_reviewed": "<Boolean value indicating if article has been peer reviewed>",
+       "ack": "<Acknowledgement text>"
 	}
 }
 ```
@@ -187,10 +219,11 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.article.start_page | Article start page  | unicode |  |  |
 | metadata.article.end_page | Article end page| unicode |  |  |
 | metadata.article.page_range | Text describing discontinuous pagination | unicode |  |  |
+| metadata.article.e_num | Electronic article number (an alternative to page_range / start_page / end_page) | unicode |  |  |
 | metadata.article.num_pages | Number of pages | unicode |  |  |
 | metadata.article.language | Language(s) that article is published in (Array field) | unicode |  |  |
 | metadata.article.abstract | Article abstract | unicode |  |  |
-| metadata.article.identifier.type * | Type of identifier (e.g. DOI) | unicode |  |  |
+| metadata.article.identifier.type * | Type of identifier (e.g. 'DOI') | unicode |  |  |
 | metadata.article.identifier.id * | Article identfier value (e.g. DOI number) | unicode |  |  |
 | metadata.article.subject | Subject classification(s) / keyword(s) (Array field) | unicode |  |  |
 | metadata.author.type | Type of author, typically "author" or "corresp" (for corresponding author) | unicode |  |  |
@@ -198,10 +231,22 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.author.name.surname * | Author's surname (lastname) | unicode |  |  |
 | metadata.author.name.fullname | Full name - preferably expressed as "Surname, Firstname(s)" | unicode |  |  |
 | metadata.author.name.suffix | Qualifiers that follow name (such as Senior/Sr, Junior/Jr, 3rd etc.) | unicode |  |  |
-| metadata.author.organisation_name |Name of organisation if author is an organisation  | unicode |  |  |
+| metadata.author.organisation_name | Name of organisation if author is an organisation  | unicode |  |  |
 | metadata.author.identifier.type * | Type of identifier (e.g. ORCID, email) | unicode |  |  |
 | metadata.author.identifier.id * | Author identfier value (e.g. ORCID number, email address) | unicode |  |  |
-| metadata.author.affiliation | Author organisational affiliation | unicode | free text  |  |
+| metadata.author.affiliations | Array of author organisational affiliation objects |  |  |  |
+| metadata.author.affiliations.identifier | Array of organisation Ids such as ROR or GRID |  |  |  |
+| metadata.author.affiliations.identifier.type | Type of identifier (e.g. 'ROR') | unicode |  |  |
+| metadata.author.affiliations.identifier.id | Organisation identfier value (e.g. ROR value) | unicode |  |  |
+| metadata.author.affiliations.org | Name of institution (may include department) | unicode  |  |  |
+| metadata.author.affiliations.dept | Name of department (if not included in preceding *org* field) | unicode |  |  |
+| metadata.author.affiliations.street | Street address | unicode |  |  |
+| metadata.author.affiliations.city | City | unicode |  |  |
+| metadata.author.affiliations.state | State or Country | unicode |  |  |
+| metadata.author.affiliations.postcode | Postal code | unicode |  |  |
+| metadata.author.affiliations.country | Country | unicode |  |  |
+| metadata.author.affiliations.country_code | Country code (ISO 3166 2 character codes) | unicode |  |  |
+| metadata.author.affiliations.raw | Unstructured affiliation string - use where structured information not available | unicode |  |  |
 | metadata.contributor.type | Type of contributor (e.g. editor) | unicode |  |  |
 | metadata.contributor.name.firstname | Contributor's firstname(s) - space separated if more than one | unicode |  |  |
 | metadata.contributor.name.surname | Contributor's surname (lastname) | unicode |  |  |
@@ -210,7 +255,19 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.contributor.organisation_name |Name of organisation if contributor is an organisation  | unicode |  |  |
 | metadata.contributor.identifier.type | Type of identifier (e.g. ORCID, email) | unicode |  |  |
 | metadata.contributor.identifier.id | Contributor identfier value (e.g. ORCID number, email address) | unicode |  |  |
-| metadata.contributor.affiliation | Contributor organisational affiliation | unicode | free text  |  |
+| metadata.contributor.affiliations | Array of contributor organisational affiliation objects |  |  |  |
+| metadata.contributor.affiliations.identifier | Array of organisation Ids such as ROR or GRID |  |  |  |
+| metadata.contributor.affiliations.identifier.type | Type of identifier (e.g. 'ROR') | unicode |  |  |
+| metadata.contributor.affiliations.identifier.id | Organisation identfier value (e.g. ROR value) | unicode |  |  |
+| metadata.contributor.affiliations.org | Name of institution (may include department) | unicode  |  |  |
+| metadata.contributor.affiliations.dept | Name of department (if not included in preceding *org* field) | unicode |  |  |
+| metadata.contributor.affiliations.street | Street address | unicode |  |  |
+| metadata.contributor.affiliations.city | City | unicode |  |  |
+| metadata.contributor.affiliations.state | State or Country | unicode |  |  |
+| metadata.contributor.affiliations.postcode | Postal code | unicode |  |  |
+| metadata.contributor.affiliations.country | Country | unicode |  |  |
+| metadata.contributor.affiliations.country_code | Country code (ISO 3166 2 character codes) | unicode |  |  |
+| metadata.contributor.affiliations.raw | Unstructured affiliation string - use where structured information not available | unicode |  |  |
 | metadata.accepted_date | Date publication accepted for publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
 | metadata.publication_date.publication_format | Format of publication (print, electronic) | unicode | print or electronic |  |
 | metadata.publication_date.date | Date of publication | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |  |
@@ -233,3 +290,5 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.license_ref.url | URL for information on the licence | unicode | URL |  |
 | metadata.license_ref.version | Version of the licence | unicode |  |  |
 | metadata.license_ref.start | License start date | unicode |  |  |
+| metadata.peer_reviewed | Indicates if article has been peer reviewed | boolean |  | true / false |
+| metadata.ack | Acknowledgement text | unicode |  |  |
