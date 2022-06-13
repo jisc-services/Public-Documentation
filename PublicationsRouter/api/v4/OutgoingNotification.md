@@ -139,7 +139,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
                 "postcode": "<Postal code>",
                 "country": "<Country name>",
                 "country_code": "<ISO 3166 country code - 2 character>",
-                "raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
+                "raw": "<Affilation string - either an unstructured affiliation (provided by publisher) or constructed from other affiliations object fields>"
               }
             ]
             }
@@ -177,7 +177,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
                 "postcode": "<Postal code>",
                 "country": "<Country name>",
                 "country_code": "<ISO 3166 country code - 2 character>",
-                "raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
+                "raw": "<Affilation string - either an unstructured affiliation (provided by publisher) or constructed from other affiliations object fields>"
               }
             ]
             }
@@ -388,7 +388,7 @@ Maximum object:
     "postcode": "<Postal code>",
     "country": "<Country name>",
     "country_code": "<ISO 3166 country code - 2 character>",
-    "raw": "<Original or derived from other information in the object>"
+    "raw": "<Original or derived from other fields in the object>"
     }
 ```
 
