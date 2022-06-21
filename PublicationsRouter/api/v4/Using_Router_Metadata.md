@@ -18,11 +18,11 @@ However, a substantial number of notification records that Publications Router p
 JSON element: `metadata.article.version` 
 ```
 "metadata": {
-	"article": {
-		"version": "<Article version e.g. VoR>",
-		…
-		},
-	…
+    "article": {
+        "version": "<Article version e.g. VoR>",
+        …
+        },
+    …
 }
 ```
 Where this value is provided it indicates the version of the article to which the rest of the metadata applies.  It will have one of these values:
@@ -46,11 +46,11 @@ Where the Article version element is provided (see above) then the embargo detai
 
 JSON element: `metadata.embargo` 
 ```
-		"embargo": {
-			"start": "<embargo start date, format: YYYY-MM-DD>",
-			"end": "<embargo end date, format: YYYY-MM-DD>",
-			"duration": "<embargo duration in months>"
-		},
+        "embargo": {
+            "start": "<embargo start date, format: YYYY-MM-DD>",
+            "end": "<embargo end date, format: YYYY-MM-DD>",
+            "duration": "<embargo duration in months>"
+        },
 
 ```
 
@@ -71,17 +71,17 @@ Where the *Article version* element is provided (see above) then the supplied li
 JSON element: `metadata.license_ref` 
 ```
 "metadata": {
-	"license_ref": [
-		{
-		"url": "<url>",
-		"start": "<Date licence starts (YYYY-MM-DD format)>",
-		"title": "<name of licence>",
-		"type": "<type>", 
-		"version": "<licence version; for example: 4.0>",
-		"best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
-		}
-	],
-	…
+    "license_ref": [
+        {
+        "url": "<url>",
+        "start": "<Date licence starts (YYYY-MM-DD format)>",
+        "title": "<name of licence>",
+        "type": "<type>", 
+        "version": "<licence version; for example: 4.0>",
+        "best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
+        }
+    ],
+    …
 }
 ```
 ### url ###

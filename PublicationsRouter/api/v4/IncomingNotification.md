@@ -8,192 +8,192 @@ The JSON structure of the model is as follows:
 
 ```json
 {
-	"event": "<keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
-	"provider": {
-		"agent": "<string defining the software/process which put the content here, provided by provider>",
-		"ref": "<provider's globally unique reference for this research object>"
-	},
-	"content": {
-		"packaging_format": "<identifier for packaging format used>"
-	},
-	"links": [
-		{
-		"type": "<link type: splash|fulltext>",
-		"format": "<text/html|application/pdf|application/xml|application/zip|...>",
-		"url": "<provider's splash, fulltext or machine readable page>"
-		}
-	],
-	"metadata": {
-		"journal": {
-			"title": "<Journal / publication title>",
-			"abbrev_title": "<Abbreviated version of journal title>",
-			"volume": "<Number of a journal (or other document) within a series>",
-			"issue": "<Issue number of a journal, or in rare instances, a book.>",
-			"publisher": ["<Name of the publisher(s) of the content>"],
-			"identifier": [
-				{
-				"type": "issn",
-				"id": "<issn of the journal (could be print or electronic)>"
-				}, {
-				"type": "eissn",
-				"id": "<electronic issn of the journal>"
-				}, {
-				"type": "pissn",
-				"id": "<print issn of the journal>"
-				}, {
-				"type": "doi",
-				"id": "<doi for the journal or series>"
-				}
-			]
-		},
-		"article": {
-			"title": "<Article title or book chapter title>",
-			"subtitle": [ "<Article title or book chapter Subtitle>" ],
-			"type": "<Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar')>",
-			"version": "<Article version e.g. VoR>",
-			"start_page": "<Page number on which a document starts>",
-			"end_page": "<Page number on which a document ends>",
-			"page_range": "<Text describing discontinuous pagination.>",
-			"e_num": "<Electronic article number - an alternative to page_range / start_page / end_page>",
-			"num_pages": "<Total number of pages >",
-			"language": [ "<languages >" ],
-			"abstract": "<Abstract of the work >",
-			"identifier": [
-				{
-				"type": "doi",
-				"id": "<doi for the record>"
-				}, {
-					}
-			],
-			"subject": [ "<subject keywords/classifications>" ]
-		},
-		"author": [
-			{
-			"type": "<Type of author e.g. 'author' or 'corresp'>",
-			"name": {
-				"firstname": "<author first name>",
-				"surname": "<author surname>",
-				"fullname": "<author name>",
-				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
-			},
-			"organisation_name": "<Name of organisation if author is an organisation >",
-			"identifier": [
-				{
-				"type": "orcid",
-				"id": "<author's orcid>"
-				}, {
-				"type": "email",
-				"id": "<author's email address>"
-				}, {
-				}
-			],
-			"affiliations": [
-				{
-				"identifier": [
-					{
-					"type": "<Identifier type e.g. 'GRID' or 'ROR'>",
-					"id": "<Identifier value>"
-					}
-				],
-				"org": "<Organisation name (may include Department name)>",
-				"dept": "<Department name>",
-				"street": "<Street name>",
-				"city": "<City>",
-				"state": "<State or County>",
-				"postcode": "<Postal code>",
-				"country": "<Country name>",
-				"country_code": "<ISO 3166 country code - 2 character>",
-				"raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
-				}
-			]
-			}
-		],
-		"contributor": [
-			{
-			"type": "<Type of contributor e.g. 'editor'>",
-			"name": {
-				"firstname": "<contributor first name>",
-				"surname": "<contributor surname>",
-				"fullname": "<contributor name>",
-				"suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
-			},
-			"organisation_name": "<Name of organisation if contributor is an organisation >",
-			"identifier": [
-				{
-				"type": "orcid",
-				"id": "<contributor's orcid>"
-				}, {
-				"type": "email",
-				"id": "<contributor's email address>"
-				}, {
-				}
-			],
-			"affiliations": [
-				{
-				"identifier": [
-					{
-					"type": "<Identifier type e.g. 'GRID' or 'ROR'>",
-					"id": "<Identifier value>"
-					}
-				],
-				"org": "<Organisation name (may include Department name)>",
-				"dept": "<Department name>",
-				"street": "<Street name>",
-				"city": "<City>",
-				"state": "<State or County>",
-				"postcode": "<Postal code>",
-				"country": "<Country name>",
-				"country_code": "<ISO 3166 country code - 2 character>",
-				"raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
-				}
-			]
-			}
-		],
-		"accepted_date": "<date YYYY-MM-DD format>",
-		"publication_date": {
-			"publication_format": "<Format of publication (print, electronic)>",
-			"date": "<date YYYY-MM-DD format>",
-			"year": "<year YYYY format>",
-			"month": "<month MM format>",
-			"day": "<day DD format>",
-			"season": "<Season of publication (for example, Spring, Third Quarter).>"
-		},
-		"history_date": [
-			{
-			"date_type": "<Type of date: received, accepted...>",
-			"date": "<date>"
-			}
-		],
-		"publication_status": "<Published, accepted or blank>",
-		"funding": [
-			{
-			"name": "<name of funder>",
-			"identifier": [
-				{
-				"type": "<identifier type>",
-				"id": "<funder identifier>"
-				}
-			],
-			"grant_numbers":  ["<funder's grant numbers>"]
-			}
-		],
-		"embargo": {
-			"start": "<embargo start date>",
-			"end": "<embargo end date>",
-			"duration": "<embargo duration in days>"
-		},
-		"license_ref": [
-			{
-			"title": "<name of licence>",
-			"type": "<type>",
-			"url": "<url>",
-			"version": "<version of license; for example: 4.0>" ,
-			"start": "<Date licence starts (YYYY-MM-DD format)>"
-			}
-		],
-		"peer_reviewed": "<Boolean value indicating if article has been peer reviewed>",
-		"ack": "<Acknowledgement text>"
-	}
+    "event": "<keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
+    "provider": {
+        "agent": "<string defining the software/process which put the content here, provided by provider>",
+        "ref": "<provider's globally unique reference for this research object>"
+    },
+    "content": {
+        "packaging_format": "<identifier for packaging format used>"
+    },
+    "links": [
+        {
+        "type": "<link type: splash|fulltext>",
+        "format": "<text/html|application/pdf|application/xml|application/zip|...>",
+        "url": "<provider's splash, fulltext or machine readable page>"
+        }
+    ],
+    "metadata": {
+        "journal": {
+            "title": "<Journal / publication title>",
+            "abbrev_title": "<Abbreviated version of journal title>",
+            "volume": "<Number of a journal (or other document) within a series>",
+            "issue": "<Issue number of a journal, or in rare instances, a book.>",
+            "publisher": ["<Name of the publisher(s) of the content>"],
+            "identifier": [
+                {
+                "type": "issn",
+                "id": "<issn of the journal (could be print or electronic)>"
+                }, {
+                "type": "eissn",
+                "id": "<electronic issn of the journal>"
+                }, {
+                "type": "pissn",
+                "id": "<print issn of the journal>"
+                }, {
+                "type": "doi",
+                "id": "<doi for the journal or series>"
+                }
+            ]
+        },
+        "article": {
+            "title": "<Article title or book chapter title>",
+            "subtitle": [ "<Article title or book chapter Subtitle>" ],
+            "type": "<Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar')>",
+            "version": "<Article version e.g. VoR>",
+            "start_page": "<Page number on which a document starts>",
+            "end_page": "<Page number on which a document ends>",
+            "page_range": "<Text describing discontinuous pagination.>",
+            "e_num": "<Electronic article number - an alternative to page_range / start_page / end_page>",
+            "num_pages": "<Total number of pages >",
+            "language": [ "<languages >" ],
+            "abstract": "<Abstract of the work >",
+            "identifier": [
+                {
+                "type": "doi",
+                "id": "<doi for the record>"
+                }, {
+                    }
+            ],
+            "subject": [ "<subject keywords/classifications>" ]
+        },
+        "author": [
+            {
+            "type": "<Type of author e.g. 'author' or 'corresp'>",
+            "name": {
+                "firstname": "<author first name>",
+                "surname": "<author surname>",
+                "fullname": "<author name>",
+                "suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
+            },
+            "organisation_name": "<Name of organisation if author is an organisation >",
+            "identifier": [
+                {
+                "type": "orcid",
+                "id": "<author's orcid>"
+                }, {
+                "type": "email",
+                "id": "<author's email address>"
+                }, {
+                }
+            ],
+            "affiliations": [
+                {
+                "identifier": [
+                    {
+                    "type": "<Identifier type e.g. 'GRID' or 'ROR'>",
+                    "id": "<Identifier value>"
+                    }
+                ],
+                "org": "<Organisation name (may include Department name)>",
+                "dept": "<Department name>",
+                "street": "<Street name>",
+                "city": "<City>",
+                "state": "<State or County>",
+                "postcode": "<Postal code>",
+                "country": "<Country name>",
+                "country_code": "<ISO 3166 country code - 2 character>",
+                "raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
+                }
+            ]
+            }
+        ],
+        "contributor": [
+            {
+            "type": "<Type of contributor e.g. 'editor'>",
+            "name": {
+                "firstname": "<contributor first name>",
+                "surname": "<contributor surname>",
+                "fullname": "<contributor name>",
+                "suffix": "<Qualifiers that follow a persons name Sr. Jr. III, 3rd>"
+            },
+            "organisation_name": "<Name of organisation if contributor is an organisation >",
+            "identifier": [
+                {
+                "type": "orcid",
+                "id": "<contributor's orcid>"
+                }, {
+                "type": "email",
+                "id": "<contributor's email address>"
+                }, {
+                }
+            ],
+            "affiliations": [
+                {
+                "identifier": [
+                    {
+                    "type": "<Identifier type e.g. 'GRID' or 'ROR'>",
+                    "id": "<Identifier value>"
+                    }
+                ],
+                "org": "<Organisation name (may include Department name)>",
+                "dept": "<Department name>",
+                "street": "<Street name>",
+                "city": "<City>",
+                "state": "<State or County>",
+                "postcode": "<Postal code>",
+                "country": "<Country name>",
+                "country_code": "<ISO 3166 country code - 2 character>",
+                "raw": "<Unstructured affilation string - Optional unless ALL other affilation fields are empty>"
+                }
+            ]
+            }
+        ],
+        "accepted_date": "<date YYYY-MM-DD format>",
+        "publication_date": {
+            "publication_format": "<Format of publication (print, electronic)>",
+            "date": "<date YYYY-MM-DD format>",
+            "year": "<year YYYY format>",
+            "month": "<month MM format>",
+            "day": "<day DD format>",
+            "season": "<Season of publication (for example, Spring, Third Quarter).>"
+        },
+        "history_date": [
+            {
+            "date_type": "<Type of date: received, accepted...>",
+            "date": "<date>"
+            }
+        ],
+        "publication_status": "<Published, accepted or blank>",
+        "funding": [
+            {
+            "name": "<name of funder>",
+            "identifier": [
+                {
+                "type": "<identifier type>",
+                "id": "<funder identifier>"
+                }
+            ],
+            "grant_numbers":  ["<funder's grant numbers>"]
+            }
+        ],
+        "embargo": {
+            "start": "<embargo start date>",
+            "end": "<embargo end date>",
+            "duration": "<embargo duration in days>"
+        },
+        "license_ref": [
+            {
+            "title": "<name of licence>",
+            "type": "<type>",
+            "url": "<url>",
+            "version": "<version of license; for example: 4.0>" ,
+            "start": "<Date licence starts (YYYY-MM-DD format)>"
+            }
+        ],
+        "peer_reviewed": "<Boolean value indicating if article has been peer reviewed>",
+        "ack": "<Acknowledgement text>"
+    }
 }
 ```
 

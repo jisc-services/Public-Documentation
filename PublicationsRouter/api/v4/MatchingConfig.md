@@ -16,63 +16,63 @@ The `GET /config` endpoint will return one of these responses.
 * **200 - Success**: if the request is successful then a HTTP **200 OK** code is provided with the JSON response body shown:
 
 ```JSON
-	HTTP 1.1  200 OK
-	Content-Type: application/json
+    HTTP 1.1  200 OK
+    Content-Type: application/json
 
 {
-	"name_variants": [ "list of name variants the institution is known by" ],
-	"postcodes" : [ "list of postcodes where authors may list their affiliation address" ],
-	"domains": [ "list of email or website domain names the institution owns or operates under" ],
-	"grants": [ "list of grant numbers affiliated with the institution" ],
-	"orcids": [ "list of ORCIDs affiliated with the institution" ],
-	"emails": [ "list of affiliated researchers private emails (not using institution domain)"],
-	"id": "the id of this repository configuration object (used internally, not of use externally)",
-	"repository": "id of the repository retrieved",
-	"created_date": "date this repository configuration object was created",
-	"last_updated": "date this repository was last updated"
+    "name_variants": [ "list of name variants the institution is known by" ],
+    "postcodes" : [ "list of postcodes where authors may list their affiliation address" ],
+    "domains": [ "list of email or website domain names the institution owns or operates under" ],
+    "grants": [ "list of grant numbers affiliated with the institution" ],
+    "orcids": [ "list of ORCIDs affiliated with the institution" ],
+    "emails": [ "list of affiliated researchers private emails (not using institution domain)"],
+    "id": "the id of this repository configuration object (used internally, not of use externally)",
+    "repository": "id of the repository retrieved",
+    "created_date": "date this repository configuration object was created",
+    "last_updated": "date this repository was last updated"
 }
 ```
 
 Successful response example: 
 ```JSON
 {
-	"name_variants": ["Oxford University", "University of Oxford"],
-	"postcodes": ["BS1 1SB", "LS2 2SL"],
-	"domains": ["ox.ac.uk"],
-	"grants": ["yyybbb-123", "abcde-321"],
-	"orcids": ["0000-0001-2345-6789"],
-	"emails": ["some.one@gmail.com"],
-	"id": "123456789",
-	"repository": "987654321",
-	"created_date": "2016-11-23T14:57:00Z",
-	"last_updated": "2018-06-04T13:04:23Z"
+    "name_variants": ["Oxford University", "University of Oxford"],
+    "postcodes": ["BS1 1SB", "LS2 2SL"],
+    "domains": ["ox.ac.uk"],
+    "grants": ["yyybbb-123", "abcde-321"],
+    "orcids": ["0000-0001-2345-6789"],
+    "emails": ["some.one@gmail.com"],
+    "id": "123456789",
+    "repository": "987654321",
+    "created_date": "2016-11-23T14:57:00Z",
+    "last_updated": "2018-06-04T13:04:23Z"
 }
 ```
 &nbsp;
 * **401 - authentication failure**: For invalid api_key or other problems authenticating.
 
 ```JSON
-	HTTP 1.1  401 Unauthorized
+    HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: Where the request is malformed in some way:
 
 ```JSON
-	HTTP 1.1  400 Bad Request
-	Content-Type: application/json
-	{
-		"error" : "Human readable error message."
-	}
+    HTTP 1.1  400 Bad Request
+    Content-Type: application/json
+    {
+        "error" : "Human readable error message."
+    }
 ```
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
 ```JSON
-	HTTP 1.1  403 Forbidden
-	Content-Type: application/json
-	{
-		"error" : "Only an admin or repository user can access this endpoint."
-	}
+    HTTP 1.1  403 Forbidden
+    Content-Type: application/json
+    {
+        "error" : "Only an admin or repository user can access this endpoint."
+    }
 ```
 &nbsp;
 &nbsp;
@@ -84,12 +84,12 @@ The matching parameters to set are sent using POST either as a JSON data package
 
 ```JSON
 {
-	"name_variants": [ "list of name variants the institution is known by" ],
-	"postcodes": [ "list of postcodes where authors may list their affiliation address" ],
-	"domains": [ "list of domain names the institution owns or operates under" ],
-	"grants": [ "list of grant numbers affiliated with the institution"] ,
-	"orcids": [ "list of ORCIDs affiliated with the institution" ],
-	"emails": [ "list of affiliated researchers private emails (not using institution domain)"],
+    "name_variants": [ "list of name variants the institution is known by" ],
+    "postcodes": [ "list of postcodes where authors may list their affiliation address" ],
+    "domains": [ "list of domain names the institution owns or operates under" ],
+    "grants": [ "list of grant numbers affiliated with the institution"] ,
+    "orcids": [ "list of ORCIDs affiliated with the institution" ],
+    "emails": [ "list of affiliated researchers private emails (not using institution domain)"],
 }
 ```  
 See the GET example above. 
@@ -109,26 +109,26 @@ The `POST /config` endpoint will return one of these responses.
 * **401 - authentication failure**: For invalid api_key or other problems authenticating.
 
 ```JSON
-	HTTP 1.1  401 Unauthorized
+    HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: Where the request is malformed in some way:
 
 ```JSON
-	HTTP 1.1  400 Bad Request
-	Content-Type: application/json
-	{
-		"error" : "Human readable error message."
-	}
+    HTTP 1.1  400 Bad Request
+    Content-Type: application/json
+    {
+        "error" : "Human readable error message."
+    }
 ```
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher):
 
 ```JSON
-	HTTP 1.1  403 Forbidden
-	Content-Type: application/json
-	{
-		"error" : "Only an admin or repository user can access this endpoint."
-	}
+    HTTP 1.1  403 Forbidden
+    Content-Type: application/json
+    {
+        "error" : "Only an admin or repository user can access this endpoint."
+    }
 ```
 
