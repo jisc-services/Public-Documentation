@@ -2,7 +2,7 @@
 
 The current version of the API is v4, and it can be accessed at
 
-    https://pubrouter.jisc.ac.uk/api/v4
+	https://pubrouter.jisc.ac.uk/api/v4
 
 All URL paths provided in this document will extend from this base url.
 
@@ -54,21 +54,21 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
 ```JSON
 
 "links" : [
-   {
-      "type" : "splash",
-      "format" : "text/html",
-      "url" : "http://example.com/article1/index.html",
-   },
-   {
-      "type" : "fulltext",
-      "format" : "text/html",
-      "url" : "http://example.com/article1/fulltext.html",
-   },
-   {
-      "type" : "fulltext",
-      "format" : "application/pdf",
-      "url" : "http://example.com/article1/fulltext.pdf",
-   }
+	{
+		"type" : "splash",
+		"format" : "text/html",
+		"url" : "http://example.com/article1/index.html",
+	},
+	{
+		"type" : "fulltext",
+		"format" : "text/html",
+		"url" : "http://example.com/article1/fulltext.html",
+	},
+	{
+		"type" : "fulltext",
+		"format" : "application/pdf",
+		"url" : "http://example.com/article1/fulltext.pdf",
+	}
 ]
 ```
 
@@ -89,41 +89,41 @@ Either of the validation endpoints will return one of these responses.
 
 - On **authentication failure** (e.g. invalid api_key) the API will respond with a **401 (Unauthorised)**:
 ```JSON
-    HTTP 1.1  401 Unauthorized
+	HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 - On **validation failure** the system will respond with a **400 (Bad request)** and the JSON body below. See the [Validation](./Validation.md) page for help with error/issue messages.
 ```
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
-    {
-       "status" : "error",
-       "summary" : "Validation failed with N errors and M issues",  (where N and M are integer counts)
-       "errors" : ["List of human readable error messages"],
-       "issues" :  ["List of human readable warning messages"]
-    }
+	HTTP 1.1  400 Bad Request
+	Content-Type: application/json
+	{
+		"status" : "error",
+		"summary" : "Validation failed with N errors and M issues",  (where N and M are integer counts)
+		"errors" : ["List of human readable error messages"],
+		"issues" :  ["List of human readable warning messages"]
+	}
 ```
 &nbsp;
 - If Account **is not permitted** to use the endpoint (e.g. has wrong user role, or is turned off), the API will respond with a **403 (Forbidden)** and a JSON error body:
 ```
-    HTTP 1.1  403 Forbidden
-    Content-Type: application/json
-    {
-        "error" : "Your account does not have permission to perform this function."
-    }
+	HTTP 1.1  403 Forbidden
+	Content-Type: application/json
+	{
+		"error" : "Your account does not have permission to perform this function."
+	}
 ```
 &nbsp;
 
 - On **validation success** the system will respond with **200 (Success)** and the response body shown below. Note that there will never be any errors, but there may be issues. 
 ```
-    HTTP 1.1  200 OK
-    Content-Type: application/json
-    {
-       "errors" : [],
-       "issues" : ["List of human readable warning messages"],
-       "status" : "ok",
-       "summary" : "Validated OK"
-    }
+	HTTP 1.1  200 OK
+	Content-Type: application/json
+	{
+		"errors" : [],
+		"issues" : ["List of human readable warning messages"],
+		"status" : "ok",
+		"summary" : "Validated OK"
+	}
 ```
 
 NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
@@ -136,34 +136,34 @@ NOTE: in the following sections reference to "{Incoming notification JSON object
 
 If you are sending only the notification JSON, the request must take the form:
 
-    POST /validate?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        {Incoming notification JSON object}
+	POST /validate?api_key=<api_key>
+	Header:
+		Content-Type: application/json
+	Body:
+		{Incoming notification JSON object}
 
 ### 2. Validate Metadata + Package request
 
 If you are sending binary content as well as the metadata, then a multi-part request must be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
 
-    POST /validate?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-        
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {{Incoming notification JSON}}
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
-        
-        {{Zip Content}}
+	POST /validate?api_key=<api_key>
+	Header:
+		Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+		
+	Body:
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+		Content-Type: application/json
+		
+		{{Incoming notification JSON}}
+		
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="content"; filename="content.zip"
+		Content-Type: application/zip
+		
+		{{Zip Content}}
 
-        --------------------------586e648803c83e39---
+		--------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 
@@ -173,42 +173,42 @@ It is possible to send a request with virtually no JSON metadata, instead relyin
 
 To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md#packaging) included.  For example:
 
-    POST /validate?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-    
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {
-            "content" : {
-                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-            }
-        }
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
+	POST /validate?api_key=<api_key>
+	Header:
+		Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+	
+	Body:
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+		Content-Type: application/json
+		
+		{
+			"content" : {
+				"packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+			}
+		}
+		
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="content"; filename="content.zip"
+		Content-Type: application/zip
 
-        {{Zip Content}}       
-        
-        --------------------------586e648803c83e39---
-    
+		{{Zip Content}}       
+		
+		--------------------------586e648803c83e39---
+	
 
 ## List of Metadata-only notifications validation - `POST /validate/list`
 
 If you are sending a list of notifications, the request must take the form shown below.  Note that only metadata can be sent in this way (binary content is not supported):
 
-    POST /validate/list?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        # List of Incoming Notification JSON
-        [{"notification" : {Incoming notification JSON object}, "id": 1},
-         {"notification" : {Incoming notification JSON object}, "id": 2},
-         {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
+	POST /validate/list?api_key=<api_key>
+	Header:
+		Content-Type: application/json
+	Body:
+		# List of Incoming Notification JSON
+		[{"notification" : {Incoming notification JSON object}, "id": 1},
+		 {"notification" : {Incoming notification JSON object}, "id": 2},
+		 {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 	
@@ -240,37 +240,37 @@ Note some of these are different from the Validation endpoint.
 * **201 - Success**: if the request is successful then a HTTP **201 (Created)** code is provided with the JSON response body shown:
 
 ```
-    HTTP 1.1  201 Created
-    Content-Type: application/json
-    {
-        "id" : "<unique identifier for the notification>",
-        "location" : "<url path for api endpoint for newly created notification>"
-    }
+	HTTP 1.1  201 Created
+	Content-Type: application/json
+	{
+		"id" : "<unique identifier for the notification>",
+		"location" : "<url path for api endpoint for newly created notification>"
+	}
 ```
 &nbsp;
 * **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and nothing else.
 ```
-    HTTP 1.1  401 Unauthorized
+	HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: where the request is malformed in some way the system will return a HTTP **400 (Bad Request)** and the JSON response body shown:
 
 ```
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
-    {
-        "error" : "human readable error message"
-    }
+	HTTP 1.1  400 Bad Request
+	Content-Type: application/json
+	{
+		"error" : "human readable error message"
+	}
 ```
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
 ```
-    HTTP 1.1  403 Forbidden
-    Content-Type: application/json
-    {
-        "error" : "Only an admin or publisher user can access this endpoint."
-    }
+	HTTP 1.1  403 Forbidden
+	Content-Type: application/json
+	{
+		"error" : "Only an admin or publisher user can access this endpoint."
+	}
 ```
 &nbsp;
 &nbsp;
@@ -279,11 +279,11 @@ Note some of these are different from the Validation endpoint.
 
 If you are sending only the notification JSON, the request must take the form:
 
-    POST /notification?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        {Incoming Notification JSON}
+	POST /notification?api_key=<api_key>
+	Header:
+		Content-Type: application/json
+	Body:
+		{Incoming Notification JSON}
 	
 &nbsp;
 &nbsp;
@@ -292,24 +292,24 @@ If you are sending only the notification JSON, the request must take the form:
 
 If you are sending binary content as well as the metadata, the request must take the form:
 
-    POST /notification?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-    
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {{Incoming Notification JSON}}
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
+	POST /notification?api_key=<api_key>
+	Header:
+		Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+	
+	Body:
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+		Content-Type: application/json
+		
+		{{Incoming Notification JSON}}
+		
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="content"; filename="content.zip"
+		Content-Type: application/zip
 
-        {{Zip Content}}       
-        
-        --------------------------586e648803c83e39---
+		{{Zip Content}}       
+		
+		--------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
 	
@@ -324,28 +324,28 @@ To do this, send the bare-minimum JSON notification, with only the format identi
 
 For example:
 
-    POST /notification?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-    
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {
-            "content": {
-                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-            }
-        }
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
+	POST /notification?api_key=<api_key>
+	Header:
+		Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+	
+	Body:
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+		Content-Type: application/json
+		
+		{
+			"content": {
+				"packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+			}
+		}
+		
+		--------------------------586e648803c83e39
+		Content-Disposition: form-data; name="content"; filename="content.zip"
+		Content-Type: application/zip
 
-        {{Zip Content}}       
-        
-        --------------------------586e648803c83e39---
+		{{Zip Content}}       
+		
+		--------------------------586e648803c83e39---
 	
 &nbsp;
 &nbsp;
@@ -359,56 +359,56 @@ Note some of these are different from the Validation endpoint.
 * **202 - Partial success**: when some notifications in the list succeed and some fail then an HTTP **202 (Accepted)** code is provided with the JSON response body shown:
 
 ```
-    HTTP 1.1  202 Accepted
-    Content-Type: application/json
-    {
-        "successful" : <number of successfully processed notifications>,
-        "total" : <the number of items received in the list>,
-        "created_ids" : [ <list of Publications Router notification IDs of created notifications> ],
-        "success_ids" : [ <list of submitted IDs of successfully processed notifications> ],
-        "fail_ids" : [ <list of submitted IDs of notifications that could not be processed> ],
-        "last_error" : <error message describing the error which caused the last failed notification to fail>
-    }
+	HTTP 1.1  202 Accepted
+	Content-Type: application/json
+	{
+		"successful" : <number of successfully processed notifications>,
+		"total" : <the number of items received in the list>,
+		"created_ids" : [ <list of Publications Router notification IDs of created notifications> ],
+		"success_ids" : [ <list of submitted IDs of successfully processed notifications> ],
+		"fail_ids" : [ <list of submitted IDs of notifications that could not be processed> ],
+		"last_error" : <error message describing the error which caused the last failed notification to fail>
+	}
 ```
 &nbsp;
 * **201 - Success**: when the entire list is successfully processed then an HTTP **201 (Created)** code is provided with the JSON response body shown:  
 
 ```
-    HTTP 1.1  201 Created
-    Content-Type: application/json
-    {
-        "successful" : <number of successfully processed notifications>,
-        "total" : <the number of items received in the list>,
-        "created_ids" : [ <list of Publications Router notification IDs of created notifications> ],
-        "success_ids" : [ <list of IDs of successfully processed notifications> ],
-        "fail_ids" : [ <list of IDs of notifications that could not be processed> ],
-        "last_error" : "<Last error message>"
-    }
+	HTTP 1.1  201 Created
+	Content-Type: application/json
+	{
+		"successful" : <number of successfully processed notifications>,
+		"total" : <the number of items received in the list>,
+		"created_ids" : [ <list of Publications Router notification IDs of created notifications> ],
+		"success_ids" : [ <list of IDs of successfully processed notifications> ],
+		"fail_ids" : [ <list of IDs of notifications that could not be processed> ],
+		"last_error" : "<Last error message>"
+	}
 ```
 &nbsp;
 * **401 - authentication failure**: for invalid api_key, incorrect user role, or other problems authenticating the system will respond with HTTP **401 (Unauthorised)** and nothing else.
 ```
-    HTTP 1.1  401 Unauthorized
+	HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: where the request is malformed in some way the system will return an HTTP **400 (Bad Request)** and the JSON response body shown:
 
 ```
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
-    {
-        "error" : "human readable error message"
-    }
+	HTTP 1.1  400 Bad Request
+	Content-Type: application/json
+	{
+		"error" : "human readable error message"
+	}
 ```
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
 ```
-    HTTP 1.1  403 Forbidden
-    Content-Type: application/json
-    {
-        "error" : "Only an admin or publisher user can access this endpoint."
-    }
+	HTTP 1.1  403 Forbidden
+	Content-Type: application/json
+	{
+		"error" : "Only an admin or publisher user can access this endpoint."
+	}
 ```
 &nbsp;
 &nbsp;
@@ -417,14 +417,14 @@ Note some of these are different from the Validation endpoint.
 
 If you are sending a list of notifications, the request must take the form:
 
-    POST /notification/list?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        # List of Incoming Notification JSON
-        [{"notification": {Incoming notification JSON object}, "id": 1},
-         {"notification": {Incoming notification JSON object}, "id": 2},
-         {"notification": {Incoming notification JSON object}, "id": 3} ... ]
+	POST /notification/list?api_key=<api_key>
+	Header:
+		Content-Type: application/json
+	Body:
+		# List of Incoming Notification JSON
+		[{"notification": {Incoming notification JSON object}, "id": 1},
+		 {"notification": {Incoming notification JSON object}, "id": 2},
+		 {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
 	

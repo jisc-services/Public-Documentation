@@ -2,7 +2,7 @@
 
 The current version of the API is v4, and is accessed at:
 
-    https://pubrouter.jisc.ac.uk/api/v4
+	https://pubrouter.jisc.ac.uk/api/v4
 
 **All URL paths provided in this document extend from this base url.**
 
@@ -27,25 +27,25 @@ Also see the **[API Swagger documentation](https://jisc-services.github.io/Publi
 * **401 - authentication failure**: For invalid api_key or other problems authenticating.
 
 ```JSON
-    HTTP 1.1  401 Unauthorized
+	HTTP 1.1  401 Unauthorized
 ```
 
 * **400 - Bad Request**: In the event of a malformed HTTP request.
 ```JSON
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
-    {
-        "error" : "human readable error message"
-    }
+	HTTP 1.1  400 Bad Request
+	Content-Type: application/json
+	{
+		"error" : "human readable error message"
+	}
 ```
 
 - **200 - OK**: for successful requests.
 ```JSON
-    HTTP 1.1  200 OK
-    Content-Type: application/json
-    {
-        Body depends on endpoint
-    }
+	HTTP 1.1  200 OK
+	Content-Type: application/json
+	{
+		Body depends on endpoint
+	}
 ```
 
 ---
@@ -55,7 +55,7 @@ This endpoint lists routed notifications in "analysis_date" order (the date Publ
 
 Note that as notifications are never updated (only created and, after 3 months, deleted), this sorted list is guaranteed to be complete and include the same notifications each time for the same request (and any extra notifications created in the time period).  This is the reason for sorting by "analysis_date" rather than "created_date", as the rate at which items pass through the analysis may vary.
 
-    GET /routed/<repo_id>?<parameter list>
+	GET /routed/<repo_id>?<parameter list>
 
 Here, **repo_id** is the Publications Router *Account ID*, which may be obtained from the *Account details* panel at the top of your Publications Router account page.
 
@@ -75,19 +75,19 @@ Optional parameters:
 ### Successful Response
 - **200 - OK**: for successful requests.
 ```JSON
-    HTTP 1.1  200 OK
-    Content-Type: application/json
-    {
-        "since" : "Since date from which results start in the form YYYY-MM-DDThh:mm:ssZ (if provided in API request)",
-        "since_id" : "Since ID (if provided in API request)",
-        "page" : "page number of results",
-        "pageSize" : "number of results per page",
-        "timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
-        "total" : "total number of results at this time",
-        "notifications" : [
-            List of 'Outgoing Notification' JSON objects ordered by ascending ID value 
-        ]
-    }
+	HTTP 1.1  200 OK
+	Content-Type: application/json
+	{
+		"since" : "Since date from which results start in the form YYYY-MM-DDThh:mm:ssZ (if provided in API request)",
+		"since_id" : "Since ID (if provided in API request)",
+		"page" : "page number of results",
+		"pageSize" : "number of results per page",
+		"timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
+		"total" : "total number of results at this time",
+		"notifications" : [
+			List of 'Outgoing Notification' JSON objects ordered by ascending ID value 
+		]
+	}
 ```
 NOTES:
 * Only one of `since` and `since_id` will be set - depending on which was provided as a parameter
@@ -100,7 +100,7 @@ NOTES:
 
 This endpoint will return the JSON record for an individual notification.
 
-    GET /notification/<notification_id>?api_key=...
+	GET /notification/<notification_id>?api_key=...
 
 Here **notification_id** is the system's identifier for an individual notification.  You may get this identifier from, for example, the **[Notification List Feed](#notification-list-feed-endpoint)**.
 
@@ -114,11 +114,11 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
 
 - **200 - OK**: for successful requests.
 ```JSON
-    HTTP 1.1  200 OK
-    Content-Type: application/json
-    { 
-      ...Outgoing Notification JSON... 
-    }
+	HTTP 1.1  200 OK
+	Content-Type: application/json
+	{ 
+		...Outgoing Notification JSON... 
+	}
 ```
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for details.
 
@@ -141,34 +141,34 @@ NOTE that URLs to Publications Router will require a valid API key to be provide
 #### Example links array 
 A description of each different type of link object is provided below the data structure.
 
-    "links" : [
-        {
-            "type" : "package",
-            "access": "router",
-            "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
-            "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-        },
-        {
-            "type": "fulltext",
-            "access": "public",
-            "format": "application/pdf",
-            "url": "https://some_publisher_site.com/some_file_name.pdf"
-        },
-        {
-            "url": "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/eprints-rioxx/article.pdf",
-            "format": "application/pdf",
-            "type": "unpackaged",
-            "access": "special"
-        },
-        {
-            "url": "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/eprints-rioxx/non-pdf-files.zip",
-            "format": "application/zip",
-            "type": "unpackaged",
-            "access": "special"
-        }
-    ]
-    
+	"links" : [
+		{
+			"type" : "package",
+			"access": "router",
+			"format" : "application/zip",
+			"url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
+			"packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+		},
+		{
+			"type": "fulltext",
+			"access": "public",
+			"format": "application/pdf",
+			"url": "https://some_publisher_site.com/some_file_name.pdf"
+		},
+		{
+			"url": "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/eprints-rioxx/article.pdf",
+			"format": "application/pdf",
+			"type": "unpackaged",
+			"access": "special"
+		},
+		{
+			"url": "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/eprints-rioxx/non-pdf-files.zip",
+			"format": "application/zip",
+			"type": "unpackaged",
+			"access": "special"
+		}
+	]
+	
 The first link is a packaged binary link, and includes the packaging type used to package the binary. Packaging types are explained in further detail in the next section.  The `"access": "router"` and `"type": "package"` elements indicate that the content is stored by Publications Router (as the URL attests) - this content may only be downloaded if a valid API key is provided.
 
 The second link is to an external site, this will not have a packaging type. The `type` element describes the type of content (likely _fulltext_), and `format` describes the content's format (likely _application/pdf_, or _text/html_).  The `"access": "public"` element indicates that the content is located on a publicly accessible third party site.
@@ -185,22 +185,22 @@ IMPORTANT: Router stores full-text content for a temporary period (currently 90 
 
 Notifications with binary content will contain contain a links section like:
 
-    "links" : [
-        {
-            "type" : "package",
-            "access": "router",
-            "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
-            "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-        },
-        {
-            "type" : "package",
-            "access": "router",
-            "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/SimpleZip.zip",
-            "packaging" : "http://purl.org/net/sword/package/SimpleZip"
-        }
-    ]
+	"links" : [
+		{
+			"type" : "package",
+			"access": "router",
+			"format" : "application/zip",
+			"url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
+			"packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+		},
+		{
+			"type" : "package",
+			"access": "router",
+			"format" : "application/zip",
+			"url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/SimpleZip.zip",
+			"packaging" : "http://purl.org/net/sword/package/SimpleZip"
+		}
+	]
 
 In this case there are 2 packages available (both representing the same content).  One is in the "FilesAndJATS" format that the publisher originally provided to Publications Router, and the other is in the "SimpleZip" format to which Publications Router has converted the incoming package.
 
@@ -208,7 +208,7 @@ See the documentation on [Packaging Formats](./Packaging.md#packaging) to unders
 
 You may then choose one of these links to download to receive all of the content (e.g. publisher's PDF, JATS XML, additional image files) as a single zip file.  To request it, you will also need to provide your API key (shown on your Publications Router account page):
 
-    GET <package url>?api_key=<API-key>
+	GET <package url>?api_key=<API-key>
 
 &nbsp;
 #### Possible HTTP responses to `GET /notification/<notification-id>/content` endpoint
@@ -217,7 +217,7 @@ Authorisation failure will result in either a 401 (Unauthorised) or 403 (Forbidd
 * **401 - authentication failure**: For invalid api_key or other problems authenticating.
 
 ```JSON
-    HTTP 1.1  401 Unauthorized
+	HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **403 - forbidden**: Where:
@@ -225,27 +225,27 @@ Authorisation failure will result in either a 401 (Unauthorised) or 403 (Forbidd
   * you are a Repository and this notification has not yet been routed or does not belong to you.
 
 ```JSON
-    HTTP 1.1  403 Forbidden
-    Content-Type: application/json
-    {
-        "error" : "Only an admin or repository user can access this endpoint."
-    }
+	HTTP 1.1  403 Forbidden
+	Content-Type: application/json
+	{
+		"error" : "Only an admin or repository user can access this endpoint."
+	}
 ```
 &nbsp;
 * **404 - Not Found**: Where the content was not found - This will happen if you try to access content for a notification that was received more than 90 days ago.
 ```JSON
-    HTTP 1.1  404 Not Found
-    Content-Type: application/json
-    {
-        "error" : "...Error message..."
-    }
+	HTTP 1.1  404 Not Found
+	Content-Type: application/json
+	{
+		"error" : "...Error message..."
+	}
 ```
 &nbsp;
 * **200 - OK**: If the notification content is found and authentication succeeds you will receive a 200 (OK) and the binary content:
 ```JSON
-    HTTP 1.1  200 OK
-    Content-Type: application/zip
+	HTTP 1.1  200 OK
+	Content-Type: application/zip
 
-    Binary Package
+	Binary Package
 ```
 Note that a successful retrieval of content by a repository account will be recorded by Publications Router (used for reporting on Publications Router's ability to support REF compliance).

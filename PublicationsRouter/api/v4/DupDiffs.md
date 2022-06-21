@@ -3,17 +3,17 @@
 The `dup_diffs` array present for all duplicate notifications will contain 1 or 2 objects like that shown below (see the [Outgoing Notification](./OutgoingNotification.md) documentation for full details):
 ```
 "dup_diffs":[
-    { 
-        "old_date": …,
-        "curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata>,
-        "old_bits": <Long integer: Bit mask which summarises analysis of comparison notification metadata>,
-        "n_auth": …,
-        "n_orcid": …,
-        "n_fund": …,
-        "n_fund_id": …,
-        "n_grant": …,
-        "n_lic": …,
-    }
+	{ 
+		"old_date": …,
+		"curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata>,
+		"old_bits": <Long integer: Bit mask which summarises analysis of comparison notification metadata>,
+		"n_auth": …,
+		"n_orcid": …,
+		"n_fund": …,
+		"n_fund_id": …,
+		"n_grant": …,
+		"n_lic": …,
+	}
 ]
 ```
 

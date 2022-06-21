@@ -1,5 +1,11 @@
 # Release History
 
+## Release 12.2.3 - June 2022
+Minor release, including:
+* Revised diagrams on web pages
+* Mention of Worktribe & Company of Biologists
+* Stop error occurrence when processing an Atypon format zip file containing an Issue directory 
+
 ## Release 12.2 - March 2022
 Minor release, including:
 * Remedy for password reset problem experienced by some users (cause attributed to an Outlook plugin altering reset URL)
