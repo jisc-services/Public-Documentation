@@ -12,7 +12,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 
 ```
 {
-    "id": "<String>",
+    "id": <Long Integer value>,
     "created": "<Timestamp in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
     "analysis_date": "<Timestamp in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z>",
     "event": "<Keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
@@ -243,7 +243,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 
 | Field | Description | Datatype | Format |
 | ----- | ----------- | -------- | ------ |
-| id * | Opaque, persistent system identifier for this record | unicode | |
+| id * | Opaque, persistent system identifier for this record | Long integer | |
 | created * | Timestamp of record creation | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | analysis_date * | Timestamp when the routing analysis took place | unicode | UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | event | Keyword indicating publishing event that gave rise to this notification (one of: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised')| unicode | text | 

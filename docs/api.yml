@@ -308,9 +308,9 @@ components:
       name: notificationId
       required: true
       schema:
-        type: string
-      description: Notification ID - a hexadecimal string, like 149f72cb93e345708cf924e432d4f996.
-      example: 149f72cb93e345708cf924e432d4f996
+        type: integer
+      description: Notification ID - a long integer, like 78351.
+      example: 78351
 
     RoutedSince:
       in: query
@@ -461,12 +461,12 @@ components:
             type: string
             example: "thingumy.bob@gmail.com"
         id:
-          type: string
-          example: "(UUID)"
+          type: integer
+          example: 123
         repository:
           type: string
           example: "(UUID)"
-        created_date:
+        created:
           type: string
           format: date-time
         last_updated:
@@ -553,11 +553,11 @@ components:
       type: object
       properties:
         id:
-          type: string
-          example: "149f72cb93e345708cf924e432d4f996"
+          type: integer
+          example: 149
         location:
           type: string
-          example: "/notification/149f72cb93e345708cf924e432d4f996"
+          example: "/notification/149"
 
     NotificationListCreated:
       type: object
@@ -651,9 +651,9 @@ components:
       type: object
       properties:
         id:
-          type: string
-          example: "321"
-        created_date:
+          type: integer
+          example: 321
+        created:
           type: string
           format: date
         analysis_date:

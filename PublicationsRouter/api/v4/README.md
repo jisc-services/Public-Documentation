@@ -27,8 +27,11 @@ These pages describe Publications Router's REST API, however there are other mea
 ### v4 (2022)
 
 1. Change to Incoming and Outgoing notification JSON structures: 
+   * Changed metadata fields:
+     * *id* - Now a Long integer datatype (not a String) [Outgoing notification only]
+
    * New metadata fields:
-     * *created* - Created date (replaces *created_date*)
+     * *created* - Created date (replaces *created_date*) [Outgoing notification only]
      * *metadata.article.e_num* - Electronic article number (aka e-location id), typically used in place of page numbers for online articles
      * *metadata.ack* - Acknowledgements text
      * *metadata.peer_reviewed* - Boolean indicating whether article has been peer reviewed or not
@@ -36,7 +39,7 @@ These pages describe Publications Router's REST API, however there are other mea
      * *metadata.contributor.affiliations* - Array of affiliation objects (replaces *metadata.contributor.affilation* string)
 
    * Deleted metadata fields:
-     * *created_date* - replaced by *created*)
+     * *created_date* - replaced by *created*
      * *metadata.author.affiliation* - replaced by *metadata.author.affiliations*
      * *metadata.contributor.affiliation* - replaced by *metadata.contributor.affiliations*
 
