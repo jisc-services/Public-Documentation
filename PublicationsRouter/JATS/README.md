@@ -8,7 +8,7 @@ Router analyses the the JATS XML and transforms it into its own [internal metada
 
 Below are general rules which govern how JATS metadata is mapped to Router's internal representation.  Certain fields in Router's structure do NOT derive from JATS, these are briefly noted too.  
 
-Router only extracts metadata from JATS `<article><front>` section, which contains within it the `<journal-meta>` and `<article-meta>` sections. (Router does NOT use either the `<article><body>` or `<article><back>` sections.)
+Router extracts metadata from JATS `<article><front>`, containing within it the `<journal-meta>` and `<article-meta>`,  and `<article><back>` sections. (It does NOT use the `<article><body>`section.)
 
 In summary, Router will extract metadata from sub-elements within these top level JATS elements:
 ```
@@ -24,7 +24,10 @@ In summary, Router will extract metadata from sub-elements within these top leve
     </front>
     
     <body>… NOT USED …</body>
-    <back>… NOT USED …</back>
+    
+    <back>
+        <ack>… Acknowledgements …</ack>
+    </back>
 <\article>
 ```
 
@@ -57,7 +60,8 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.article.version | `<A-M><article-version>`<br>or<br>`<article specific-use="…">`<br>or<br>`<A-M><permissions><license specific-use="…">`<br>or<br>`<A-M><permissions><ali:license_ref specific-use="…">` | Article version is preferably obtained from the `<A-M><article-version>` element (available since JATS v1.2), or failing that from `article specific-use` attribute, or otherwise from the `specific-use` attribute of most appropriate licence found (usually open-licence).|
 | metadata.article.start_page | `<A-M><fpage>` |  |
 | metadata.article.end_page | `<A-M><lpage>` |  |
-| metadata.article.page_range | `<A-M><page-range>`<br>or<br>`<A-M><elocation-id>` | `<page-range>` takes priority, if not found then `<elocation-id>` is tried; failing that it will be determined from start_page and end_page if they are provided. |
+| metadata.article.page_range | `<A-M><page-range>` | If not found then it will be determined from start_page and end_page if they are provided. |
+| metadata.article.e_num | `<A-M><elocation-id>` |  |
 | metadata.article.num_pages | Calculated | Derived value: (end_page - start_page + 1). |
 | metadata.article.language | `<article xml:lang="…">` | From the `<article>` element `xml:lang` attribute if present, otherwise defaults to 'en'. |
 | metadata.article.abstract | `<A-M><abstract>` | `<abstract abstract-type="…">` elements may have an `abstract-type` attribute indicating its type, Router attempts to choose an abstract without a type, otherwise it uses the first of these types that it finds 'summary', 'web-summary', 'executive-summary'. |
@@ -101,6 +105,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.license_ref.url | `<A-M><permissions><license><ali:license_ref>`<br>or<br>`<A-M><permissions><license href="…url…">`<br>or<br>`<A-M><permissions><license><license-p><ext-link href="…url…">` | Use of `<ali:license_ref>` is strongly preferred.<br>In the last case, if `<license-p>` exists without an `<ext-link>` element, then the paragraph text is searched for a URL which, if found, is assumed to be the licence URL.<br>Or may be set via publisher default setting - see footnote. |
 | metadata.license_ref.version | - | May be populated via publisher default setting - see footnote. |
 | metadata.license_ref.start | `<A-M><permissions><license><ali:license_ref start_date="…">` | The `start_date` attribute value is used or may be set via publisher default setting - see footnote. |
+| metadata.ack | `<article><back><ack>` |  |
 | | ………………………………………………………………………………… | |
 
 ### Footnote: Default post-embargo licence and embargo period
