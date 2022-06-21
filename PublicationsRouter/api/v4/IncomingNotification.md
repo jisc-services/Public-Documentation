@@ -62,9 +62,7 @@ The JSON structure of the model is as follows:
                 {
                 "type": "doi",
                 "id": "<doi for the record>"
-                }, {
-                    }
-            ],
+                }            ],
             "subject": [ "<subject keywords/classifications>" ]
         },
         "author": [
@@ -84,7 +82,6 @@ The JSON structure of the model is as follows:
                 }, {
                 "type": "email",
                 "id": "<author's email address>"
-                }, {
                 }
             ],
             "affiliations": [
@@ -125,7 +122,6 @@ The JSON structure of the model is as follows:
                 }, {
                 "type": "email",
                 "id": "<contributor's email address>"
-                }, {
                 }
             ],
             "affiliations": [
