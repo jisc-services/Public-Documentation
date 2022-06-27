@@ -61,12 +61,13 @@ Here, **repo_id** is the Publications Router *Account ID*, which may be obtained
 
 ### Parameter list
 
-Required parameters (* Only one of `since` or `since_id` is needed):
+Required parameters:
 
 * **api_key** - May be used for tracking API usage, but no authentication is required for this endpoint
 * **since_id*** - ID of the last notification you retrieved - API will return all notifications with an ID value greater than this 
 * **since***- Time-stamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC time zone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z.  The response will include all records with an `analysis_date` greater than or equal to the `since` date
 
+(*) **NOTE**:  Only one of `since_id` or `since` is needed.  `since_id` is preferred as it provides better query performance. 
 
 Optional parameters:
 * **page** - Page number of results to return, defaults to 1. Where the number of results exceeds the `pageSize` it will be necessary to make successive requests, incrementing the `page` value each time
@@ -78,8 +79,8 @@ Optional parameters:
     HTTP 1.1  200 OK
     Content-Type: application/json
     {
-        "since" : "Since date from which results start in the form YYYY-MM-DDThh:mm:ssZ (if provided in API request)",
-        "since_id" : "Since ID (if provided in API request)",
+        "since" : "Since date from which results start in the form YYYY-MM-DDThh:mm:ssZ (if provided in API request, otherwise empty string)",
+        "since_id" : "Since ID (if provided in API request, otherwise set to null)",
         "page" : "page number of results",
         "pageSize" : "number of results per page",
         "timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
@@ -90,7 +91,7 @@ Optional parameters:
     }
 ```
 NOTES:
-* Only one of `since` and `since_id` will be set - depending on which was provided as a parameter
+* Only one of `since` and `since_id` will be set, the other will be empty string or *null* - depending on which was provided as a parameter
 * The `total` value may increase between requests, as new notifications are added to the end of the list
 * The ordering of the JSON elements may vary (for example notifications may appear first)
 * See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more information on notification data structure.
