@@ -83,7 +83,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.author.affiliations.state | `…<aff><state>` <br>or<br> `…<aff><addr-line content-type="state">` | |
 | metadata.author.affiliations.postcode | `…<aff><postal-code>` <br>or<br> `…<aff><addr-line content-type="postal-code">` <br>or<br> `…<aff><addr-line content-type="postcode">` | |
 | metadata.author.affiliations.country | `…<aff><country>` <br>or<br> `…<aff><addr-line content-type="country">` | |
-| metadata.author.affiliations.country_code | `…<aff><country country_code="XX">` | |
+| metadata.author.affiliations.country_code | `…<aff><country country="XX">` | |
 | metadata.author.affiliations.raw | `…<aff>` | The `raw` field will contain ALL the text found in the `<aff>` element. |
 | metadata.contributor.type | `<A-M><contrib-group><contrib contrib-type="…">` | `type` will be set to value of `contrib-type` attribute.  |
 | metadata.contributor.name.firstname | `<A-M><contrib-group><contrib><name><given-names>` | |
@@ -101,7 +101,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.contributor.affiliations.state | `…<aff><state>` <br>or<br> `…<aff><addr-line content-type="state">` | |
 | metadata.contributor.affiliations.postcode | `…<aff><postal-code>` <br>or<br> `…<aff><addr-line content-type="postal-code">` <br>or<br> `…<aff><addr-line content-type="postcode">` | |
 | metadata.contributor.affiliations.country | `…<aff><country>` <br>or<br> `…<aff><addr-line content-type="country">` | |
-| metadata.contributor.affiliations.country_code | `…<aff><country country_code="XX">` | |
+| metadata.contributor.affiliations.country_code | `…<aff><country country="XX">` | |
 | metadata.contributor.affiliations.raw | `…<aff>` | The `raw` field will contain ALL the text found in the `<aff>` element. |
 | metadata.accepted_date | `<A-M><history><date date-type="accepted">`<br>or<br>`<A-M><history><date pub-type="…x…">` where `…x…` is either "am" or "aam" |  The second option is for support of older versions of JATS. |
 | metadata.publication_date. publication_format | `<A-M><pub-date publication-format="…">` | The `publication-format` attribute value is used. |
