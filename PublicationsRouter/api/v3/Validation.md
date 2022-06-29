@@ -14,7 +14,7 @@ In general, validation produces the following output:
 Users of the API Validation service will get the validation results as a JSON object in the [response](./Send.md#possible-http-responses) to the API call.  
 
 ## Error and issue messages
-Error and issue messages will frequently specify data fields using a dot notation, such as: `«metadata.journal.identifier»` which reference the [Incoming Notification JSON data structure](./IncomingNotification.md#json-data-structure).  
+Error and issue messages will frequently specify data fields using a dot notation, such as: `«metadata.journal.identifier»` which reference the [Incoming Notification JSON data structure](../v4/IncomingNotification.md#json-data-structure).  
 
 For interpreting validation messages in the context of SFTP submission of JATS metadata it may be useful to refer to our [JATS metadata](../../JATS) page.
 
