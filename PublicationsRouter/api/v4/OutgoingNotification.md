@@ -12,7 +12,7 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
 
 ```
 {
-    "id": <Long Integer value>,
+    "id": <Unsigned Integer - maximum value: 4294967295 (4,294,967,295)>,
     "created": "<Timestamp in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  e.g. 2015-12-01T17:26:40Z>",
     "analysis_date": "<Timestamp in ISO 8601 format - YYYY-MM-DDThh:mm:ttZ  2015-12-01T17:26:40Z>",
     "event": "<Keyword indicating publishing event that gave rise to this notification: 'undefined', 'submitted', 'accepted', 'published', 'corrected', 'revised'.>",
