@@ -857,7 +857,7 @@ components:
           example: England
         country_code:
           type: string
-          example: en
+          example: GB
         raw:
           type: string
           example: Cambridge University, Department of Biochemistry

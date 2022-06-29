@@ -425,7 +425,7 @@ Example of single affiliation:
     "state": "Avon",
     "postcode": "BS8 1TS",
     "country": "United Kingdom",
-    "country_code": "en"
+    "country_code": "GB"
     "raw": "School of Chemistry, University of Bristol, Cantock's Close, Bristol, Avon, BS8 1TS, United Kingdom, GRID: grid.5337.2, ROR: https://ror.org/0524sp257, ISNI:0000000419367603 "
     }
 ]
