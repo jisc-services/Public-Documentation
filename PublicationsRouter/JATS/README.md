@@ -79,7 +79,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.author.affiliations.identifier.type | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The `institution-id-type` attribute value converted to upper-case is used as the identifier `type`. |
 | metadata.author.affiliations.identifier.id | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The `institution-id` element value is used as the identifier `id`. |
 | metadata.author.affiliations.org | `…<aff><institution>` <br>or<br> `…<aff><institution-wrap><institution>` | |
-| metadata.author.affiliations.dept | `…<aff><institution content-type="…">` <br>or<br> `…<aff><institution-wrap><institution content-type="…">` | For an `<institution …>` element to be recognised as a `dept` field its `content-type` must contain one of: "dept", "department", "division", "office" <br> (E.g. `content-type="org-division"` or `content-type="office"`) |
+| metadata.author.affiliations.dept | `…<aff><institution content-type="…">` <br>or<br> `…<aff><institution-wrap><institution content-type="…">` | For an `<institution …>` element to be recognised as a `dept` field its `content-type` must contain one of: "dept", "department", "division", "office". Example:<br> `content-type="org-division"` <br>or `content-type="office"` |
 | metadata.author.affiliations.street | `…<aff><addr-line>` | |
 | metadata.author.affiliations.city | `…<aff><city>` <br>or<br> `…<aff><addr-line content-type="city">` | |
 | metadata.author.affiliations.state | `…<aff><state>` <br>or<br> `…<aff><addr-line content-type="state">` | |
@@ -99,7 +99,7 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.contributor.affiliations.identifier.type | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The `institution-id-type` attribute value converted to upper-case is used as the identifier `type`. |
 | metadata.contributor.affiliations.identifier.id | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The `institution-id` element value is used as the identifier `id`. |
 | metadata.contributor.affiliations.org | `…<aff><institution>` <br>or<br> `…<aff><institution-wrap><institution>` | |
-| metadata.contributor.affiliations.dept | `…<aff><institution content-type="…">` <br>or<br> `…<aff><institution-wrap><institution content-type="…">` | For an `<institution …>` element to be recognised as a `dept` field its `content-type` must contain one of: "dept", "department", "division", "office" <br> (E.g. `content-type="org-division"` or `content-type="office"`) |
+| metadata.contributor.affiliations.dept | `…<aff><institution content-type="…">` <br>or<br> `…<aff><institution-wrap><institution content-type="…">` | For an `<institution …>` element to be recognised as a `dept` field its `content-type` must contain one of: "dept", "department", "division", "office". Example:<br> `content-type="org-division"` <br>or `content-type="office"` |
 | metadata.contributor.affiliations.street | `…<aff><addr-line>` | |
 | metadata.contributor.affiliations.city | `…<aff><city>` <br>or<br> `…<aff><addr-line content-type="city">` | |
 | metadata.contributor.affiliations.state | `…<aff><state>` <br>or<br> `…<aff><addr-line content-type="state">` | |
