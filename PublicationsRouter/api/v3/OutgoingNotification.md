@@ -1,5 +1,7 @@
 # Outgoing Notification
 
+**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
+
 The Publications Router OutgoingNotification is the meta-data structure output by Publications Router for notifications that have been matched (designated for transmission) to at least one Repository.
 
 ## JSON Data Structure

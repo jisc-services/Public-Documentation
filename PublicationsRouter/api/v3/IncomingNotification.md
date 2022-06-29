@@ -1,5 +1,7 @@
 # Incoming Notification
 
+**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
+
 The Publications Router IncomingNotification is the structure used by a Publisher to send publication meta-data to Publications Router for routing to Repositories.
 
 ## JSON Data Structure

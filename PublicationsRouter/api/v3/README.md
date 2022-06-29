@@ -1,16 +1,14 @@
-# Jisc Publications Router API (Publications Router API)
+# Jisc Publications Router API v3
 
 Jisc Publications Router exposes an REST API that may be used to submit and/or retrieve publication notifications. These pages document the API interfaces and data formats.
 
-The current version of the API is v3, and it can be accessed at
+**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
 
     https://pubrouter.jisc.ac.uk/api/v3
 
 All URL paths in this documentation will extend from this base url.
 
 In all cases you will need an API key to access the API.  This can be obtained from your Publications Router account page.
-
-**[Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API) is available.
 
 ### Contents ###
 

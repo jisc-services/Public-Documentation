@@ -1,8 +1,8 @@
 # API for retrieving notifications
 
-**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
+The current version of the API is v4, and is accessed at:
 
-    https://pubrouter.jisc.ac.uk/api/v3
+    https://pubrouter.jisc.ac.uk/api/v4
 
 **All URL paths provided in this document extend from this base url.**
 
@@ -19,6 +19,8 @@ Notifications are represented in Router's native JSON format as an [Outgoing Not
 Packaged content (e.g. containing article PDFs) is available as a zipped file in one of the supported [Packaging Formats](./Packaging.md#packaging).
 
 The following sections describe the HTTP methods, headers, body content and expected responses for each of the above endpoints and content.
+
+Also see the **[API Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API).
 
 ### Possible API Responses
 
@@ -60,12 +62,16 @@ Here, **repo_id** is the Publications Router *Account ID*, which may be obtained
 ### Parameter list
 
 Required parameters:
-* **api_key** - [required] - May be used for tracking API usage, but no authentication is required for this endpoint
-* **since** - [required] - Time-stamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC time zone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z.  The response will include all records with an `analysis_date` greater than or equal to the `since` date
+
+* **api_key** - May be used for tracking API usage, but no authentication is required for this endpoint
+* **since_id*** - ID of the last notification you retrieved - API will return all notifications with an ID value greater than this 
+* **since***- Time-stamp from which to provide notifications, of the form YYYY-MM-DD or YYYY-MM-DDThh:mm:ssZ (in UTC time zone); YYYY-MM-DD is considered equivalent to YYYY-MM-DDT00:00:00Z.  The response will include all records with an `analysis_date` greater than or equal to the `since` date
+
+(*) **NOTE**:  Only one of `since_id` or `since` is needed.  `since_id` is preferred as it provides better query performance. 
 
 Optional parameters:
-* **page** - [optional] - Page number of results to return, defaults to 1. Where the number of results exceeds the `pageSize` it will be necessary to make successive requests, incrementing the `page` value each time
-* **pageSize** - [optional] - Number of results per page to return, defaults to 25, maximum 100.
+* **page** - Page number of results to return, defaults to 1. Where the number of results exceeds the `pageSize` it will be necessary to make successive requests, incrementing the `page` value each time
+* **pageSize** - Number of results per page to return, defaults to 25, maximum 100.
 
 ### Successful Response
 - **200 - OK**: for successful requests.
@@ -73,18 +79,20 @@ Optional parameters:
     HTTP 1.1  200 OK
     Content-Type: application/json
     {
-        "since" : "date from which results start in the form YYYY-MM-DDThh:mm:ssZ",
+        "since" : "Since date from which results start in the form YYYY-MM-DDThh:mm:ssZ (if provided in API request, otherwise empty string)",
+        "since_id" : "Since ID (if provided in API request, otherwise set to null)",
         "page" : "page number of results",
         "pageSize" : "number of results per page",
         "timestamp" : "timestamp of this request in the form YYYY-MM-DDThh:mm:ssZ",
         "total" : "total number of results at this time",
         "notifications" : [
-            Ordered list of 'Outgoing Notification' JSON objects 
+            List of 'Outgoing Notification' JSON objects ordered by ascending ID value 
         ]
     }
 ```
 NOTES:
-* The "total" value may increase between requests, as new notifications are added to the end of the list
+* Only one of `since` and `since_id` will be set, the other will be empty string or *null* - depending on which was provided as a parameter
+* The `total` value may increase between requests, as new notifications are added to the end of the list
 * The ordering of the JSON elements may vary (for example notifications may appear first)
 * See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for more information on notification data structure.
 
@@ -110,7 +118,7 @@ If the notification is found and has been routed, you will receive a 200 (OK) an
     HTTP 1.1  200 OK
     Content-Type: application/json
     { 
-      ...Outgoing Notification JSON... 
+        ...Outgoing Notification JSON... 
     }
 ```
 See the [Outgoing Notification](./OutgoingNotification.md#outgoing-notification) data model for details.
@@ -139,7 +147,7 @@ A description of each different type of link object is provided below the data s
             "type" : "package",
             "access": "router",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
             "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
@@ -149,13 +157,13 @@ A description of each different type of link object is provided below the data s
             "url": "https://some_publisher_site.com/some_file_name.pdf"
         },
         {
-            "url": "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/eprints-rioxx/article.pdf",
+            "url": "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/eprints-rioxx/article.pdf",
             "format": "application/pdf",
             "type": "unpackaged",
             "access": "special"
         },
         {
-            "url": "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/eprints-rioxx/non-pdf-files.zip",
+            "url": "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/eprints-rioxx/non-pdf-files.zip",
             "format": "application/zip",
             "type": "unpackaged",
             "access": "special"
@@ -183,14 +191,14 @@ Notifications with binary content will contain contain a links section like:
             "type" : "package",
             "access": "router",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
             "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
         },
         {
             "type" : "package",
             "access": "router",
             "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v3/notification/123456789/content/SimpleZip.zip",
+            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/SimpleZip.zip",
             "packaging" : "http://purl.org/net/sword/package/SimpleZip"
         }
     ]

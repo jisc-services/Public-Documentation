@@ -1,10 +1,12 @@
 # API for sending notifications (Publishers)
 
-**This version has now been superseded by [v4](../v4/README.md), and should NOT be used for new developments.  It has a proposed end-of-life date of June 2023.**
+The current version of the API is v4, and it can be accessed at
 
-    https://pubrouter.jisc.ac.uk/api/v3
+    https://pubrouter.jisc.ac.uk/api/v4
 
 All URL paths provided in this document will extend from this base url.
+
+Also see the **[API Swagger documentation](https://jisc-services.github.io/Public-Documentation/)** (which also enables you to try out the API).
 
 ### Validation and Live endpoints
 
@@ -52,21 +54,21 @@ If you have publicly hosted content (e.g. splash pages, full-text web pages, or 
 ```JSON
 
 "links" : [
-   {
-      "type" : "splash",
-      "format" : "text/html",
-      "url" : "http://example.com/article1/index.html",
-   },
-   {
-      "type" : "fulltext",
-      "format" : "text/html",
-      "url" : "http://example.com/article1/fulltext.html",
-   },
-   {
-      "type" : "fulltext",
-      "format" : "application/pdf",
-      "url" : "http://example.com/article1/fulltext.pdf",
-   }
+    {
+        "type" : "splash",
+        "format" : "text/html",
+        "url" : "http://example.com/article1/index.html",
+    },
+    {
+        "type" : "fulltext",
+        "format" : "text/html",
+        "url" : "http://example.com/article1/fulltext.html",
+    },
+    {
+        "type" : "fulltext",
+        "format" : "application/pdf",
+        "url" : "http://example.com/article1/fulltext.pdf",
+    }
 ]
 ```
 
@@ -95,10 +97,10 @@ Either of the validation endpoints will return one of these responses.
     HTTP 1.1  400 Bad Request
     Content-Type: application/json
     {
-       "status" : "error",
-       "summary" : "Validation failed with N errors and M issues",  (where N and M are integer counts)
-       "errors" : ["List of human readable error messages"],
-       "issues" :  ["List of human readable warning messages"]
+        "status" : "error",
+        "summary" : "Validation failed with N errors and M issues",  (where N and M are integer counts)
+        "errors" : ["List of human readable error messages"],
+        "issues" :  ["List of human readable warning messages"]
     }
 ```
 &nbsp;
@@ -117,10 +119,10 @@ Either of the validation endpoints will return one of these responses.
     HTTP 1.1  200 OK
     Content-Type: application/json
     {
-       "errors" : [],
-       "issues" : ["List of human readable warning messages"],
-       "status" : "ok",
-       "summary" : "Validated OK"
+        "errors" : [],
+        "issues" : ["List of human readable warning messages"],
+        "status" : "ok",
+        "summary" : "Validated OK"
     }
 ```
 
@@ -209,7 +211,7 @@ If you are sending a list of notifications, the request must take the form shown
          {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-	
+    
 &nbsp;
 &nbsp;
 &nbsp;
@@ -282,7 +284,7 @@ If you are sending only the notification JSON, the request must take the form:
         Content-Type: application/json
     Body:
         {Incoming Notification JSON}
-	
+    
 &nbsp;
 &nbsp;
 
@@ -310,7 +312,7 @@ If you are sending binary content as well as the metadata, the request must take
         --------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
-	
+    
 &nbsp;
 &nbsp;
 
@@ -344,7 +346,7 @@ For example:
         {{Zip Content}}       
         
         --------------------------586e648803c83e39---
-	
+    
 &nbsp;
 &nbsp;
 
@@ -425,7 +427,7 @@ If you are sending a list of notifications, the request must take the form:
          {"notification": {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-	
+    
 &nbsp;
 &nbsp;
 &nbsp;
@@ -444,7 +446,7 @@ Note in the following examples you would need to replace `<my_api_key>` by your 
 curl -XPOST -H 'Content-Type: multipart/related' \
 -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \ 
 -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
-https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
+https://pubrouter.jisc.ac.uk/api/v4/validate?api_key=<my_api_key>
 
 ```
 
@@ -456,5 +458,5 @@ https://pubrouter.jisc.ac.uk/api/v3/validate?api_key=<my_api_key>
 curl -XPOST -H 'Content-Type: multipart/related' \
 -F 'metadata=@metadata.json;type=application/json;filename="metadata.json"' \
 -F 'content=@myzip.zip;type=application/zip;filename="content.zip"' \
-https://pubrouter.jisc.ac.uk/api/v3/notification?api_key=<my_api_key>
+https://pubrouter.jisc.ac.uk/api/v4/notification?api_key=<my_api_key>
 ```
