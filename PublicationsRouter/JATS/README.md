@@ -83,6 +83,18 @@ NISO provide comprehensive documentation of the [Journal Publishing Tag Library]
 | metadata.contributor.organisation_name | `<A-M><contrib-group><contrib><collab>` | This element will normally only be present if `<name>` is absent. |
 | metadata.contributor.identifier.type<br><br>metadata.contributor.identifier.id | `<A-M><contrib-group><contrib><contrib-id contrib-id-type="…">` | `type` is set to the `contrib-id-type` attribute value, `id` is set to `<contrib-id>` element value. |
 | metadata.contributor.affiliations | `<A-M><contrib-group><contrib><aff>`<br>or<br> `<A-M><contrib-group><aff>`<br>or via<br>`<A-M><contrib-group><contrib><xref ref-type="aff" rid="…x…">` in conjunction with `<A-M><contrib-group><aff id="…x…">` | Affiliations may be associated directly with an author with an `<aff>` element within the `<contrib>` element, or with a group of authors via an `<aff>` within the `<contrib-group>` element or indirectly via an `<xref ref-type="aff" rid="…">` where the `rid` value references an `id` of a particular affiliation `<aff id="…">` within the `<contrib-group>`. |
+| metadata.contributor.affiliations.identifier | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The identifier object is created from `<institution-id>` element. |
+| metadata.contributor.affiliations.identifier.type | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The `institution-id-type` attribute value converted to Upper-case is used as the identifier `type`. |
+| metadata.contributor.affiliations.identifier.id | `…<aff><institution-wrap><institution-id institution-id-type="…">` | The `institution-id` element value is used as the identifier `id`. |
+| metadata.contributor.affiliations.org | `…<aff><institution>` <br>or<br> `…<aff><institution-wrap><institution>` | |
+| metadata.contributor.affiliations.dept | `…<aff><institution content-type="*">` <br>or<br> `…<aff><institution-wrap><institution content-type="*">` <br>* - where `content-type` contains one of: "dept", "department", "division", "office" (E.g. `content-type="org-division"` or `content-type="office"`)| |
+| metadata.contributor.affiliations.street | `…<aff><addr-line>` | |
+| metadata.contributor.affiliations.city | `…<aff><city>` <br>or<br> `…<aff><addr-line content-type="city">` | |
+| metadata.contributor.affiliations.state | `…<aff><state>` <br>or<br> `…<aff><addr-line content-type="state">` | |
+| metadata.contributor.affiliations.postcode | `…<aff><postal-code>` <br>or<br> `…<aff><addr-line content-type="postal-code">` <br>or<br> `…<aff><addr-line content-type="postcode">` | |
+| metadata.contributor.affiliations.country | `…<aff><country>` <br>or<br> `…<aff><addr-line content-type="country">` | |
+| metadata.contributor.affiliations.country_code | `…<aff><country country_code="XX">` | |
+| metadata.contributor.affiliations.raw | `…<aff>` | This field will contain the text (excluding any subsidiary XML tags) found in the `<aff>` element |
 | metadata.accepted_date | `<A-M><history><date date-type="accepted">`<br>or<br>`<A-M><history><date pub-type="…x…">` where `…x…` is either "am" or "aam" |  The second option is for support of older versions of JATS. |
 | metadata.publication_date. publication_format | `<A-M><pub-date publication-format="…">` | The `publication-format` attribute value is used. |
 | metadata.publication_date.date | Calculated | Derived from `year`, `month`, `day` values - see below. |
