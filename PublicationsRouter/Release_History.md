@@ -1,5 +1,16 @@
 # Release History
 
+## Release 12.3 - June 2022
+Major release, including:
+1. Introduction of API v4, has some changes to notification structures
+* structured affiliations
+* e_num (elocation-number)
+* ack (acknowledgements)
+* peer_reviewed boolean indicator
+2. Capture structured affiliations, e_num and ack from JATS packages
+3. Mitigation for a memory leak
+4. Improved account administration functionality (admins only).
+
 ## Release 12.2.3 - June 2022
 Minor release, including:
 * Revised diagrams on web pages

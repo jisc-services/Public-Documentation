@@ -2,6 +2,8 @@
 
 The Publications Router IncomingNotification is the structure used by a Publisher to send publication meta-data to Publications Router for routing to Repositories.
 
+Author and Contributor affiliations are discussed in a Note at the foot of this page.
+
 ## JSON Data Structure
 
 The JSON structure of the model is as follows:
@@ -235,7 +237,7 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.author.organisation_name | Name of organisation if author is an organisation  | unicode |  |  |
 | metadata.author.identifier.type * | Type of identifier (e.g. ORCID, email) | unicode |  |  |
 | metadata.author.identifier.id * | Author identfier value (e.g. ORCID number, email address) | unicode |  |  |
-| metadata.author.affiliations | Array of author organisational affiliation objects |  |  |  |
+| metadata.author.affiliations * | Array of author organisational affiliation objects |  |  |  |
 | metadata.author.affiliations.identifier | Array of organisation Ids such as ROR or GRID |  |  |  |
 | metadata.author.affiliations.identifier.type | Type of identifier (e.g. 'ROR') | unicode |  |  |
 | metadata.author.affiliations.identifier.id | Organisation identfier value (e.g. ROR value) | unicode |  |  |
@@ -293,3 +295,102 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.license_ref.start | License start date | unicode |  |  |
 | metadata.peer_reviewed | Indicates if article has been peer reviewed | boolean |  | true / false |
 | metadata.ack | Acknowledgement text | unicode |  |  |
+
+## Notes
+ 
+### Affiliations
+
+For Publications Router:
+* Author affiliations should ALWAYS be provided.
+* Contributor affiliations are optional.
+
+Affiliations are specified as an array of objects (to allow for authors/contributors having more than one affiliation).
+
+An affiliation object must, as a minimum, contain one of two fields:
+* `"org"` containing only the organisation/institution name, e.g. `{"org": "University of Bristol"}`
+* `"raw"` containing an *unstructured* affiliation, e.g. `{"raw": "School of Chemistry, University of Bristol, Bristol BS8 1TS, United Kingdom"}`
+
+#### Structured affiliation
+Structured affiliations are preferable as they enable Router and end users to more easily process the supplied information.
+In particular, Router can use any supplied identifiers to match notifications to institutions, which it is unable to do for unstructured affiliations. 
+
+It is not necessary to provide all the fields in a structured affiliation, the most useful to Router are:
+* `"org"` - organisation name (mandatory)
+* `"identifier"` - list of one or more organisation identifier objects
+* `"postcode"`
+
+all of which it uses to match a notification to institutions. 
+
+Example of a fully structured affiliations list (with 1 affiliation) is:
+```
+"affiliations": [
+    {
+    "identifier": [
+        {
+            "type": "GRID",
+            "id": "grid.5337.2"
+        }, {
+            "type": "ROR",
+            "id": "https://ror.org/0524sp257"
+        }, {
+            "type": "ISNI",
+            "id": "0000000419367603"
+        }
+    ],
+    "org": "University of Bristol",
+    "dept": "School of Chemistry",
+    "street": "Cantock's Close",
+    "city": "Bristol",
+    "state": "Avon",
+    "postcode": "BS8 1TS",
+    "country": "United Kingdom",
+    "country_code": "en"
+    }
+]
+
+* NOTE: this object does NOT need a "raw" field.
+```
+
+#### Minimally structured affiliation (with optional `"raw"` field)
+Example of a structured affiliations list (with 1 affiliation) is:
+```
+"affiliations": [
+    {
+    "org": "University of Bristol",
+    "raw": "School of Chemistry, University of Bristol, Bristol BS8 1TS, United Kingdom.  (GRID: grid.5337.2) (ROR: https://ror.org/0524sp257)"
+    }
+]
+
+* NOTE: the presence of the "raw" field provides more information for end-users
+```
+
+#### Unstructured affiliation
+Example of an unstructured affiliations list (with 1 affiliation) is:
+```
+"affiliations": [
+    {
+    "raw": "School of Chemistry, University of Bristol, Bristol BS8 1TS, United Kingdom.  (GRID: grid.5337.2) (ROR: https://ror.org/0524sp257)"
+    }
+]
+```
+
+#### Hybrid list of affiliations
+An affiliations list can contain a mix of structured and unstructured affiliation objects.
+
+Example showing 2 affiliations, the first structured and the second not.
+```
+"affiliations": [
+    {
+    "identifier": [{
+            "type": "ISNI",
+            "id": "0000000419367603"
+        }],
+    "org": "University of Bristol",
+    "city": "Bristol",
+    "postcode": "BS8 1TS",
+    "country": "United Kingdom"
+    },
+    {
+    "raw": "Department of Chemistry, The University of North Carolina at Chapel Hill, United States"
+    }
+]

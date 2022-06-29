@@ -368,16 +368,23 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 See [Using Router Metadata](./Using_Router_Metadata.md#licence-details) for **important** guidance on using and displaying these fields.
 
 ### Affiliations
-Author and contributor affiliations are provided as an array of affiliation objects, which will have varying elements depending on whether information is available.
+Author and contributor affiliations are provided as an array of affiliation objects, which will have varying fields depending on whether information is available.
 
-Minimum object:
+#### Minimum object:
 ```
     {
     "raw": "Unstructured Affiliation string"
     }
 ```
-
-Maximum object:
+Example of single affiliation:
+```
+"affiliations": [
+    {
+        "raw": "School of Chemistry, University of Bristol, Cantock's Close, Bristol, BS8 1TS"
+    }
+]
+```
+#### Maximum object:
 ```
     {
     "identifier": [
@@ -395,4 +402,31 @@ Maximum object:
     "raw": "<Original or derived from other fields in the object>"
     }
 ```
+Example of single affiliation:
+```
+"affiliations": [
+    {
+    "identifier": [
+        {
+            "type": "GRID",
+            "id": "grid.5337.2"
+        }, {
+            "type": "ROR",
+            "id": "https://ror.org/0524sp257"
+        }, {
+            "type": "ISNI",
+            "id": "0000000419367603"
+        }
+    ],
+    "org": "University of Bristol",
+    "dept": "School of Chemistry",
+    "street": "Cantock's Close",
+    "city": "Bristol",
+    "state": "Avon",
+    "postcode": "BS8 1TS",
+    "country": "United Kingdom",
+    "country_code": "en"
+    "raw": "School of Chemistry, University of Bristol, Cantock's Close, Bristol, Avon, BS8 1TS, United Kingdom, GRID: grid.5337.2, ROR: https://ror.org/0524sp257, ISNI:0000000419367603 "
+    }
+]
 
