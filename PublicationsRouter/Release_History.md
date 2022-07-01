@@ -1,5 +1,9 @@
 # Release History
 
+## Release 12.3.1 - July 2022
+Minor release, including:
+1. New version of publisher FTP Deposit Protocol PDF document
+
 ## Release 12.3 - June 2022
 Major release, including:
 1. Introduction of API v4, has some changes to notification structures
