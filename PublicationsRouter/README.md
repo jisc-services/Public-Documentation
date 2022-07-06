@@ -6,6 +6,11 @@ Publishers that send their articles and/or associated metadata directly to Publi
 * submission of a zipfile package containing JATS metadata and article PDF (and possibly other files) to Router's FTP server via SFTP 
 * using Router's API.
 
-The pages available in this repository describe the services provided by Publications Router, including its [RESTful API](./api/README.md), which enables publishers to submit articles and metadata, and institutions to retrieve the same.
+The pages available in this repository describe the services provided by Publications Router, including:
+
+* [RESTful API](./api/README.md) - which enables publishers to submit articles and metadata, and institutions to retrieve the same
+* [Router's use of JATS](./JATS/README.md) - provides information useful to Publishers (particularly those using Router's auto-test service)
+* [XML structures used by Router to send data to Repositories via SWORD ](./sword-out)
+* [Router release history](./Release_History.md)
 
 Further information, including a technical overview, is available on the Publications Router website https://pubrouter.jisc.ac.uk/.
