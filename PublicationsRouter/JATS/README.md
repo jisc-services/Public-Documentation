@@ -1,5 +1,9 @@
-# JATS Metadata #
+# Router's use of JATS XML Metadata #
 
+### Note
+Publishers conducting auto-testing with Publications Router may find this page useful in understanding test results (error & issue messages) that are automatically generated and sent by email.
+
+## Overview
 Publishers that submit their articles directly to Publications Router using SFTP send article metadata as JATS Publishing XML https://jats.nlm.nih.gov/publishing/ and article PDFs (and possibly other files) all zipped into a single package.
 
 Currently Router works specifically with JATS v1.2, but is flexible enough to work with older versions of JATS and also more recent versions of the standard.
