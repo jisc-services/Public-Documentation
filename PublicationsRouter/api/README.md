@@ -13,7 +13,7 @@ There are two active versions of the API available:
 
 ### v4 (2022)
 
-1. Additional (optional) parameter *since_id* for `GET /routed/<repo_id>` endpoint with associated change to returned JSON structure.  This provides for more convenient (and efficient) retrieval of all new notifications since the last notification retrieved.
+1. Additional (optional) parameter ***since_id*** for `GET /routed/<repo_id>` endpoint with associated change to returned JSON structure.  This provides for more convenient (and efficient) retrieval of all new notifications since the last notification retrieved (when used instead of the *since* date parameter).
 
 
 2. Change to **Incoming notification** JSON structure: 
@@ -25,8 +25,8 @@ There are two active versions of the API available:
      * *metadata.contributor.**affiliations*** - Array of affiliation objects (replaces *metadata.contributor.affilation* string)
      
    * **Deprecated** metadata fields:
-     * *metadata.author.affiliation* string - has been replaced by *metadata.author.affiliations* list of dicts
-     * *metadata.contributor.affiliation* string - has been replaced by *metadata.contributor.affiliations* list of dicts
+     * *metadata.author.affiliation* string - has been replaced by *metadata.author.affiliations* array of objects
+     * *metadata.contributor.affiliation* string - has been replaced by *metadata.contributor.affiliations* array of objects
  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**See [Incoming Notification](./v4/IncomingNotification.md#incoming-notification) description for detailed information on its structure.**
 &nbsp;
@@ -45,8 +45,8 @@ There are two active versions of the API available:
 
    * **Deprecated** metadata fields:
      * *created_date* - replaced by *created*
-     * *metadata.author.affiliation* string - has been replaced by *metadata.author.affiliations* list of dicts
-     * *metadata.contributor.affiliation* string - has been replaced by *metadata.contributor.affiliations* list of dicts
+     * *metadata.author.affiliation* string - has been replaced by *metadata.author.affiliations* array of objects
+     * *metadata.contributor.affiliation* string - has been replaced by *metadata.contributor.affiliations* array of objects
  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**See [Outgoing Notification](./v4/OutgoingNotification.md#outgoing-notification) description for detailed information on its structure.**
 &nbsp;
