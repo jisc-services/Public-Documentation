@@ -1,5 +1,19 @@
 # Release History
 
+
+## Release 12.4.0 - September 2022
+Major release, including:
+1. New XML fields (peer-reviewed, acknowledgements, eLocation-id) are incliuded in Eprints & Dspace repository deposit metadata 
+2. Add OrgIDs to matching parameters and use them in the matching algorithm
+3. New publisher report: DOI distribution to institutions
+4. Bug fix - capture all email addresses from cross-referenced affiliations
+
+## Release 12.3.2 - August 2022
+Minor release, including:
+1. Added 'American Chemical Society' to publishers
+2. Fixed email format (font selection) proble 
+3. Fix package creation build problem 
+
 ## Release 12.3.1 - July 2022
 Minor release, including:
 1. New version of publisher FTP Deposit Protocol PDF document
