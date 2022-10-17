@@ -21,7 +21,7 @@ The `GET /config` endpoint will return one of these responses.
 
 {
     "name_variants": [ "list of name variants the institution is known by" ],
-    "org_ids": [ "list of Organisation identifiers of form: 'TYPE: VALUE" ],
+    "org_ids": [ "list of Organisation identifiers of form: 'TYPE:VALUE'" ],
     "postcodes" : [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of email or website domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution" ],
