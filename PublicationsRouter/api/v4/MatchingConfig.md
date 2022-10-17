@@ -21,6 +21,7 @@ The `GET /config` endpoint will return one of these responses.
 
 {
     "name_variants": [ "list of name variants the institution is known by" ],
+    "org_ids": [ "list of Organisation identifiers of form: 'TYPE: VALUE" ],
     "postcodes" : [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of email or website domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution" ],
@@ -37,6 +38,7 @@ Successful response example:
 ```JSON
 {
     "name_variants": ["Oxford University", "University of Oxford"],
+    "org_ids": [ "ROR:052gg0110", "ISNI:0000000419368948", "GRID:grid.4991.5"],
     "postcodes": ["BS1 1SB", "LS2 2SL"],
     "domains": ["ox.ac.uk"],
     "grants": ["yyybbb-123", "abcde-321"],
