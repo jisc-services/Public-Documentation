@@ -84,9 +84,11 @@ The matching parameters to set are sent using POST either as a JSON data package
 
 ### JSON data structure
 
+To set ALL matching parameters, a data structure like this must be supplied.
 ```JSON
 {
     "name_variants": [ "list of name variants the institution is known by" ],
+    "org_ids": [ "list of Organisation identifiers of form: 'TYPE: VALUE" ],
     "postcodes": [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution"] ,
@@ -94,7 +96,18 @@ The matching parameters to set are sent using POST either as a JSON data package
     "emails": [ "list of affiliated researchers private emails (not using institution domain)"],
 }
 ```  
-See the GET example above. 
+
+However, you may set individual (or several) matching parameters by supplying just those of interest.  If you provide an empty array, then all matching parameters of the specified type will be removed.  
+
+For example, POSTing this JSON would replace existing ORCIDs with the 3 specified, and would remove all existing emails:
+```JSON
+{
+    "orcids": ["0000-0002-8567-3333", "0000-0002-1841-4346", "0000-0002-9377-555X"],
+    "emails": []
+}
+```
+
+Also, see the GET example above. 
 
 ### CSV File
 A CSV file (with filename ending in `.csv`) must be provided with the POST request.
