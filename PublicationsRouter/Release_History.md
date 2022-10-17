@@ -3,9 +3,9 @@
 
 ## Release 12.4.0 - September 2022
 Major release, including:
-1. New XML fields (peer-reviewed, acknowledgements, eLocation-id) are incliuded in Eprints & Dspace repository deposit metadata 
-2. Add OrgIDs to matching parameters and use them in the matching algorithm
-3. New publisher report: DOI distribution to institutions
+1. New XML fields (peer-reviewed, acknowledgements, eLocation-id) are included in metadata that is deposited in Eprints & Dspace repositories  
+2. Addition of Organisation IDs to matching parameters, which are now used in the matching algorithm
+3. New publisher report: article (identified by DOI) distribution to institutions
 4. Bug fix - capture all email addresses from cross-referenced affiliations
 
 ## Release 12.3.2 - August 2022
