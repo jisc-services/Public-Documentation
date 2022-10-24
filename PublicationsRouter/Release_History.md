@@ -1,5 +1,14 @@
 # Release History
 
+## Release 12.5.0 - October 2022
+Major release, including:
+1. Upgrade underlying technology to latest version
+2. More flexible matching parameters load: allow loading of a sub-set of parameters  (e.g. just ORCIDS)
+3. Remove redundant "Abstract" heading text from abstracts
+4. Add DOI search function to notification history page
+5. Add content management capability for system administrators
+6. Refine publisher article distribution report: No Test repositories; additional totals line
+7. Add support for Ringgold Org IDs in matching params
 
 ## Release 12.4.0 - September 2022
 Major release, including:
