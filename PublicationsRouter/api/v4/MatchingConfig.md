@@ -21,6 +21,7 @@ The `GET /config` endpoint will return one of these responses.
 
 {
     "name_variants": [ "list of name variants the institution is known by" ],
+    "org_ids": [ "list of Organisation identifiers of form: 'TYPE:VALUE'" ],
     "postcodes" : [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of email or website domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution" ],
@@ -37,6 +38,7 @@ Successful response example:
 ```JSON
 {
     "name_variants": ["Oxford University", "University of Oxford"],
+    "org_ids": [ "ROR:052gg0110", "ISNI:0000000419368948", "GRID:grid.4991.5"],
     "postcodes": ["BS1 1SB", "LS2 2SL"],
     "domains": ["ox.ac.uk"],
     "grants": ["yyybbb-123", "abcde-321"],
@@ -80,11 +82,15 @@ Successful response example:
 
 The matching parameters to set are sent using POST either as a JSON data package or as a CSV file.
 
+When parameters are loaded surplus white-space is removed, as are duplicate entries and redundant parameters (e.g. where both a domain and its sub-domain are specified, then the sub-domain will be removed).
+
 ### JSON data structure
 
+To set ALL matching parameters, a data structure like this must be supplied.
 ```JSON
 {
     "name_variants": [ "list of name variants the institution is known by" ],
+    "org_ids": [ "list of Organisation identifiers as 'TYPE: VALUE' strings or URLs.  The following types are accepted: 'ROR', 'GRID', 'ISNI' (or 'ISN'), 'CROSSREF', 'RINGGOLD' (or 'RIN').  Identifiers supplied in URL format are converted and stored as 'Type:Value' format." ],
     "postcodes": [ "list of postcodes where authors may list their affiliation address" ],
     "domains": [ "list of domain names the institution owns or operates under" ],
     "grants": [ "list of grant numbers affiliated with the institution"] ,
@@ -92,7 +98,28 @@ The matching parameters to set are sent using POST either as a JSON data package
     "emails": [ "list of affiliated researchers private emails (not using institution domain)"],
 }
 ```  
-See the GET example above. 
+
+However, you may set individual (or several) matching parameters by supplying just those of interest.  If you provide an empty array, then all matching parameters of the specified type will be removed.  
+
+For example, POSTing the following JSON would:
+* replace existing ORCIDs with the 3 specified
+* replace 4 Organisation IDs with those specified (note that "https://ror.org/0524sp257" and "ROR: 0524sp257" are duplicates, so only one would be retained)
+* and would remove all existing emails.
+```JSON
+{
+    "orcids": ["0000-0002-8567-3333", "0000-0002-1841-4346", "0000-0002-9377-555X"],
+    "org_ids": ["  ISN: 0001 0002 0003 0004", "https://ror.org/0524sp257", "ROR: 0524sp257", "GRID: grid.5337.2", "https://api.crossref.org/funders/501100000883"]
+    "emails": []
+}
+```
+Also, see the GET example above. 
+
+When the above data is retrieve, the Organisation Identifiers will be presented as:
+```JSON
+{
+    "org_ids": ["ISNI:0001000200030004", "ROR:0524sp257", "GRID:grid.5337.2", "CROSSREF:501100000883"]
+}
+```
 
 ### CSV File
 A CSV file (with filename ending in `.csv`) must be provided with the POST request.

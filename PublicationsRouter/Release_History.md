@@ -1,11 +1,20 @@
 # Release History
 
+## Release 12.5.0 - October 2022
+Major release, including:
+1. Upgrade underlying technology to latest version
+2. More flexible matching parameters load: allow loading of a sub-set of parameters  (e.g. just ORCIDS)
+3. Remove redundant "Abstract" heading text from abstracts
+4. Add DOI search function to notification history page
+5. Add content management capability for system administrators
+6. Refine publisher article distribution report: No Test repositories; additional totals line
+7. Add support for Ringgold Org IDs in matching params
 
 ## Release 12.4.0 - September 2022
 Major release, including:
-1. New XML fields (peer-reviewed, acknowledgements, eLocation-id) are incliuded in Eprints & Dspace repository deposit metadata 
-2. Add OrgIDs to matching parameters and use them in the matching algorithm
-3. New publisher report: DOI distribution to institutions
+1. New XML fields (peer-reviewed, acknowledgements, eLocation-id) are included in metadata that is deposited in Eprints & Dspace repositories  
+2. Addition of Organisation IDs to matching parameters, which are now used in the matching algorithm
+3. New publisher report: article (identified by DOI) distribution to institutions
 4. Bug fix - capture all email addresses from cross-referenced affiliations
 
 ## Release 12.3.2 - August 2022
