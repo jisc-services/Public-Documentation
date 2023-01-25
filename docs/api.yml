@@ -406,7 +406,6 @@ components:
           items:
             type: string
             example: "ROR: 0524sp257"
-            example: "https://ror.org/0524sp257"
         postcodes:
           type: array
           items:
