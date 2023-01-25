@@ -56,7 +56,7 @@ To submit CSV, make a POST request against the endpoint, with your api key and c
     Body:
         --FulltextBoundary
 
-        Content-Disposition: form-data; name="file"; filename="match_config.csv"
+        Content-Disposition: form-data; name="file"; file="match_config.csv"
         Content-Type: text/csv
 
 If submission was successful you will receive a 204 (No Content). Else, a 400 will be raised upon invalid content submitted, or a 404 if unauthenticated.

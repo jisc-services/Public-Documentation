@@ -82,6 +82,8 @@ The matching parameters to set are sent using POST either as a JSON data package
 
 ### JSON data structure
 
+See more detail [here](Config.md#json-submission).
+
 ```JSON
 {
     "name_variants": [ "list of name variants the institution is known by" ],
@@ -95,7 +97,7 @@ The matching parameters to set are sent using POST either as a JSON data package
 See the GET example above. 
 
 ### CSV File
-A CSV file (with filename ending in `.csv`) must be provided with the POST request.
+A CSV file (with filename ending in `.csv`) must be provided with the POST request - see more detail [here](Config.md#csv-submission).
 
 The file format must correspond to that shown in this [csv template](http://pubrouter.jisc.ac.uk/static/csvtemplate.csv), which is also shown in this [Excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) which incorporates explanatory notes.
 
