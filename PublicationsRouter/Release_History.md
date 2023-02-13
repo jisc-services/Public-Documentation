@@ -1,5 +1,15 @@
 # Release History
 
+## Release 12.7.0 - 7th February 2023
+Minor release, including:
+1. Update links on *Technical information* page to point to latest version (v4) of API documentation 
+2. Further internal changes to resolve memory leak
+
+## Release 12.6.0 - 30th January 2023
+Minor release, including:
+1. Fix password reset bug
+2. Internal changes to address memory leak
+
 ## Release 12.5.0 - October 2022
 Major release, including:
 1. Upgrade underlying technology to latest version
