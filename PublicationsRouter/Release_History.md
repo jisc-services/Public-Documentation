@@ -1,5 +1,18 @@
 # Release History
 
+## Release 12.8.0 - 28th February 2023
+Minor release, including:
+1. Rationalise and reduce the publication date-types by replacing "pub-electronic" and "pub-print" by "epub" and "ppub" respectively.
+2. Fix GUI display sort bug (admin only) "Pub test overview" screen
+3. New (admin only) features for Harvester administration.
+4. Publisher autotesting now reports missing 'city', 'street', 'country' & 'postcode' fields in author structured affiliations.
+5. Groundwork for future analysis & reporting of deposit characteristics
+6. Remove redundant "Acknowledgement" title if present.
+
+## Release 12.7.1 - 23rd February 2023
+Emergency release, including:
+1. Bug fix to prevent erroneous deposits
+
 ## Release 12.7.0 - 7th February 2023
 Minor release, including:
 1. Update links on *Technical information* page to point to latest version (v4) of API documentation 
