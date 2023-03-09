@@ -45,6 +45,8 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
         "n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and original notification e.g. 0>,
         "n_grant": <Integer: Difference (+/-) in number of Grant numbers between current and original notification e.g. 4>,
         "n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and original notification e.g. 0>,
+        "n_struct_aff": <Integer: Difference (+/-) in number of authors with at least one structured affiliation between current and original or accumulated notifications e.g. 1>,
+        "n_aff_ids": <Integer: Difference (+/-) in number of authors with structured affiliations containing any Org Ids between current and original or accumulated notifications e.g. 1>
         },
         { // Second array element will be present ONLY for 2nd duplicate onwards.
           // It compares the current notification with an accumulated view of all previous notifications
@@ -61,6 +63,8 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
         "n_fund_id": <Integer: Difference (+/-) in number of Funder IDs between current and maximum number found in previous notifications e.g. 0>,
         "n_grant": <Integer: Difference (+/-) in number of Grant numbers between current and maximum number found in previous notifications e.g. 0>,
         "n_lic": <Integer: Difference (+/-) in number of Licences numbers between current and maximum number found in previous notifications e.g. 0>,
+        "n_struct_aff": <Integer: Difference (+/-) in number of authors with at least one structured affiliation between current and maximum number found in previous notifications e.g. 1>,
+        "n_aff_ids": <Integer: Difference (+/-) in number of authors with structured affiliations containing any Org Ids between current and maximum number found in previous notifications e.g. 1>
         }
     ],
     "metadata": {
@@ -265,6 +269,8 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | dup_diffs.n_fund_id | Difference (+/-) in the Funder ID count between current and original or accumulated notifications  |Integer  |  |
 | dup_diffs.n_grant | Difference (+/-) in the Grant count between current and original or accumulated notifications  | Integer |  |
 | dup_diffs.n_lic | Difference (+/-) in the Licence count between current and original or accumulated notifications  | Integer |  |
+| dup_diffs.n_struct_aff | Difference (+/-) in the count of authors with at least one structured affiliation between current and original or accumulated notifications| Integer |  |
+| dup_diffs.n_aff_ids | Difference (+/-) in the count of authors with structured affiliations containing any Org Ids between current and original or accumulated notifications | Integer |  |
 | metadata.journal * | Object describing the journal this article was published in | object | | 
 | metadata.journal.title * | Title of the journal or publication | unicode | |
 | metadata.journal.abbrev_title | Abbreviated form of journal/publication title | unicode | |
