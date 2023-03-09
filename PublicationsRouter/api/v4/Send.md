@@ -12,10 +12,15 @@ Also see the **[API Swagger documentation](https://jisc-services.github.io/Publi
 
 If you are a publisher (also referred to here as a "provider") providing content to Publications Router, you have access to 2 endpoints:
 
-1. **Validation endpoint** - for use during initial set-up and testing of your API client, to validate the content your send to Publications Router
+1. **[Validation endpoints](#validation-post-endpoints)** - used during initial set-up and testing of your API client to validate content (metadata and zip packages) that you will send to Publications Router:
+   * Validate single notification comprising metadata + content - https://pubrouter.jisc.ac.uk/api/v4/validate/list
+   * Validation list of metadata only - https://pubrouter.jisc.ac.uk/api/v4/validate
 
-2. **Notification endpoint** - for "live" use, sending real notifications to Publications Router.
+2. **[Notification endpoints](#notification-endpoints)** - for "live" use, for sending real notifications to Publications Router:
+   * Submit single notification comprising both metadata + content or just metadata - https://pubrouter.jisc.ac.uk/api/v4/notification
+   * Submit list of metadata only notifications - https://pubrouter.jisc.ac.uk/api/v4/notification/list
 
+See below for details of each of these endpoints.
 
 ### Sending Metadata only or Metadata plus full-text article
 
@@ -217,15 +222,15 @@ NOTE: Make sure that an ID is sent for each Incoming notification as these will 
 &nbsp;
 &nbsp;
 
-# Notification endpoints (for sending notifications to Publications Router)
+# Notification endpoints
 
-The Notification API endpoints:
+The Notification API endpoints are used to **send notifications** to Publications Router:
 * **POST /notification** - to create a single notification (metadata only or metadata plus files)
 * **POST /notification/list** - to create multiple metadata only notifications.
 
 These take the same request header and body as the Validation API endpoints, so that you can develop against the Validation API and then switch seamlessly over to live notifications. However, there will be a difference in the response body that is received.
 
-Again, you must have "Publisher account" to access these endpoints.
+Again, you must have a "Publisher account" to access these endpoints.
 
 The system will not attempt to aggressively validate the request, but the request must still be well-formed in order to succeed, so you may still receive a (single) validation error.
 
