@@ -88,6 +88,91 @@ The Validation API allows you to test that your data feed to the system will be 
 * **POST /validate** - to validate submission of a single notification (which may be metadata only or metadata plus file(s))
 * **POST /validate/list** - to validate submission of a list of metadata only notifications
 
+NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
+
+## Single notification validation - `POST /validate`
+
+### 1. Validate Metadata-only request
+
+If you are sending only the notification JSON, the request must take the form:
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/validate?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        {Incoming notification JSON object}
+
+### 2. Validate Metadata + Package request
+
+If you are sending binary content as well as the metadata, then a multi-part request must be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/validate?api_key=<api_key>
+    Header:
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+        
+    Body:
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+        Content-Type: application/json
+        
+        {{Incoming notification JSON}}
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
+        Content-Type: application/zip
+        
+        {{Zip Content}}
+
+        --------------------------586e648803c83e39---
+
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
+
+### 3. Validate minimum Metadata + Package request
+
+It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
+
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md#packaging) included.  For example:
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/validate?api_key=<api_key>
+    Header:
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
+    Body:
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+        Content-Type: application/json
+        
+        {
+            "content" : {
+                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+            }
+        }
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
+        Content-Type: application/zip
+
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
+    
+
+## List of Metadata-only notifications validation - `POST /validate/list`
+
+If you are sending a list of notifications, the request must take the form shown below.  Note that only metadata can be sent in this way (binary content is not supported):
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/validate/list?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        # List of Incoming Notification JSON
+        [{"notification" : {Incoming notification JSON object}, "id": 1},
+         {"notification" : {Incoming notification JSON object}, "id": 2},
+         {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
+
+NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+    
+&nbsp;
 ### Possible HTTP responses to `POST /validate` or `POST /validate/list`
 
 Either of the validation endpoints will return one of these responses.
@@ -131,92 +216,6 @@ Either of the validation endpoints will return one of these responses.
     }
 ```
 
-NOTE: in the following sections reference to "{Incoming notification JSON object}" means the Incoming Notification [JSON data structure](./IncomingNotification.md#json-data-structure).
-
-## Single notification validation - `POST /validate`
-
-
-
-### 1. Validate Metadata-only request
-
-If you are sending only the notification JSON, the request must take the form:
-
-    POST /validate?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        {Incoming notification JSON object}
-
-### 2. Validate Metadata + Package request
-
-If you are sending binary content as well as the metadata, then a multi-part request must be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
-
-    POST /validate?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-        
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {{Incoming notification JSON}}
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
-        
-        {{Zip Content}}
-
-        --------------------------586e648803c83e39---
-
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
-
-### 3. Validate minimum Metadata + Package request
-
-It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
-
-To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md#packaging) included.  For example:
-
-    POST /validate?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-    
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {
-            "content" : {
-                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-            }
-        }
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
-
-        {{Zip Content}}       
-        
-        --------------------------586e648803c83e39---
-    
-
-## List of Metadata-only notifications validation - `POST /validate/list`
-
-If you are sending a list of notifications, the request must take the form shown below.  Note that only metadata can be sent in this way (binary content is not supported):
-
-    POST /validate/list?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        # List of Incoming Notification JSON
-        [{"notification" : {Incoming notification JSON object}, "id": 1},
-         {"notification" : {Incoming notification JSON object}, "id": 2},
-         {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
-
-NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-    
 &nbsp;
 &nbsp;
 &nbsp;
@@ -238,6 +237,80 @@ On a successful call to this endpoint, your notification will be accepted into P
 
 ## Single notification submission - `POST /notification`
 
+### 1. Notification Metadata-only request
+
+If you are sending only the notification JSON, the request must take the form:
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/notification?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        {Incoming Notification JSON}
+    
+&nbsp;
+&nbsp;
+
+### 2. Notification Metadata + Package request
+
+If you are sending binary content as well as the metadata, the request must take the form:
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/notification?api_key=<api_key>
+    Header:
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
+    Body:
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+        Content-Type: application/json
+        
+        {{Incoming Notification JSON}}
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
+        Content-Type: application/zip
+
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
+
+If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
+    
+&nbsp;
+&nbsp;
+
+### 3. Notification minimum Metadata + Package request
+
+It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
+
+To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md#packaging) included.
+
+For example:
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/notification?api_key=<api_key>
+    Header:
+        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
+    
+    Body:
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
+        Content-Type: application/json
+        
+        {
+            "content": {
+                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+            }
+        }
+        
+        --------------------------586e648803c83e39
+        Content-Disposition: form-data; name="content"; filename="content.zip"
+        Content-Type: application/zip
+
+        {{Zip Content}}       
+        
+        --------------------------586e648803c83e39---
+    
+&nbsp;
+&nbsp;
 ### Responses to `POST /notification` endpoint
 
 Note some of these are different from the Validation endpoint.
@@ -280,83 +353,25 @@ Note some of these are different from the Validation endpoint.
 &nbsp;
 &nbsp;
 
-### 1. Notification Metadata-only request
-
-If you are sending only the notification JSON, the request must take the form:
-
-    POST /notification?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        {Incoming Notification JSON}
-    
-&nbsp;
-&nbsp;
-
-### 2. Notification Metadata + Package request
-
-If you are sending binary content as well as the metadata, the request must take the form:
-
-    POST /notification?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-    
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {{Incoming Notification JSON}}
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
-
-        {{Zip Content}}       
-        
-        --------------------------586e648803c83e39---
-
-If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
-    
-&nbsp;
-&nbsp;
-
-### 3. Notification minimum Metadata + Package request
-
-It is possible to send a request with virtually no JSON metadata, instead relying on metadata embedded in an XML file in the binary Package (e.g. in a JATS XML structure).
-
-To do this, send the bare-minimum JSON notification, with only the format identifier of the [package](./Packaging.md#packaging) included.
-
-For example:
-
-    POST /notification?api_key=<api_key>
-    Header:
-        Content-Type: multipart/related; boundary=------------------------586e648803c83e39
-    
-    Body:
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="metadata"; filename="metadata.json"
-        Content-Type: application/json
-        
-        {
-            "content": {
-                "packaging_format": "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-            }
-        }
-        
-        --------------------------586e648803c83e39
-        Content-Disposition: form-data; name="content"; filename="content.zip"
-        Content-Type: application/zip
-
-        {{Zip Content}}       
-        
-        --------------------------586e648803c83e39---
-    
-&nbsp;
-&nbsp;
 
 ## Multiple Metadata-only notifications submission - `POST /notification/list`
 
+### Notification List (Metadata-only) request
+
+If you are sending a list of notifications, the request must take the form:
+
+    POST https://pubrouter.jisc.ac.uk/api/v4/notification/list?api_key=<api_key>
+    Header:
+        Content-Type: application/json
+    Body:
+        # List of Incoming Notification JSON
+        [{"notification": {Incoming notification JSON object}, "id": 1},
+         {"notification": {Incoming notification JSON object}, "id": 2},
+         {"notification": {Incoming notification JSON object}, "id": 3} ... ]
+
+NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+
+&nbsp;
 ### Responses to `POST /notification/list`
 
 Note some of these are different from the Validation endpoint.
@@ -415,24 +430,6 @@ Note some of these are different from the Validation endpoint.
         "error" : "Only an admin or publisher user can access this endpoint."
     }
 ```
-&nbsp;
-&nbsp;
-
-### Notification List (Metadata-only) request
-
-If you are sending a list of notifications, the request must take the form:
-
-    POST /notification/list?api_key=<api_key>
-    Header:
-        Content-Type: application/json
-    Body:
-        # List of Incoming Notification JSON
-        [{"notification": {Incoming notification JSON object}, "id": 1},
-         {"notification": {Incoming notification JSON object}, "id": 2},
-         {"notification": {Incoming notification JSON object}, "id": 3} ... ]
-
-NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
-    
 &nbsp;
 &nbsp;
 &nbsp;
