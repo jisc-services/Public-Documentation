@@ -13,12 +13,12 @@ Also see the **[API Swagger documentation](https://jisc-services.github.io/Publi
 If you are a publisher (also referred to here as a "provider") providing content to Publications Router, you have access to 2 endpoints:
 
 1. **[Validation endpoints](#validation-post-endpoints)** - used during initial set-up and testing of your API client to validate content (metadata and zip packages) that you will send to Publications Router:
-   * Validate single notification comprising metadata + content - https://pubrouter.jisc.ac.uk/api/v4/validate/list
-   * Validation list of metadata only - https://pubrouter.jisc.ac.uk/api/v4/validate
+   * Validate single notification comprising metadata + content
+   * Validate list of metadata only
 
 2. **[Notification endpoints](#notification-endpoints)** - for "live" use, for sending real notifications to Publications Router:
-   * Submit single notification comprising both metadata + content or just metadata - https://pubrouter.jisc.ac.uk/api/v4/notification
-   * Submit list of metadata only notifications - https://pubrouter.jisc.ac.uk/api/v4/notification/list
+   * Submit single notification comprising both metadata + content or just metadata
+   * Submit list of metadata only notifications
 
 See below for details of each of these endpoints.
 
@@ -102,6 +102,8 @@ If you are sending only the notification JSON, the request must take the form:
     Body:
         {Incoming notification JSON object}
 
+See [possible responses](#possible-http-responses-to-post-validate-or-post-validatelist) below.
+
 ### 2. Validate Metadata + Package request
 
 If you are sending binary content as well as the metadata, then a multi-part request must be formed using [RFC 2387](https://www.ietf.org/rfc/rfc2387.txt):
@@ -126,6 +128,9 @@ If you are sending binary content as well as the metadata, then a multi-part req
         --------------------------586e648803c83e39---
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
+
+See [possible responses](#possible-http-responses-to-post-validate-or-post-validatelist) below.
+
 
 ### 3. Validate minimum Metadata + Package request
 
@@ -156,6 +161,7 @@ To do this, send the bare-minimum JSON notification, with only the format identi
         
         --------------------------586e648803c83e39---
     
+See [possible responses](#possible-http-responses-to-post-validate-or-post-validatelist) below.
 
 ## List of Metadata-only notifications validation - `POST /validate/list`
 
@@ -171,9 +177,11 @@ If you are sending a list of notifications, the request must take the form shown
          {"notification" : {Incoming notification JSON object}, "id": 3} ... ]
 
 NOTE: Make sure that an ID is sent for each Incoming notification as these will be returned in the success or error list.  You can have any value for the ID (we have shown integers, but you may use something else, to be useful they should be unique within the list you are submitting).  These IDs are not stored by Publications Router but simply used in reporting the success/failure of the submissions in the response to the API call HTTP request.
+
+See [possible responses](#possible-http-responses-to-post-validate-or-post-validatelist) below.
     
 &nbsp;
-### Possible HTTP responses to `POST /validate` or `POST /validate/list`
+## Possible HTTP responses to `POST /validate` or `POST /validate/list`
 
 Either of the validation endpoints will return one of these responses.
 
