@@ -255,6 +255,7 @@ If you are sending only the notification JSON, the request must take the form:
     Body:
         {Incoming Notification JSON}
     
+See [possible responses](#responses-to-post-notification-endpoint) below.
 &nbsp;
 &nbsp;
 
@@ -283,6 +284,7 @@ If you are sending binary content as well as the metadata, the request must take
 
 If you are carrying out this request you MUST include the **content.packaging_format** field in the notification metadata and populate it with the appropriate format identifier as per the [Packaging Format](./Packaging.md#packaging) documentation.
     
+See [possible responses](#responses-to-post-notification-endpoint) below.
 &nbsp;
 &nbsp;
 
@@ -317,6 +319,7 @@ For example:
         
         --------------------------586e648803c83e39---
     
+See possible responses below.
 &nbsp;
 &nbsp;
 ### Responses to `POST /notification` endpoint
