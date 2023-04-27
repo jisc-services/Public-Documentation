@@ -1,5 +1,20 @@
 # Release History
 
+## Release 12.9.1 - 27th April 2023
+Emergency release, including:
+1. Fix a problem with JATS XML parsing which occasionally resulted in authors with no affiliations, erroneously being assigned (many) cross-referenced affiliations. (This would have adversely impacted Router API users).
+
+## Release 12.9.0 - 21st April 2023
+Major release, including:
+1. Fix "File is not a zip file" bug (which generated false errors of this type)
+2. Capture additional history dates from Crossref
+3. Add feature to enable easy population of Org Ids in Matching Params
+4. Improve DOI search of Notification history (allow full URLs)
+5. Capture 'corresp' author status in all circumstances 
+6. Check for presence of PDF in publisher package & raise error if missing
+7. Automatically email submission errors to Publishers (when a deposited article can't be processed)
+8. Capture processing metrics
+
 ## Release 12.8.0 - 28th February 2023
 Minor release, including:
 1. Rationalise and reduce the publication date-types by replacing "pub-electronic" and "pub-print" by "epub" and "ppub" respectively.
