@@ -201,8 +201,8 @@ Please see the [Using Router Metadata](./Using_Router_Metadata.md#using-router-m
         },
         "history_date": [
             {
-            "date_type": "<Type of date: received, accepted...>",
-            "date": "<Date>"
+            "date_type": "<Type of date of publishing event: E.g. received, accepted, reviewed, epub, ppub etc. (Vocabulary varies by publisher). >",
+            "date": "<Date YYYY-MM-DD format>"
             }
         ],
         "publication_status": "<Published, accepted or blank>",
@@ -346,8 +346,8 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.publication_date.month | Month of publication (where known) | unicode | MM |
 | metadata.publication_date.day | Day of publication (where known) | unicode | DD |
 | metadata.publication_date.season | Season of publication (e.g. Spring, Third quarter) | unicode | |
-| metadata.history_date | Array of objects describing dates of this article at different stages of it's history | array | | 
-| metadata.history_date.date_type | Type of date, e.g. received, accepted, published, published_online, epub, ppub, pub | unicode | |  |
+| metadata.history_date | Array of objects providing dates of different stages of the article's publication history, as provided to Router by the publisher. There is no standard vocabulary for the date type (see next row), so the values may vary by publisher.  | array | | 
+| metadata.history_date.date_type | Type of date, e.g. received, accepted, epub (electronic-publication), ppub (print-publication) and possibly others. | unicode | |  |
 | metadata.history_date.date | Date of particular publishing event | unicode | YYYY-MM-DD or UTC ISO formatted date: YYYY-MM-DDTHH:MM:SSZ |
 | metadata.publication_status * | Status of publication that this metadata refers to: published, accepted | unicode | |
 | metadata.funding | List of funding information associated with this article | array | | 
