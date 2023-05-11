@@ -1,7 +1,11 @@
 # Release History
 
+## Release 12.9.2 - 11th May 2023
+Emergency release:
+1. Fix an occassional problem with SWORD deposits originating from EPMC which resulted in the wrong article PDF file being uploaded to a Repository. This did not affect Router API users).
+
 ## Release 12.9.1 - 27th April 2023
-Emergency release, including:
+Emergency release:
 1. Fix a problem with JATS XML parsing which occasionally resulted in authors with no affiliations, erroneously being assigned (many) cross-referenced affiliations. (This would have adversely impacted Router API users).
 
 ## Release 12.9.0 - 21st April 2023
