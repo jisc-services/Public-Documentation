@@ -1,5 +1,15 @@
 # Release History
 
+## Release 12.10.0 - 16th May 2023
+Major release, including:
+1. Add technical contact email addresses field to Account records
+2. Revise wording for automated publisher error emails wrt "Important note: Atypon..." and send such emails to techncial contacts 
+3. Modify JATS parsing to exclude capture of article-categories, only capture keywords
+4. Fix Matching Parameters Organisation ID display error that affected Crossref (FundRef) IDs.
+5. Remove markup tags from Abstract text received from EPMC
+6. For DSpace - ensure output SWORD metadata includes non-FundRef funding identifiers (e.g. ROR IDs).
+7. New admin screens to show Router batch schedule & batch metrics
+
 ## Release 12.9.2 - 11th May 2023
 Emergency release:
 1. Fix an occassional problem with SWORD deposits originating from EPMC which resulted in the wrong article PDF file being uploaded to a Repository. This did not affect Router API users).
