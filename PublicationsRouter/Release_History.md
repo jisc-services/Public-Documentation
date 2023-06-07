@@ -1,5 +1,11 @@
 # Release History
 
+## Release 12.11.0 - 7th June 2023
+Major release, including:
+1. Remove upper limit on password length
+2. Restrict number of failed login attempts (enforced pause after 10 failures) 
+3. Capture `acceptance_date` from Crossref if it is supplied as a *history* date.
+
 ## Release 12.10.0 - 16th May 2023
 Major release, including:
 1. Add technical contact email addresses field to Account records
