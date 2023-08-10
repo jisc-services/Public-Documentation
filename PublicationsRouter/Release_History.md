@@ -1,5 +1,11 @@
 # Release History
 
+## Release 12.12.0 - 9th August 2023
+Minor release, including:
+1. Accessibility improvements 
+2. New admin bulk-email function
+3. Bug fixes.
+
 ## Release 12.11.0 - 7th June 2023
 Major release, including:
 1. Remove upper limit on password length
