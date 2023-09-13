@@ -1,5 +1,9 @@
 # Release History
 
+## Release 12.13.0 - 8th September 2023
+Minor release, including:
+1. Improve error handling of Sword-Out process.
+
 ## Release 12.12.0 - 9th August 2023
 Minor release, including:
 1. Accessibility improvements 
