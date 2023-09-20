@@ -1,5 +1,10 @@
 # Release History
 
+## Release 12.14.0 - 20th September 2023
+Technology refresh release, including:
+1. Upgrade third-party libraries to current versions
+2. Upgrade Elasticsearch database to latest version on new dedicated server.
+
 ## Release 12.13.0 - 8th September 2023
 Minor release, including:
 1. Improve error handling of Sword-Out process.
