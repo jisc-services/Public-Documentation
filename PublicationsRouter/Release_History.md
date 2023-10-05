@@ -1,5 +1,11 @@
 # Release History
 
+## Release 12.15.0 - 5th October 2023
+Minor release, including:
+1. Updated version of Publishers FTP Protocol document (PDF)
+2. Recognition of 2 alternate spellings of Acknowledgement/Acknoledgment (for purpose of removing superfluous title)
+3. Amendment to Publisher auto-testing - stricter checks on author affiliations; recognition of *open-government-licence* so issue not raised; changes to wording of test result email.
+
 ## Release 12.14.0 - 20th September 2023
 Technology refresh release, including:
 1. Upgrade third-party libraries to current versions
