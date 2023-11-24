@@ -283,7 +283,7 @@ NOTE that fields which will always be populated are indicated with an asterisk (
 | metadata.article.title * | Title of the Article| unicode | |
 | metadata.article.subtitle | Subtitle (if any) of the Article | unicode | |
 | metadata.article.type | Type or kind of article (e.g. 'research', 'commentary', 'review', 'case', or 'calendar') | unicode | |
-| metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using NISO scheme (http://www.niso.org/publications/rp/RP-8-2008.pdf) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR, C/EVoR)   | unicode | |
+| metadata.article.version * | Specifies article version that meta-data relates to, preferably expressed using the [NISO scheme](https://www.niso.org/publications/niso-rp-8-2008-jav) (e.g. AO, SMUR, AM, P, VoR, CVoR, EVoR, C/EVoR)   | unicode | |
 | metadata.article.start_page | Article start page  | unicode | |
 | metadata.article.end_page | Article end page| unicode | |
 | metadata.article.page_range | Text describing discontinuous pagination | unicode | |
