@@ -1,6 +1,6 @@
 # Release History
 
-## Release 13.0.0 - 29th January 202
+## Release 13.0.0 - 29th January 2024
 Major release, including:
 1. Introduction of individual User Accounts, with two factor login (via emailed login link)
 2. Substitution of Router *Privacy* notice by generic Jisc notice
