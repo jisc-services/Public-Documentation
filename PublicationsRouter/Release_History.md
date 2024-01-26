@@ -1,5 +1,11 @@
 # Release History
 
+## Release 13.0.0 - 29th January 202
+Major release, including:
+1. Introduction of individual User Accounts, with two factor login (via emailed login link)
+2. Substitution of Router *Privacy* notice by generic Jisc notice
+3. Bug fix relating to recording of job statistics in the event of job failure.
+
 ## Release 12.15.0 - 5th October 2023
 Minor release, including:
 1. Updated version of Publishers FTP Protocol document (PDF)
