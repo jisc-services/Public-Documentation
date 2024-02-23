@@ -1,5 +1,12 @@
 # Release History
 
+## Release 13.1.0 - 31 January 2024
+Major release, including:
+1. Fix login link issue (replace by login access code)
+2. Improve FTP submission error messages (include filename)
+3. Fix harvester bug introduced in prior release - wrong function name
+4. Update Router documentation re. individual user accounts
+
 ## Release 13.0.0 - 29th January 2024
 Major release, including:
 1. Introduction of individual User Accounts, with two factor login (via emailed login link)
