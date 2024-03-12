@@ -1,5 +1,10 @@
 # Release History
 
+## Release 13.2.0 - 12 March 2024
+Major release, including:
+1. Report missing PDF from zip file as an issue (& process the submission) instead of an error (without processing)
+2. Amendments to publisher auto-testing - don't check for _provider.ref_, report zero ORCIDs as an error, amend author contributor-type validation.
+
 ## Release 13.1.0 - 31 January 2024
 Major release, including:
 1. Fix login link issue (replace by login access code)
