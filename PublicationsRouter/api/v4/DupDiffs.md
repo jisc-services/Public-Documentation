@@ -53,7 +53,7 @@ This table describes the bits that are used and their interpretation.
 | 23 | 8388608 | metadata.article.subject | Subject keywords are present (1 or more) |
 | 24 | 16777216 | metadata.author - Author | Article authors are present (1 or more) |
 | 25 | 33554432 | metadata.author - Corresp | At least 1 corresponding author is present |
-| 26 | 67108864 | metadata.author | At least 1 Author ORCID is present |
+| 26 | 67108864 | metadata.author.identifier - ORCID | At least 1 Author ORCID is present |
 | 27 | 134217728 | metadata.contributor | Contributors are present (1 or more) |
 | 28 | 268435456 | metadata.accepted_date | Accepted date is present |
 | 29 | 536870912 | metadata.publication_date.date - Full | Full publication date (YYYY-MM-DD) is present |
@@ -69,3 +69,5 @@ This table describes the bits that are used and their interpretation.
 | 39 | 549755813888 | metadata.peer_reviewed | Peer-reviewed boolean indicator is present |
 | 40 | 1099511627776 | metadata.ack | An acknowledgements string is present |
 | 41 | 2199023255552 | metadata.article.e_num | An electronic article number (e-location id) is present |
+| 42 | 4398046511104 | metadata.author.affiliations | At least 1 structured author affiliation is present  |
+| 43 | 8796093022208 | metadata.author.affiliations.identifier | At least 1 author affiliation identifier is present |
