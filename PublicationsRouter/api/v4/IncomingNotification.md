@@ -94,7 +94,7 @@ The JSON structure of the model is as follows:
                     "id": "<Identifier value>"
                     }
                 ],
-                "org": "<Organisation name (may include Department name)>",
+                "org": "<Organisation name (should NOT include department name etc.)>",
                 "dept": "<Department name>",
                 "street": "<Street name>",
                 "city": "<City>",
@@ -134,7 +134,7 @@ The JSON structure of the model is as follows:
                     "id": "<Identifier value>"
                     }
                 ],
-                "org": "<Organisation name (may include Department name)>",
+                "org": "<Organisation name (should NOT include department name etc.)>",
                 "dept": "<Department name>",
                 "street": "<Street name>",
                 "city": "<City>",
@@ -241,8 +241,8 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.author.affiliations.identifier | Array of organisation Ids such as ROR or GRID |  |  |  |
 | metadata.author.affiliations.identifier.type | Type of identifier (e.g. 'ROR') | unicode |  |  |
 | metadata.author.affiliations.identifier.id | Organisation identfier value (e.g. ROR value) | unicode |  |  |
-| metadata.author.affiliations.org | Name of institution (may include department) | unicode  |  |  |
-| metadata.author.affiliations.dept | Name of department (if not included in preceding *org* field) | unicode |  |  |
+| metadata.author.affiliations.org | Name of organisation/institution | unicode  |  |  |
+| metadata.author.affiliations.dept | Name of department | unicode |  |  |
 | metadata.author.affiliations.street | Street address | unicode |  |  |
 | metadata.author.affiliations.city | City | unicode |  |  |
 | metadata.author.affiliations.state | State or Country | unicode |  |  |
