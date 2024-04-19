@@ -1,5 +1,11 @@
 # Release History
 
+## Release 13.3.0 - 18 April 2024
+Minor release, including:
+1. Tech-refresh (updgrade to latest version of librarie)
+2. New report of unique articles in period (Jisc admin only)
+3. Bug fixes - use correct elocation-Id for PubMed articles, strip linefeeds from captured affiliations.
+
 ## Release 13.2.0 - 12 March 2024
 Major release, including:
 1. Report missing PDF from zip file as an issue (& process the submission) instead of an error (without processing)
