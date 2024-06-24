@@ -1,5 +1,13 @@
 # Release History
 
+## Release 13.4.0 - 18 June 2024
+Minor release, including:
+1. Several Jisc admin only reports:
+  * List users
+  * Duplicate publisher submissions
+  * Analysis of structured affiliation usage by publisher
+
+
 ## Release 13.3.0 - 18 April 2024
 Minor release, including:
 1. Tech-refresh (updgrade to latest version of librarie)
@@ -27,7 +35,7 @@ Major release, including:
 ## Release 12.15.0 - 5th October 2023
 Minor release, including:
 1. Updated version of Publishers FTP Protocol document (PDF)
-2. Recognition of 2 alternate spellings of Acknowledgement/Acknoledgment (for purpose of removing superfluous title)
+2. Recognition of 2 alternate spellings of Acknowledgement/Acknowledgment (for purpose of removing superfluous title)
 3. Amendment to Publisher auto-testing - stricter checks on author affiliations; recognition of *open-government-licence* so issue not raised; changes to wording of test result email.
 
 ## Release 12.14.0 - 20th September 2023
