@@ -1,12 +1,11 @@
 # Release History
 
-## Release 13.4.0 - 18 June 2024
+## Release 13.4.0 - 17 June 2024
 Minor release, including:
 1. Several Jisc admin only reports:
   * List users
   * Duplicate publisher submissions
   * Analysis of structured affiliation usage by publisher
-
 
 ## Release 13.3.0 - 18 April 2024
 Minor release, including:
