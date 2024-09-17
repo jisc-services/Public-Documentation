@@ -1,5 +1,13 @@
 # Release History
 
+## Release 13.5.0 - 17 Sept 2024
+Major release, including:
+1. New scheduling system, allowing background execution of long running reports; this also improve Router's throughput capacity and performance (reducing the average time taken for deposits to transit through Router into target repositories) .
+2. New admin dashboard to summarise all matching parameters, hilighting use of RegEx in name variants; plus new page to compare current with old (archived) versions of matching parameters and enable reversion to earlier version
+3. Update displayed Eprints repository options display to make more intuitive
+4. Improve test suite performance
+5. Fix monthly report failure due to missing template file
+
 ## Release 13.4.0 - 17 June 2024
 Minor release, including:
 1. Several Jisc admin only reports:
