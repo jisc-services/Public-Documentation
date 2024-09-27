@@ -8,7 +8,7 @@ The interface is built on the SWORDv2 specification, which you can [read about h
 
 The Publications Router SWORD2 service endpoint is:
 
-    https://pubrouter.jisc.ac.uk/sword
+    https://pubrouter.jisc.ac.uk/sword2
     
 
 ## Getting Started: retrieving the Service Document
@@ -31,7 +31,7 @@ This will require you to provide your Publications Router credentials (email and
 
 For example, using curl, you might do the following:
 
-    curl -i https://email:password@pubrouter.jisc.ac.uk/sword/
+    curl -i --user <my_account_id>:<my_api_key> https://pubrouter.jisc.ac.uk/sword2/
 
 ## Send a package as a new notification
 
@@ -49,7 +49,7 @@ This will require you to provide your Publications Router credentials (email and
 
 For example, using curl, you might do the following:
 
-    curl -i --data-binary "@article.zip" -H "Content-Disposition: attachment; filename=article.zip" -H "Content-Type: application/zip" https://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_ACCOUNT_ID>
+    curl -i --data-binary "@article.zip" -H "Content-Disposition: attachment; filename=article.zip" -H "Content-Type: application/zip" --user <my_account_id>:<my_api_key> https://pubrouter.jisc.ac.uk/sword2/collections/<MY_ACCOUNT_ID>
 
 In response to this you will either receive a SWORDv2 error document detailing any problems with the request, or a
 successful 201 (Created) response.  If you get a different response, the returned XML should provide an explanation of your error.
@@ -65,11 +65,11 @@ You can also deposit metadata and files separately using the Continued Deposit f
 
 Get the URL of the collection from the Service Document the same in the previous section. Instead of submitting a package, you can submit multiple files. An example of this, using curl is below:
 
-    curl -i --data-binary "@jats.xml" -H "Content-Disposition: attachment; filename=jats.xml" -H "Content-Type: application/xml" -H "In-Progress: true" https://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_ACCOUNT_ID>
+    curl -i --data-binary "@jats.xml" -H "Content-Disposition: attachment; filename=jats.xml" -H "Content-Type: application/xml" -H "In-Progress: true" --user <my_account_id>:<my_api_key> https://pubrouter.jisc.ac.uk/sword2/collections/<MY_ACCOUNT_ID>
 
 After this, you can continue your deposit by using the "Edit-Media" IRI as part of the SWORD2 spec, which will be listed in the deposit receipt of the previous request. Just remember to set the In-Progress header to false (or not set it at all) when you have finished depositing files, or it will never be processed:
 
-    curl -i --data-binary "@article.pdf" -H "Content-Disposition: attachment; filename=article.pdf" -H "Content-Type: application/xml" https://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_ACCOUNT_ID>/<YOUR_NOTIFICATION_ID>/media
+    curl -i --data-binary "@article.pdf" -H "Content-Disposition: attachment; filename=article.pdf" -H "Content-Type: application/xml" --user <my_account_id>:<my_api_key> https://pubrouter.jisc.ac.uk/sword2/collections/<MY_ACCOUNT_ID>/<NOTIFICATION_ID>/media
 
 You can repeat this for as many files as you like, but note that while any number of XML files may be submitted, only the first - which MUST be JATS XML - will be processed as meta-data and used to create the notification; the remainder will be treated as supplementary article files.
 
@@ -97,7 +97,7 @@ This will require you to provide your email and password via HTTP Basic Authenti
 
 For example, using curl, you might do the following:
 
-    curl -i http://username:api_key@pubrouter.jisc.ac.uk/sword/collections/<YOUR_ACCOUNT_ID>/<YOUR_NOTIFICATION_ID>
+    curl -i --user <my_account_id>:<my_api_key> https://pubrouter.jisc.ac.uk/sword2/collections/<MY_ACCOUNT_ID>/<NOTIFICATION_ID>
 
 This will give back the XML deposit receipt, which contains the identifiers that you need to access the binary
 content and the staus report.
@@ -109,7 +109,7 @@ receipt, see the section above on how to get it.
 
 In the deposit receipt you'll see a section that looks like this:
 
-    <link rel="edit-media" href="http://pubrouter.jisc.ac.uk/sword/collections/<YOUR_ACCOUNT_ID>/<YOUR_NOTIFICATION_ID>/media"/>
+    <link rel="edit-media" href="http://pubrouter.jisc.ac.uk/sword/collections/<MY_ACCOUNT_ID>/<OTIFICATION_ID>/media"/>
 
 This is the "Edit Media IRI" (EM-IRI), and you can do:
 
@@ -119,6 +119,6 @@ This will require you to provide your Publications Router credentials (email and
 
 For example, using curl, you might do the following:
 
-    curl -i http://email:password@pubrouter.jisc.ac.uk/sword/collections/<YOUR_ACCOUNT_ID>/<YOUR_NOTIFICATION_ID>/media
+    curl -i --user <my_account_id>:<my_api_key> https://pubrouter.jisc.ac.uk/sword2/collections/<MY_ACCOUNT_ID>/<NOTIFICATION_ID>/media
 
 This will return to you the binary content you originally deposited.
