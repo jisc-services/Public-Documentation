@@ -1,8 +1,21 @@
 # Release History
 
+## Release 13.7.0 - 21 Nov 2024
+Major release, including:
+1. Technology security upgrades.
+2. Enhanced admin email capability to allow user email addresses to be selected
+3. Replaced broken links to discontinued blogs
+5. Added reporting metric for file deletion. 
+
+## Release 13.6.0 - 15 Oct 2024
+Minor release, including:
+1. Resolve newly emerged PubMed harvesting problem
+2. Standardization of Title case on GUI screens
+3. Supportability enhancements (code refactoring).
+
 ## Release 13.5.0 - 17 Sept 2024
 Major release, including:
-1. New scheduling system, allowing background execution of long running reports; this also improve Router's throughput capacity and performance (reducing the average time taken for deposits to transit through Router into target repositories) .
+1. New scheduling system, allowing background execution of long running reports; this also improve Router's throughput capacity and performance (reducing the average time taken for deposits to transit through Router into target repositories)
 2. New admin dashboard to summarise all matching parameters, hilighting use of RegEx in name variants; plus new page to compare current with old (archived) versions of matching parameters and enable reversion to earlier version
 3. Update displayed Eprints repository options display to make more intuitive
 4. Improve test suite performance
