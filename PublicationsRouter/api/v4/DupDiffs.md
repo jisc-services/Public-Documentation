@@ -1,11 +1,12 @@
 # Duplicate Differences Bit Mask
 
-The `dup_diffs` array present for all **duplicate** notifications will contain 1 or 2 objects like that shown below (see the [Outgoing Notification](./OutgoingNotification.md) documentation for full details).  There will be 1 object for the first duplicate notification; for subsequent notifications (i.e. 2nd duplicate onwards) there will be 2 objects.  The first object `dup_diffs[0]` is always is a comparison of the current notification with the original notification.  Where present, the second object `dup_diffs[1]` is always a comparison of the current notification with an accumulated view of all previous notifications.
-
 The purpose of the `dup_diffs` array is to provide information on the difference between the current notificiation and earlier notifications - such that an assessment may be made of the additional value provided by a duplicate notification (i.e. what kind of new information does it contain).
+
+The `dup_diffs` array present for all **duplicate** notifications will contain 1 or 2 objects like that shown below (see the [Outgoing Notification](./OutgoingNotification.md) documentation for full details).  There will be 1 object for the first duplicate notification; for subsequent notifications (i.e. 2nd duplicate onwards) there will be 2 objects.  The first object `dup_diffs[0]` is always is a comparison of the current notification with the original notification.  Where present, the second object `dup_diffs[1]` is always a comparison of the current notification with an accumulated view of all previous notifications.
 ```
 "dup_diffs":[
-    // The first object compares the current duplicate notification with first (original) notification 
+    // The first object compares the current duplicate notification with first (original) notification
+
     {
         "old_date": …,
         "curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata>,
@@ -19,6 +20,7 @@ The purpose of the `dup_diffs` array is to provide information on the difference
         "n_struct_aff": …,
         "n_aff_ids": …
     },
+
     // The 2nd object (with identical structure) will be present for 2nd duplicate onwards and compares
     // current notification with an accumulated view of all previous notifications
     {   
