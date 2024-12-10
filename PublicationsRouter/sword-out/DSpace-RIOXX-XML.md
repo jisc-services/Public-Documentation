@@ -97,6 +97,7 @@ This is an example Dspace-RIOXX Entry XML document output by Publications Router
 	<dcterms:title>A stochastic multicellular model identifies biological watermarks from disorders in self-organized patterns of phyllotaxis</dcterms:title>
 	<dcterms:rights>Licence for VoR version of this article starting on 06-07-2016: http://www.psychoceramics.org/license_v1.html/ </dcterms:rights>
 	<dcterms:rights>Licence for VoR version of this article starting on 06-07-2017: http://creativecommons.org/licenses/by/4.0/</dcterms:rights>
+	<dcterms:type>article</dcterms:type>
 
 	<ali:license_ref start='2017-07-06'>http://creativecommons.org/licenses/by/4.0/</ali:license_ref> 
 	
