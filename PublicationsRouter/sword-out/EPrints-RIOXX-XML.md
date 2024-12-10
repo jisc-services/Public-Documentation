@@ -58,7 +58,7 @@ An example Entry document containing the metadata listed above is shown here.
 <?xml version="1.0"?>
 <entry xmlns="http://www.w3.org/2005/Atom" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/v2.0/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
 	<pr:download_link url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/1" format="text/html" filename="1" primary="false"/>
-	<pr:note>** Article version: VoR ** Embargo end date: 22-08-2018 ** From Publisher via Jisc Publications Router ** Licence for VoR version of this article starting on 22-08-2018: https://testing.org/licenses/by/4.0/</pr:note>
+	<pr:note>** Article version: VoR ** Embargo end date: 22-08-2018 ** From Publisher via Jisc Publications Router ** Licence for VoR version of this article starting on 22-08-2018: https://testing.org/licenses/by/4.0/ ** Peer reviewed: TRUE ** Acknowledgements: ...acknowledgement text...</pr:note>
 	<pr:comment>Some text to display in Eprints privately visible Comments & Suggestions field</pr:comment>
 	<pr:relation url="https:/dummy.jisc.ac.uk/api/v3/notification/1e28c474a04ea8260/content/eprints-rioxx/pone.12345.pdf" format="application/pdf"/>
 	<pr:download_link url="https:/dummy.jisc.ac.uk/api/v3/notification/1e28c474a04ea8260/content/eprints-rioxx/pone.12345.pdf" filename="pone.12345.pdf" format="application/pdf" primary="true"  set_details="true"/>
