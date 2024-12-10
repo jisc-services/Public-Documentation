@@ -103,7 +103,7 @@ This is an example Dspace-RIOXX Entry XML document output by Publications Router
 	<pubr:openaccess_uri>http://doi.org/123456789/article.pdf</pubr:openaccess_uri> 
 	<pubr:embargo_date>2017-07-06</pubr:embargo_date> 
 	<pubr:author id="http://orcid.org/0000-0002-8257-4088" email="teva@yahoo.com">Vernoux, Teva </pubr:author>
-	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="johnsmith@yahoo.com">Smith, Bob </pubr:contributor>
+	<pubr:contributor id="http://orcid.org/0000-0002-8257-7777" email="bobsmith@yahoo.com">Smith, Bob </pubr:contributor>
 	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP0054-2013  </pubr:sponsorship>
 	<pubr:sponsorship>Funder: Human Frontier Science Program, Funder ID: http://dx.doi.org/10.13039/100004412, Project: RGP8888-2013  </pubr:sponsorship>
 
