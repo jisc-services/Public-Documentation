@@ -19,6 +19,7 @@ The following table lists:
 | [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br> article.article_e_num <br> | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range], article-number [article.article_e_num]</dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dcterms:publisher>[journal.publisher]</dcterms:publisher>` |
 | [dcterms:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source>[journal.identifier.type]: [journal.identifier.id]</dcterms:source>` |
+| [dcterms:type](http://dublincore.org/documents/dcmi-terms/#type) | article.type | `<dcterms:type>[article.type]</dcterms:type>` |
 | [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dcterms:title> [article.title]</dcterms:title>` |
 | [dcterms:language](http://dublincore.org/documents/dcmi-terms/#terms-language) | article.language | `<dcterms:language>[article.language]</dcterms:language>` |
 | [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract) | article.abstract | `<dcterms:abstract>[article.abstract]</dcterms:abstract>` |
@@ -33,11 +34,12 @@ The following table lists:
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dcterms:description>Article version: [article.version]</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider.agent | `<dcterms:description>From [provider.agent] via Jisc Publications Router</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dcterms:description>Publication status: [publication_status]</dcterms:description>` | 
-|[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date]</dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date]</dcterms:description>` |
+| [dcterms:dateSubmitted](http://dublincore.org/documents/dcmi-terms/#terms-dateSubmitted)  | history_date.date | `<dcterms:dateSubmitted>[history_date.date]</dcterms:dateSubmitted>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_numbers <br> funding.identifier | `<dcterms:description>Funder: [funding.name], [funding.identifier.type]: [funding.identifier.id], Grant(s):  [funding.grant_numbers]</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | peer_reviewed | `<dcterms:description>Peer reviewed: {True\|False}</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | ack | `<dcterms:description>Acknowledgements:  [ack]</dcterms:description>` |
-
+dcterms:dateSubmitted
 
 ## Example XML Output
 
@@ -77,6 +79,7 @@ An example Atom Entry document containing the metadata listed above is shown her
 	<dcterms:subject>Pancreas</dcterms:subject>
 	<dcterms:subject>PANCREATIC CANCER</dcterms:subject>
 	<dcterms:description>Publication status: Published</dcterms:description>
+        <dcterms:description>Funder: Rotary Club of Eureka; ringgold: rot-club-eurek, Fundref: https://doi.org/10.13039/100008650; Grant(s): BB/34/juwef</dcterms:description>
 	<dcterms:description>Peer reviewed: True</dcterms:description>
 	<dcterms:description>Acknowledgements: ...acknowledgement text...</dcterms:description>
 	<dcterms:description>History: received 2016-01-03, rev-recd 2016-04-01, accepted 2016-04-18, ppub 2016-05, epub 2016-05-12</dcterms:description>
