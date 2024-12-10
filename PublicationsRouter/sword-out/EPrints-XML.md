@@ -21,7 +21,7 @@ The following table lists:
 | issn | journal.identifier.id | `<issn>[journal.identifier.id]</issn>` |
 | title | article.title <br> article.subtitle | `<title>[article.title] - [article.subtitle 1] - [article.subtitle 2] -...</title>` |
 | type | article.type | `<type>[article.type]</type>` |
-| pagerange | article.page_range | `<pagerange>[article.page_range]</pagerange>` |
+| pagerange | article.page_range <br> article.article_e_num <br> | `<pagerange>[article.page_range]</pagerange>` <br><br>Or, if article.page_range is absent: <br> `<pagerange>[article.article_e_num]</pagerange>`  |
 | abstract | article.abstract | `<abstract>[article.abstract]</abstract>` |
 | id_number | article.identifier.id | `<id_number>[article.identifier.id]</id_number>` |
 | keywords | article.subject | `<keywords>[article.subject 1], [article.subject 2], ...</keywords>` |
