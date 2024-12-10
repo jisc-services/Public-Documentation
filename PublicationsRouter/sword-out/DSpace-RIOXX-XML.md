@@ -81,8 +81,7 @@ This is an example Dspace-RIOXX Entry XML document output by Publications Router
 	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393, article-number 311393</dcterms:bibliographicCitation>
 	<dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
         <dcterms:issued>2016-05-12</dcterms:issued>
-        <dcterms:description>From BMJ via Jisc Publications Router</dcterms:description>
-	<dcterms:description>From eLife via Jisc Publications Router</dcterms:description>
+  	<dcterms:description>From eLife via Jisc Publications Router</dcterms:description>
 	<dcterms:description>Peer reviewed: True</dcterms:description>
 	<dcterms:description>Acknowledgements: ...acknowledgement text...</dcterms:description>
         <dcterms:description>History: received 2016-01-03, rev-recd 2016-04-01, accepted 2016-04-18, ppub 2016-05, epub 2016-05-12</dcterms:description>
