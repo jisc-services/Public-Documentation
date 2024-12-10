@@ -1,9 +1,12 @@
 # Duplicate Differences Bit Mask
 
-The `dup_diffs` array present for all duplicate notifications will contain 1 or 2 objects like that shown below (see the [Outgoing Notification](./OutgoingNotification.md) documentation for full details):
+The `dup_diffs` array present for all **duplicate** notifications will contain 1 or 2 objects like that shown below (see the [Outgoing Notification](./OutgoingNotification.md) documentation for full details).  There will be 1 object for the first duplicate notification; for subsequent notifications (i.e. 2nd duplicate onwards) there will be 2 objects.  The first object `dup_diffs[0]` is always is a comparison of the current notification with the original notification.  Where present, the second object `dup_diffs[1]` is always a comparison of the current notification with an accumulated view of all previous notifications.
+
+The purpose of the `dup_diffs` array is to provide information on the difference between the current notificiation and earlier notifications - such that an assessment may be made of the additional value provided by a duplicate notification (i.e. what kind of new information does it contain).
 ```
 "dup_diffs":[
-    { 
+    // The first object compares the current duplicate notification with first (original) notification 
+    {
         "old_date": …,
         "curr_bits": <Long integer: Bit mask which summarises analysis of current notification's metadata>,
         "old_bits": <Long integer: Bit mask which summarises analysis of comparison notification metadata>,
@@ -13,15 +16,22 @@ The `dup_diffs` array present for all duplicate notifications will contain 1 or 
         "n_fund_id": …,
         "n_grant": …,
         "n_lic": …,
+    },
+    // The 2nd object (with identical structure) will be present for 2nd duplicate onwards and compares
+    // current notification with an accumulated view of all previous notifications
+    {   
+    ... // structure identical to that above
     }
 ]
 ```
 
 This object contains 2 **bit masks**:
-* `curr_bits`
-* `old_bits`.  
+* `curr_bits` - this will have the same value in both `dup_diffs[0]` &  `dup_diffs[1]` (if present)
+* `old_bits` - for `dup_diffs[0]` this is the value from the original (first) notification received; for `dup_diffs[1]` (if present) this is a cumulative value derived from of all notifications previously received.  
 
 In each bit mask, a bit set ON (value 1) indicates that a particular item of metadata is present; while a bit set OFF (value 0) indicates it is absent.  The table below summarises the meaning of each bit.
+
+(For information on other fields in the object see the [Outgoing Notification](./OutgoingNotification.md)).
 
 ## Bit descriptions
 This table describes the bits that are used and their interpretation.
