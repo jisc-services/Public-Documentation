@@ -39,7 +39,6 @@ The following table lists:
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_numbers <br> funding.identifier | `<dcterms:description>Funder: [funding.name], [funding.identifier.type]: [funding.identifier.id], Grant(s):  [funding.grant_numbers]</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | peer_reviewed | `<dcterms:description>Peer reviewed: {True\|False}</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | ack | `<dcterms:description>Acknowledgements:  [ack]</dcterms:description>` |
-dcterms:dateSubmitted
 
 ## Example XML Output
 
