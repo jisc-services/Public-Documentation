@@ -16,7 +16,7 @@ The following table lists:
 
 | DC terms | Publications Router Metadata (source) | XML Format |
 |:-----------------------------|:-------------------------|:------------------------------------------------------------|
-| [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br>  | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range]</dcterms:bibliographicCitation>`|
+| [dcterms:bibliographicCitation](http://dublincore.org/documents/dcmi-terms/#terms-bibliographicCitation) | journal.title <br> journal.abbrevTitle <br> journal.volume <br> journal.issue <br> article.start_page  <br> article.end_page  <br> article.page_range <br> article.article_e_num <br> | `<dcterms:bibliographicCitation>[journal.title], volume [journal.volume], issue [journal.issue], page [article.start_page]-[article.end_page] or [article.page_range], article-number [article.article_e_num]</dcterms:bibliographicCitation>`|
 | [dcterms:publisher](http://dublincore.org/documents/dcmi-terms/#terms-publisher) | journal.publisher | `<dcterms:publisher>[journal.publisher]</dcterms:publisher>` |
 | [dcterms:source](http://dublincore.org/documents/dcmi-terms/#terms-source) | journal.identifier.type <br> journal.identifier.id  | `<dcterms:source>[journal.identifier.type]: [journal.identifier.id]</dcterms:source>` |
 | [dcterms:title](http://dublincore.org/documents/dcmi-terms/#terms-title) | article.title | `<dcterms:title> [article.title]</dcterms:title>` |
