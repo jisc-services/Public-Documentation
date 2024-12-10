@@ -42,9 +42,11 @@ The table below lists:
 | [dcterms:abstract](http://dublincore.org/documents/dcmi-terms/#terms-abstract)<br>{0..1} | article.abstract | `<dcterms:abstract>[article.abstract] </dcterms:abstract>` |
 | [dcterms:identifier](http://dublincore.org/documents/dcmi-terms/#terms-identifier)<br>{0..n} | article.identifier.type <br> article.identifier.id  | `<dcterms:identifier>[article.identifier.type]: [article.identifier.id] </dcterms:identifier>` |
 | [dcterms:subject](http://dublincore.org/documents/dcmi-terms/#terms-subject)<br>{0..n} |  article.subject | `<dcterms:subject>[article.subject] </dcterms:subject>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider.agent | `<dcterms:description>From [provider.agent] via Jisc Publications Router</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) <br>{1..n} | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date] </dcterms:description>` |
+| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted) | accepted_date | `<dcterms:dateAccepted>[accepted_date]</dcterms:dateAccepted>` |
+| [dcterms:issued](http://dublincore.org/documents/dcmi-terms/#terms-issued) | publication_date | `<dcterms:issued>[publication_date]</dcterms:issued>` |
 | [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights)<br>{0..n} | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.start <br> article.version | `<dcterms:rights>License for{ [article.version] version of} this article{ starting on [license_ref.start]}: {[license_ref.url]\|[license_ref.title]\|[license_ref.type]}</dcterms:rights>` <br> <sub>Note: The output string contains {conditional phrases} that are included only if the field they contain is not empty; the '\|' character separates alternative values, where the first non-empty value is used.</sub> |
-| [dcterms:dateAccepted](http://dublincore.org/documents/dcmi-terms/#terms-dateAccepted)<br>{0..1} | accepted_date | `<dcterms:dateAccepted>[accepted_date] </dcterms:dateAccepted>` |
 | [rioxxterms:version](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version)<br>{0..1} | article.version | `<rioxxterms:version>[article.version] </rioxxterms:version>` |
 | [rioxxterms:version_of_record](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#version-of-record)<br>{1..1} | article.identifier.id (DOI) | `<rioxxterms:version_of_record>Version: [article.identifier.id] </rioxxterms:version_of_record>` |
 | [rioxxterms:type](http://www.rioxx.net/schema/v2.0/rioxxterms/rioxxterms_.html#type)<br>{1..1}  | article.type | `<rioxxterms:type>[article.type]</rioxxterms:type>` |
@@ -84,6 +86,8 @@ This is an example Dspace-RIOXX Entry XML document output by Publications Router
 	<dcterms:identifier>publisher-id: gutjnl-2016-311393</dcterms:identifier>
         <dcterms:identifier>doi: 10.1136/gutjnl-2016-311393</dcterms:identifier>
 	<dcterms:language>en</dcterms:language>
+	<dcterms:source>pissn: 0017-5749</dcterms:source>
+	<dcterms:source>eissn: 1468-3288</dcterms:source>
 	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
 	<dcterms:source>pissn: 0017-5749</dcterms:source>
 	<dcterms:source>eissn: 1468-3288</dcterms:source>
