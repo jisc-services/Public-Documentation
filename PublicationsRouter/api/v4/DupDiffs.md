@@ -16,6 +16,8 @@ The purpose of the `dup_diffs` array is to provide information on the difference
         "n_fund_id": …,
         "n_grant": …,
         "n_lic": …,
+        "n_struct_aff": …,
+        "n_aff_ids": …
     },
     // The 2nd object (with identical structure) will be present for 2nd duplicate onwards and compares
     // current notification with an accumulated view of all previous notifications
