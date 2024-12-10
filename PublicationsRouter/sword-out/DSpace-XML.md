@@ -31,10 +31,12 @@ The following table lists:
 | [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | embargo.start <br> embargo.end <br> embargo.duration | `<dcterms:rights>Embargo: {starts [embargo.start], }{ends [embargo.end], }{duration [embargo.duration] months from publication}</dcterms:rights>` <br> <sub>Note: One or more of the start, end, duration phrases may be omitted if the relevant data is not available.</sub> |
 | [dcterms:rights](http://dublincore.org/documents/dcmi-terms/#terms-rights) | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.start <br> article.version | `<dcterms:rights>License for{ [article.version] version of} this article{ starting on [license_ref.start]}: {[license_ref.url]\|[license_ref.title]\|[license_ref.type]}</dcterms:rights>` <br> <sub>Note: The output string contains {conditional phrases} that are included only if the field they contain is not empty; the '\|' character separates alternative values, where the first non-empty value is used.</sub>|
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description) | article.version | `<dcterms:description>Article version: [article.version]</dcterms:description>` |
-| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider_agent | `<dcterms:description>From [provider_agent] via Jisc Publications Router</dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | provider.agent | `<dcterms:description>From [provider.agent] via Jisc Publications Router</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | publication_status | `<dcterms:description>Publication status: [publication_status]</dcterms:description>` | 
 |[dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | history_date.date_type <br> history_date.date | `<dcterms:description>History: [history_date.date_type], [history_date.date]</dcterms:description>` |
 | [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | funding.name <br> funding.grant_numbers <br> funding.identifier | `<dcterms:description>Funder: [funding.name], [funding.identifier.type]: [funding.identifier.id], Grant(s):  [funding.grant_numbers]</dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | peer_reviewed | `<dcterms:description>Peer reviewed: {True\|False}</dcterms:description>` |
+| [dcterms:description](http://dublincore.org/documents/dcmi-terms/#terms-description)  | ack | `<dcterms:description>Acknowledgements:  [ack]</dcterms:description>` |
 
 
 ## Example XML Output
@@ -75,13 +77,15 @@ An example Atom Entry document containing the metadata listed above is shown her
 	<dcterms:subject>Pancreas</dcterms:subject>
 	<dcterms:subject>PANCREATIC CANCER</dcterms:subject>
 	<dcterms:description>Publication status: Published</dcterms:description>
+	<dcterms:description>Peer reviewed: True</dcterms:description>
+	<dcterms:description>Acknowledgements: ...acknowledgement text...</dcterms:description>
 	<dcterms:description>History: received 2016-01-03, rev-recd 2016-04-01, accepted 2016-04-18, ppub 2016-05, epub 2016-05-12</dcterms:description>
 	<dcterms:rights>Licence for VoR version of this article starting on 12-12-2016: https://testing.org/licenses/by/4.0/</dcterms:rights>
 	<dcterms:rights>Embargo: starts 2016-05-12, ends 2016-12-12, duration 7 months from publication.</dcterms:rights>
 	<dcterms:abstract>Objective Pancreatic ductal adenocarcinoma (PDAC) is one of the most aggressive malignancies and is projected to be the second leading cause of cancer-related death by 2030.</dcterms:abstract>
 	<dcterms:issued>2016-05-12</dcterms:issued>
 	<dcterms:dateAccepted>2016-04-18</dcterms:dateAccepted>
-	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393</dcterms:bibliographicCitation>
+	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393, article-number 311393</dcterms:bibliographicCitation>
 	<dcterms:type>article</dcterms:type>
 	<dcterms:dateSubmitted>2016-01-03</dcterms:dateSubmitted>
 </entry>
