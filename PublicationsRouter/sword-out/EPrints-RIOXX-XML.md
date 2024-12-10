@@ -18,7 +18,7 @@ The following table lists:
 
 | XML Element Terms | Publications Router Metadata | XML Format | Cardinality & Notes |
 |:-----------------------------|:-----------------------|:------------------------------------------------------------------------------|:----------------------------------|
-| [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L96) | Information to be displayed in Eprints Additional Information public field | `<pr:note>[text to display]</pr:note>` | {0..n} |
+| [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L96) | Information to be displayed in Eprints Additional Information public field, including the following where available: <br> - Article version: article.version <br> - Embargo end date: embargo.end<br> - Provider agent: provider.agent <br> - History dates: history_date.* <br> - Licence information: license_ref.* <br> - Peer review status: peer_reviewed <br> - Acknowledgement text: ack <br> | `<pr:note>[text to display]</pr:note>` | {0..n} |
 | [pr:comment](./pubrouter-xsd/eprints-rioxx.xsd#L103) | Information to be displayed in Eprints Comments & Suggestions private field | `<pr:comment>[text to display]</pr:comment>` | {0..1} |
 | [pr:relation](./pubrouter-xsd/eprints-rioxx.xsd#L110) | links.format<br>links.url<br>links.packaging| `<pr:relation url=[links.url] format=[links.format] packaging=[links.packaging]>[text to display]</pr:relation>` | {0..n}<br>If the element has no text to display, then Eprints will display the URL.  |
 | [pr:source](./pubrouter-xsd/eprints-rioxx.xsd#L130) | journal.title<br>journal.volume<br>journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]>[journal.title]</pr:source>` | {0..1} |
