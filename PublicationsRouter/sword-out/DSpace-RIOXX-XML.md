@@ -73,10 +73,16 @@ This is an example Dspace-RIOXX Entry XML document output by Publications Router
 	xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
 	
 	<dcterms:abstract>Exploration of developmental mechanisms classically relies on analysis of pattern regularities. Whether disorders induced by biological noise may carry information on building principles of developmental systems is an important debated question. Here, we addressed theoretically this question using phyllotaxis, the geometric arrangement of plant aerial organs, as a model system. Phyllotaxis arises from reiterative organogenesis driven by lateral inhibitions at the shoot apex. Motivated by recurrent observations of disorders in phyllotaxis patterns, we revisited in depth the classical deterministic view of phyllotaxis. We developed a stochastic model of primordia initiation at the shoot apex, integrating locality and stochasticity in the patterning system. This stochastic model recapitulates phyllotactic patterns, both regular and irregular, and makes quantitative predictions on the nature of disorders arising from noise. We further show that disorders in phyllotaxis instruct us on the parameters governing phyllotaxis dynamics, thus that disorders can reveal biological watermarks of developmental systems.</dcterms:abstract>
-	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393</dcterms:bibliographicCitation>
+	<dcterms:bibliographicCitation>Gut, page gutjnl-2016-311393, article-number 311393</dcterms:bibliographicCitation>
 	<dcterms:dateAccepted>2016-07-06</dcterms:dateAccepted>
+        <dcterms:issued>2016-05-12</dcterms:issued>
+        <dcterms:description>From BMJ via Jisc Publications Router</dcterms:description>
 	<dcterms:description>From eLife via Jisc Publications Router</dcterms:description>
+	<dcterms:description>Peer reviewed: True</dcterms:description>
+	<dcterms:description>Acknowledgements: ...acknowledgement text...</dcterms:description>
+        <dcterms:description>History: received 2016-01-03, rev-recd 2016-04-01, accepted 2016-04-18, ppub 2016-05, epub 2016-05-12</dcterms:description>
 	<dcterms:identifier>publisher-id: gutjnl-2016-311393</dcterms:identifier>
+        <dcterms:identifier>doi: 10.1136/gutjnl-2016-311393</dcterms:identifier>
 	<dcterms:language>en</dcterms:language>
 	<dcterms:publisher>eLife Sciences Publications, Ltd</dcterms:publisher>
 	<dcterms:source>pissn: 0017-5749</dcterms:source>
