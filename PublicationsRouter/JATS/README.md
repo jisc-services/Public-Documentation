@@ -32,7 +32,7 @@ In summary, Router will extract metadata from sub-elements within these top leve
     <back>
         <ack>… Acknowledgements …</ack>
     </back>
-<\article>
+</article>
 ```
 
 NISO provide comprehensive documentation of the [Journal Publishing Tag Library](https://jats.nlm.nih.gov/publishing/tag-library/1.2).
