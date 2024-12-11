@@ -377,13 +377,13 @@ See [Using Router Metadata](./Using_Router_Metadata.md#licence-details) for **im
 Author and contributor affiliations are provided as an array of affiliation objects, which will have varying fields depending on whether information is available.
 
 #### Minimum object:
-```
+```json
     {
     "raw": "Unstructured Affiliation string"
     }
 ```
 Example of single affiliation:
-```
+```json
 "affiliations": [
     {
         "raw": "School of Chemistry, University of Bristol, Cantock's Close, Bristol, BS8 1TS"
@@ -391,7 +391,7 @@ Example of single affiliation:
 ]
 ```
 #### Maximum object:
-```
+```json
     {
     "identifier": [
       {"type": "<Identifier type e.g. 'GRID' or 'ROR'>",
@@ -409,7 +409,7 @@ Example of single affiliation:
     }
 ```
 Example of single affiliation:
-```
+```json
 "affiliations": [
     {
     "identifier": [
