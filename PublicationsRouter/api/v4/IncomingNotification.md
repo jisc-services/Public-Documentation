@@ -296,9 +296,8 @@ Each of the fields in the JSON structure above is defined in the table below in 
 | metadata.peer_reviewed | Indicates if article has been peer reviewed | boolean |  | true / false |
 | metadata.ack | Acknowledgement text | unicode |  |  |
 
-## Notes
  
-### Affiliations
+## Notes on Affiliations
 
 For Publications Router:
 * Author affiliations should ALWAYS be provided.
@@ -310,7 +309,7 @@ An affiliation object must, as a minimum, contain one of two fields:
 * `"org"` containing only the organisation/institution name, e.g. `{"org": "University of Bristol"}`
 * `"raw"` containing an *unstructured* affiliation, e.g. `{"raw": "School of Chemistry, University of Bristol, Bristol BS8 1TS, United Kingdom"}`
 
-#### Structured affiliation
+### Structured affiliation
 Structured affiliations are preferable as they enable Router and end users to more easily process the supplied information.
 In particular, Router can use any supplied identifiers to match notifications to institutions, which it is unable to do for unstructured affiliations. 
 
@@ -322,7 +321,7 @@ It is not necessary to provide all the fields in a structured affiliation, the m
 all of which it uses to match a notification to institutions. 
 
 Example of a fully structured affiliations list (with 1 affiliation) is:
-```
+```json
 "affiliations": [
     {
     "identifier": [
@@ -347,26 +346,26 @@ Example of a fully structured affiliations list (with 1 affiliation) is:
     "country_code": "en"
     }
 ]
-
-* NOTE: this object does NOT need a "raw" field.
 ```
+* NOTE: the above object does NOT need a "raw" field.
 
-#### Minimally structured affiliation (with optional `"raw"` field)
+
+### Minimally structured affiliation (with optional `"raw"` field)
 Example of a structured affiliations list (with 1 affiliation) is:
-```
+```json
 "affiliations": [
     {
     "org": "University of Bristol",
     "raw": "School of Chemistry, University of Bristol, Bristol BS8 1TS, United Kingdom.  (GRID: grid.5337.2) (ROR: https://ror.org/0524sp257)"
     }
 ]
-
-* NOTE: the presence of the "raw" field provides more information for end-users
 ```
+* NOTE: in the above object the presence of the "raw" field provides more information for end-users
 
-#### Unstructured affiliation
+
+### Unstructured affiliation
 Example of an unstructured affiliations list (with 1 affiliation) is:
-```
+```json
 "affiliations": [
     {
     "raw": "School of Chemistry, University of Bristol, Bristol BS8 1TS, United Kingdom.  (GRID: grid.5337.2) (ROR: https://ror.org/0524sp257)"
@@ -374,11 +373,11 @@ Example of an unstructured affiliations list (with 1 affiliation) is:
 ]
 ```
 
-#### Hybrid list of affiliations
+### Hybrid list of affiliations
 An affiliations list can contain a mix of structured and unstructured affiliation objects.
 
 Example showing 2 affiliations, the first structured and the second not.
-```
+```json
 "affiliations": [
     {
     "identifier": [{
@@ -394,3 +393,4 @@ Example showing 2 affiliations, the first structured and the second not.
     "raw": "Department of Chemistry, The University of North Carolina at Chapel Hill, United States"
     }
 ]
+```
