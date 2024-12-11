@@ -35,10 +35,12 @@ In the majority of cases the messages are self-explanatory, but there are some f
 |………………………………………………………………………||
 
 <br>
-NOTE: If you cannot find the information you are looking for on this page please email Jisc's Router support team - [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=Publications%20Router%20-%20) (mentioning Publications Router in the Subject line) and we will do our best to add it.
-<br><br>
 
-## Example correct JATS codings ##
+NOTE: If you cannot find the information you are looking for on this page please email Jisc's Router support team - [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=Publications%20Router%20-%20) (mentioning Publications Router in the Subject line) and we will do our best to add it.
+
+<br>
+
+## Examples of correct JATS codings ##
 
 Example coding of Department and Institution name ("Faculty of Education, Manchester University") in a JATS affiliation:
 ```xml
