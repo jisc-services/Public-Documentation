@@ -30,5 +30,58 @@ In the majority of cases the messages are self-explanatory, but there are some f
 | ... Problem processing JATS metadata: Valid article version value '**XXX**', but no licences share this in their specific-use attribute.<br><br>*Where XXX is one of: AM, P, VOR, EVOR, CVOR, C/EVOR.*  | You have supplied at least one licence value within &lt;permissions&gt; which contains a *specific-use* value, but none of the licence specific-use values match the supplied article version value obtained from either &lt;article-version&gt; or specific-use attribute of root &lt;article&gt; element.  |
 | Error:<br>`«metadata.author.affiliations» has missing fields: «org», «city», «country».` | At least one of the authors had an affiliation which did NOT contain Organisation, City and Country defined in an acceptable JATS struture. For more information see Section 5.9 - *Structured affiliations* in [Publisher protocol for FTP deposits](https://pubrouter.jisc.ac.uk/static/docs/FTP_deposit_protocol_for_new_publishers.pdf). |
 | Issue:<br> `«metadata.author.affiliations» has missing desirable fields: «country_code», «dept», «postcode», «street», «identifier».`  | At least one of the authors had an affiliation which did NOT contain Department, Street, Postcode, Country-code or any Identifiers defined in an acceptable JATS struture. For more information see Section 5.9 - *Structured affiliations* in [Publisher protocol for FTP deposits](https://pubrouter.jisc.ac.uk/static/docs/FTP_deposit_protocol_for_new_publishers.pdf). |
+| Issue:<br> `«metadata.author.affiliations.org» may be overpopulated: "Faculty of Education, Manchester University" (contains "Faculty")` | Indicates that a supplied affiliation organistion name may contain more than just the name of the institution.  For example it may also contain a department name, or other address elements. See below for example of proper encoding. |
+| Issue:<br> `In the «metadata.author» array, X of the Y affiliations (from Z authors) have questionable «org» values. Please ensure affiliation address elements, including department & organisation names, are tagged separately` | Indicates that a number of supplied affiliation organisation names may contain more than just the name of the institution (these issues are also logged separately - see previous row). <br><br>Within JATS XML, the organisation name is supplied in the affiliation ***\<institution\>*** element; department names may also be supplied in the <institution> element, BUT they should additionally be tagged with the ***content-type*** attribute with one of these values: **"dept", "department", "office" or "division"** (to differentiate it from the institution name).<br><br>For example "Faculty of Education, Manchester University" should be encoded as shown below. |
 |………………………………………………………………………||
 
+<br>
+NOTE: If you cannot find the information you are looking for on this page please email Jisc's Router support team - [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=Publications%20Router%20-%20) (mentioning Publications Router in the Subject line) and we will do our best to add it.
+<br><br>
+
+## Example correct JATS codings ##
+
+Example coding of Department and Institution name ("Faculty of Education, Manchester University") in a JATS affiliation:
+```xml
+<aff>
+  <institution-wrap>
+    <institution content-type="dept">Faculty of Education</institution>,
+    <institution>Manchester University</institution>
+  </institution-wrap>
+</aff>
+```
+
+Example coding of a full affiliation:
+```xml
+<aff id=" aff1">
+	<sup>1</sup>
+	<institution-wrap>
+		<institution content-type="department">School of Chemistry</institution>
+		<institution>University of Bristol</institution>
+		<institution-id institution-id-type="grid">grid.5337.2</institution-id>
+		<institution-id institution-id-type="ror">https://ror.org/0524sp257</institution-id>
+	</institution-wrap>
+	<addr-line>Cantock's Close</addr-line>
+	<city>Bristol</city>
+	<state>Avon</state>
+	<postal-code>BS8 1TS</postal-code>
+	<country country=”GB”>United Kingdom</country>
+</aff>
+```
+
+Alternative example encoding of a full affiliation using *\<addr-line\>* with *content-type* attribute:
+```xml
+<aff id=" aff1">
+	<label>1</label>
+	<institution-wrap>
+		<institution content-type="division">School of Chemistry</institution>
+		<institution>University of Bristol</institution>
+		<institution-id institution-id-type="grid">grid.5337.2</institution-id>
+		<institution-id institution-id-type="ror">https://ror.org/0524sp257</institution-id>
+	</institution-wrap>
+	<addr-line>Cantock's Close</addr-line>
+	<addr-line content-type="city">Bristol</addr-line>
+	<addr-line content-type="state">Avon</addr-line>
+	<addr-line content-type="postal-code">BS8 1TS</addr-line>
+	<addr-line content-type="country">United Kingdom</addr-line>
+</aff>
+```
