@@ -15,7 +15,7 @@ Below are general rules which govern how JATS metadata is mapped to Router's int
 Router extracts metadata from JATS `<article><front>`, containing within it the `<journal-meta>` and `<article-meta>`,  and `<article><back>` sections. (It does NOT use the `<article><body>`section.)
 
 In summary, Router will extract metadata from sub-elements within these top level JATS elements:
-```
+```xml
 <article>
     <front>
         <journal-meta>
