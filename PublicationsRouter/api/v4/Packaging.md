@@ -15,30 +15,32 @@ When sending or retrieving packages from Publications Router, the format needs t
 
 If you are a publisher sending a package via the Publications Router API, you MUST specify the URI of the package format in the
 JSON `content.packaging_format` field, thus:
-
-    {
-        "content" : {
-            "packaging_format" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-        },
+```json
+{
+    "content" : {
+        "packaging_format" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
     }
+}
+```
 
 If you are retrieving packaged content via the Publications Router API, you will obtain the URL for the package from the notification
 JSON in the **links** section, for example:
-
-    "links" : [
-        {
-            "type" : "package",
-            "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
-            "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
-        },
-        {
-            "type" : "package",
-            "format" : "application/zip",
-            "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/SimpleZip.zip",
-            "packaging" : "http://purl.org/net/sword/package/SimpleZip"
-        }
-    ]
+```json
+"links" : [
+    {
+        "type" : "package",
+        "format" : "application/zip",
+        "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content",
+        "packaging" : "https://pubrouter.jisc.ac.uk/FilesAndJATS"
+    },
+    {
+        "type" : "package",
+        "format" : "application/zip",
+        "url" : "https://pubrouter.jisc.ac.uk/api/v4/notification/123456789/content/SimpleZip.zip",
+        "packaging" : "http://purl.org/net/sword/package/SimpleZip"
+    }
+]
+```
 
 The `links.packaging` element which tells you the format of the zip file you will receive if you GET the **url**.
 
