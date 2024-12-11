@@ -1,5 +1,12 @@
 # Release History
 
+## Release 13.8.0 - Dec 2024
+Major release, including:
+1. Publisher Auto-testing: new testing of author affiliation organisation elements
+2. Publisher Auto-testing: change licence value test
+3. New report on author affiliation organisation overpopulation (Jisc support only)
+4. Updates to public documentation. 
+
 ## Release 13.7.0 - 21 Nov 2024
 Major release, including:
 1. Technology security upgrades.
