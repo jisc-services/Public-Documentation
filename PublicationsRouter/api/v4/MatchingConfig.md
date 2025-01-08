@@ -15,9 +15,9 @@ The `GET /config` endpoint will return one of these responses.
 
 * **200 - Success**: if the request is successful then a HTTP **200 OK** code is provided with the JSON response body shown:
 
-```JSON
-    HTTP 1.1  200 OK
-    Content-Type: application/json
+```
+HTTP 1.1  200 OK
+Content-Type: application/json
 
 {
     "name_variants": [ "list of name variants the institution is known by" ],
@@ -35,7 +35,7 @@ The `GET /config` endpoint will return one of these responses.
 ```
 
 Successful response example: 
-```JSON
+```json
 {
     "name_variants": ["Oxford University", "University of Oxford"],
     "org_ids": [ "ROR:052gg0110", "ISNI:0000000419368948", "GRID:grid.4991.5"],
@@ -50,18 +50,19 @@ Successful response example:
     "last_updated": "2018-06-04T13:04:23Z"
 }
 ```
+
 &nbsp;
 * **401 - authentication failure**: For invalid api_key or other problems authenticating.
 
-```JSON
-    HTTP 1.1  401 Unauthorized
+```
+HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: Where the request is malformed in some way:
 
-```JSON
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
+```
+HTTP 1.1  400 Bad Request
+Content-Type: application/json
     {
         "error" : "Human readable error message."
     }
@@ -69,9 +70,9 @@ Successful response example:
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher) or account is turned off:
 
-```JSON
-    HTTP 1.1  403 Forbidden
-    Content-Type: application/json
+```
+HTTP 1.1  403 Forbidden
+Content-Type: application/json
     {
         "error" : "Only an admin or repository user can access this endpoint."
     }
@@ -87,7 +88,7 @@ When parameters are loaded surplus white-space is removed, as are duplicate entr
 ### JSON data structure
 
 To set ALL matching parameters, a data structure like this must be supplied.  See more detail [here](Config.md#json-submission).
-```JSON
+```json
 {
     "name_variants": [ "list of name variants the institution is known by" ],
     "org_ids": [ "list of Organisation identifiers as 'TYPE: VALUE' strings or URLs.  The following types are accepted: 'ROR', 'GRID', 'ISNI' (or 'ISN'), 'CROSSREF', 'RINGGOLD' (or 'RIN').  Identifiers supplied in URL format are converted and stored as 'Type:Value' format." ],
@@ -105,7 +106,7 @@ For example, POSTing the following JSON would:
 * replace existing ORCIDs with the 3 specified
 * replace 4 Organisation IDs with those specified (note that "https://ror.org/0524sp257" and "ROR: 0524sp257" are duplicates, so only one would be retained)
 * and would remove all existing emails.
-```JSON
+```json
 {
     "orcids": ["0000-0002-8567-3333", "0000-0002-1841-4346", "0000-0002-9377-555X"],
     "org_ids": ["  ISN: 0001 0002 0003 0004", "https://ror.org/0524sp257", "ROR: 0524sp257", "GRID: grid.5337.2", "https://api.crossref.org/funders/501100000883"]
@@ -115,7 +116,7 @@ For example, POSTing the following JSON would:
 Also, see the GET example above. 
 
 When the above data is retrieve, the Organisation Identifiers will be presented as:
-```JSON
+```json
 {
     "org_ids": ["ISNI:0001000200030004", "ROR:0524sp257", "GRID:grid.5337.2", "CROSSREF:501100000883"]
 }
@@ -135,15 +136,15 @@ The `POST /config` endpoint will return one of these responses.
 &nbsp;
 * **401 - authentication failure**: For invalid api_key or other problems authenticating.
 
-```JSON
-    HTTP 1.1  401 Unauthorized
+```
+HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
 * **400 - malformed request**: Where the request is malformed in some way:
 
-```JSON
-    HTTP 1.1  400 Bad Request
-    Content-Type: application/json
+```
+HTTP 1.1  400 Bad Request
+Content-Type: application/json
     {
         "error" : "Human readable error message."
     }
@@ -151,9 +152,9 @@ The `POST /config` endpoint will return one of these responses.
 &nbsp;
 * **403 - forbidden**: Where an authenticated user as an invalid role (for example is a publisher):
 
-```JSON
-    HTTP 1.1  403 Forbidden
-    Content-Type: application/json
+```
+HTTP 1.1  403 Forbidden
+Content-Type: application/json
     {
         "error" : "Only an admin or repository user can access this endpoint."
     }

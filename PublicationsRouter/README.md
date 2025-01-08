@@ -9,6 +9,7 @@ Publishers that send their articles and/or associated metadata directly to Publi
 The pages available in this repository describe the services provided by Publications Router, including:
 
 * [RESTful API](./api/README.md) - which enables publishers to submit articles and metadata, and institutions to retrieve the same
+* [SWORD-IN](./sword-in/README.md) - which enables publishers to submit articles and metadata via Router's SWORDv2 interface
 * [Router's use of JATS](./JATS/README.md) - provides information useful to Publishers (particularly those using Router's auto-test service)
 * [XML structures used by Router to send data to Repositories via SWORD ](./sword-out)
 * [Router release history](./Release_History.md)

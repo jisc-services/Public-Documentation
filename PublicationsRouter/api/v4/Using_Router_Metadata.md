@@ -16,13 +16,11 @@ However, a substantial number of notification records that Publications Router p
 
 ## Article version ##
 JSON element: `metadata.article.version` 
-```
+```json
 "metadata": {
     "article": {
         "version": "<Article version e.g. VoR>",
-        …
         },
-    …
 }
 ```
 Where this value is provided it indicates the version of the article to which the rest of the metadata applies.  It will have one of these values:
@@ -45,13 +43,12 @@ Where `end` is absent, but `start` and `duration` are present, we recommend that
 Where the Article version element is provided (see above) then the embargo details will relate only to that version.
 
 JSON element: `metadata.embargo` 
-```
-        "embargo": {
-            "start": "<embargo start date, format: YYYY-MM-DD>",
-            "end": "<embargo end date, format: YYYY-MM-DD>",
-            "duration": "<embargo duration in months>"
-        },
-
+```json
+"embargo": {
+    "start": "<embargo start date, format: YYYY-MM-DD>",
+    "end": "<embargo end date, format: YYYY-MM-DD>",
+    "duration": "<embargo duration in months>"
+},
 ```
 
 ### start ###
@@ -69,7 +66,7 @@ This section describes the use of each of the elements, any of which may be miss
 Where the *Article version* element is provided (see above) then the supplied licence details will relate only to that version.   
 
 JSON element: `metadata.license_ref` 
-```
+```json
 "metadata": {
     "license_ref": [
         {
@@ -81,9 +78,9 @@ JSON element: `metadata.license_ref`
         "best": "<Boolean indicates the optimum open licence - will be true for maximum of ONE licence in the array>"
         }
     ],
-    …
 }
 ```
+
 ### url ###
 Where present, the URL should be regarded as the definitive determinant of the licence applying to the article. It will be either:
 * a Creative Commons licence URL

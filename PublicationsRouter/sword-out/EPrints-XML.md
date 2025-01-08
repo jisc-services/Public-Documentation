@@ -21,7 +21,7 @@ The following table lists:
 | issn | journal.identifier.id | `<issn>[journal.identifier.id]</issn>` |
 | title | article.title <br> article.subtitle | `<title>[article.title] - [article.subtitle 1] - [article.subtitle 2] -...</title>` |
 | type | article.type | `<type>[article.type]</type>` |
-| pagerange | article.page_range | `<pagerange>[article.page_range]</pagerange>` |
+| pagerange | article.page_range <br> article.article_e_num <br> | `<pagerange>[article.page_range]</pagerange>` <br><br>Or, if article.page_range is absent: <br> `<pagerange>[article.article_e_num]</pagerange>`  |
 | abstract | article.abstract | `<abstract>[article.abstract]</abstract>` |
 | id_number | article.identifier.id | `<id_number>[article.identifier.id]</id_number>` |
 | keywords | article.subject | `<keywords>[article.subject 1], [article.subject 2], ...</keywords>` |
@@ -32,9 +32,11 @@ The following table lists:
 | funders.item | funding.grant_numbers <br> funding.name <br> funding.identifier | `<funders>` <br> &nbsp;&nbsp;&nbsp;&nbsp; `<item>** Funder: [funding.name]; [funding.identifier.type]: [funding.identifier.id]; Grant(s): [funding.grant_numbers]</item>` <br> `</funders>` |
 | note | article.version | The article version appears in `<note>` element as: <br> `** Article version: [article.version]` |
 | note | embargo.end | Embargo details appear in `<note>` element as: <br> `** Embargo end date: [embargo.start]` |
-| note | provider_agent | Provider details appear in `<note>` element as: <br> `** From [provider_agent] via Jisc Publications Router` |
+| note | provider.agent | Provider details appear in `<note>` element as: <br> `** From [provider.agent] via Jisc Publications Router` |
 | note | history_date.date_type <br> history_date.date  | History dates appear in `<note>` element as: <br> `** History: [history_date.date_type]{; [history_date.date_type]…}` <br> <sub>Note: will include as many history dates as are available.</sub>   |
 | note | license_ref.title <br> license_ref.type <br> license_ref.url <br> license_ref.start <br> article.version | License details appear in `<note>` element as: <br> `** License for{ [article.version] version of} this article{ starting on [license_ref.start]}: {[license_ref.url]\|[license_ref.title]\|[license_ref.type]}` <br> <sub>Note: The output string contains {conditional phrases} that are included only if the field they contain is not empty; the '\|' character separates alternative values, where the first non-empty value is used.</sub> |
+| note | ack | Acknowledgements appear in `<note>` element as: <br> `** Acknowledgements: [ack]` |
+| refereed | peer_reviewed | `<refereed>TRUE\|FALSE</refereed>` |
 
 ## Example XML Output
 
@@ -46,6 +48,7 @@ An example Atom Entry document containing the metadata listed above is shown her
 		<title>Test Article - Test Article SUBtitle</title>
 		<abstract>Abstract of the work </abstract>
 		<type>article</type>
+		<refereed>TRUE</refereed>
 		<creators>
 			<item>
 				<name>
@@ -99,7 +102,8 @@ An example Atom Entry document containing the metadata listed above is shown her
 ** Embargo end date: 12-12-2016
 ** From Premier Publisher via Jisc Publications Router
 ** History: submitted 03-07-2014.
-** Licence for VoR version of this article starting on 12-12-2016: https://testing.org/licenses/by/4.0/</note>
+** Licence for VoR version of this article starting on 12-12-2016: https://testing.org/licenses/by/4.0/
+** Acknowledgements: ...Some acknowledgement text...</note>
 	</eprint>
 </eprints>
 ```

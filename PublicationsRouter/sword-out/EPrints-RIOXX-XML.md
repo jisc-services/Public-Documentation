@@ -18,7 +18,7 @@ The following table lists:
 
 | XML Element Terms | Publications Router Metadata | XML Format | Cardinality & Notes |
 |:-----------------------------|:-----------------------|:------------------------------------------------------------------------------|:----------------------------------|
-| [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L96) | Information to be displayed in Eprints Additional Information public field | `<pr:note>[text to display]</pr:note>` | {0..n} |
+| [pr:note](./pubrouter-xsd/eprints-rioxx.xsd#L96) | Information to be displayed in Eprints Additional Information public field, including the following where available: <br> - Article version: article.version <br> - Embargo end date: embargo.end<br> - Provider agent: provider.agent <br> - History dates: history_date.* <br> - Licence information: license_ref.* <br> - Peer review status: peer_reviewed <br> - Acknowledgement text: ack <br> | `<pr:note>[text to display]</pr:note>` | {0..n} |
 | [pr:comment](./pubrouter-xsd/eprints-rioxx.xsd#L103) | Information to be displayed in Eprints Comments & Suggestions private field | `<pr:comment>[text to display]</pr:comment>` | {0..1} |
 | [pr:relation](./pubrouter-xsd/eprints-rioxx.xsd#L110) | links.format<br>links.url<br>links.packaging| `<pr:relation url=[links.url] format=[links.format] packaging=[links.packaging]>[text to display]</pr:relation>` | {0..n}<br>If the element has no text to display, then Eprints will display the URL.  |
 | [pr:source](./pubrouter-xsd/eprints-rioxx.xsd#L130) | journal.title<br>journal.volume<br>journal.issue| `<pr:source volume=[journal.volume] issue=[journal.issue]>[journal.title]</pr:source>` | {0..1} |
@@ -39,7 +39,7 @@ The following table lists:
 | [rioxxterms:project](http://www.rioxx.net/profiles/v2-0-final/) | funding.name<br> project.identifier<br>funding.grant_numbers | `<rioxxterms:project funder_id=[funding.identifier.type]:[funding.identifier.id] funder_name=[funding.name]>[funding.grant_numbers] </rioxxterms:project>` | {0..n}<br>Note the funder_id attribute holds a compound string of general format "type:id" e.g. "FundRef:10.13039/100000002" |
 | [ali:license_ref](./pubrouter-xsd/eprints-rioxx.xsd#L252) | license_ref.url<br>license_ref.start | `<ali:license_ref start_date=[license_ref.start]>[license_ref.url]</ali:license_ref>` | {0..1}<br>Date format: YYYY-MM-DD |
 | [pr:embargo](./pubrouter-xsd/eprints-rioxx.xsd#L272) | embargo.start<br> embargo.end<br>embargo.duration | `<pr:embargo start_date=[embargo.start] end_date=[embargo.end]></pr:embargo>` | {0..1}<br>At least one of attributes start \| end must be present, format: YYYY-MM-DD |
-| [pr:start_page](./pubrouter-xsd/eprints-rioxx.xsd#L170) | article.start_page | `<pr:start_page>[article.start_page]</pr:start_page>` | {0..1} |
+| [pr:start_page](./pubrouter-xsd/eprints-rioxx.xsd#L170) | article.start_page <br> article.article_e_num <br>| `<pr:start_page>[article.start_page]</pr:start_page>` <br><br>Or, if article.page_range is absent: <br> `<pr:start_page>[article.article_e_num]</pr:start_page>` | {0..1} |
 | [pr:end_page](./pubrouter-xsd/eprints-rioxx.xsd#L177) | article.end_page | `<pr:end_page>[article.end_page]</pr:end_page>` | {0..1} |
 | [pr:page_range](./pubrouter-xsd/eprints-rioxx.xsd#L184) | article.page_range | `<pr:page_range>[article.page_range]</pr:page_range>` | {0..1} |
 | [pr:num_pages](./pubrouter-xsd/eprints-rioxx.xsd#L191) | article.num_pages |  `<pr:num_pages>[article.num_pages]</pr:num_pages>` | {0..1} |
@@ -58,7 +58,7 @@ An example Entry document containing the metadata listed above is shown here.
 <?xml version="1.0"?>
 <entry xmlns="http://www.w3.org/2005/Atom" xmlns:ali="http://www.niso.org/schemas/ali/1.0/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:pr="http://pubrouter.jisc.ac.uk/rioxxplus/v2.0/" xmlns:rioxxterms="http://www.rioxx.net/schema/v2.0/rioxx/">
 	<pr:download_link url="http://dummy.jisc.ac.uk/api/v1/notification/1234567890/content/1" format="text/html" filename="1" primary="false"/>
-	<pr:note>** Article version: VoR ** Embargo end date: 22-08-2018 ** From Publisher via Jisc Publications Router ** Licence for VoR version of this article starting on 22-08-2018: https://testing.org/licenses/by/4.0/</pr:note>
+	<pr:note>** Article version: VoR ** Embargo end date: 22-08-2018 ** From Publisher via Jisc Publications Router ** Licence for VoR version of this article starting on 22-08-2018: https://testing.org/licenses/by/4.0/ ** Peer reviewed: TRUE ** Acknowledgements: ...acknowledgement text...</pr:note>
 	<pr:comment>Some text to display in Eprints privately visible Comments & Suggestions field</pr:comment>
 	<pr:relation url="https:/dummy.jisc.ac.uk/api/v3/notification/1e28c474a04ea8260/content/eprints-rioxx/pone.12345.pdf" format="application/pdf"/>
 	<pr:download_link url="https:/dummy.jisc.ac.uk/api/v3/notification/1e28c474a04ea8260/content/eprints-rioxx/pone.12345.pdf" filename="pone.12345.pdf" format="application/pdf" primary="true"  set_details="true"/>

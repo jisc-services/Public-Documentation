@@ -56,7 +56,7 @@ If you are applying an embargo to the content this can be indicated via the **em
 
 If you have publicly hosted content (e.g. splash pages, full-text web pages, or PDFs) that you want to share with Publications Router, so that repositories can download the content directly, you may provide these in a **links** element.  For example:
 
-```JSON
+```json
 
 "links" : [
     {
@@ -186,7 +186,7 @@ See [possible responses](#possible-http-responses-to-post-validate-or-post-valid
 Either of the validation endpoints will return one of these responses.
 
 - On **authentication failure** (e.g. invalid api_key) the API will respond with a **401 (Unauthorised)**:
-```JSON
+```
     HTTP 1.1  401 Unauthorized
 ```
 &nbsp;
