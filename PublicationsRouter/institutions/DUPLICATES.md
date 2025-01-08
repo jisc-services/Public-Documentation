@@ -31,7 +31,7 @@ Each drop down has 5 options, described in the table below.
 
 Router evaluates the metadata of each notification it processes to determine whether it contains particular elements and, for some of these, the element count. 
 
-Note that when assessing a duplicate notification Router does NOT compare the actual metadata values between the current and previous version. It only assesses whether new metadata elements are present (not seen in any previous version of the notification), or whether the count of some elements has increased (for some elements). 
+Note that when assessing a duplicate notification Router does NOT compare the actual metadata values between the current and previous version. It only assesses whether new metadata elements are present (not seen in any previous version of the notification), or whether the count of some elements has increased. 
 
 So, for example, if the only change in a duplicate notification is amended text, say in the metadata *abstract* element, this would not be noticed by Router; and so it would NOT be assessed as containing additional metadata. 
 
