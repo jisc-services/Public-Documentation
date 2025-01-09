@@ -4,7 +4,7 @@ You decide whether or not you wish to receive duplicate notifications (i.e. arti
 * Publisher's direct submissions to Router
 * Secondary sources (i.e. Crossref, Europe PMC, PubMed) from which Router harvests notifications.
 
-**A Notification processed by Router is considered a duplicate if it has the same DOI as one previously processed.**
+:zap:A notification is considered a duplicate if it has the same DOI as one previously processed.
 
 On your Router Organisation Account page, in the ***Manage duplicate filtering*** panel, you can set which duplicates (if any) you receive from Router.
 
@@ -29,26 +29,21 @@ Each drop down has 5 options, described in the table below.
 
 ## Additional metadata - explanation
 
-Router evaluates the metadata of each notification it processes to determine whether it contains particular elements and, for some of these, the element count. 
+Router evaluates the metadata of each notification it processes to determine whether it contains particular elements and, for some of these, the element count. The table below lists the metadata that Router assesses - which therefore may impact duplicate filtering.
 
-Note that when assessing a duplicate notification Router does NOT compare the actual metadata values between the current and previous version. It only assesses whether new metadata elements are present (not seen in any previous version of the notification), or whether the count of some elements has increased. 
-
-So, for example, if the only change in a duplicate notification is amended text, say in the metadata *abstract* element, this would not be noticed by Router; and so it would NOT be assessed as containing additional metadata. 
-
-
-The table below lists the metadata that Router is concerned with - which therefore may impact duplicate filtering.
-
-A duplicate notification is considered to have **additional metadata** if any of the following are true:
+:zap:A duplicate notification is considered to have **additional metadata** if any of the following are true:
 * the notification contains metadata elements not previously provided
 * the value of the article-version has changed
 * any of the counts have increased (for those elements that are counted). 
+
+Note that Router does NOT compare actual metadata values between duplicate versions - it only assesses whether new metadata elements are present (not seen in any previous version of the notification), or whether the count of some elements has increased.&nbsp; So, if a duplicate notification contains ONLY changed text, for example the *abstract* was amended, this would not be noticed by Router; and so it would NOT be assessed as containing additional metadata. 
 
 
 ### Metadata evaluated by Router
 The *measure* column in the following table indicates how Router assesses particular metadata elements in each notification. These measures have the following meanings:
 * Presence - Router records if the partricular metadata element is present
 * Value - Router records if the metadata element is present with a particular value or set of values
-* Count - Router records the number (count) of the particular metadata element 
+* Count - Router records the number (count) of the particular metadata element.
 
 | Metadata element | Measure | Notes |
 |-------|---------|--------|
