@@ -8,6 +8,8 @@ You decide whether or not you wish to receive duplicate notifications (i.e. arti
 
 On your Router Organisation Account page, in the ***Manage duplicate filtering*** panel, you can set which duplicates (if any) you receive from Router.
 
+:zap:Regardless of filter options, **you will always receive the FIRST notification from a publisher**, even if it duplicates one previously harvested from a secondary source.
+
 ## Manage duplicate filtering panel
 
 Using the 2 drop-down selection boxes you can select which duplicates you receive from:
@@ -20,7 +22,7 @@ Each drop down has 5 options, described in the table below.
 ### Filter options
 | Option | Description | Impact of option selected |
 |--------|----|--------------|
-| No duplicates | No duplicates | You will not receive any duplicates from the particular source (Publisher or Secondary) |
+| No duplicates | No duplicates | You will not receive any duplicates from the particular source (Publisher or Secondary). |
 | Duplicates with Enhanced/Corrected VoR or first with PDF | Duplicate notifications with article-version 'Enhanced/Corrected VoR' or the FIRST with a full-text PDF (no PDF received previously) | You will receive a duplicate notification if:<br><br>* its **Article Version** has one of these values:<br> &nbsp; - **CVoR** (corrected version of record)<br> &nbsp; - **EVoR** (enhanced version of record)<br> &nbsp; - **C/EVoR** (corrected or enhanced version of record);<br><br>* or it is the first notification that includes a PDF (article) file. |
 | Duplicates with additional metadata or first with PDF | Duplicate notifications with version 'Enhanced/Corrected VoR' or containing additional metadata or the FIRST with a full-text PDF (no PDF received previously) | You will receive a duplicate notification if:<br><br>* its **Article Version** has one of these values: **CVoR**, **EVoR**, **C/EVoR**. (See above for acronym definition);<br><br>* or it has **additional metadata** (further info below);<br><br>* or it is the first notification that includes a PDF (article) file. |
 | Duplicates with additional metadata or with a full-text PDF | Duplicate notifications with version 'Enhanced/Corrected VoR' or containing additional metadata or with a full-text PDF (even if a PDF was previously received) | You will receive a duplicate notification if:<br><br>* its **Article Version** has one of these values: **CVoR**, **EVoR**, **C/EVoR**. (See above for acronym definition);<br><br>* or it has **additional metadata** (further info below);<br><br>* or it contains a PDF (article) file (even if the previous notification also contained a PDF). |
