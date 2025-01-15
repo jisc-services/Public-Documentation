@@ -1,5 +1,15 @@
 # Release History
 
+## Release 13.8.2 - Jan 2025
+Minor release, including:
+1. New tests
+2. Fix JATS affiliation parsing issue resulting in *raw* string being wrongly formatted in some circumstances, such as when punctuation occurs after \<insitution-wrap\> elements. 
+
+## Release 13.8.1 - Jan 2025
+Minor release, including:
+1. New tests
+2. Fix 'publisher duplicate submissions' report issue. 
+
 ## Release 13.8.0 - Dec 2024
 Major release, including:
 1. Publisher Auto-testing: new testing of author affiliation organisation elements
