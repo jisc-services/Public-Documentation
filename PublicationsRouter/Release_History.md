@@ -1,5 +1,10 @@
 # Release History
 
+## Release 13.8.3 - Jan 2025
+Minor bug fix release, including:
+1. Allow publishers to deposit notifications with _Article Version_ **CVoR**, **EVoR** or **C/EVoR** and _Licence Version_ of **VoR** (previously licence version had to exactly match article version, and so such notifications were being rejected)
+2. Fix some moved (broken) links to Jisc web-pages.
+
 ## Release 13.8.2 - Jan 2025
 Minor release, including:
 1. Fix JATS affiliation parsing issue resulting in *raw* string being wrongly formatted in some circumstances, such as when punctuation occurs after \<insitution-wrap\> elements
