@@ -4,7 +4,7 @@
 Minor release, including:
 1. Resolve various accessibility issues to bring website into compliance
 2. Fix cookie deletion bug, so that all tracking cookies are removed if user selects that option
-3. Resolve minor issue Router admin issue, such that unnecessary INFO alerting emails to Jisc PubRouter admins are no longer generated when scheduled shutdown occurs.
+3. Resolve minor Router admin issue, such that unnecessary INFO alerting emails to Jisc PubRouter admins are no longer generated when scheduled shutdown occurs.
 
 ## Release 13.8.3 - Jan 2025
 Minor bug fix release, including:
