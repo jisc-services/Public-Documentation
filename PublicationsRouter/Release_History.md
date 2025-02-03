@@ -1,5 +1,11 @@
 # Release History
 
+## Release 13.9.0 - Feb 2025
+Minor release, including:
+1. Resolve various accessibility issues to bring website into compliance
+2. Fix cookie deletion bug, so that all tracking cookies are removed if user selects that option
+3. Resolve minor Router admin issue, such that unnecessary INFO alerting emails to Jisc PubRouter admins are no longer generated when scheduled shutdown occurs.
+
 ## Release 13.8.3 - Jan 2025
 Minor bug fix release, including:
 1. Allow publishers to deposit notifications with _Article Version_ **CVoR**, **EVoR** or **C/EVoR** and _Licence Version_ of **VoR** (previously licence version had to exactly match article version, and so such notifications were being rejected)
