@@ -1,5 +1,9 @@
 # Release History
 
+## Release 13.9.1 - Feb 2025
+Minor release, including:
+1. Fix cookie deletion bug.
+
 ## Release 13.9.0 - Feb 2025
 Minor release, including:
 1. Resolve various accessibility issues to bring website into compliance
