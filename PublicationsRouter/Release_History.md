@@ -1,5 +1,9 @@
 # Release History
 
+## Release 13.9.2 - Feb 2025
+Minor release, including:
+1. Admin functionality improvements.
+
 ## Release 13.9.1 - Feb 2025
 Minor release, including:
 1. Fix cookie deletion bug.
