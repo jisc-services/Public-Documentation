@@ -1,6 +1,6 @@
 # Release History
 
-## Release 13.9.2 - Feb 2025
+## Release 13.9.3 - Feb 2025
 Minor release, including:
 1. Admin functionality improvements.
 
