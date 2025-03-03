@@ -1,5 +1,12 @@
 # Release History
 
+## Release 13.10.0 - Feb 2025
+Minor release, including:
+1. Fix double colon problem in abstract subheadings
+2. Fix "articles in period" report
+3. New GUI screen to allow users to view JSON metadata of live deposits (from a particular publisher) that have been matched to HEIs
+4. Software library refresh - update libraries to latest versions.
+
 ## Release 13.9.3 - Feb 2025
 Minor release, including:
 1. Admin functionality improvements.
