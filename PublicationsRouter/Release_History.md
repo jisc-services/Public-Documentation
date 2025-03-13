@@ -1,5 +1,10 @@
 # Release History
 
+## Release 13.10.1 - March 2025
+Minor release, including:
+1. New version of FTP Protocol Document (PDF)
+2. Improve error information for bad dates in JATS files.
+
 ## Release 13.10.0 - Feb 2025
 Minor release, including:
 1. Fix double colon problem in abstract subheadings
