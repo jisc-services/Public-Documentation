@@ -1,5 +1,22 @@
 # Release History
 
+## Release 13.14.0 - July 2025
+Minor release, including:
+1. Amend Router web site to clarify Router only available to full Jisc HE members
+2. Resolve problem of e-num not getting populated by Eprints-RIOXX plugin
+3. Modify use of ROR API (v1) so it continues to work after July 28, 2025 (when v2 becomes the default).
+
+## Release 13.13.4 - May 2025
+Minor release, including:
+1. Modify JATS parsing to capture collaborator details (including individual collaborators) provided in new elements in JATS v1.4
+2. New admininistrator function to dequeue a failing (blocking) notification
+3. Update FTP Deposit Protocol PDF to reflect JATS processing changes.
+
+## Release 13.12.0 - April 2025
+Minor release, including:
+1. Limit FTP deposit zip file size to avoid out-of-memory error
+2. Capture history dates from JATS v1.4 `<pub-history><event>` elements.
+
 ## Release 13.10.1 - March 2025
 Minor release, including:
 1. New version of FTP Protocol Document (PDF)
