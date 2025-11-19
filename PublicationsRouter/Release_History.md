@@ -1,5 +1,21 @@
 # Release History
 
+## Release 13.16.3 - August 2025
+Main changes:
+1. Update python libraries to latest versions
+2. Fix bug in display of INI organisation id (resulting from new ROR API)
+3. Remove HTML snippets from harvested article metadata
+4. New admin screen to display number of users configured for each organisation
+5. New admin screen to display Router version information (including versions of libraries).
+
+## Release 13.15.0 - August 2025
+Main changes:
+1. Fix accessibility issues
+2. Upgrade Router to use ROR API v2 to retrieve Organisation identifiers
+3. Fixed an issue with display of publishers' history report of articles matched to institutions
+4. Fixed bug in email subject line for publisher monthly article distribution reports
+5. missing article number for SWORD feeds to vanilla Eprints.
+
 ## Release 13.14.0 - July 2025
 Minor release, including:
 1. Amend Router web site to clarify Router only available to full Jisc HE members
