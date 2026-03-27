@@ -1,5 +1,20 @@
 # Release History
 
+## Release 13.17.6 - March 2026
+Main changes:
+1. Fix metrics display bug
+
+## Release 13.17.5 - March 2026
+Main changes:
+1. Fix minor issue with error email display
+2. Library version update
+
+## Release 13.17.0 - March 2026
+Main changes:
+1. Update cookies page
+2. Changes to text re Router retirement
+3. New capablity to variable text to  home screen Info panel
+
 ## Release 13.16.3 - August 2025
 Main changes:
 1. Update python libraries to latest versions
