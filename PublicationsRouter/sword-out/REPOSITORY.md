@@ -4,7 +4,7 @@ This document provides information on how to get your repository set up to take 
 
 ## Publications Router Account Setup
 
-Firstly, you will need to contact [help@jisc.ac.uk](mailto:help@jisc.ac.uk?subject=Publications Router%20-%20account%20creation%20(institution)), mentioning Publications Router in your query, to have an account created. For that, you must provide:
+The following information is needed by Publications Router for the SWORD2 deposit process:
 
 * The matching parameters using this [Excel template](https://pubrouter.jisc.ac.uk/static/csvtemplate_router_matching_params_XLS_FORMAT.xlsx) or equivalent [csv template](https://pubrouter.jisc.ac.uk/static/csvtemplate.csv). IMPORTANT: if using the Excel template it should be saved as a CSV file upon completion, as this is the only format supported by Publications Router. 
 * A *username* and *password* for an account in your repository which has a role with the rights to create content via SWORDv2:
@@ -90,5 +90,3 @@ can be found in
     
 It is possible to edit this configuration file to affect which DSpace Item metadata fields are populated by Publications Router- see [here](https://wiki.duraspace.org/display/DSDOC5x/Metadata+and+Bitstream+Format+Registries) for more information.
 
-
-If you need any help with repository plugins then refer to [JISC Repository Technical Support](https://www.jisc.ac.uk/repository-technical-support).
