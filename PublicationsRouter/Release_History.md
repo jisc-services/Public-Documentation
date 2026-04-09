@@ -1,5 +1,10 @@
 # Release History
 
+## Release 13.17.8 - April 2026
+Main changes:
+1. Improve error messages related to SWORD deposit problems
+2. Fix an issue where EuropePMC links were not being properly rendered in error messages.
+
 ## Release 13.17.6 - March 2026
 Main changes:
 1. Fix metrics display bug
