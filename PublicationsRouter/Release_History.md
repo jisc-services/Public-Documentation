@@ -1,5 +1,17 @@
 # Release History
 
+## Release 13.18.5 - June 2026
+Main changes (since release 13.17.8):
+1. Up-version some third-party libraries
+2. Improved some error messages
+3. New functionality to display notification metadata delatil, including metrics & duplicates data
+4. Updated documentation pages
+
+## Release 13.17.8 - April 2026
+Main changes:
+1. Improve error messages related to SWORD deposit problems
+2. Fix an issue where EuropePMC links were not being properly rendered in error messages.
+
 ## Release 13.17.8 - April 2026
 Main changes:
 1. Improve error messages related to SWORD deposit problems
