@@ -1,5 +1,12 @@
 # Release History
 
+
+## Release 13.18.6 - June 2026
+Main changes:
+1. Minor restructuring of Admin menu presentation
+2. New functionality to download (export) matching parameters (5 different options available)
+3. Up-version some third-party libraries
+
 ## Release 13.18.5 - June 2026
 Main changes (since release 13.17.8):
 1. Up-version some third-party libraries
